@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.2 (16-09-2023)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -48,7 +48,7 @@ class Y4YM_Data_Arr {
 				],
 				[ // дата начала сборки
 					'opt_name' => 'yfym_date_sborki',
-					'def_val' => '0000000001',
+					'def_val' => '-', // 'Y-m-d H:i
 					'mark' => 'private',
 					'required' => true,
 					'type' => 'auto',
@@ -56,7 +56,7 @@ class Y4YM_Data_Arr {
 				],
 				[ // дата завершения сборки
 					'opt_name' => 'yfym_date_sborki_end',
-					'def_val' => '0000000001',
+					'def_val' => '-', // 'Y-m-d H:i
 					'mark' => 'private',
 					'required' => true,
 					'type' => 'auto',
@@ -64,7 +64,7 @@ class Y4YM_Data_Arr {
 				],
 				[  // дата сохранения настроек плагина
 					'opt_name' => 'yfym_date_save_set',
-					'def_val' => '0000000001',
+					'def_val' => 0000000001, // 0000000001 - timestamp format
 					'mark' => 'private',
 					'required' => true,
 					'type' => 'auto',

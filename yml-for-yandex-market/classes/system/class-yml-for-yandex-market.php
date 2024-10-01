@@ -6,7 +6,7 @@
  * @subpackage      
  * @since                   0.1.0
  * 
- * @version                 4.7.0 (09-09-2024)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see             
@@ -34,6 +34,10 @@
 defined( 'ABSPATH' ) || exit;
 
 final class YmlforYandexMarket {
+	/**
+	 * The list of allowed tags that will be passed to the function wp_kses()
+	 * @var array
+	 */
 	const ALLOWED_HTML_ARR = [ 
 		'a' => [ 
 			'href' => true,
@@ -49,13 +53,23 @@ final class YmlforYandexMarket {
 		'p' => [ 'class' => true, 'style' => true ],
 		'kbd' => [ 'class' => true ]
 	];
+
 	/**
-	 * Plugin version
+	 * The current version of the plugin
 	 * @var string
 	 */
 	private $plugin_version = YFYM_PLUGIN_VERSION; // 1.0.0
 
+	/**
+	 * Instance
+	 * @var YmlforYandexMarket
+	 */
 	protected static $instance;
+
+	/**
+	 * Initialization YmlforYandexMarket class.
+	 * @return YmlforYandexMarket
+	 */
 	public static function init() {
 		if ( is_null( self::$instance ) ) {
 			self::$instance = new self();
@@ -686,25 +700,8 @@ final class YmlforYandexMarket {
 	}
 
 	/**
-	 * Print admin notice
-	 * 
-	 * @param string $message
-	 * @param string $class
-	 * 
-	 * @return void
-	 */
-	private function print_admin_notice( $message, $class ) {
-		$yfym_disable_notices = univ_option_get( 'yfym_disable_notices' );
-		if ( $yfym_disable_notices === 'on' ) {
-			return;
-		} else {
-			printf( '<div class="notice %1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
-			return;
-		}
-	}
-
-	/**
-	 * Summary of feedback_additional_info
+	 * Add additional information to the feedback email. 
+	 * Function for `y4ym_f_feedback_additional_info` action-hook.
 	 * 
 	 * @param string $additional_info
 	 * 
@@ -801,7 +798,8 @@ final class YmlforYandexMarket {
 				Что экспортировать: %7$s<br />
 				Автоматическое создание файла: %8$s<br />
 				Обновить фид при обновлении карточки товара: %9$s<br />
-				Дата последней сборки XML: %10$s</p>',
+				Дата начала последней сборки XML: %10$s<br />
+				Дата завершения последней сборки XML: %11$s',
 				(string) $feed_id,
 				common_option_get( 'yfym_status_sborki', false, $feed_id, 'yfym' ),
 				get_site_url(),
@@ -811,9 +809,25 @@ final class YmlforYandexMarket {
 				common_option_get( 'yfym_whot_export', false, $feed_id, 'yfym' ),
 				common_option_get( 'yfym_status_cron', false, $feed_id, 'yfym' ),
 				common_option_get( 'yfym_ufup', false, $feed_id, 'yfym' ),
-				common_option_get( 'yfym_date_sborki', false, $feed_id, 'yfym' )
+				common_option_get( 'yfym_date_sborki', false, $feed_id, 'yfym' ),
+				common_option_get( 'yfym_date_sborki_end', false, $feed_id, 'yfym' ),
 			);
 		}
 		return $additional_info;
+	}
+
+	/**
+	 * Print admin notice
+	 * 
+	 * @param string $message
+	 * @param string $class
+	 * 
+	 * @return void
+	 */
+	private function print_admin_notice( $message, $class ) {
+		$yfym_disable_notices = univ_option_get( 'yfym_disable_notices' );
+		if ( $yfym_disable_notices !== 'on' ) {
+			printf( '<div class="notice %1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+		}
 	}
 } /* end class YmlforYandexMarket */

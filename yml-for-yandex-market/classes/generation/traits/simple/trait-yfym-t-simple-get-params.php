@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.6.1 (08-08-2024)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -32,7 +32,7 @@ trait YFYM_T_Simple_Get_Params {
 	 */
 	public function get_params( $tag_name = 'params', $result_xml = '' ) {
 		$params_arr = maybe_unserialize( yfym_optionGET( 'yfym_params_arr', $this->get_feed_id() ) );
-		if ( ! empty( $params_arr ) ) {
+		if ( is_array( $params_arr ) && ! empty( $params_arr ) ) {
 			$behavior_of_params = common_option_get( 'yfym_behavior_of_params', false, $this->get_feed_id(), 'yfym' );
 
 			$attributes = $this->get_product()->get_attributes();

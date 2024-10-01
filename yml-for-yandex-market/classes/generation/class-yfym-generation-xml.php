@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.7.1 (11-09-2024)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -583,7 +583,7 @@ class YFYM_Generation_XML {
 	protected function get_feed_header() {
 		$result_xml = '';
 		// обнуляем лог ошибок
-		common_option_upd( 'yfym_critical_errors', '', 'no', $this->get_feed_id(), 'yfym' );
+		// common_option_upd( 'yfym_critical_errors', '', 'no', $this->get_feed_id(), 'yfym' );
 		$yfym_cache = common_option_get( 'yfym_cache', false, $this->get_feed_id(), 'yfym' );
 		if ( $yfym_cache === 'enabled' ) {
 			$unixtime = (string) current_time( 'timestamp', 1 ); // 1335808087 - временная зона GMT (Unix формат)
@@ -1208,6 +1208,8 @@ class YFYM_Generation_XML {
 				__LINE__
 			) );
 			return false;
+		} else {
+			common_option_upd( 'yfym_critical_errors', '', 'no', $this->get_feed_id(), 'yfym' );
 		}
 
 		if ( false === rename( $feed_basedir_old, $feed_basedir_new ) ) {

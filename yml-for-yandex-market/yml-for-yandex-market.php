@@ -4,7 +4,7 @@
  * Requires Plugins: woocommerce
  * Plugin URI: https://icopydoc.ru/category/documentation/yml-for-yandex-market/
  * Description: Подключите свой магазин к Яндекс Маркету и выгружайте товары, получая новых клиентов!
- * Version: 4.7.2
+ * Version: 4.7.3
  * Requires at least: 4.5
  * Requires PHP: 7.4.0
  * Author: Maxim Glazunov
@@ -15,7 +15,7 @@
  * Domain Path: /languages
  * Tags: yml, yandex, market, export, woocommerce
  * WC requires at least: 3.0.0
- * WC tested up to: 9.3.1
+ * WC tested up to: 9.3.3
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
@@ -87,7 +87,7 @@ if ( ! function_exists( 'warning_notice' ) ) {
 }
 
 // Define constants
-define( 'YFYM_PLUGIN_VERSION', '4.7.2' );
+define( 'YFYM_PLUGIN_VERSION', '4.7.3' );
 
 $upload_dir = wp_get_upload_dir();
 // http://site.ru/wp-content/uploads

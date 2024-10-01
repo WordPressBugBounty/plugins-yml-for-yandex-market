@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.7.0 (09-09-2024)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 
 trait YFYM_T_Simple_Get_Offer_Tag {
 	/**
-	 * Get open offer tag
+	 * Get open `offer` tag
 	 * 
 	 * @param string $tag_name - Optional
 	 * @param string $result_xml - Optional
@@ -139,6 +139,7 @@ trait YFYM_T_Simple_Get_Offer_Tag {
 				}
 			}
 		}
+		$offer_tag_attrs_arr['available'] = $available;
 
 		$offer_tag_attrs_arr = apply_filters(
 			'y4ym_f_simple_offer_tag_attrs_arr',

@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.2 (16-09-2023)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
@@ -311,13 +311,13 @@ class Y4YM_Settings_Page_Feeds_WP_List_Table extends WP_List_Table {
 	function column_yfym_url_xml_file( $item ) {
 		$actions = [ 
 			'edit' => sprintf( '<a href="?page=%s&action=%s&feed_id=%s">%s</a>',
-				$_REQUEST['page'],
+				esc_attr( $_REQUEST['page'] ),
 				'edit',
 				$item['yfym_feed_id'],
 				__( 'Edit', 'yml-for-yandex-market' )
 			),
 			'duplicate' => sprintf( '<a href="?page=%s&action=%s&feed_id=%s&_wpnonce=%s">%s</a>',
-				$_REQUEST['page'],
+				esc_attr( $_REQUEST['page'] ),
 				'duplicate',
 				$item['yfym_feed_id'],
 				wp_create_nonce( 'nonce_duplicate' . $item['yfym_feed_id'] ),

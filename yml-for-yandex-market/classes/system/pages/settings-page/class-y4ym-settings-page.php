@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.0 (09-09-2024)
+ * @version                 4.7.3 (01-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -275,7 +275,9 @@ class Y4YM_Settings_Page {
 				$new_data_arr['yfym_file_url'] = '';
 				$new_data_arr['yfym_file_file'] = '';
 				$new_data_arr['yfym_status_cron'] = 'off';
-				$new_data_arr['yfym_date_sborki_end'] = '0000000001';
+				$new_data_arr['yfym_date_sborki'] = '-'; // 'Y-m-d H:i
+				$new_data_arr['yfym_date_sborki_end'] = '-'; // 'Y-m-d H:i
+				$new_data_arr['yfym_date_save_set'] = 0000000001; // 0000000001 - timestamp format
 				$new_data_arr['yfym_count_products_in_feed'] = '-1';
 
 				// обновим список зарегистрированных фидов
