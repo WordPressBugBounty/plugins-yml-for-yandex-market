@@ -6,7 +6,7 @@
  * @subpackage      
  * @since                   0.1.0
  * 
- * @version                 4.7.3 (01-10-2024)
+ * @version                 4.8.0 (10-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see             
@@ -286,6 +286,7 @@ final class YmlforYandexMarket {
 	 * @return void
 	 */
 	public function init_hooks() {
+		add_action( 'wp_loaded', [ $this, 'check_forced_cron' ], 10 );
 		add_action( 'admin_init', [ $this, 'listen_submits' ], 10 ); // ещё можно слушать чуть раньше на wp_loaded
 		add_action( 'admin_init', function () {
 			wp_register_style( 'yfym-admin-css', YFYM_PLUGIN_DIR_URL . 'assets/css/y4ym_style.css' );
@@ -304,6 +305,15 @@ final class YmlforYandexMarket {
 
 		// дополнительные данные для фидбэка
 		add_filter( 'y4ym_f_feedback_additional_info', [ $this, 'feedback_additional_info' ], 10, 1 );
+	}
+
+	/**
+	 * Forced to start wp-cron.php if CRON tasks are overdue by more than `85` seconds
+	 * 
+	 * @return void
+	 */
+	public function check_forced_cron() {
+		forced_cron(); // принудительно дёрним крон при больших просрочках
 	}
 
 	/**
@@ -386,7 +396,7 @@ final class YmlforYandexMarket {
 	 * @return void
 	 */
 	public function get_plugin_settings_page() {
-		new Y4YM_Settings_Page();
+		new Y4YM_Settings_Page( 'yml-for-yandex-market', $this->get_plugin_version() );
 		return;
 	}
 

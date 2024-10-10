@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.0.0 (29-08-2023)
+ * @version                 4.8.0 (10-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -166,7 +166,7 @@ class Y4YM_Debug_Page {
 		$check_global_attr_count = wc_get_attribute_taxonomies();
 		if ( count( $check_global_attr_count ) < 1 ) {
 			$possibleProblemsCount++;
-			$possibleProblems .= sprintf( '<li>%s! %s. %s <a href="%s/?%s</a>.</li>',
+			$possibleProblems .= sprintf( '<li>%s! %s. %s <a href="%s/?%s">%s</a>.</li>',
 				__( 'Your site has no global attributes', 'yml-for-yandex-market' ),
 				__( 'This may affect the quality of the YML feed', 'yml-for-yandex-market' ),
 				__( 'This can also cause difficulties when setting up the plugin', 'yml-for-yandex-market' ),

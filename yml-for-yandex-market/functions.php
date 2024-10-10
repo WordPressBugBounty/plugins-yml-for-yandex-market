@@ -256,6 +256,9 @@ function yfym_wf( $result_yml, $post_id, $feed_id = '1', $ids_in_yml = '' ) {
 	if ( is_dir( $name_dir ) ) {
 		$filename = $name_dir . '/' . $post_id . '.tmp';
 		$fp = fopen( $filename, "w" );
+		if ( empty( $result_yml ) ) {
+			$result_yml = ' ';
+		}
 		fwrite( $fp, $result_yml ); // записываем в файл текст
 		fclose( $fp ); // закрываем
 
@@ -453,5 +456,26 @@ if ( ! function_exists( 'get_nested_tag' ) ) {
 			$result_xml .= new Get_Paired_Tag( $name_wrapper_tag, $elements[0] );
 		}
 		return $result_xml;
+	}
+}
+
+if ( ! function_exists( 'forced_cron' ) ) {
+	/**
+	 * Forced to start wp-cron.php if CRON tasks are overdue by more than `85` seconds
+	 * 
+	 * @since 4.8.0
+	 * 
+	 * @param int $sec
+	 * 
+	 * @return void
+	 */
+	function forced_cron( $sec = -80 ) {
+		$cron_arr = _get_cron_array();
+		if ( ! empty( $cron_arr ) ) {
+			$first_key = array_key_first( $cron_arr );
+			if ( $sec > $first_key - current_time( 'timestamp', 1 ) ) {
+				wp_remote_get( home_url() . '/wp-cron.php' );
+			}
+		}
 	}
 }

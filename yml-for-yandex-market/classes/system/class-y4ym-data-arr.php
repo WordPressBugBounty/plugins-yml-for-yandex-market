@@ -42,7 +42,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_status_sborki',
 					'def_val' => '-1',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -50,7 +49,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_date_sborki',
 					'def_val' => '-', // 'Y-m-d H:i
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -58,7 +56,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_date_sborki_end',
 					'def_val' => '-', // 'Y-m-d H:i
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -66,7 +63,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_date_save_set',
 					'def_val' => 0000000001, // 0000000001 - timestamp format
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -74,7 +70,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_count_products_in_feed',
 					'def_val' => '-1',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -82,7 +77,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_file_url',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -90,7 +84,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_file_file',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -98,7 +91,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_status_cron',
 					'def_val' => 'off',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -106,7 +98,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_critical_errors',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => true,
 					'type' => 'auto',
 					'tab' => 'none'
 				],
@@ -115,7 +106,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_run_cron',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -151,10 +141,50 @@ class Y4YM_Data_Arr {
 					]
 				],
 				[ 
+					'opt_name' => 'yfym_cron_start_time',
+					'def_val' => 'now',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'main_tab',
+					'data' => [ 
+						'label' => __( 'Starting at the specified time', 'yml-for-yandex-market' ),
+						'desc' => sprintf( '%s',
+							__( 'The time at which the feed generation should start', 'yml-for-yandex-market' )
+						),
+						'woo_attr' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'now', 'text' => __( 'Now', 'yml-for-yandex-market' ) ],
+							[ 'value' => '1am', 'text' => '01-00' ],
+							[ 'value' => '2am', 'text' => '02-00' ],
+							[ 'value' => '3am', 'text' => '03-00' ],
+							[ 'value' => '4am', 'text' => '04-00' ],
+							[ 'value' => '5am', 'text' => '05-00' ],
+							[ 'value' => '6am', 'text' => '06-00' ],
+							[ 'value' => '7am', 'text' => '07-00' ],
+							[ 'value' => '8am', 'text' => '08-00' ],
+							[ 'value' => '9am', 'text' => '09-00' ],
+							[ 'value' => '10am', 'text' => '10-00' ],
+							[ 'value' => '11am', 'text' => '10-00' ],
+							[ 'value' => '12am', 'text' => '12-00' ],
+							[ 'value' => '1pm', 'text' => '13-00' ],
+							[ 'value' => '2pm', 'text' => '14-00' ],
+							[ 'value' => '3pm', 'text' => '15-00' ],
+							[ 'value' => '4pm', 'text' => '16-00' ],
+							[ 'value' => '5pm', 'text' => '17-00' ],
+							[ 'value' => '6pm', 'text' => '18-00' ],
+							[ 'value' => '7pm', 'text' => '19-00' ],
+							[ 'value' => '8pm', 'text' => '20-00' ],
+							[ 'value' => '9pm', 'text' => '21-00' ],
+							[ 'value' => '10pm', 'text' => '22-00' ],
+							[ 'value' => '11pm', 'text' => '23-00' ],
+							[ 'value' => '12pm', 'text' => '00-00' ]
+						]
+					]
+				],
+				[ 
 					'opt_name' => 'yfym_ufup',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -177,7 +207,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_yml_rules',
 					'def_val' => 'yandex_market',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -272,7 +301,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_feed_assignment',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -286,7 +314,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_feed_name',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -310,7 +337,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_file_extension',
 					'def_val' => 'xml',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -327,7 +353,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_archive_to_zip',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -347,7 +372,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_step_export',
 					'def_val' => '500',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -378,7 +402,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_cache',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -404,7 +427,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_do_cash_file',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -434,7 +456,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_del_identical_ids',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
@@ -464,7 +485,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_file_ids_in_yml',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => false,
 					'type' => 'text',
 					'tab' => 'none',
 					'data' => []
@@ -473,7 +493,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_file_ids_in_xml',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => false,
 					'type' => 'text',
 					'tab' => 'none',
 					'data' => []
@@ -482,7 +501,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_main_product',
 					'def_val' => '',
 					'mark' => 'private',
-					'required' => false,
 					'type' => 'text',
 					'tab' => 'none',
 					'data' => []
@@ -492,7 +510,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_format_date',
 					'def_val' => 'rfc_short',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'shop_data_tab',
 					'data' => [ 
@@ -522,7 +539,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_shop_name',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'shop_data_tab',
 					'data' => [ 
@@ -540,7 +556,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_company_name',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'shop_data_tab',
 					'data' => [ 
@@ -555,7 +570,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_warehouse',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'shop_data_tab',
 					'data' => [ 
@@ -575,7 +589,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_adult',
 					'def_val' => 'no',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'shop_data_tab',
 					'data' => [ 
@@ -595,7 +608,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_currencies',
 					'def_val' => 'enabled',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -614,7 +626,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_amount',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -636,7 +647,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_qty',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -658,7 +668,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_shop_sku',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -678,7 +687,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_length',
 					'def_val' => 'woo_shippings',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -700,7 +708,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_width',
 					'def_val' => 'woo_shippings',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -722,7 +729,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_height',
 					'def_val' => 'woo_shippings',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -744,7 +750,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_weight',
 					'def_val' => 'woo_shippings',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -765,7 +770,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_count',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -787,7 +791,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_auto_disabled',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -806,7 +809,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_auto_archived',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -825,7 +827,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_market_sku_status',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -847,7 +848,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_manufacturer',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -873,7 +873,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_manufacturer_post_meta',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -889,7 +888,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_vendor',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -915,7 +913,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_vendor_post_meta',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -931,7 +928,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_country_of_origin',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -952,7 +948,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_source_id',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -977,7 +972,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_source_id_post_meta',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -992,7 +986,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_group_id',
 					'def_val' => 'enabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1011,7 +1004,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_on_demand',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1030,7 +1022,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_pickup',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1050,7 +1041,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_oldprice',
 					'def_val' => 'no',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1072,7 +1062,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_price_from',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1097,7 +1086,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_cofinance_price',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1119,7 +1107,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_purchase_price',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1138,7 +1125,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_additional_expenses',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1160,7 +1146,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery',
 					'def_val' => 'false',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1182,7 +1167,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_vat',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1212,7 +1196,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_video',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1234,7 +1217,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_barcode',
 					'def_val' => 'no',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1272,7 +1254,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_barcode_post_meta',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1285,7 +1266,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_vendorcode',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1304,7 +1284,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_cargo_types',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1323,7 +1302,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_expiry',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1341,7 +1319,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_period_of_validity_days',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1359,7 +1336,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_downloadable',
 					'def_val' => 'off',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1378,7 +1354,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_age',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1396,7 +1371,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_type_prefix',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1414,7 +1388,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_model',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1433,7 +1406,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_manufacturer_warranty',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1461,7 +1433,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_collection_id',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1485,7 +1456,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_warranty_days',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1505,7 +1475,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_warranty_days_default_value',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1520,7 +1489,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_sales_notes_cat',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1548,7 +1516,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_sales_notes',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1561,7 +1528,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_store',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1585,7 +1551,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_condition',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1627,7 +1592,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_reason',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1647,7 +1611,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_quality',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1672,7 +1635,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_picture',
 					'def_val' => 'full',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1691,7 +1653,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_custom_score',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1716,7 +1677,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_custom_labels',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1741,7 +1701,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_market_category',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1770,7 +1729,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_market_category_id',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1796,7 +1754,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_pickup_options',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1821,7 +1778,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_pickup_cost',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1841,7 +1797,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_pickup_days',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1861,7 +1816,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_pickup_order_before',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1881,7 +1835,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_shipment_options',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1907,7 +1860,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_shipment_days',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1927,7 +1879,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_order_before',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1947,7 +1898,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_options',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1972,7 +1922,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_cost',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -1992,7 +1941,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_days',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2012,7 +1960,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_order_before',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2032,7 +1979,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_options2',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2060,7 +2006,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_cost2',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2080,7 +2025,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_delivery_days2',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2100,7 +2044,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_order_before2',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2120,7 +2063,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_consists_arr',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2145,7 +2087,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_behavior_of_consists',
 					'def_val' => 'default',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2174,7 +2115,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_params_arr',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2199,7 +2139,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_behavior_of_params',
 					'def_val' => 'default',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2228,7 +2167,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_ebay_stock',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'wp_list_table',
 					'data' => [ 
@@ -2248,7 +2186,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_whot_export',
 					'def_val' => 'all',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2275,7 +2212,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_desc',
 					'def_val' => 'fullexcerpt',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2317,7 +2253,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_enable_tags_behavior',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2335,7 +2270,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_enable_tags_custom',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2351,7 +2285,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_the_content',
 					'def_val' => 'enabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2372,7 +2305,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_replace_domain',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'text',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2390,7 +2322,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_clear_get',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2414,7 +2345,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_var_desc_priority',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2438,7 +2368,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_no_group_id_arr',
 					'def_val' => '', // ? возможно сюда сериализованный массив запихнуть
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2462,7 +2391,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_add_in_name_arr',
 					'def_val' => '',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2485,7 +2413,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_separator_type',
 					'def_val' => 'type1',
 					'mark' => 'public',
-					'required' => true,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2524,7 +2451,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_behavior_onbackorder',
 					'def_val' => 'true',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2552,7 +2478,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_no_default_png_products',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2570,7 +2495,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_skip_products_without_pic',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2589,7 +2513,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_skip_products_without_desc',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2607,7 +2530,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_skip_missing_products',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 
@@ -2628,7 +2550,6 @@ class Y4YM_Data_Arr {
 					'opt_name' => 'yfym_skip_backorders_products',
 					'def_val' => 'disabled',
 					'mark' => 'public',
-					'required' => false,
 					'type' => 'select',
 					'tab' => 'filtration_tab',
 					'data' => [ 

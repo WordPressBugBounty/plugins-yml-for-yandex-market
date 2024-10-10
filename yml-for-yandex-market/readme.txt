@@ -4,8 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 4.5
 Tested up to: 6.6.2
-Stable tag: 4.7.3
-Version: 4.7.3
+Stable tag: 4.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +76,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 4.8.0 =
+* Fixed bugs
+* Added the ability to set the start time of feed generation
 
 = 4.7.3 =
 * Fixed bugs
@@ -246,5 +249,6 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 4.7.3 =
+= 4.8.0 =
 * Fixed bugs
+* Added the ability to set the start time of feed generation

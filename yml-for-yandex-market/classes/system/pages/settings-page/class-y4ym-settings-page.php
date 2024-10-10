@@ -2,11 +2,11 @@
 /**
  * The class return the Settings page of the plugin YML for Yandex Market
  *
- * @package                 iCopyDoc Plugins (v1, core 08-04-2024)
+ * @package                 iCopyDoc Plugins (v1.1, core 10-10-2024)
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.3 (01-10-2024)
+ * @version                 4.8.0 (10-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -31,8 +31,31 @@
 defined( 'ABSPATH' ) || exit;
 
 class Y4YM_Settings_Page {
+
 	/**
-	 * Allowed HTML tags for use in wp_kses()
+	 * The ID of this plugin.
+	 *
+	 * @since    4.8.0
+	 * @access   private
+	 * @var      string    $plugin_name    The ID of this plugin.
+	 */
+	private $plugin_name;
+
+	/**
+	 * The version of this plugin.
+	 *
+	 * @since    4.8.0
+	 * @access   private
+	 * @var      string    $version    The current version of this plugin.
+	 */
+	private $version;
+
+	/**
+	 * Allowed HTML tags for use in `wp_kses()`.
+	 * 
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      array
 	 */
 	const ALLOWED_HTML_ARR = [ 
 		'a' => [ 
@@ -52,21 +75,44 @@ class Y4YM_Settings_Page {
 
 	/**
 	 * Feed ID
-	 * @var string
+	 * 
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string
 	 */
 	private $feed_id;
+
 	/**
 	 * The value of the current tab
-	 * @var string
+	 * 
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string
 	 */
 	private $cur_tab = 'main_tab';
 
 	/**
-	 * The class return the Settings page of the plugin YML for Yandex Market
+	 * Initialize the class and set its properties.
+	 *
+	 * @since    1.0.0
+	 * @param    string    $plugin_name       The name of this plugin.
+	 * @param    string    $version    The version of this plugin.
 	 */
-	public function __construct() {
+	public function __construct( $plugin_name, $version ) {
+
+		$this->plugin_name = $plugin_name;
+		$this->version = $version;
+
 		if ( isset( $_GET['feed_id'] ) ) {
-			$this->feed_id = sanitize_key( $_GET['feed_id'] );
+			if ( preg_match( '/^[0-9]+$/', sanitize_key( $_GET['feed_id'] ) ) ) {
+				$this->feed_id = sanitize_key( $_GET['feed_id'] );
+			} else {
+				if ( empty( yfym_get_first_feed_id() ) ) {
+					$this->feed_id = '1';
+				} else {
+					$this->feed_id = yfym_get_first_feed_id();
+				}
+			}
 		} else {
 			if ( empty( yfym_get_first_feed_id() ) ) {
 				$this->feed_id = '1';
@@ -74,36 +120,59 @@ class Y4YM_Settings_Page {
 				$this->feed_id = yfym_get_first_feed_id();
 			}
 		}
+
 		if ( isset( $_GET['tab'] ) ) {
 			$this->cur_tab = sanitize_text_field( $_GET['tab'] );
 		}
 
-		$this->init_classes();
-		$this->init_hooks();
 		$this->listen_submit();
-
 		$this->print_view_html_form();
 	}
 
 	/**
-	 * Initialization classes
-	 * 
-	 * @return void
+	 * Register the stylesheets for the admin area.
+	 *
+	 * @since    4.8.0
 	 */
-	public function init_classes() {
-		return;
+	public function enqueue_styles() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in Icd_Seo_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The Icd_Seo_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+
+		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/icd-seo-admin.css', array(), $this->version, 'all' );
+
 	}
 
 	/**
-	 * Initialization hooks
-	 * 
-	 * @return void
+	 * Register the JavaScript for the admin area.
+	 *
+	 * @since    4.8.0
 	 */
-	public function init_hooks() {
-		// наш класс, вероятно, вызывается во время срабатывания хука admin_menu.
-		// admin_init - следующий в очереди срабатывания, на хуки раньше admin_menu нет смысла вешать
-		// add_action('admin_init', [ $this, 'my_func' ], 10, 1);
-		return;
+	public function enqueue_scripts() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in Icd_Seo_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The Icd_Seo_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/icd-seo-admin.js', array( 'jquery' ), $this->version, false );
+
 	}
 
 	/**
@@ -163,7 +232,7 @@ class Y4YM_Settings_Page {
 						wp_clear_scheduled_hook( 'yfym_cron_period', [ $feed_id ] );
 						common_option_upd( 'yfym_status_cron', 'disabled', 'no', $feed_id, 'yfym' );
 
-						wp_clear_scheduled_hook( 'cron_sborki', [ $feed_id ] );
+						wp_clear_scheduled_hook( 'yfym_cron_sborki', [ $feed_id ] );
 						common_option_upd( 'yfym_cron_sborki', '-1', 'no', $feed_id, 'yfym' );
 					} else if ( $run_cron === 'once' ) {
 						// единоразовый импорт
@@ -180,15 +249,33 @@ class Y4YM_Settings_Page {
 					} else {
 						wp_clear_scheduled_hook( 'yfym_cron_period', [ $feed_id ] );
 						if ( ! wp_next_scheduled( 'yfym_cron_period', [ $feed_id ] ) ) {
-							// ? может заюзать strtotime('tomorrow 6am') - (int) get_option('gtm_offset')
-							wp_schedule_event( time() + 3, $run_cron, 'yfym_cron_period', [ $feed_id ] ); // старт через 3 сек
+
+							$cron_start_time = common_option_get( 'yfym_cron_start_time', false, $feed_id, 'yfym' );
+
+							if ( empty( $cron_start_time )
+								|| $run_cron == 'hourly'
+								|| $run_cron == 'three_hours'
+								|| $run_cron == 'six_hours'
+								|| $run_cron == 'twicedaily' ) {
+
+								$cron_start_time = 'now';
+								
+							}
+							$gmt_offset = 3600 * (int) univ_option_get( 'gmt_offset' );
+							$t = strtotime( $cron_start_time ) - (int) $gmt_offset;
+							$planning_result = wp_schedule_event( $t, $run_cron, 'yfym_cron_period', [ $feed_id ] );
+							if ( true === $planning_result ) {
+								new YFYM_Error_Log( sprintf( 'FEED № %1$s; %2$s. Файл: %3$s; Строка: %4$s',
+									'yfym_cron_period внесен в список заданий',
+									$this->get_feed_id(),
+									'class-y4ym-settings-page.php',
+									__LINE__
+								) );
+							} else {
+								// Ошибка планирования
+							}
 						}
-						new YFYM_Error_Log( sprintf( 'FEED № %1$s; %2$s. Файл: %3$s; Строка: %4$s',
-							'yfym_cron_period внесен в список заданий',
-							$this->get_feed_id(),
-							'class-y4ym-settings-page.php',
-							__LINE__
-						) );
+
 					}
 				}
 
