@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.7.3 (01-10-2024)
+ * @version                 4.8.1 (21-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -1002,6 +1002,7 @@ class YFYM_Generation_XML {
 		$yfym_yml_rules = common_option_get( 'yfym_yml_rules', false, $this->get_feed_id(), 'yfym' );
 		if ( $yfym_yml_rules == 'yandex_direct' ||
 			$yfym_yml_rules == 'yandex_direct_free_from' ||
+			$yfym_yml_rules == 'yandex_direct_combined' ||
 			$yfym_yml_rules == 'all_elements' ) {
 			$yfym_collection_id = common_option_get( 'yfym_collection_id', false, $this->get_feed_id(), 'yfym' );
 			if ( 'enabled' === $yfym_collection_id ) {
@@ -1193,7 +1194,7 @@ class YFYM_Generation_XML {
 		$file_name_zip = $file_feed_name . ".zip";
 
 		if ( false === $this->doom_check( $feed_basedir_old ) ) {
-			$err_msg = sprintf('%1$s $feed_basedir_new = %2$s. %3$s $feed_basedir_old = %4$s',
+			$err_msg = sprintf( '%1$s $feed_basedir_new = %2$s. %3$s $feed_basedir_old = %4$s',
 				'Нарушена структура DOOM-дерева нового фида',
 				$feed_basedir_new,
 				'Оставляем прошлую версию фида',

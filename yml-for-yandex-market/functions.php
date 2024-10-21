@@ -469,12 +469,32 @@ if ( ! function_exists( 'forced_cron' ) ) {
 	 * 
 	 * @return void
 	 */
-	function forced_cron( $sec = -80 ) {
-		$cron_arr = _get_cron_array();
-		if ( ! empty( $cron_arr ) ) {
-			$first_key = array_key_first( $cron_arr );
-			if ( $sec > $first_key - current_time( 'timestamp', 1 ) ) {
-				wp_remote_get( home_url() . '/wp-cron.php' );
+	function forced_cron( $sec = -85 ) {
+		if ( defined( 'Y4YM_CHECK_CRON' ) && false === Y4YM_CHECK_CRON ) {
+			$cron_arr = _get_cron_array();
+			// array(25) {
+			// 	[1729495534] => array(1) {
+			//		["yfym_cron_period"] => array(1) {
+			//			["099b16b94d8670ab53a3e075f2e61215"] => array(3) {
+			//					["schedule"] => string(6) "hourly"
+			//					["args"] => array(1) {
+			//					[0] => string(1) "1"
+			//				}
+			//				["interval"] => int(3600)
+			//			}
+			//		}
+			// 	}
+			// }
+			if ( ! empty( $cron_arr ) ) {
+				$first_key = array_key_first( $cron_arr );
+				if ( $sec > $first_key - current_time( 'timestamp', 1 ) ) {
+					wp_remote_get( home_url() . '/wp-cron.php?doing_wp_cron' );
+					error_log( sprintf( 'WARNING: %s. %s `define( "Y4YM_CHECK_CRON", false );` %s wp-config.php',
+						'The CRON force start function has been activated',
+						'To disable it, use a constant',
+						'in your'
+					), 0 );
+				}
 			}
 		}
 	}

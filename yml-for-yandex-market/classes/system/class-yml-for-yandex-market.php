@@ -6,7 +6,7 @@
  * @subpackage      
  * @since                   0.1.0
  * 
- * @version                 4.8.0 (10-10-2024)
+ * @version                 4.8.1 (21-10-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see             
@@ -313,7 +313,18 @@ final class YmlforYandexMarket {
 	 * @return void
 	 */
 	public function check_forced_cron() {
-		forced_cron(); // принудительно дёрним крон при больших просрочках
+		$yfym_settings_arr = univ_option_get( 'yfym_settings_arr' );
+		$yfym_settings_arr_keys_arr = array_keys( $yfym_settings_arr );
+		for ( $i = 0; $i < count( $yfym_settings_arr_keys_arr ); $i++ ) {
+			$feed_id = $yfym_settings_arr_keys_arr[ $i ];
+			$run_cron = common_option_get( 'yfym_run_cron', false, $feed_id, 'yfym' );
+			if ( $run_cron == 'disabled' ) {
+				continue;
+			} else {
+				forced_cron(); // принудительно дёрним крон при больших просрочках
+				break;
+			}
+		}
 	}
 
 	/**
