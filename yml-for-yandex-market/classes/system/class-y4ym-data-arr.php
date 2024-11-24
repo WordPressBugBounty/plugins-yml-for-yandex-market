@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.3 (01-10-2024)
+ * @version                 4.8.2 (24-11-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -23,17 +23,19 @@
 defined( 'ABSPATH' ) || exit;
 
 class Y4YM_Data_Arr {
+
 	/**
-	 * Plugin options array
+	 * Plugin options array.
 	 *
+	 * @access private
 	 * @var array
 	 */
 	private $data_arr = [];
 
 	/**
-	 * Set and Get the Plugin Data
+	 * Set and Get the Plugin Data.
 	 * 
-	 * @param array $data_arr - Optional
+	 * @param array $data_arr
 	 */
 	public function __construct( $data_arr = [] ) {
 		if ( empty( $data_arr ) ) {
@@ -205,7 +207,7 @@ class Y4YM_Data_Arr {
 				],
 				[ 
 					'opt_name' => 'yfym_yml_rules',
-					'def_val' => 'yandex_market',
+					'def_val' => 'yandex_market_assortment',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'main_tab',
@@ -225,7 +227,7 @@ class Y4YM_Data_Arr {
 						'woo_attr' => false,
 						'key_value_arr' => [ 
 							[ 
-								'value' => 'yandex_market',
+								'value' => 'yandex_market_assortment',
 								'text' => sprintf( '%s (%s, %s, FBS/DBS)',
 									__( 'Yandex Market', 'yml-for-yandex-market' ),
 									__( 'To manage products', 'yml-for-yandex-market' ),

@@ -3,8 +3,8 @@ Contributors: icopydoc
 Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 4.5
-Tested up to: 6.6.2
-Stable tag: 4.8.1
+Tested up to: 6.7.1
+Stable tag: 4.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 4.8.2 =
+* Fixed bugs
+* 5 photos included in it are automatically added to the "collection" tag
 
 = 4.8.1 =
 * Fixed bugs
@@ -252,5 +256,6 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 4.8.1 =
+= 4.8.2 =
 * Fixed bugs
+* 5 photos included in it are automatically added to the "collection" tag

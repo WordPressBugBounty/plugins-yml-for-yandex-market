@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.7.1 (11-09-2024)
+ * @version                 4.8.2 (24-11-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -275,8 +275,8 @@ class YFYM_Get_Unit_Offer_Simple extends YFYM_Get_Unit_Offer {
 	 */
 	private function sbermegamarket( $result_xml = '' ) {
 		$result_xml .= $this->get_tags( 'sbermegamarket', $result_xml );
-		$result_xml .= $this->get_delivery_options( 'shipment-options', '', 'sbermegamarket' );
-		$result_xml .= $this->get_outlets( 'outlets', '', 'sbermegamarket' );
+		// $result_xml .= $this->get_delivery_options( 'shipment-options', '', 'sbermegamarket' );
+		// $result_xml .= $this->get_outlets( 'outlets', '', 'sbermegamarket' );
 		return $result_xml;
 	}
 

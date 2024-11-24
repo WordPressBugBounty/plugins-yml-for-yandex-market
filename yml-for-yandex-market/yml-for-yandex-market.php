@@ -1,21 +1,34 @@
 <?php
+
 /**
- * Plugin Name: YML for Yandex Market
- * Requires Plugins: woocommerce
- * Plugin URI: https://icopydoc.ru/category/documentation/yml-for-yandex-market/
- * Description: Подключите свой магазин к Яндекс Маркету и выгружайте товары, получая новых клиентов!
- * Version: 4.8.1
- * Requires at least: 4.5
- * Requires PHP: 7.4.0
- * Author: Maxim Glazunov
- * Author URI: https://icopydoc.ru
- * License: GPL v2 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: yml-for-yandex-market
- * Domain Path: /languages
- * Tags: yml, yandex, market, export, woocommerce
- * WC requires at least: 3.0.0
- * WC tested up to: 9.3.3
+ * The plugin bootstrap file.
+ *
+ * This file is read by WordPress to generate the plugin information in the plugin
+ * admin area. This file also includes all of the dependencies used by the plugin,
+ * registers the activation and deactivation functions, and defines a function
+ * that starts the plugin.
+ *
+ * @link                    https://icopydoc.ru
+ * @since                   1.0.0
+ * @package                 Y4YM
+ *
+ * @wordpress-plugin
+ * Plugin Name:             YML for Yandx Market
+ * Requires Plugins:        woocommerce
+ * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
+ * Description:             Creates a YML-feed to upload to Yandex Market and not only
+ * Version:                 4.8.2
+ * Requires at least:       4.5
+ * Requires PHP:            7.4.0
+ * Author:                  Maxim Glazunov
+ * Author URI:              https://icopydoc.ru/
+ * License:                 GPL v2 or later
+ * License URI:             https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:             yml-for-yandex-market
+ * Domain Path:             /languages
+ * Tags:                    yml, yandex, market, export, woocommerce
+ * WC requires at least:    3.0.0
+ * WC tested up to:         9.4.2
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
@@ -26,9 +39,14 @@
  * 
  * Copyright 2018-2024 (Author emails: djdiplomat@yandex.ru, support@icopydoc.ru)
  */
-defined( 'ABSPATH' ) || exit;
 
-$nr = false;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
+$not_run = false;
+
 // Check php version
 if ( version_compare( phpversion(), '7.4.0', '<' ) ) { // не совпали версии
 	add_action( 'admin_notices', function () {
@@ -42,7 +60,7 @@ if ( version_compare( phpversion(), '7.4.0', '<' ) ) { // не совпали в
 			)
 		);
 	} );
-	$nr = true;
+	$not_run = true;
 }
 
 // Check if WooCommerce is active
@@ -60,9 +78,9 @@ if ( ! in_array( $plugin, apply_filters( 'active_plugins', get_option( 'active_p
 			)
 		);
 	} );
-	$nr = true;
+	$not_run = true;
 } else {
-	// поддержка HPOS
+	// add support for HPOS
 	add_action( 'before_woocommerce_init', function () {
 		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class) ) {
 			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
@@ -72,12 +90,12 @@ if ( ! in_array( $plugin, apply_filters( 'active_plugins', get_option( 'active_p
 
 if ( ! function_exists( 'warning_notice' ) ) {
 	/**
-	 * Display a notice in the admin Plugins page. Usually used in a @hook 'admin_notices'
+	 * Display a notice in the admin plugins page. Usually used in a @hook `admin_notices`.
 	 * 
 	 * @since 0.1.0
 	 * 
-	 * @param string $class - Optional
-	 * @param string $message - Optional
+	 * @param string $class
+	 * @param string $message
 	 * 
 	 * @return void
 	 */
@@ -87,7 +105,7 @@ if ( ! function_exists( 'warning_notice' ) ) {
 }
 
 // Define constants
-define( 'YFYM_PLUGIN_VERSION', '4.8.1' );
+define( 'YFYM_PLUGIN_VERSION', '4.8.2' );
 
 $upload_dir = wp_get_upload_dir();
 // http://site.ru/wp-content/uploads
@@ -118,15 +136,89 @@ define( 'YFYM_PLUGIN_SLUG', wp_basename( dirname( __FILE__ ) ) );
 // yml-for-yandex-market/yml-for-yandex-market.php - полный псевдоним плагина (папка плагина + имя главного файла)
 define( 'YFYM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
-// $nr = apply_filters('y4ym_f_nr', $nr);
+// $not_run = apply_filters('y4ym_f_nr', $not_run);
 
 // load translation
-add_action( 'plugins_loaded', function () {
+add_action( 'init', function () {
 	load_plugin_textdomain( 'yml-for-yandex-market', false, dirname( YFYM_PLUGIN_BASENAME ) . '/languages/' );
 } );
 
-if ( false === $nr ) {
-	unset( $nr );
+if ( false === $not_run ) {
+	unset( $not_run );
+
+	// for wp_kses
+	define( 'Y4YM_ALLOWED_HTML_ARR', [ 
+		'a' => [ 
+			'href' => true,
+			'title' => true,
+			'target' => true,
+			'class' => true,
+			'style' => true
+		],
+		'br' => [ 'class' => true ],
+		'i' => [ 'class' => true ],
+		'small' => [ 'class' => true ],
+		'strong' => [ 'class' => true, 'style' => true ],
+		'p' => [ 'class' => true, 'style' => true ],
+		'kbd' => [ 'class' => true ],
+		'input' => [ 
+			'id' => true,
+			'name' => true,
+			'class' => true,
+			'placeholder' => true,
+			'style' => true,
+			'type' => true,
+			'value' => true,
+			'step' => true,
+			'min' => true,
+			'max' => true
+		],
+		'textarea' => [ 
+			'id' => true,
+			'name' => true,
+			'class' => true,
+			'placeholder' => true,
+			'style' => true,
+			'col' => true,
+			'row' => true
+		],
+		'select' => [ 'id' => true, 'class' => true, 'name' => true, 'style' => true, 'size' => true, 'multiple' => true ],
+		'option' => [ 'id' => true, 'class' => true, 'style' => true, 'value' => true, 'selected' => true ],
+		'optgroup' => [ 'label' => true ],
+		'label' => [ 'id' => true, 'class' => true ],
+		'tr' => [ 'id' => true, 'class' => true ],
+		'th' => [ 'id' => true, 'class' => true ],
+		'td' => [ 'id' => true, 'class' => true ]
+	] );
+
+	/**
+	 * Currently plugin version.
+	 * Start at version 1.0.0 and use SemVer - https://semver.org
+	 * Rename this for your plugin and update it as you release new versions.
+	 */
+	define( 'Y4YM_PLUGIN_VERSION', '4.8.2' );
+
+	$upload_dir = wp_get_upload_dir();
+	// http://site.ru/wp-content/uploads
+	define( 'Y4YM_SITE_UPLOADS_URL', $upload_dir['baseurl'] );
+
+	// /home/site.ru/public_html/wp-content/uploads
+	define( 'Y4YM_SITE_UPLOADS_DIR_PATH', $upload_dir['basedir'] );
+
+	// http://site.ru/wp-content/uploads/y4ym
+	define( 'Y4YM_PLUGIN_UPLOADS_DIR_URL', $upload_dir['baseurl'] . '/y4ym' );
+
+	// /home/site.ru/public_html/wp-content/uploads/y4ym
+	define( 'Y4YM_PLUGIN_UPLOADS_DIR_PATH', $upload_dir['basedir'] . '/y4ym' );
+	unset( $upload_dir );
+
+	/**
+	 * The code that runs during plugin activation.
+	 * This action is documented in includes/class-y4ym-activator.php.
+	 * 
+	 * @return void
+	 */
+
 	require_once YFYM_PLUGIN_DIR_PATH . '/packages.php';
 	register_activation_hook( __FILE__, [ 'YmlforYandexMarket', 'on_activation' ] );
 	register_deactivation_hook( __FILE__, [ 'YmlforYandexMarket', 'on_deactivation' ] );

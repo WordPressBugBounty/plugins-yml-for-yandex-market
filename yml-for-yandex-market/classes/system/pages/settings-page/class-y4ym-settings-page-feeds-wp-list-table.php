@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.7.3 (01-10-2024)
+ * @version                 4.8.2 (24-11-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
@@ -216,13 +216,21 @@ class Y4YM_Settings_Page_Feeds_WP_List_Table extends WP_List_Table {
 				$text_count_products_in_feed = $yfym_settings_arr[ $key ]['yfym_count_products_in_feed'];
 			}
 
+			// URL-фида
+			if ( isset( $yfym_settings_arr[ $key ]['yfym_file_url'] ) ) {
+				$feed_url = $yfym_settings_arr[ $key ]['yfym_file_url'];
+			} else {
+				$feed_url = '';
+			}
+
 			$result_arr[ $i ] = [ 
 				'yfym_feed_id' => $text_column_yfym_feed_id,
 				'yfym_url_xml_file' => $text_column_yfym_url_xml_file,
 				'yfym_run_cron' => $text_column_yfym_run_cron,
 				'yfym_step_export' => $yfym_settings_arr[ $key ]['yfym_step_export'],
 				'yfym_date_sborki_end' => $text_date_sborki_end,
-				'yfym_count_products_in_feed' => $text_count_products_in_feed
+				'yfym_count_products_in_feed' => $text_count_products_in_feed,
+				'feed_url' => $feed_url
 			];
 		}
 
@@ -322,6 +330,11 @@ class Y4YM_Settings_Page_Feeds_WP_List_Table extends WP_List_Table {
 				$item['yfym_feed_id'],
 				wp_create_nonce( 'nonce_duplicate' . $item['yfym_feed_id'] ),
 				__( 'Duplicate', 'yml-for-yandex-market' )
+			),
+			'save' => sprintf(
+				'<a href="%s" download>%s</a>',
+				esc_attr( urldecode( $item['feed_url'] ) ),
+				esc_html__( 'Download', 'yml-for-yandex-marke' )
 			)
 		];
 
