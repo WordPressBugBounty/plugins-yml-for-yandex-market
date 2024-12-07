@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.1.5 (07-12-2023)
+ * @version                 4.9.0 (07-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -32,12 +32,12 @@ trait YFYM_T_Simple_Get_Delivery_Options {
 	public function get_delivery_options( $tag_name = 'delivery-options', $result_xml = '', $rules = '' ) {
 		$tag_value = '';
 
-		if ( ( get_post_meta( $this->get_product()->get_id(), 'yfym_cost', true ) !== '' )
-			&& ( get_post_meta( $this->get_product()->get_id(), 'yfym_days', true ) !== '' ) ) {
-			$yfym_cost = get_post_meta( $this->get_product()->get_id(), 'yfym_cost', true );
-			$yfym_days = get_post_meta( $this->get_product()->get_id(), 'yfym_days', true );
-			if ( get_post_meta( $this->get_product()->get_id(), 'yfym_order_before', true ) !== '' ) {
-				$yfym_order_before = get_post_meta( $this->get_product()->get_id(), 'yfym_order_before', true );
+		if ( ( get_post_meta( $this->get_product()->get_id(), '_yfym_cost', true ) !== '' )
+			&& ( get_post_meta( $this->get_product()->get_id(), '_yfym_days', true ) !== '' ) ) {
+			$yfym_cost = get_post_meta( $this->get_product()->get_id(), '_yfym_cost', true );
+			$yfym_days = get_post_meta( $this->get_product()->get_id(), '_yfym_days', true );
+			if ( get_post_meta( $this->get_product()->get_id(), '_yfym_order_before', true ) !== '' ) {
+				$yfym_order_before = get_post_meta( $this->get_product()->get_id(), '_yfym_order_before', true );
 				$yfym_order_before_yml = ' order-before="' . $yfym_order_before . '"';
 			} else {
 				$yfym_order_before_yml = '';

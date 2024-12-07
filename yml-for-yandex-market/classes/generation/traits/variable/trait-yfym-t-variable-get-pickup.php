@@ -33,8 +33,8 @@ trait YFYM_T_Variable_Get_Pickup {
 	public function get_pickup( $tag_name = 'pickup', $result_xml = '' ) {
 		$tag_value = '';
 
-		if ( get_post_meta( $this->get_product()->get_id(), 'yfym_individual_pickup', true ) !== '' ) {
-			$tag_value = get_post_meta( $this->get_product()->get_id(), 'yfym_individual_pickup', true );
+		if ( get_post_meta( $this->get_product()->get_id(), '_yfym_individual_pickup', true ) !== '' ) {
+			$tag_value = get_post_meta( $this->get_product()->get_id(), '_yfym_individual_pickup', true );
 			if ( empty( $tag_value ) || $tag_value === 'off' || $tag_value === 'disabled' ) {
 				$tag_value = common_option_get( 'yfym_pickup', false, $this->get_feed_id(), 'yfym' );
 			}

@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   4.7.1
  * 
- * @version                 4.7.1 (11-09-2024)
+ * @version                 4.9.0 (07-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -30,10 +30,10 @@ trait YFYM_T_Simple_Get_Shipment_Options {
 	 * @return string
 	 */
 	public function get_shipment_options( $tag_name = 'shipment-options', $result_xml = '' ) {
-		if ( ( get_post_meta( $this->get_product()->get_id(), 'yfym_days', true ) !== '' ) ) {
-			$yfym_days = get_post_meta( $this->get_product()->get_id(), 'yfym_days', true );
-			if ( get_post_meta( $this->get_product()->get_id(), 'yfym_order_before', true ) !== '' ) {
-				$yfym_order_before = get_post_meta( $this->get_product()->get_id(), 'yfym_order_before', true );
+		if ( ( get_post_meta( $this->get_product()->get_id(), '_yfym_days', true ) !== '' ) ) {
+			$yfym_days = get_post_meta( $this->get_product()->get_id(), '_yfym_days', true );
+			if ( get_post_meta( $this->get_product()->get_id(), '_yfym_order_before', true ) !== '' ) {
+				$yfym_order_before = get_post_meta( $this->get_product()->get_id(), '_yfym_order_before', true );
 				$yfym_order_before_yml = ' order-before="' . $yfym_order_before . '"';
 			} else {
 				$yfym_order_before_yml = '';

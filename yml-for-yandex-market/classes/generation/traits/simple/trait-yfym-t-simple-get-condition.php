@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   4.7.0
  * 
- * @version                 4.7.0 (09-09-2024)
+ * @version                 4.9.0 (07-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -34,7 +34,7 @@ trait YFYM_T_Simple_Get_Condition {
 		if ( empty( $yfym_condition ) || $yfym_condition === 'default' ) {
 			$yfym_condition = yfym_optionGET( 'yfym_condition', $this->get_feed_id(), 'set_arr' );
 		}
-		$yfym_reason = get_post_meta( $this->get_product()->get_id(), 'yfym_reason', true );
+		$yfym_reason = get_post_meta( $this->get_product()->get_id(), '_yfym_reason', true );
 		if ( empty( $yfym_reason ) ) {
 			$yfym_reason = yfym_optionGET( 'yfym_reason', $this->get_feed_id(), 'set_arr' );
 		}
@@ -51,18 +51,6 @@ trait YFYM_T_Simple_Get_Condition {
 			$result_xml .= new Get_Paired_Tag( 'quality', $yfym_quality );
 			$result_xml .= new Get_Closed_Tag( $tag_name );
 		}
-
-		/*
-		if ((get_post_meta($this->get_product()->get_id(), 'yfym_condition', true) !== '') 
-			&& (get_post_meta($this->get_product()->get_id(), 'yfym_condition', true) !== 'off') 
-			&& (get_post_meta($this->get_product()->get_id(), 'yfym_reason', true) !== '')) {
-			$yfym_condition = get_post_meta($this->get_product()->get_id(), 'yfym_condition', true);
-			$yfym_reason = get_post_meta($this->get_product()->get_id(), 'yfym_reason', true);	
-			$result_xml = new Get_Open_Tag($tag_name, array('type' => $yfym_condition));
-			$result_xml .= new Get_Paired_Tag('reason', $yfym_reason);
-			$result_xml .= new Get_Closed_Tag($tag_name);;	 
-		}
-		*/
 
 		$result_xml = apply_filters(
 			'y4ym_f_simple_tag_condition',

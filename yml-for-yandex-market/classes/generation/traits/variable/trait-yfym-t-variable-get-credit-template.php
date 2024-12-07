@@ -4,7 +4,7 @@
 *
 * @author		Maxim Glazunov
 * @link			https://icopydoc.ru/
-* @since		1.0.0
+* @since		4.9.0 (07-12-2024)
 *
 * @return 		$result_xml (string)
 *
@@ -20,8 +20,8 @@ trait YFYM_T_Variable_Get_Credit_Template {
 		$product = $this->get_product();
 		$offer = $this->get_offer();
 
-		if ((get_post_meta($product->get_id(), 'yfym_credit_template', true) !== '') && (get_post_meta($product->get_id(), 'yfym_credit_template', true) !== '')) {
-			$yfym_credit_template = get_post_meta($product->get_id(), 'yfym_credit_template', true);
+		if ((get_post_meta($product->get_id(), '_yfym_credit_template', true) !== '') && (get_post_meta($product->get_id(), '_yfym_credit_template', true) !== '')) {
+			$yfym_credit_template = get_post_meta($product->get_id(), '_yfym_credit_template', true);
 			$result_xml = new Get_Open_Tag($tag_name, array('id' => $yfym_credit_template), true);
 		}
 
@@ -29,4 +29,3 @@ trait YFYM_T_Variable_Get_Credit_Template {
 		return $result_xml;
 	}
 }
-?>

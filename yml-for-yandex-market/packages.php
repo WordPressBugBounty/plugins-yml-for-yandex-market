@@ -1,14 +1,14 @@
 <?php defined( 'ABSPATH' ) || exit;
 require_once YFYM_PLUGIN_DIR_PATH . 'functions.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/icopydoc-useful-functions-1-1-8.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/wc-add-functions-1-0-2.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-icpd-feedback-1-0-3.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-icpd-promo-1-1-0.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-get-closed-tag.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-get-open-tag.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-get-paired-tag.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/class-icpd-set-admin-notices.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'common-libs/backward-compatibility.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/icopydoc-useful-functions-1-1-8.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/wc-add-functions-1-0-2.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-icpd-feedback-1-0-3.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-icpd-promo-1-1-0.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-get-closed-tag.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-get-open-tag.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-get-paired-tag.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/class-icpd-set-admin-notices.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/common-libs/backward-compatibility.php';
 
 require_once YFYM_PLUGIN_DIR_PATH . 'classes/generation/traits/common/trait-yfym-t-common-get-catid.php';
 require_once YFYM_PLUGIN_DIR_PATH . 'classes/generation/traits/common/trait-yfym-t-common-skips.php';

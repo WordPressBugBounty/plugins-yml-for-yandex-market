@@ -32,8 +32,8 @@ trait YFYM_T_Simple_Get_Delivery {
 	public function get_delivery( $tag_name = 'delivery', $result_xml = '' ) {
 		$tag_value = '';
 
-		if ( get_post_meta( $this->get_product()->get_id(), 'yfym_individual_delivery', true ) !== '' ) {
-			$tag_value = get_post_meta( $this->get_product()->get_id(), 'yfym_individual_delivery', true );
+		if ( get_post_meta( $this->get_product()->get_id(), '_yfym_individual_delivery', true ) !== '' ) {
+			$tag_value = get_post_meta( $this->get_product()->get_id(), '_yfym_individual_delivery', true );
 			if ( empty( $tag_value ) || $tag_value === 'off' || $tag_value === 'disabled' ) {
 				$tag_value = common_option_get( 'yfym_delivery', false, $this->get_feed_id(), 'yfym' );
 			}

@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.7.2 (16-09-2023)
+ * @version                 4.9.0 (07-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -203,19 +203,19 @@ final class Y4YM_Interface_Hoocked {
 			'_yfym_tn_ved_code',
 			'_yfym_cargo_types',
 			'_yfym_video_url',
-			'yfym_individual_delivery',
-			'yfym_cost',
-			'yfym_days',
-			'yfym_order_before',
-			'yfym_individual_pickup',
-			'yfym_pickup_cost',
-			'yfym_pickup_days',
-			'yfym_pickup_order_before',
+			'_yfym_individual_delivery',
+			'_yfym_cost',
+			'_yfym_days',
+			'_yfym_order_before',
+			'_yfym_individual_pickup',
+			'_yfym_pickup_cost',
+			'_yfym_pickup_days',
+			'_yfym_pickup_order_before',
 			'yfym_bid',
 			'yfym_individual_vat',
 			// 'yfym_condition',
 			'_yfym_condition',
-			'yfym_reason',
+			'_yfym_reason',
 			'_yfym_market_category',
 			'_yfym_custom_score',
 			'_yfym_custom_label_0',
@@ -225,7 +225,7 @@ final class Y4YM_Interface_Hoocked {
 			'_yfym_custom_label_4',
 			'_yfym_quality',
 			'_yfym_warranty_days',
-			'yfym_credit_template',
+			'_yfym_credit_template',
 			'_yfym_supplier',
 			'_yfym_min_quantity',
 			'_yfym_step_quantity',
@@ -240,7 +240,7 @@ final class Y4YM_Interface_Hoocked {
 		$this->save_post_meta( $post_meta_arr, $post_id );
 
 		// Убедимся что поле установлено.
-		if ( isset( $_POST['yfym_cost'] ) ) {
+		if ( isset( $_POST['_yfym_cost'] ) ) {
 			$yfym_recommend_stock_data_arr = [];
 			$yfym_recommend_stock_data_arr['availability'] = sanitize_text_field( $_POST['_yfym_availability'] );
 			$yfym_recommend_stock_data_arr['transport_unit'] = sanitize_text_field( $_POST['_yfym_transport_unit'] );
@@ -722,7 +722,7 @@ final class Y4YM_Interface_Hoocked {
 				<?php do_action( 'yfym_prepend_options_group_1', $post ); ?>
 				<?php
 				woocommerce_wp_select( [ 
-					'id' => 'yfym_individual_delivery',
+					'id' => '_yfym_individual_delivery',
 					'label' => sprintf( '%s <i>[delivery]</i>', __( 'Delivery', 'yml-for-yandex-market' ) ),
 					'options' => [ 
 						'' => __( 'Disabled', 'yml-for-yandex-market' ),
@@ -735,7 +735,7 @@ final class Y4YM_Interface_Hoocked {
 					'desc_tip' => 'true'
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_days',
+					'id' => '_yfym_days',
 					'label' => sprintf(
 						'%s <i>[delivery-option days]</i>',
 						__( 'Delivery days', 'yml-for-yandex-market' )
@@ -748,7 +748,7 @@ final class Y4YM_Interface_Hoocked {
 					'type' => 'text'
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_cost',
+					'id' => '_yfym_cost',
 					'label' => sprintf(
 						'%s <i>[delivery-option cost]</i>',
 						__( 'Delivery cost', 'yml-for-yandex-market' )
@@ -765,7 +765,7 @@ final class Y4YM_Interface_Hoocked {
 					]
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_order_before',
+					'id' => '_yfym_order_before',
 					'label' => sprintf(
 						'%s <i>[delivery-option order-before]</i>',
 						__( 'The time', 'yml-for-yandex-market' )
@@ -789,7 +789,7 @@ final class Y4YM_Interface_Hoocked {
 				</p>
 				<?php
 				woocommerce_wp_select( [ 
-					'id' => 'yfym_individual_pickup',
+					'id' => '_yfym_individual_pickup',
 					'label' => sprintf( '%s <i>[pickup]</i>', __( 'Delivery', 'yml-for-yandex-market' ) ),
 					'options' => [ 
 						'' => __( 'Disabled', 'yml-for-yandex-market' ),
@@ -802,7 +802,7 @@ final class Y4YM_Interface_Hoocked {
 					'desc_tip' => 'true'
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_pickup_days',
+					'id' => '_yfym_pickup_days',
 					'label' => sprintf(
 						'%s <i>[pickup-option days]</i>',
 						__( 'Delivery days', 'yml-for-yandex-market' )
@@ -815,7 +815,7 @@ final class Y4YM_Interface_Hoocked {
 					'type' => 'text'
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_pickup_cost',
+					'id' => '_yfym_pickup_cost',
 					'label' => sprintf(
 						'%s <i>[pickup-option cost]</i>',
 						__( 'Delivery cost', 'yml-for-yandex-market' )
@@ -832,7 +832,7 @@ final class Y4YM_Interface_Hoocked {
 					]
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_pickup_order_before',
+					'id' => '_yfym_pickup_order_before',
 					'label' => sprintf(
 						'%s <i>[pickup-option order-before]</i>',
 						__( 'The time', 'yml-for-yandex-market' )
@@ -932,7 +932,7 @@ final class Y4YM_Interface_Hoocked {
 					'type' => 'text'
 				] );
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_reason',
+					'id' => '_yfym_reason',
 					'label' => sprintf(
 						'%s <i>[condition reason]</i>',
 						__( 'Reason', 'yml-for-yandex-market' )
@@ -1125,7 +1125,7 @@ final class Y4YM_Interface_Hoocked {
 				] );
 
 				woocommerce_wp_text_input( [ 
-					'id' => 'yfym_credit_template',
+					'id' => '_yfym_credit_template',
 					'label' => __( 'Credit program identifier', 'yml-for-yandex-market' ),
 					'placeholder' => '',
 					'description' => __( 'Optional element', 'yml-for-yandex-market' ) . ' <strong>credit-template</strong> <a target="_blank" href="//yandex.ru/support/partnermarket/efficiency/credit.html">' . __( 'Read more on Yandex', 'yml-for-yandex-market' ) . '</a>',
