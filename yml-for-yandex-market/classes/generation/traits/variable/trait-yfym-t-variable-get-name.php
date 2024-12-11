@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.1.0 (22-11-2023)
+ * @version                 4.9.1 (11-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -45,10 +45,10 @@ trait YFYM_T_Variable_Get_Name {
 		);
 
 		// TODO: Удалить в след.версиях
-		$result_yml_name = apply_filters( 'yfym_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_feed_id() );
+		// $result_yml_name = apply_filters( 'yfym_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_feed_id() );
 
 		// TODO: Удалить в след.версиях
-		$result_yml_name = apply_filters( 'yfym_variable_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_offer(), $this->get_feed_id() );
+		// $result_yml_name = apply_filters( 'yfym_variable_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_offer(), $this->get_feed_id() );
 
 		$result_yml_name = apply_filters(
 			'y4ym_f_variable_tag_value_name',
@@ -174,6 +174,10 @@ trait YFYM_T_Variable_Get_Name {
 		}
 
 		$result_yml_name_itog = apply_filters( 'yfym_before_insert_name_filter', $result_yml_name_itog, $this->get_feed_id() );
+		$yml_rules = common_option_get( 'yml_rules', false, $this->get_feed_id(), 'yfym' );
+		if ( $yml_rules === 'vk' ) {
+			$result_yml_name_itog = mb_substr( $result_yml_name_itog, 0, 99 ); // не более 99 символов
+		}
 		$result_xml = new Get_Paired_Tag( $tag_name, htmlspecialchars( $result_yml_name_itog, ENT_NOQUOTES ) );
 
 		$result_xml = apply_filters(
@@ -186,5 +190,7 @@ trait YFYM_T_Variable_Get_Name {
 			$this->get_feed_id()
 		);
 		return $result_xml;
+
 	}
+
 }

@@ -177,5 +177,5 @@ require_once YFYM_PLUGIN_DIR_PATH . 'classes/system/pages/settings-page/class-y4
 require_once YFYM_PLUGIN_DIR_PATH . 'classes/system/pages/settings-page/class-y4ym-settings-page-shop-tags-wp-list-table.php';
 require_once YFYM_PLUGIN_DIR_PATH . 'classes/system/pages/settings-page/class-y4ym-settings-page-feeds-wp-list-table.php';
 
-require_once YFYM_PLUGIN_DIR_PATH . 'classes/system/updates/class-y4ym-plugin-form-activate.php';
-require_once YFYM_PLUGIN_DIR_PATH . 'classes/system/updates/class-y4ym-plugin-upd.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/updates/class-y4ym-plugin-form-activate.php';
+require_once YFYM_PLUGIN_DIR_PATH . 'includes/updates/class-y4ym-plugin-upd.php';

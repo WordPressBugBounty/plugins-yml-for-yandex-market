@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-11-24 17:52+0300\n"
-"PO-Revision-Date: 2024-11-24 17:52+0300\n"
+"POT-Creation-Date: 2024-12-11 14:19+0300\n"
+"PO-Revision-Date: 2024-12-11 14:19+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -15,13 +15,14 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_html_e;esc_html__\n"
-"X-Poedit-SearchPath-0: functions.php\n"
-"X-Poedit-SearchPath-1: packages.php\n"
-"X-Poedit-SearchPath-2: sandbox.php\n"
-"X-Poedit-SearchPath-3: uninstall.php\n"
-"X-Poedit-SearchPath-4: yml-for-yandex-market.php\n"
-"X-Poedit-SearchPath-5: common-libs\n"
-"X-Poedit-SearchPath-6: classes\n"
+"X-Poedit-SearchPath-0: classes\n"
+"X-Poedit-SearchPath-1: includes\n"
+"X-Poedit-SearchPath-2: assets\n"
+"X-Poedit-SearchPath-3: functions.php\n"
+"X-Poedit-SearchPath-4: packages.php\n"
+"X-Poedit-SearchPath-5: sandbox.php\n"
+"X-Poedit-SearchPath-6: uninstall.php\n"
+"X-Poedit-SearchPath-7: yml-for-yandex-market.php\n"
 
 #: classes/generation/class-yfym-get-unit.php:100
 #: classes/generation/traits/common/trait-yfym-t-common-skips.php:36
@@ -577,13 +578,13 @@ msgstr "Магазин для взрослых"
 
 #: classes/system/class-y4ym-data-arr.php:602
 #: classes/system/class-y4ym-data-arr.php:1058
-#: common-libs/class-icpd-feedback-1-0-3.php:154
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:154
 msgid "No"
 msgstr "Нет"
 
 #: classes/system/class-y4ym-data-arr.php:603
 #: classes/system/class-y4ym-data-arr.php:1057
-#: common-libs/class-icpd-feedback-1-0-3.php:149
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:149
 msgid "Yes"
 msgstr "Да"
 
@@ -1881,8 +1882,8 @@ msgid "from"
 msgstr "из"
 
 #: classes/system/class-yml-for-yandex-market.php:663
-#: common-libs/wc-add-functions-1-0-2.php:102
-#: common-libs/wc-add-functions-1-0-2.php:128
+#: includes/common-libs/wc-add-functions-1-0-2.php:102
+#: includes/common-libs/wc-add-functions-1-0-2.php:128
 msgid "products"
 msgstr "товаров"
 
@@ -2331,7 +2332,7 @@ msgstr "Номер заказа"
 
 #: classes/system/updates/class-y4ym-plugin-form-activate.php:109
 #: classes/system/updates/class-y4ym-plugin-form-activate.php:126
-#: common-libs/class-icpd-promo-1-1-0.php:198
+#: includes/common-libs/class-icpd-promo-1-1-0.php:198
 msgid "Read more"
 msgstr "Подробнее"
 
@@ -2440,39 +2441,39 @@ msgctxt "5 days"
 msgid "days"
 msgstr "дней"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:96
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:96
 msgid "The data has been sent. Thank you"
 msgstr "Данные были отправлены. Спасибо"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:120
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:120
 msgid "Send data about the work of the plugin"
 msgstr "Отправить данные о работе плагина"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:125
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:125
 msgid "Sending statistics you help make the plugin even better"
 msgstr "Отправляя статистику, вы помогаете сделать плагин еще лучше"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:126
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:126
 msgid "The following data will be sent"
 msgstr "Следующие данные будут переданы"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:132
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:132
 msgid "PHP version information"
 msgstr "Информация о PHP версии"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:133
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:133
 msgid "Multisite mode status"
 msgstr "Включен ли режим multisite"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:134
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:134
 msgid "Technical information and plugin logs"
 msgstr "Техническая информация и логи плагина"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:141
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:141
 msgid "Did my plugin help you upload your products to the"
 msgstr "Помог ли Вам плагин загрузить продукцию на"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:160
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:160
 msgid ""
 "If you don't mind to be contacted in case of problems, please enter your "
 "email address"
@@ -2481,39 +2482,39 @@ msgstr ""
 "дополнительных вопросов по поводу работы плагина, то укажите Ваш адрес "
 "электронной почты"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:166
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:166
 msgid "Your message"
 msgstr "Ваше сообщение"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:170
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:170
 msgid "Enter your text to send me a message"
 msgstr "Введите свой текст, чтобы отправить мне сообщение"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:171
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:171
 msgid "You can write me in Russian or English"
 msgstr "Вы можете писать мне на русском или английском языке"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:172
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:172
 msgid "I check my email several times a day"
 msgstr "Я проверяю свою электронную почту несколько раз в день"
 
-#: common-libs/class-icpd-feedback-1-0-3.php:176
+#: includes/common-libs/class-icpd-feedback-1-0-3.php:176
 msgid "Send data"
 msgstr "Отправить данные"
 
-#: common-libs/class-icpd-promo-1-1-0.php:51
+#: includes/common-libs/class-icpd-promo-1-1-0.php:51
 msgid "Сreates a XML-feed to upload to Google Merchant Center"
 msgstr "Создает XML-фид для загрузки в Google Merchant Center"
 
-#: common-libs/class-icpd-promo-1-1-0.php:57
+#: includes/common-libs/class-icpd-promo-1-1-0.php:57
 msgid "Сreates a YML-feed for importing your products to Yandex Market"
 msgstr "Создает YML-фид для импорта ваших товаров на Яндекс Маркет"
 
-#: common-libs/class-icpd-promo-1-1-0.php:64
+#: includes/common-libs/class-icpd-promo-1-1-0.php:64
 msgid "Imports products from YML to your shop"
 msgstr "Импортирует товары из YML в ваш магазин"
 
-#: common-libs/class-icpd-promo-1-1-0.php:70
+#: includes/common-libs/class-icpd-promo-1-1-0.php:70
 msgid ""
 "Imports products to Yandex Market from your online store on Woocommerce "
 "using the API"
@@ -2521,7 +2522,7 @@ msgstr ""
 "Импортирует товары на Яндекс Маркет из вашего интернет-магазина на "
 "Woocommerce с помощью API"
 
-#: common-libs/class-icpd-promo-1-1-0.php:78
+#: includes/common-libs/class-icpd-promo-1-1-0.php:78
 msgid ""
 "This plugin helps setting up myTarget counter for dynamic remarketing for "
 "WooCommerce"
@@ -2529,11 +2530,11 @@ msgstr ""
 "Этот плагин помогает настроить счетчик myTarget для динамического "
 "ремаркетинга для WooCommerce"
 
-#: common-libs/class-icpd-promo-1-1-0.php:85
+#: includes/common-libs/class-icpd-promo-1-1-0.php:85
 msgid "Сreates a XML-feed for importing your products to Hotline"
 msgstr "Создает XML-фид для импорта ваших товаров на Hotline"
 
-#: common-libs/class-icpd-promo-1-1-0.php:91
+#: includes/common-libs/class-icpd-promo-1-1-0.php:91
 msgid ""
 "This plugin will add a marketing tool that will allow you to give gifts to "
 "the buyer upon purchase"
@@ -2541,35 +2542,35 @@ msgstr ""
 "Этот плагин добавит маркетинговый инструмент, который позволит вам дарить "
 "подарки покупателю при покупке"
 
-#: common-libs/class-icpd-promo-1-1-0.php:99
+#: includes/common-libs/class-icpd-promo-1-1-0.php:99
 msgid "With this plugin, you can import products to your group on ok.ru"
 msgstr ""
 "С помощью этого плагина вы можете импортировать товары в свою группу на ok.ru"
 
-#: common-libs/class-icpd-promo-1-1-0.php:107
+#: includes/common-libs/class-icpd-promo-1-1-0.php:107
 msgid "With this plugin, you can import products to OZON"
 msgstr "С помощью этого плагина вы можете импортировать товары на OZON"
 
-#: common-libs/class-icpd-promo-1-1-0.php:115
+#: includes/common-libs/class-icpd-promo-1-1-0.php:115
 msgid "With this plugin, you can import products to your group on VK.com"
 msgstr ""
 "С помощью этого плагина вы можете импортировать товары в свою группу в VK.com"
 
-#: common-libs/class-icpd-promo-1-1-0.php:122
-#: common-libs/class-icpd-promo-1-1-0.php:127
+#: includes/common-libs/class-icpd-promo-1-1-0.php:122
+#: includes/common-libs/class-icpd-promo-1-1-0.php:127
 msgid "Сreates a XML-feed for importing your products to"
 msgstr "Создает XML-фид для импорта ваших товаров на"
 
-#: common-libs/class-icpd-promo-1-1-0.php:172
+#: includes/common-libs/class-icpd-promo-1-1-0.php:172
 msgid "My plugins that may interest you"
 msgstr "Мои плагины, которые могут вас заинтересовать"
 
-#: common-libs/wc-add-functions-1-0-2.php:161
+#: includes/common-libs/wc-add-functions-1-0-2.php:161
 #, php-format
 msgid "No %s is associated with #%d"
 msgstr "Нет %s с таким #%d"
 
-#: common-libs/wc-add-functions-1-0-2.php:186
+#: includes/common-libs/wc-add-functions-1-0-2.php:186
 #, php-format
 msgid "This %s cannot be deleted"
 msgstr "%s не может быть удалён"

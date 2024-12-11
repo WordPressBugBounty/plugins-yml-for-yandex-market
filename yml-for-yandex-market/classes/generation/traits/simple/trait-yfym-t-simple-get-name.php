@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  *  Traits Name for simple products
  *
@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.0.0 (29-08-2023)
+ * @version                 4.9.1 (11-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -39,8 +39,12 @@ trait YFYM_T_Simple_Get_Name {
 		);
 
 		// TODO: Удалить в след.версиях
-		$result_yml_name = apply_filters( 'yfym_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_feed_id() );
+		// $result_yml_name = apply_filters( 'yfym_change_name', $result_yml_name, $this->get_product()->get_id(), $this->get_product(), $this->get_feed_id() );
 
+		$yml_rules = common_option_get( 'yml_rules', false, $this->get_feed_id(), 'yfym' );
+		if ( $yml_rules === 'vk' ) {
+			$result_yml_name = mb_substr( $result_yml_name, 0, 99 ); // не более 99 символов
+		}
 		$result_xml = new Get_Paired_Tag( $tag_name, htmlspecialchars( $result_yml_name, ENT_NOQUOTES ) );
 
 		$result_xml = apply_filters(
@@ -50,5 +54,7 @@ trait YFYM_T_Simple_Get_Name {
 			$this->get_feed_id()
 		);
 		return $result_xml;
+
 	}
+
 }

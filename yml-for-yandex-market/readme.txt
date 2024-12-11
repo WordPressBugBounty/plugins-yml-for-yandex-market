@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 4.5
 Tested up to: 6.7.1
-Stable tag: 4.9.0
+Stable tag: 4.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,7 +77,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Changelog ==
 
-= 4.9.2 =
+= 4.9.1 =
+* Fixed bugs with VK rules
+
+= 4.9.0 =
 * This update prepares the plugin for the transition to a new kernel. The names of the post meta have been changed from:
 'yfym_individual_delivery',
 'yfym_cost',
@@ -278,26 +281,5 @@ to:
 
 == Upgrade Notice ==
 
-= 4.9.2 =
-* This update prepares the plugin for the transition to a new kernel. The names of the post meta have been changed from:
-'yfym_individual_delivery',
-'yfym_cost',
-'yfym_days',
-'yfym_order_before',
-'yfym_individual_pickup',
-'yfym_pickup_cost',
-'yfym_pickup_days',
-'yfym_pickup_order_before',
-'yfym_credit_template',
-'_yfym_reason'
-to:
-'_yfym_individual_delivery',
-'_yfym_cost',
-'_yfym_days',
-'_yfym_order_before',
-'_yfym_individual_pickup',
-'_yfym_pickup_cost',
-'_yfym_pickup_days',
-'_yfym_pickup_order_before',
-'_yfym_credit_template',
-'_yfym_reason'
+= 4.9.1 =
+* Fixed bugs with VK rules
