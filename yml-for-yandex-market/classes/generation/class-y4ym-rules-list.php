@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   4.1.12
  * 
- * @version                 4.7.2 (16-09-2023)
+ * @version                 4.9.2 (19-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -77,7 +77,7 @@ class Y4YM_Rules_List {
 					'offer_tag', 'disabled', 'archived', 'params', 'name', 'enable_auto_discounts', 'description',
 					'picture', 'url', 'count', 'barcode', 'weight', 'dimensions', 'expiry', 'period_of_validity_days',
 					'age', 'downloadable', 'country_of_origin', 'manufacturer', 'market_sku', 'tn_ved_codes',
-					'recommend_stock_data', 'manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
+					/* 'recommend_stock_data', */ 'manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
 					'vendorcode', 'store', 'pickup', 'delivery', 'categoryid', 'vat', 'delivery_options',
 					'pickup_options', 'condition', 'credit_template', 'supplier', 'min_quantity', 'step_quantity',
 					'additional_expenses', 'cofinance_price', 'purchase_price', 'oldprice'
@@ -90,7 +90,7 @@ class Y4YM_Rules_List {
 					'offer_tag', 'disabled', 'archived', 'barcode', 'categoryid', 'condition', 'credit_template', 'delivery_options',
 					'delivery', 'pickup_options', 'description', 'dimensions', 'instock', 'keywords', 'manufacturer',
 					'market_sku', 'min_quantity', 'model', 'name', 'params', 'period_of_validity_days',
-					'picture', 'recommend_stock_data', 'sales_notes', 'shop_sku', 'step_quantity', 'tn_ved_codes',
+					'picture', /* 'recommend_stock_data', */ 'sales_notes', 'shop_sku', 'step_quantity', 'tn_ved_codes',
 					'url', 'cargo_types', 'vendor', 'vendorcode', 'weight', 'oldprice'
 				],
 				'vk' => [ 
@@ -125,9 +125,9 @@ class Y4YM_Rules_List {
 					'country_of_origin', 'credit_template', 'delivery_options', 'delivery', 'description', 'dimensions',
 					'downloadable', 'enable_auto_discounts', 'expiry', 'instock', 'keywords', 'manufacturer_warranty',
 					'warranty_days', 'manufacturer', 'market_sku', 'min_quantity', 'model', 'name', 'outlets', 'params',
-					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', 'premium_price',
+					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
 					'recommend_stock_data', 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
-					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'vendor', 'vendorcode', 'video', 'weight', 'price_rrp',
+					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'cofinance_price', 'purchase_price', 'type_prefix', 'oldprice', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score'
 				]

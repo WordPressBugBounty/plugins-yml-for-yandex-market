@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.9.0 (07-12-2024)
+ * @version                 4.9.2 (19-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -40,7 +40,8 @@ final class Y4YM_Interface_Hoocked {
 	public function init_hooks() {
 		// https://opttour.ru/web/wordpress/byistroe-redaktirovanie-zapisi/
 		add_action( 'init', [ $this, 'add_new_taxonomies' ], 10 );
-		add_action( 'yfym_collection_edit_form_fields', [ $this, 'add_meta_product_cat' ], 10, 1 );
+		add_action( 'yfym_collection_add_form_fields', [ $this, 'add_meta_product_cat' ], 10, 1 );
+		add_action( 'yfym_collection_edit_form_fields', [ $this, 'edit_meta_product_cat' ], 10, 1 );
 		add_action( 'edited_yfym_collection', [ $this, 'save_meta_product_cat' ], 10, 1 );
 		add_action( 'create_yfym_collection', [ $this, 'save_meta_product_cat' ], 10, 1 );
 
@@ -112,6 +113,54 @@ final class Y4YM_Interface_Hoocked {
 	}
 
 	/**
+	 * Позволяет добавить дополнительные поля на страницу создания элементов таксономии (термина).
+	 * Function for `(taxonomy)_add_form_fields` action-hook.
+	 * 
+	 * @param WP_Term $tag Current taxonomy term object.
+	 * @param string $taxonomy Current taxonomy slug.
+	 *
+	 * @return void
+	 */
+	public function add_meta_product_cat( $term ) {
+
+		global $post; ?>
+		<div class="form-field term-cat_meta-wrap">
+			<label>
+				<?php esc_html_e( 'Collection URL', 'yml-for-yandex-market' ); ?>
+			</label>
+			<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]"
+				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_url', true ) ) ?>" />
+			<p>
+				<?php esc_html_e( 'URL of the collection page', 'yml-for-yandex-market' ); ?>.
+			</p>
+		</div>
+		<div class="form-field term-cat_meta-wrap">
+			<label>
+				<?php esc_html_e( 'Main picture URL', 'yml-for-yandex-market' ); ?>
+			</label>
+			<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]"
+				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) ) ?>" />
+			<p>
+				<?php esc_html_e( 'For example', 'yml-for-yandex-market' ); ?>: <code>https://site.ru/picture-1.jpg</code>.
+				<?php esc_html_e( 'URL of the main picture of the collection', 'yml-for-yandex-market' ); ?>.
+			</p>
+		</div>
+		<div class="form-field term-cat_meta-wrap">
+			<label>
+				<?php esc_html_e( 'Add the main photos of products to the collection', 'yml-for-yandex-market' ); ?>
+			</label>
+			<input id="y4ym_collection_num_product_picture" type="number" step="1" min="0" max="20"
+				name="y4ym_cat_meta[yfym_collection_num_product_picture]"
+				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) ) ?>" />
+			<p>
+				<?php esc_html_e( 'Indicate the number from 0 to 20', 'yml-for-yandex-market' ); ?>.
+			</p>
+		</div>
+		<?php
+
+	}
+
+	/**
 	 * Позволяет добавить дополнительные поля на страницу редактирования элементов таксономии (термина).
 	 * Function for `(taxonomy)_edit_form_fields` action-hook.
 	 * 
@@ -120,34 +169,55 @@ final class Y4YM_Interface_Hoocked {
 	 *
 	 * @return void
 	 */
-	public function add_meta_product_cat( $term ) {
+	public function edit_meta_product_cat( $term ) {
+
 		global $post; ?>
 		<tr class="form-field term-parent-wrap">
 			<th scope="row" valign="top">
 				<label>
-					<?php esc_html_e( 'URL', 'yml-for-yandex-market' ); ?>
+					<?php esc_html_e( 'Collection URL', 'yml-for-yandex-market' ); ?>
 				</label>
 			</th>
 			<td>
-				<input id="yfym_collection_url" type="text" name="yfym_cat_meta[yfym_collection_url]"
-					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_url', 1 ) ) ?>" /><br />
+				<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]"
+					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_url', true ) ) ?>" />
 				<p class="description">
-					<?php esc_html_e( 'URL of the catalog page', 'yml-for-yandex-market' ); ?>
+					<?php esc_html_e( 'URL of the collection page', 'yml-for-yandex-market' ); ?>.
 				</p>
 			</td>
 		</tr>
 		<tr class="form-field term-parent-wrap">
 			<th scope="row" valign="top">
 				<label>
-					<?php esc_html_e( 'Picture URL', 'yml-for-yandex-market' ); ?>
+					<?php esc_html_e( 'Main picture URL', 'yml-for-yandex-market' ); ?>
 				</label>
 			</th>
 			<td>
-				<input id="yfym_collection_picture" type="text" name="yfym_cat_meta[yfym_collection_picture]"
-					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_picture', 1 ) ) ?>" />
+				<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]"
+					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) ) ?>" />
+				<p>
+					<?php esc_html_e( 'For example', 'yml-for-yandex-market' ); ?>: <code>https://site.ru/picture-1.jpg</code>.
+					<?php esc_html_e( 'URL of the main picture of the collection', 'yml-for-yandex-market' ); ?>.
+				</p>
+			</td>
+		</tr>
+		<tr class="form-field term-parent-wrap">
+			<th scope="row" valign="top">
+				<label>
+					<?php esc_html_e( 'Add the main photos of products to the collection', 'yml-for-yandex-market' ); ?>
+				</label>
+			</th>
+			<td>
+				<input id="y4ym_collection_num_product_picture" type="number" step="1" min="0" max="20"
+					name="y4ym_cat_meta[yfym_collection_num_product_picture]"
+					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) ) ?>" />
+				<p class="description">
+					<?php esc_html_e( 'Indicate the number from 0 to 20', 'yml-for-yandex-market' ); ?>.
+				</p>
 			</td>
 		</tr>
 		<?php
+
 	}
 
 	/**
@@ -158,10 +228,10 @@ final class Y4YM_Interface_Hoocked {
 	 * @return void
 	 */
 	function save_meta_product_cat( $term_id ) {
-		if ( ! isset( $_POST['yfym_cat_meta'] ) ) {
+		if ( ! isset( $_POST['y4ym_cat_meta'] ) ) {
 			return;
 		}
-		$yfym_cat_meta = array_map( 'sanitize_text_field', $_POST['yfym_cat_meta'] );
+		$yfym_cat_meta = array_map( 'sanitize_text_field', $_POST['y4ym_cat_meta'] );
 		foreach ( $yfym_cat_meta as $key => $value ) {
 			if ( empty( $value ) ) {
 				delete_term_meta( $term_id, $key );
@@ -230,8 +300,8 @@ final class Y4YM_Interface_Hoocked {
 			'_yfym_min_quantity',
 			'_yfym_step_quantity',
 			'_yfym_barcode',
-			'_yfym_premium_price',
-			'_yfym_price_rrp',
+			// '_yfym_premium_price',
+			// '_yfym_price_rrp',
 			'_yfym_min_price',
 			'_yfym_additional_expenses',
 			'_yfym_cofinance_price',
@@ -465,33 +535,33 @@ final class Y4YM_Interface_Hoocked {
 				'min' => '0'
 			]
 		] );
-		woocommerce_wp_text_input( [ 
-			'id' => '_yfym_premium_price',
-			'label' => 'premium_price',
-			'placeholder' => '0',
-			'description' => __(
-				'Price for Ozon Premium customers. Used only in the OZONE feed',
-				'yml-for-yandex-market'
-			),
-			'type' => 'number',
-			'desc_tip' => true,
-			'custom_attributes' => [ 
-				'step' => '0.01',
-				'min' => '0'
-			]
-		] );
-		woocommerce_wp_text_input( [ 
-			'id' => '_yfym_price_rrp',
-			'label' => 'price_rrp',
-			'placeholder' => '0',
-			'description' => __( 'Recommended retail price, type of price for suppliers', 'yml-for-yandex-market' ),
-			'type' => 'number',
-			'desc_tip' => true,
-			'custom_attributes' => [ 
-				'step' => '0.01',
-				'min' => '0'
-			]
-		] );
+		/*woocommerce_wp_text_input( [ 
+				  'id' => '_yfym_premium_price',
+				  'label' => 'premium_price',
+				  'placeholder' => '0',
+				  'description' => __(
+					  'Price for Ozon Premium customers. Used only in the OZONE feed',
+					  'yml-for-yandex-market'
+				  ),
+				  'type' => 'number',
+				  'desc_tip' => true,
+				  'custom_attributes' => [ 
+					  'step' => '0.01',
+					  'min' => '0'
+				  ]
+			  ] );
+			  woocommerce_wp_text_input( [ 
+				  'id' => '_yfym_price_rrp',
+				  'label' => 'price_rrp',
+				  'placeholder' => '0',
+				  'description' => __( 'Recommended retail price, type of price for suppliers', 'yml-for-yandex-market' ),
+				  'type' => 'number',
+				  'desc_tip' => true,
+				  'custom_attributes' => [ 
+					  'step' => '0.01',
+					  'min' => '0'
+				  ]
+			  ] );*/
 		woocommerce_wp_text_input( [ 
 			'id' => '_yfym_min_price',
 			'label' => 'min_price',
@@ -530,7 +600,7 @@ final class Y4YM_Interface_Hoocked {
 		] );
 		woocommerce_wp_text_input( [ 
 			'id' => '_yfym_purchase_price',
-			'label' => 'cofinance_price',
+			'label' => 'purchase_price',
 			'placeholder' => '0',
 			'description' => __( 'Purchase price', 'yml-for-yandex-market' ),
 			'type' => 'number',

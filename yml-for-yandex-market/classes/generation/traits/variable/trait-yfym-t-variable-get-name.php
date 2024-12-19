@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.9.1 (11-12-2024)
+ * @version                 4.9.2 (19-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -174,9 +174,9 @@ trait YFYM_T_Variable_Get_Name {
 		}
 
 		$result_yml_name_itog = apply_filters( 'yfym_before_insert_name_filter', $result_yml_name_itog, $this->get_feed_id() );
-		$yml_rules = common_option_get( 'yml_rules', false, $this->get_feed_id(), 'yfym' );
+		$yml_rules = common_option_get( 'yfym_yml_rules', false, $this->get_feed_id(), 'yfym' );
 		if ( $yml_rules === 'vk' ) {
-			$result_yml_name_itog = mb_substr( $result_yml_name_itog, 0, 99 ); // не более 99 символов
+			$result_yml_name_itog = trim( mb_substr( $result_yml_name_itog, 0, 99 ) ); // не более 99 символов
 		}
 		$result_xml = new Get_Paired_Tag( $tag_name, htmlspecialchars( $result_yml_name_itog, ENT_NOQUOTES ) );
 

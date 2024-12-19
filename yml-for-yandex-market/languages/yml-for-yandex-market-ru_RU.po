@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-12-11 14:19+0300\n"
-"PO-Revision-Date: 2024-12-11 14:19+0300\n"
+"POT-Creation-Date: 2024-12-19 11:37+0300\n"
+"PO-Revision-Date: 2024-12-19 11:39+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -195,11 +195,11 @@ msgstr "выбран, то после генерации фида значени
 #: classes/system/class-y4ym-data-arr.php:2546
 #: classes/system/class-y4ym-data-arr.php:2563
 #: classes/system/class-y4ym-data-arr.php:2763
-#: classes/system/class-y4ym-interface-hocked.php:699
-#: classes/system/class-y4ym-interface-hocked.php:728
-#: classes/system/class-y4ym-interface-hocked.php:795
-#: classes/system/class-y4ym-interface-hocked.php:905
-#: classes/system/class-y4ym-interface-hocked.php:1034
+#: classes/system/class-y4ym-interface-hocked.php:769
+#: classes/system/class-y4ym-interface-hocked.php:798
+#: classes/system/class-y4ym-interface-hocked.php:865
+#: classes/system/class-y4ym-interface-hocked.php:975
+#: classes/system/class-y4ym-interface-hocked.php:1104
 msgid "Disabled"
 msgstr "Отключено"
 
@@ -458,9 +458,9 @@ msgstr "Архивировать в ZIP"
 #: classes/system/class-y4ym-data-arr.php:2266
 #: classes/system/class-y4ym-data-arr.php:2295
 #: classes/system/class-y4ym-data-arr.php:2358
-#: classes/system/class-y4ym-interface-hocked.php:698
-#: classes/system/class-y4ym-interface-hocked.php:904
-#: classes/system/class-y4ym-interface-hocked.php:922
+#: classes/system/class-y4ym-interface-hocked.php:768
+#: classes/system/class-y4ym-interface-hocked.php:974
+#: classes/system/class-y4ym-interface-hocked.php:992
 msgid "Default"
 msgstr "По умолчанию"
 
@@ -807,7 +807,7 @@ msgid "Example"
 msgstr "Пример"
 
 #: classes/system/class-y4ym-data-arr.php:1094
-#: classes/system/class-y4ym-interface-hocked.php:523
+#: classes/system/class-y4ym-interface-hocked.php:593
 msgid "Threshold for receiving discounts in Yandex Market"
 msgstr "Порог получения скидок в Яндекс Маркете"
 
@@ -815,34 +815,34 @@ msgstr "Порог получения скидок в Яндекс Маркет�
 #: classes/system/class-y4ym-data-arr.php:1767
 #: classes/system/class-y4ym-data-arr.php:1911
 #: classes/system/class-y4ym-data-arr.php:1995
-#: classes/system/class-y4ym-interface-hocked.php:681
-#: classes/system/class-y4ym-interface-hocked.php:695
-#: classes/system/class-y4ym-interface-hocked.php:719
-#: classes/system/class-y4ym-interface-hocked.php:873
-#: classes/system/class-y4ym-interface-hocked.php:892
-#: classes/system/class-y4ym-interface-hocked.php:956
-#: classes/system/class-y4ym-interface-hocked.php:1044
-#: classes/system/class-y4ym-interface-hocked.php:1052
-#: classes/system/class-y4ym-interface-hocked.php:1060
-#: classes/system/class-y4ym-interface-hocked.php:1068
-#: classes/system/class-y4ym-interface-hocked.php:1076
-#: classes/system/class-y4ym-interface-hocked.php:1084
-#: classes/system/class-y4ym-interface-hocked.php:1131
+#: classes/system/class-y4ym-interface-hocked.php:751
+#: classes/system/class-y4ym-interface-hocked.php:765
+#: classes/system/class-y4ym-interface-hocked.php:789
+#: classes/system/class-y4ym-interface-hocked.php:943
+#: classes/system/class-y4ym-interface-hocked.php:962
+#: classes/system/class-y4ym-interface-hocked.php:1026
+#: classes/system/class-y4ym-interface-hocked.php:1114
+#: classes/system/class-y4ym-interface-hocked.php:1122
+#: classes/system/class-y4ym-interface-hocked.php:1130
 #: classes/system/class-y4ym-interface-hocked.php:1138
-#: classes/system/class-y4ym-interface-hocked.php:1144
+#: classes/system/class-y4ym-interface-hocked.php:1146
+#: classes/system/class-y4ym-interface-hocked.php:1154
+#: classes/system/class-y4ym-interface-hocked.php:1201
+#: classes/system/class-y4ym-interface-hocked.php:1208
+#: classes/system/class-y4ym-interface-hocked.php:1214
 #: classes/system/pages/extensions-page/views/html-extensions-page.php:181
 #: classes/system/pages/extensions-page/views/html-extensions-page.php:215
 msgid "Read more on Yandex"
 msgstr "Прочитать подробности на Яндексе"
 
 #: classes/system/class-y4ym-data-arr.php:1115
-#: classes/system/class-y4ym-interface-hocked.php:535
+#: classes/system/class-y4ym-interface-hocked.php:605
 msgid "Purchase price"
 msgstr "Себестоимость"
 
 #: classes/system/class-y4ym-data-arr.php:1133
 #: classes/system/class-y4ym-data-arr.php:1135
-#: classes/system/class-y4ym-interface-hocked.php:511
+#: classes/system/class-y4ym-interface-hocked.php:581
 msgid "Additional costs for the product"
 msgstr "Дополнительные затраты на товар"
 
@@ -851,8 +851,8 @@ msgid "For example, for delivery or packaging"
 msgstr "Например, на доставку или упаковку"
 
 #: classes/system/class-y4ym-data-arr.php:1154
-#: classes/system/class-y4ym-interface-hocked.php:726
-#: classes/system/class-y4ym-interface-hocked.php:793
+#: classes/system/class-y4ym-interface-hocked.php:796
+#: classes/system/class-y4ym-interface-hocked.php:863
 msgid "Delivery"
 msgstr "Доставка"
 
@@ -865,7 +865,7 @@ msgstr ""
 "запрещено продавать дистанционно (ювелирные изделия, лекарственные средства)"
 
 #: classes/system/class-y4ym-data-arr.php:1175
-#: classes/system/class-y4ym-interface-hocked.php:858
+#: classes/system/class-y4ym-interface-hocked.php:928
 msgid "VAT rate"
 msgstr "НДС"
 
@@ -878,12 +878,12 @@ msgid "Enable. No default value"
 msgstr "Включить. Без значений по умолчанию"
 
 #: classes/system/class-y4ym-data-arr.php:1185
-#: classes/system/class-y4ym-interface-hocked.php:861
+#: classes/system/class-y4ym-interface-hocked.php:931
 msgid "No VAT"
 msgstr "Без НДС"
 
 #: classes/system/class-y4ym-data-arr.php:1204
-#: classes/system/class-y4ym-interface-hocked.php:706
+#: classes/system/class-y4ym-interface-hocked.php:776
 msgid "Video"
 msgstr "Видео"
 
@@ -892,8 +892,8 @@ msgid "This element is used when creating an YML feed for Yandex Direct"
 msgstr "Этот элемент используется при создании YML-фида для Яндекс Директ"
 
 #: classes/system/class-y4ym-data-arr.php:1225
-#: classes/system/class-y4ym-interface-hocked.php:454
-#: classes/system/class-y4ym-interface-hocked.php:558
+#: classes/system/class-y4ym-interface-hocked.php:524
+#: classes/system/class-y4ym-interface-hocked.php:628
 msgid "Barcode"
 msgstr "Штрихкод"
 
@@ -982,7 +982,7 @@ msgid "How it works"
 msgstr "Как это работает"
 
 #: classes/system/class-y4ym-data-arr.php:1464
-#: classes/system/class-y4ym-interface-hocked.php:1113
+#: classes/system/class-y4ym-interface-hocked.php:1183
 msgid "The warranty period"
 msgstr "Гарантийный срок"
 
@@ -1034,49 +1034,49 @@ msgid "for"
 msgstr "для"
 
 #: classes/system/class-y4ym-data-arr.php:1571
-#: classes/system/class-y4ym-interface-hocked.php:906
+#: classes/system/class-y4ym-interface-hocked.php:976
 msgid "Showcase sample"
 msgstr "Витринный образец"
 
 #: classes/system/class-y4ym-data-arr.php:1575
-#: classes/system/class-y4ym-interface-hocked.php:907
+#: classes/system/class-y4ym-interface-hocked.php:977
 msgid "Reduction"
 msgstr "Уцененный товар"
 
 #: classes/system/class-y4ym-data-arr.php:1579
 #: classes/system/class-y4ym-data-arr.php:1583
-#: classes/system/class-y4ym-interface-hocked.php:908
-#: classes/system/class-y4ym-interface-hocked.php:909
+#: classes/system/class-y4ym-interface-hocked.php:978
+#: classes/system/class-y4ym-interface-hocked.php:979
 msgid "Fashionpreowned"
 msgstr "Повторная продажа"
 
 #: classes/system/class-y4ym-data-arr.php:1587
-#: classes/system/class-y4ym-interface-hocked.php:910
+#: classes/system/class-y4ym-interface-hocked.php:980
 msgid "Like New"
 msgstr "Как новый"
 
 #: classes/system/class-y4ym-data-arr.php:1605
-#: classes/system/class-y4ym-interface-hocked.php:938
+#: classes/system/class-y4ym-interface-hocked.php:1008
 msgid "Reason"
 msgstr "Причина"
 
 #: classes/system/class-y4ym-data-arr.php:1623
-#: classes/system/class-y4ym-interface-hocked.php:919
+#: classes/system/class-y4ym-interface-hocked.php:989
 msgid "Quality"
 msgstr "Качество"
 
 #: classes/system/class-y4ym-data-arr.php:1628
-#: classes/system/class-y4ym-interface-hocked.php:923
+#: classes/system/class-y4ym-interface-hocked.php:993
 msgid "Perfect"
 msgstr "Как новый"
 
 #: classes/system/class-y4ym-data-arr.php:1629
-#: classes/system/class-y4ym-interface-hocked.php:924
+#: classes/system/class-y4ym-interface-hocked.php:994
 msgid "Excellent"
 msgstr "Отличное"
 
 #: classes/system/class-y4ym-data-arr.php:1630
-#: classes/system/class-y4ym-interface-hocked.php:925
+#: classes/system/class-y4ym-interface-hocked.php:995
 msgid "Good"
 msgstr "Хорошее"
 
@@ -1090,9 +1090,9 @@ msgstr "Укажите размер изображения, которое бу�
 
 #: classes/system/class-y4ym-data-arr.php:1661
 #: classes/system/class-y4ym-data-arr.php:1685
-#: classes/system/class-y4ym-interface-hocked.php:975
-#: classes/system/class-y4ym-interface-hocked.php:990
-#: classes/system/class-y4ym-interface-hocked.php:994
+#: classes/system/class-y4ym-interface-hocked.php:1045
+#: classes/system/class-y4ym-interface-hocked.php:1060
+#: classes/system/class-y4ym-interface-hocked.php:1064
 msgid "Custom elements"
 msgstr "Кастомные элементы"
 
@@ -1118,17 +1118,17 @@ msgid "see the Yandex help"
 msgstr "см. справку Яндекса"
 
 #: classes/system/class-y4ym-data-arr.php:1709
-#: classes/system/class-y4ym-interface-hocked.php:964
+#: classes/system/class-y4ym-interface-hocked.php:1034
 msgid "Market category"
 msgstr "Категория на Маркете"
 
 #: classes/system/class-y4ym-data-arr.php:1713
-#: classes/system/class-y4ym-interface-hocked.php:967
+#: classes/system/class-y4ym-interface-hocked.php:1037
 msgid "The product category in which it should be placed on Yandex Market"
 msgstr "Категория товара, в которой он должен быть размещен на Яндекс Маркете"
 
 #: classes/system/class-y4ym-data-arr.php:1737
-#: classes/system/class-y4ym-interface-hocked.php:653
+#: classes/system/class-y4ym-interface-hocked.php:723
 msgid "Market category ID"
 msgstr "ID категории на Маркете"
 
@@ -1148,24 +1148,24 @@ msgstr "Самовывоз товаров"
 #: classes/system/class-y4ym-data-arr.php:1972
 #: classes/system/class-y4ym-data-arr.php:1994
 #: classes/system/class-y4ym-data-arr.php:2056
-#: classes/system/class-y4ym-interface-hocked.php:693
-#: classes/system/class-y4ym-interface-hocked.php:733
-#: classes/system/class-y4ym-interface-hocked.php:757
-#: classes/system/class-y4ym-interface-hocked.php:774
-#: classes/system/class-y4ym-interface-hocked.php:800
-#: classes/system/class-y4ym-interface-hocked.php:824
-#: classes/system/class-y4ym-interface-hocked.php:841
-#: classes/system/class-y4ym-interface-hocked.php:871
-#: classes/system/class-y4ym-interface-hocked.php:912
-#: classes/system/class-y4ym-interface-hocked.php:1041
-#: classes/system/class-y4ym-interface-hocked.php:1052
-#: classes/system/class-y4ym-interface-hocked.php:1060
-#: classes/system/class-y4ym-interface-hocked.php:1068
-#: classes/system/class-y4ym-interface-hocked.php:1076
-#: classes/system/class-y4ym-interface-hocked.php:1084
-#: classes/system/class-y4ym-interface-hocked.php:1116
-#: classes/system/class-y4ym-interface-hocked.php:1131
+#: classes/system/class-y4ym-interface-hocked.php:763
+#: classes/system/class-y4ym-interface-hocked.php:803
+#: classes/system/class-y4ym-interface-hocked.php:827
+#: classes/system/class-y4ym-interface-hocked.php:844
+#: classes/system/class-y4ym-interface-hocked.php:870
+#: classes/system/class-y4ym-interface-hocked.php:894
+#: classes/system/class-y4ym-interface-hocked.php:911
+#: classes/system/class-y4ym-interface-hocked.php:941
+#: classes/system/class-y4ym-interface-hocked.php:982
+#: classes/system/class-y4ym-interface-hocked.php:1111
+#: classes/system/class-y4ym-interface-hocked.php:1122
+#: classes/system/class-y4ym-interface-hocked.php:1130
 #: classes/system/class-y4ym-interface-hocked.php:1138
+#: classes/system/class-y4ym-interface-hocked.php:1146
+#: classes/system/class-y4ym-interface-hocked.php:1154
+#: classes/system/class-y4ym-interface-hocked.php:1186
+#: classes/system/class-y4ym-interface-hocked.php:1201
+#: classes/system/class-y4ym-interface-hocked.php:1208
 msgid "Optional element"
 msgstr "Необязательный элемент"
 
@@ -1180,11 +1180,11 @@ msgstr "Стоимость самовывоза"
 #: classes/system/class-y4ym-data-arr.php:1953
 #: classes/system/class-y4ym-data-arr.php:2018
 #: classes/system/class-y4ym-data-arr.php:2037
-#: classes/system/class-y4ym-interface-hocked.php:744
-#: classes/system/class-y4ym-interface-hocked.php:811
-#: classes/system/class-y4ym-interface-hocked.php:885
-#: classes/system/class-y4ym-interface-hocked.php:928
-#: classes/system/class-y4ym-interface-hocked.php:941
+#: classes/system/class-y4ym-interface-hocked.php:814
+#: classes/system/class-y4ym-interface-hocked.php:881
+#: classes/system/class-y4ym-interface-hocked.php:955
+#: classes/system/class-y4ym-interface-hocked.php:998
+#: classes/system/class-y4ym-interface-hocked.php:1011
 msgid "Required element"
 msgstr "Обязательный элемент"
 
@@ -1199,15 +1199,15 @@ msgstr "Обязательный элемент"
 #: classes/system/class-y4ym-data-arr.php:2019
 #: classes/system/class-y4ym-data-arr.php:2038
 #: classes/system/class-y4ym-data-arr.php:2057
-#: classes/system/class-y4ym-interface-hocked.php:745
-#: classes/system/class-y4ym-interface-hocked.php:758
-#: classes/system/class-y4ym-interface-hocked.php:775
-#: classes/system/class-y4ym-interface-hocked.php:812
-#: classes/system/class-y4ym-interface-hocked.php:825
-#: classes/system/class-y4ym-interface-hocked.php:842
-#: classes/system/class-y4ym-interface-hocked.php:886
-#: classes/system/class-y4ym-interface-hocked.php:929
-#: classes/system/class-y4ym-interface-hocked.php:942
+#: classes/system/class-y4ym-interface-hocked.php:815
+#: classes/system/class-y4ym-interface-hocked.php:828
+#: classes/system/class-y4ym-interface-hocked.php:845
+#: classes/system/class-y4ym-interface-hocked.php:882
+#: classes/system/class-y4ym-interface-hocked.php:895
+#: classes/system/class-y4ym-interface-hocked.php:912
+#: classes/system/class-y4ym-interface-hocked.php:956
+#: classes/system/class-y4ym-interface-hocked.php:999
+#: classes/system/class-y4ym-interface-hocked.php:1012
 msgid "of attribute"
 msgstr "атрибута"
 
@@ -1219,8 +1219,8 @@ msgstr "Срок самовывоза"
 #: classes/system/class-y4ym-data-arr.php:1890
 #: classes/system/class-y4ym-data-arr.php:1971
 #: classes/system/class-y4ym-data-arr.php:2055
-#: classes/system/class-y4ym-interface-hocked.php:776
-#: classes/system/class-y4ym-interface-hocked.php:843
+#: classes/system/class-y4ym-interface-hocked.php:846
+#: classes/system/class-y4ym-interface-hocked.php:913
 msgid "The time in which you need to place an order to get it at this time"
 msgstr "Время, до которого нужно сделать заказ, чтобы получить его в этот срок"
 
@@ -1235,8 +1235,8 @@ msgstr "Прочитать подробности на Мегамаркете"
 #: classes/system/class-y4ym-data-arr.php:1871
 #: classes/system/class-y4ym-data-arr.php:1952
 #: classes/system/class-y4ym-data-arr.php:2036
-#: classes/system/class-y4ym-interface-hocked.php:741
-#: classes/system/class-y4ym-interface-hocked.php:808
+#: classes/system/class-y4ym-interface-hocked.php:811
+#: classes/system/class-y4ym-interface-hocked.php:878
 msgid "Delivery days"
 msgstr "Срок доставки"
 
@@ -1247,8 +1247,8 @@ msgstr "Использовать delivery-options"
 
 #: classes/system/class-y4ym-data-arr.php:1933
 #: classes/system/class-y4ym-data-arr.php:2017
-#: classes/system/class-y4ym-interface-hocked.php:754
-#: classes/system/class-y4ym-interface-hocked.php:821
+#: classes/system/class-y4ym-interface-hocked.php:824
+#: classes/system/class-y4ym-interface-hocked.php:891
 msgid "Delivery cost"
 msgstr "Стоимость доставки"
 
@@ -1356,8 +1356,10 @@ msgid "From the field below"
 msgstr "Из поля ниже"
 
 #: classes/system/class-y4ym-data-arr.php:2281
-#: classes/system/class-y4ym-interface-hocked.php:455
-#: classes/system/class-y4ym-interface-hocked.php:559
+#: classes/system/class-y4ym-interface-hocked.php:144
+#: classes/system/class-y4ym-interface-hocked.php:199
+#: classes/system/class-y4ym-interface-hocked.php:525
+#: classes/system/class-y4ym-interface-hocked.php:629
 msgid "For example"
 msgstr "Например"
 
@@ -1503,145 +1505,155 @@ msgstr "Полный размер (по умолчанию)"
 msgid "сrop thumbnail to exact dimensions"
 msgstr "обрезать миниатюру точно по размерам"
 
-#: classes/system/class-y4ym-interface-hocked.php:83
+#: classes/system/class-y4ym-interface-hocked.php:84
 msgid "Сollections for YML feed"
 msgstr "Сollections для YML фида"
 
-#: classes/system/class-y4ym-interface-hocked.php:85
+#: classes/system/class-y4ym-interface-hocked.php:86
 msgid "Search collection"
 msgstr "Поиск collection"
 
-#: classes/system/class-y4ym-interface-hocked.php:87
+#: classes/system/class-y4ym-interface-hocked.php:88
 msgid "All collections"
 msgstr "Все collections"
 
-#: classes/system/class-y4ym-interface-hocked.php:90
+#: classes/system/class-y4ym-interface-hocked.php:91
 msgid "Edit collection"
 msgstr "Редактировать collection"
 
-#: classes/system/class-y4ym-interface-hocked.php:91
+#: classes/system/class-y4ym-interface-hocked.php:92
 msgid "Update collection"
 msgstr "Обновить collection"
 
-#: classes/system/class-y4ym-interface-hocked.php:92
+#: classes/system/class-y4ym-interface-hocked.php:93
 msgid "Add new collection"
 msgstr "Добавить новую collection"
 
-#: classes/system/class-y4ym-interface-hocked.php:93
+#: classes/system/class-y4ym-interface-hocked.php:94
 msgid "New collection"
 msgstr "Добавить collection"
 
-#: classes/system/class-y4ym-interface-hocked.php:94
+#: classes/system/class-y4ym-interface-hocked.php:95
 msgid "Сollections for YML"
 msgstr "Сollections для YML"
 
-#: classes/system/class-y4ym-interface-hocked.php:128
-msgid "URL"
-msgstr "URL"
+#: classes/system/class-y4ym-interface-hocked.php:129
+#: classes/system/class-y4ym-interface-hocked.php:178
+msgid "Collection URL"
+msgstr "URL-адрес коллекции"
 
-#: classes/system/class-y4ym-interface-hocked.php:135
-msgid "URL of the catalog page"
-msgstr "URL страницы каталога"
+#: classes/system/class-y4ym-interface-hocked.php:134
+#: classes/system/class-y4ym-interface-hocked.php:185
+msgid "URL of the collection page"
+msgstr "URL страницы коллекции"
 
-#: classes/system/class-y4ym-interface-hocked.php:142
-msgid "Picture URL"
-msgstr "URL картинки"
+#: classes/system/class-y4ym-interface-hocked.php:139
+#: classes/system/class-y4ym-interface-hocked.php:192
+msgid "Main picture URL"
+msgstr "URL главного фото"
 
-#: classes/system/class-y4ym-interface-hocked.php:450
-#: classes/system/class-y4ym-interface-hocked.php:646
+#: classes/system/class-y4ym-interface-hocked.php:145
+#: classes/system/class-y4ym-interface-hocked.php:200
+msgid "URL of the main picture of the collection"
+msgstr "URL главного фото коллекции"
+
+#: classes/system/class-y4ym-interface-hocked.php:150
+#: classes/system/class-y4ym-interface-hocked.php:207
+msgid "Add the main photos of products to the collection"
+msgstr "Добавить главные фото товаров в коллекцию"
+
+#: classes/system/class-y4ym-interface-hocked.php:156
+#: classes/system/class-y4ym-interface-hocked.php:215
+msgid "Indicate the number from 0 to 20"
+msgstr "Укажите число от 0 до 20"
+
+#: classes/system/class-y4ym-interface-hocked.php:520
+#: classes/system/class-y4ym-interface-hocked.php:716
 msgid "Individual product settings for YML-feed"
 msgstr "Индивидуальные настройки товара для YML-фида"
 
-#: classes/system/class-y4ym-interface-hocked.php:457
-#: classes/system/class-y4ym-interface-hocked.php:561
+#: classes/system/class-y4ym-interface-hocked.php:527
+#: classes/system/class-y4ym-interface-hocked.php:631
 msgid "The data of this field is stored in the"
 msgstr "Данные этого поля хранятся в"
 
-#: classes/system/class-y4ym-interface-hocked.php:458
-#: classes/system/class-y4ym-interface-hocked.php:562
+#: classes/system/class-y4ym-interface-hocked.php:528
+#: classes/system/class-y4ym-interface-hocked.php:632
 msgid "meta field"
 msgstr "мета поле"
 
-#: classes/system/class-y4ym-interface-hocked.php:459
-#: classes/system/class-y4ym-interface-hocked.php:563
+#: classes/system/class-y4ym-interface-hocked.php:529
+#: classes/system/class-y4ym-interface-hocked.php:633
 msgid "You can always display them in your website template using"
 msgstr "Вы всегда можете отобразить их в шаблоне своего сайта с помощью"
 
-#: classes/system/class-y4ym-interface-hocked.php:473
-msgid "Price for Ozon Premium customers. Used only in the OZONE feed"
-msgstr "Цена для покупателей с подпиской Ozon Premium"
-
-#: classes/system/class-y4ym-interface-hocked.php:487
-msgid "Recommended retail price, type of price for suppliers"
-msgstr "Рекомендуемая розничная цена, тип цены для поставщиков"
-
-#: classes/system/class-y4ym-interface-hocked.php:499
+#: classes/system/class-y4ym-interface-hocked.php:569
 msgid "Minimum price"
 msgstr "Минимальная цена"
 
-#: classes/system/class-y4ym-interface-hocked.php:611
+#: classes/system/class-y4ym-interface-hocked.php:681
 msgid "YML for Yandex Market"
 msgstr "YML for Yandex Market"
 
-#: classes/system/class-y4ym-interface-hocked.php:656
+#: classes/system/class-y4ym-interface-hocked.php:726
 msgid "Do not confuse it with the \"market_category\" parameter"
 msgstr "Не путайте его с параметром \"market_category\""
 
-#: classes/system/class-y4ym-interface-hocked.php:666
+#: classes/system/class-y4ym-interface-hocked.php:736
 msgid "Product ID on Yandex"
 msgstr "Идентификатор товара на Яндексе"
 
-#: classes/system/class-y4ym-interface-hocked.php:668
+#: classes/system/class-y4ym-interface-hocked.php:738
 msgid "Product ID on Yandex or other marketplace"
 msgstr "ID товара на Яндексе или другом маркетплейсе"
 
-#: classes/system/class-y4ym-interface-hocked.php:676
+#: classes/system/class-y4ym-interface-hocked.php:746
 msgid "Code ТН ВЭД"
 msgstr "Код ТН ВЭД"
 
-#: classes/system/class-y4ym-interface-hocked.php:679
+#: classes/system/class-y4ym-interface-hocked.php:749
 msgid "If you need to specify multiple values, separate them with a"
 msgstr "Если вам нужно указать несколько значений, разделите их символом"
 
-#: classes/system/class-y4ym-interface-hocked.php:690
+#: classes/system/class-y4ym-interface-hocked.php:760
 msgid "I'll product marking"
 msgstr "Я буду маркировать товары"
 
-#: classes/system/class-y4ym-interface-hocked.php:708
+#: classes/system/class-y4ym-interface-hocked.php:778
 msgid "Video URL"
 msgstr "Ссылка на видео"
 
-#: classes/system/class-y4ym-interface-hocked.php:717
+#: classes/system/class-y4ym-interface-hocked.php:787
 msgid "Here you can set up individual options terms for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия доставки для данного товара"
 
-#: classes/system/class-y4ym-interface-hocked.php:771
-#: classes/system/class-y4ym-interface-hocked.php:838
+#: classes/system/class-y4ym-interface-hocked.php:841
+#: classes/system/class-y4ym-interface-hocked.php:908
 msgid "The time"
 msgstr "Время"
 
-#: classes/system/class-y4ym-interface-hocked.php:786
+#: classes/system/class-y4ym-interface-hocked.php:856
 msgid "Here you can configure the pickup conditions for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия самовывоза для данного "
 "товара"
 
-#: classes/system/class-y4ym-interface-hocked.php:852
-#: classes/system/class-y4ym-interface-hocked.php:882
+#: classes/system/class-y4ym-interface-hocked.php:922
+#: classes/system/class-y4ym-interface-hocked.php:952
 msgid "Bid values"
 msgstr "Значения ставки"
 
-#: classes/system/class-y4ym-interface-hocked.php:853
-#: classes/system/class-y4ym-interface-hocked.php:901
+#: classes/system/class-y4ym-interface-hocked.php:923
+#: classes/system/class-y4ym-interface-hocked.php:971
 msgid "Сondition"
 msgstr "Состояние товара"
 
-#: classes/system/class-y4ym-interface-hocked.php:860
+#: classes/system/class-y4ym-interface-hocked.php:930
 msgid "Use global settings"
 msgstr "Использовать глобальные настройки"
 
-#: classes/system/class-y4ym-interface-hocked.php:888
+#: classes/system/class-y4ym-interface-hocked.php:958
 msgid ""
 "Bid values in your price list. Specify the bid amount in Yandex cents: for "
 "example, the value 80 corresponds to the bid of 0.8 Yandex units. The values "
@@ -1651,23 +1663,23 @@ msgstr ""
 "например, значение 80 соответствует ставке 0,8 у. е. Значения должны быть "
 "целыми и положительными числами"
 
-#: classes/system/class-y4ym-interface-hocked.php:951
+#: classes/system/class-y4ym-interface-hocked.php:1021
 msgid "Individual product settings for Yandex Direct"
 msgstr "Индивидуальные настройки товара для Яндекс Директ"
 
-#: classes/system/class-y4ym-interface-hocked.php:954
+#: classes/system/class-y4ym-interface-hocked.php:1024
 msgid "Here you can set up individual settings for Yandex Direct"
 msgstr "Здесь вы можете задать индивидуальные настройки для Яндекс Директа"
 
-#: classes/system/class-y4ym-interface-hocked.php:976
+#: classes/system/class-y4ym-interface-hocked.php:1046
 msgid "The value is zero or any positive integer"
 msgstr "Значение — ноль или любое целое положительное число"
 
-#: classes/system/class-y4ym-interface-hocked.php:995
+#: classes/system/class-y4ym-interface-hocked.php:1065
 msgid "An arbitrary description"
 msgstr "Произвольное описание"
 
-#: classes/system/class-y4ym-interface-hocked.php:997
+#: classes/system/class-y4ym-interface-hocked.php:1067
 msgid ""
 "Latin and Cyrillic letters, numbers. The length of one element is up to 175 "
 "characters"
@@ -1675,111 +1687,111 @@ msgstr ""
 "Латинские и кириллические буквы, цифры. Длина одного элемента — до 175 "
 "символов"
 
-#: classes/system/class-y4ym-interface-hocked.php:1010
+#: classes/system/class-y4ym-interface-hocked.php:1080
 msgid "This data is used only when creating a feed for"
 msgstr "Эти данные используются только при создании фида для"
 
-#: classes/system/class-y4ym-interface-hocked.php:1031
+#: classes/system/class-y4ym-interface-hocked.php:1101
 msgid "Supply plans"
 msgstr "Планы по поставкам"
 
-#: classes/system/class-y4ym-interface-hocked.php:1035
+#: classes/system/class-y4ym-interface-hocked.php:1105
 msgid "Supplies will"
 msgstr "Поставки будут"
 
-#: classes/system/class-y4ym-interface-hocked.php:1036
+#: classes/system/class-y4ym-interface-hocked.php:1106
 msgid "There will be no supplies"
 msgstr "Поставок не будет"
 
-#: classes/system/class-y4ym-interface-hocked.php:1037
+#: classes/system/class-y4ym-interface-hocked.php:1107
 msgid "Product in the archive"
 msgstr "Товар в архиве"
 
-#: classes/system/class-y4ym-interface-hocked.php:1042
-#: classes/system/class-y4ym-interface-hocked.php:1052
-#: classes/system/class-y4ym-interface-hocked.php:1060
-#: classes/system/class-y4ym-interface-hocked.php:1068
-#: classes/system/class-y4ym-interface-hocked.php:1076
-#: classes/system/class-y4ym-interface-hocked.php:1084
+#: classes/system/class-y4ym-interface-hocked.php:1112
+#: classes/system/class-y4ym-interface-hocked.php:1122
+#: classes/system/class-y4ym-interface-hocked.php:1130
+#: classes/system/class-y4ym-interface-hocked.php:1138
+#: classes/system/class-y4ym-interface-hocked.php:1146
+#: classes/system/class-y4ym-interface-hocked.php:1154
 msgid "Forbidden in Yandex Market"
 msgstr "Запрещён в Яндекс Маркет"
 
-#: classes/system/class-y4ym-interface-hocked.php:1049
+#: classes/system/class-y4ym-interface-hocked.php:1119
 msgid "The number of products in the package (multiplicity of the box)"
 msgstr "Количество товаров в упаковке (кратность короба)"
 
-#: classes/system/class-y4ym-interface-hocked.php:1057
+#: classes/system/class-y4ym-interface-hocked.php:1127
 msgid "Minimum delivery pieces"
 msgstr "Минимальная партия поставки"
 
-#: classes/system/class-y4ym-interface-hocked.php:1065
+#: classes/system/class-y4ym-interface-hocked.php:1135
 msgid "Additional batch (quantum of delivery)"
 msgstr "Добавочная партия (квант поставки)"
 
-#: classes/system/class-y4ym-interface-hocked.php:1073
+#: classes/system/class-y4ym-interface-hocked.php:1143
 msgid "Lead time"
 msgstr "Срок поставки"
 
-#: classes/system/class-y4ym-interface-hocked.php:1081
+#: classes/system/class-y4ym-interface-hocked.php:1151
 msgid "Box count"
 msgstr "Количество мест"
 
-#: classes/system/class-y4ym-interface-hocked.php:1090
+#: classes/system/class-y4ym-interface-hocked.php:1160
 msgid ""
 "Days of the week when you are ready to deliver the goods to the warehouse of "
 "the marketplace"
 msgstr "Дни недели, когда вы готовы поставлять товары на склад маркетплейса"
 
-#: classes/system/class-y4ym-interface-hocked.php:1093
+#: classes/system/class-y4ym-interface-hocked.php:1163
 msgid "Monday"
 msgstr "Понедельник"
 
-#: classes/system/class-y4ym-interface-hocked.php:1094
+#: classes/system/class-y4ym-interface-hocked.php:1164
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: classes/system/class-y4ym-interface-hocked.php:1095
+#: classes/system/class-y4ym-interface-hocked.php:1165
 msgid "Wednesday"
 msgstr "Среда"
 
-#: classes/system/class-y4ym-interface-hocked.php:1096
+#: classes/system/class-y4ym-interface-hocked.php:1166
 msgid "Thursday"
 msgstr "Четверг"
 
-#: classes/system/class-y4ym-interface-hocked.php:1097
+#: classes/system/class-y4ym-interface-hocked.php:1167
 msgid "Friday"
 msgstr "Пятница"
 
-#: classes/system/class-y4ym-interface-hocked.php:1098
+#: classes/system/class-y4ym-interface-hocked.php:1168
 msgid "Saturday"
 msgstr "Суббота"
 
-#: classes/system/class-y4ym-interface-hocked.php:1099
+#: classes/system/class-y4ym-interface-hocked.php:1169
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: classes/system/class-y4ym-interface-hocked.php:1106
+#: classes/system/class-y4ym-interface-hocked.php:1176
 msgid "Other"
 msgstr "Прочее"
 
-#: classes/system/class-y4ym-interface-hocked.php:1117
+#: classes/system/class-y4ym-interface-hocked.php:1187
 msgid "The number of days of the warranty period"
 msgstr "Количество дней гарантийного срока"
 
-#: classes/system/class-y4ym-interface-hocked.php:1129
+#: classes/system/class-y4ym-interface-hocked.php:1199
 msgid "Credit program identifier"
 msgstr "ID кредитной программы"
 
-#: classes/system/class-y4ym-interface-hocked.php:1137
+#: classes/system/class-y4ym-interface-hocked.php:1207
 msgid "of a third-party seller"
 msgstr "стороннего продавца"
 
-#: classes/system/class-y4ym-interface-hocked.php:1143
+#: classes/system/class-y4ym-interface-hocked.php:1213
 msgid "Minimum number of products per order"
 msgstr "Минимальное количество товаров в заказе"
 
-#: classes/system/class-y4ym-interface-hocked.php:1144
-#: classes/system/class-y4ym-interface-hocked.php:1150
+#: classes/system/class-y4ym-interface-hocked.php:1214
+#: classes/system/class-y4ym-interface-hocked.php:1220
 msgid "For these categories only"
 msgstr "Только для этих категорий"
 
@@ -2322,125 +2334,6 @@ msgstr ""
 msgid "First, click the button"
 msgstr "Сначала нажмите кнопку"
 
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:87
-msgid "License data"
-msgstr "Данные лицензии"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:97
-msgid "Order ID"
-msgstr "Номер заказа"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:109
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:126
-#: includes/common-libs/class-icpd-promo-1-1-0.php:198
-msgid "Read more"
-msgstr "Подробнее"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:115
-msgid "Order Email"
-msgstr "Email заказа"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:132
-msgid "Update License Data"
-msgstr "Обновить данные лицензии"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:217
-msgid "License data has been updated"
-msgstr "Лицензионные данные были обновлены"
-
-#: classes/system/updates/class-y4ym-plugin-form-activate.php:218
-msgid "Refresh this page"
-msgstr "Обновите эту страницу"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:153
-msgid "License is active"
-msgstr "Лицензия активна"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:157
-#: classes/system/updates/class-y4ym-plugin-upd.php:202
-msgid "License expired"
-msgstr "Лицензия истекла"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:161
-#: classes/system/updates/class-y4ym-plugin-upd.php:172
-#: classes/system/updates/class-y4ym-plugin-upd.php:216
-#: classes/system/updates/class-y4ym-plugin-upd.php:242
-msgid "License data is invalid"
-msgstr "Данные лицензии недействительны"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:166
-#: classes/system/updates/class-y4ym-plugin-upd.php:229
-msgid ""
-"This license cannot be used on this site. The package limit has been exceeded"
-msgstr ""
-"Эта лицензия не может быть использована на этом сайте. Превышен лимит пакета"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:203
-#: classes/system/updates/class-y4ym-plugin-upd.php:271
-msgid "Please"
-msgstr "Пожалуйста"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:205
-#: classes/system/updates/class-y4ym-plugin-upd.php:273
-msgid "purchase a new license"
-msgstr "приобретите новую лицензию"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:206
-#: classes/system/updates/class-y4ym-plugin-upd.php:274
-msgid "to get a discount, use this promo code"
-msgstr "чтобы получить скидку, используйте этот промо-код"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:208
-#: classes/system/updates/class-y4ym-plugin-upd.php:276
-msgid "If you have already done this"
-msgstr "Если вы уже сделали это"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:209
-#: classes/system/updates/class-y4ym-plugin-upd.php:277
-msgid "enter the new license information here"
-msgstr "введите здесь информацию о новой лицензии"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:217
-#: classes/system/updates/class-y4ym-plugin-upd.php:243
-msgid "version features do not work and you can not install updates"
-msgstr "версии не работают, и вы не можете устанавливать обновления"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:218
-#: classes/system/updates/class-y4ym-plugin-upd.php:232
-#: classes/system/updates/class-y4ym-plugin-upd.php:244
-msgid "Enter your license information"
-msgstr "Введите информацию о лицензии"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:219
-#: classes/system/updates/class-y4ym-plugin-upd.php:233
-#: classes/system/updates/class-y4ym-plugin-upd.php:245
-msgid "or"
-msgstr "или"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:221
-#: classes/system/updates/class-y4ym-plugin-upd.php:235
-#: classes/system/updates/class-y4ym-plugin-upd.php:247
-msgid "purchase a new one"
-msgstr "приобретите новую"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:264
-msgid "License expires in"
-msgstr "Лицензия истекает через"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:266
-msgid "day"
-msgstr "день"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:267
-msgctxt "2 days"
-msgid "days"
-msgstr "дня"
-
-#: classes/system/updates/class-y4ym-plugin-upd.php:268
-msgctxt "5 days"
-msgid "days"
-msgstr "дней"
-
 #: includes/common-libs/class-icpd-feedback-1-0-3.php:96
 msgid "The data has been sent. Thank you"
 msgstr "Данные были отправлены. Спасибо"
@@ -2565,6 +2458,12 @@ msgstr "Создает XML-фид для импорта ваших товаро�
 msgid "My plugins that may interest you"
 msgstr "Мои плагины, которые могут вас заинтересовать"
 
+#: includes/common-libs/class-icpd-promo-1-1-0.php:198
+#: includes/updates/class-y4ym-plugin-form-activate.php:109
+#: includes/updates/class-y4ym-plugin-form-activate.php:126
+msgid "Read more"
+msgstr "Подробнее"
+
 #: includes/common-libs/wc-add-functions-1-0-2.php:161
 #, php-format
 msgid "No %s is associated with #%d"
@@ -2574,6 +2473,119 @@ msgstr "Нет %s с таким #%d"
 #, php-format
 msgid "This %s cannot be deleted"
 msgstr "%s не может быть удалён"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:87
+msgid "License data"
+msgstr "Данные лицензии"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:97
+msgid "Order ID"
+msgstr "Номер заказа"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:115
+msgid "Order Email"
+msgstr "Email заказа"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:132
+msgid "Update License Data"
+msgstr "Обновить данные лицензии"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:217
+msgid "License data has been updated"
+msgstr "Лицензионные данные были обновлены"
+
+#: includes/updates/class-y4ym-plugin-form-activate.php:218
+msgid "Refresh this page"
+msgstr "Обновите эту страницу"
+
+#: includes/updates/class-y4ym-plugin-upd.php:153
+msgid "License is active"
+msgstr "Лицензия активна"
+
+#: includes/updates/class-y4ym-plugin-upd.php:157
+#: includes/updates/class-y4ym-plugin-upd.php:202
+msgid "License expired"
+msgstr "Лицензия истекла"
+
+#: includes/updates/class-y4ym-plugin-upd.php:161
+#: includes/updates/class-y4ym-plugin-upd.php:172
+#: includes/updates/class-y4ym-plugin-upd.php:216
+#: includes/updates/class-y4ym-plugin-upd.php:242
+msgid "License data is invalid"
+msgstr "Данные лицензии недействительны"
+
+#: includes/updates/class-y4ym-plugin-upd.php:166
+#: includes/updates/class-y4ym-plugin-upd.php:229
+msgid ""
+"This license cannot be used on this site. The package limit has been exceeded"
+msgstr ""
+"Эта лицензия не может быть использована на этом сайте. Превышен лимит пакета"
+
+#: includes/updates/class-y4ym-plugin-upd.php:203
+#: includes/updates/class-y4ym-plugin-upd.php:271
+msgid "Please"
+msgstr "Пожалуйста"
+
+#: includes/updates/class-y4ym-plugin-upd.php:205
+#: includes/updates/class-y4ym-plugin-upd.php:273
+msgid "purchase a new license"
+msgstr "приобретите новую лицензию"
+
+#: includes/updates/class-y4ym-plugin-upd.php:206
+#: includes/updates/class-y4ym-plugin-upd.php:274
+msgid "to get a discount, use this promo code"
+msgstr "чтобы получить скидку, используйте этот промо-код"
+
+#: includes/updates/class-y4ym-plugin-upd.php:208
+#: includes/updates/class-y4ym-plugin-upd.php:276
+msgid "If you have already done this"
+msgstr "Если вы уже сделали это"
+
+#: includes/updates/class-y4ym-plugin-upd.php:209
+#: includes/updates/class-y4ym-plugin-upd.php:277
+msgid "enter the new license information here"
+msgstr "введите здесь информацию о новой лицензии"
+
+#: includes/updates/class-y4ym-plugin-upd.php:217
+#: includes/updates/class-y4ym-plugin-upd.php:243
+msgid "version features do not work and you can not install updates"
+msgstr "версии не работают, и вы не можете устанавливать обновления"
+
+#: includes/updates/class-y4ym-plugin-upd.php:218
+#: includes/updates/class-y4ym-plugin-upd.php:232
+#: includes/updates/class-y4ym-plugin-upd.php:244
+msgid "Enter your license information"
+msgstr "Введите информацию о лицензии"
+
+#: includes/updates/class-y4ym-plugin-upd.php:219
+#: includes/updates/class-y4ym-plugin-upd.php:233
+#: includes/updates/class-y4ym-plugin-upd.php:245
+msgid "or"
+msgstr "или"
+
+#: includes/updates/class-y4ym-plugin-upd.php:221
+#: includes/updates/class-y4ym-plugin-upd.php:235
+#: includes/updates/class-y4ym-plugin-upd.php:247
+msgid "purchase a new one"
+msgstr "приобретите новую"
+
+#: includes/updates/class-y4ym-plugin-upd.php:264
+msgid "License expires in"
+msgstr "Лицензия истекает через"
+
+#: includes/updates/class-y4ym-plugin-upd.php:266
+msgid "day"
+msgstr "день"
+
+#: includes/updates/class-y4ym-plugin-upd.php:267
+msgctxt "2 days"
+msgid "days"
+msgstr "дня"
+
+#: includes/updates/class-y4ym-plugin-upd.php:268
+msgctxt "5 days"
+msgid "days"
+msgstr "дней"
 
 #: sandbox.php:15
 msgid "The sandbox is working. The result will appear below"
@@ -2606,6 +2618,15 @@ msgstr "У вас установлена версия"
 #: yml-for-yandex-market.php:77
 msgid "requires WooCommerce installed and activated"
 msgstr "требуется, чтобы WooCommerce был установлен и активирован"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Price for Ozon Premium customers. Used only in the OZONE feed"
+#~ msgstr "Цена для покупателей с подпиской Ozon Premium"
+
+#~ msgid "Recommended retail price, type of price for suppliers"
+#~ msgstr "Рекомендуемая розничная цена, тип цены для поставщиков"
 
 #~ msgid "In attributes"
 #~ msgstr "В атрибутах"

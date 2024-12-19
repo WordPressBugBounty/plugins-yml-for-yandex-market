@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 4.9.1
+ * Version:                 4.9.2
  * Requires at least:       4.5
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         9.4.3
+ * WC tested up to:         9.5.2
  *
  * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
  * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
@@ -105,7 +105,7 @@ if ( ! function_exists( 'warning_notice' ) ) {
 }
 
 // Define constants
-define( 'YFYM_PLUGIN_VERSION', '4.9.1' );
+define( 'YFYM_PLUGIN_VERSION', '4.9.2' );
 
 $upload_dir = wp_get_upload_dir();
 // http://site.ru/wp-content/uploads
@@ -144,8 +144,8 @@ add_action( 'init', function () {
 } );
 
 if ( false === $not_run ) {
-	unset( $not_run );
 
+	unset( $not_run );
 	// for wp_kses
 	define( 'Y4YM_ALLOWED_HTML_ARR', [ 
 		'a' => [ 
@@ -196,7 +196,7 @@ if ( false === $not_run ) {
 	 * Start at version 1.0.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '4.9.1' );
+	define( 'Y4YM_PLUGIN_VERSION', '4.9.2' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -224,4 +224,5 @@ if ( false === $not_run ) {
 	register_deactivation_hook( __FILE__, [ 'YmlforYandexMarket', 'on_deactivation' ] );
 	add_action( 'plugins_loaded', [ 'YmlforYandexMarket', 'init' ], 10 ); // активируем плагин
 	define( 'YFYM_ACTIVE', true );
+
 }

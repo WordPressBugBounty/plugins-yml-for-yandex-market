@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.8.2 (24-11-2024)
+ * @version                 4.9.2 (19-12-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -31,6 +31,7 @@
 defined( 'ABSPATH' ) || exit;
 
 class YFYM_Generation_XML {
+
 	/**
 	 * Feed ID
 	 * @var string
@@ -919,36 +920,42 @@ class YFYM_Generation_XML {
 					$yfym_collection_picture = get_term_meta( $term->term_id, 'yfym_collection_picture', true );
 					$collections_yml .= new Get_Paired_Tag( 'picture', htmlspecialchars( $yfym_collection_picture ) );
 				}
-
-				$args = [ 
-					'post_type' => 'product',
-					'post_status' => 'publish',
-					'posts_per_page' => 5,
-					'tax_query' => [ 
+				if ( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) !== '' ) {
+					$collection_num_product_picture = (int) get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true );
+				} else {
+					$collection_num_product_picture = 0;
+				}
+				if ( $collection_num_product_picture > 0 ) {
+					$args = [ 
+						'post_type' => 'product',
+						'post_status' => 'publish',
+						'posts_per_page' => $collection_num_product_picture,
+						'tax_query' => [ 
+							'relation' => 'AND',
+							[ 
+								'taxonomy' => 'yfym_collection',
+								'field' => 'id',
+								'terms' => $term->term_id,
+								'operator' => 'IN'
+							]
+						],
 						'relation' => 'AND',
-						[ 
-							'taxonomy' => 'yfym_collection',
-							'field' => 'id',
-							'terms' => $term->term_id,
-							'operator' => 'IN'
-						]
-					],
-					'relation' => 'AND',
-					'orderby' => 'ID',
-					'fields' => 'ids'
-				];
-				$collection_query = new \WP_Query( $args );
-				if ( $collection_query->have_posts() ) {
-					for ( $i = 0; $i < count( $collection_query->posts ); $i++ ) {
-						$product_id = $collection_query->posts[ $i ];
-						$thumb_id = get_post_thumbnail_id( $product_id );
-						$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
-						$collections_yml .= new Get_Paired_Tag(
-							'picture',
-							htmlspecialchars( $thumb_url[0] )
-						);
+						'orderby' => 'ID',
+						'fields' => 'ids'
+					];
+					$collection_query = new \WP_Query( $args );
+					if ( $collection_query->have_posts() ) {
+						for ( $i = 0; $i < count( $collection_query->posts ); $i++ ) {
+							$product_id = $collection_query->posts[ $i ];
+							$thumb_id = get_post_thumbnail_id( $product_id );
+							$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
+							$collections_yml .= new Get_Paired_Tag(
+								'picture',
+								htmlspecialchars( $thumb_url[0] )
+							);
+						}
+						wp_reset_query();
 					}
-					wp_reset_query();
 				}
 
 				$collections_yml .= new Get_Paired_Tag( 'name', $term->name );
@@ -1327,4 +1334,5 @@ class YFYM_Generation_XML {
 			) );
 		}
 	}
+
 }
