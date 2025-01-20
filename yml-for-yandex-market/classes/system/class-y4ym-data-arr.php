@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   0.1.0
  * 
- * @version                 4.8.2 (24-11-2024)
+ * @version                 4.9.3 (19-01-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -76,21 +76,35 @@ class Y4YM_Data_Arr {
 					'tab' => 'none'
 				],
 				[ 
-					'opt_name' => 'yfym_file_url',
+					'opt_name' => 'yfym_feed_url', // https://site.ru/wp-content/uploads/feed-yml-0.xml
 					'def_val' => '',
 					'mark' => 'private',
 					'type' => 'auto',
 					'tab' => 'none'
 				],
 				[ 
-					'opt_name' => 'yfym_file_file',
+					'opt_name' => 'yfym_feed_path', // /home/site.ru/public_html/wp-content/uploads/feed-yml-0.xml
 					'def_val' => '',
 					'mark' => 'private',
 					'type' => 'auto',
 					'tab' => 'none'
 				],
 				[ 
-					'opt_name' => 'yfym_status_cron',
+					'opt_name' => 'yfym_file_url', // ! замена в след версиях на yfym_feed_url
+					'def_val' => '',
+					'mark' => 'private',
+					'type' => 'auto',
+					'tab' => 'none'
+				],
+				[ 
+					'opt_name' => 'yfym_file_file',  // ! замена в след версиях на yfym_feed_path
+					'def_val' => '',
+					'mark' => 'private',
+					'type' => 'auto',
+					'tab' => 'none'
+				],
+				[ 
+					'opt_name' => 'yfym_status_cron', // ! на удаление в след версиях
 					'def_val' => 'off',
 					'mark' => 'private',
 					'type' => 'auto',
@@ -390,12 +404,26 @@ class Y4YM_Data_Arr {
 						'woo_attr' => false,
 						'key_value_arr' => [ 
 							[ 'value' => '80', 'text' => '80' ],
+							[ 'value' => '100', 'text' => '100' ],
 							[ 'value' => '200', 'text' => '200' ],
 							[ 'value' => '300', 'text' => '300' ],
-							[ 'value' => '450', 'text' => '450' ],
-							[ 'value' => '500', 'text' => '500' ],
+							[ 'value' => '400', 'text' => '400' ],
+							[ 
+								'value' => '500',
+								'text' => sprintf(
+									'500 (%s)', __( 'Default value', 'yml-for-yandex-market' )
+								)
+							],
+							[ 'value' => '600', 'text' => '600' ],
+							[ 'value' => '700', 'text' => '700' ],
 							[ 'value' => '800', 'text' => '800' ],
-							[ 'value' => '1000', 'text' => '1000' ]
+							[ 'value' => '900', 'text' => '900' ],
+							[ 'value' => '1000', 'text' => '1000' ],
+							[ 'value' => '1100', 'text' => '1100' ],
+							[ 'value' => '1200', 'text' => '1200' ],
+							[ 'value' => '1300', 'text' => '1300' ],
+							[ 'value' => '1400', 'text' => '1400' ],
+							[ 'value' => '1500', 'text' => '1500' ]
 						],
 						'tr_class' => 'y4ym_tr'
 					]
@@ -427,13 +455,13 @@ class Y4YM_Data_Arr {
 				],
 				[ 
 					'opt_name' => 'yfym_do_cash_file',
-					'def_val' => 'disabled',
+					'def_val' => 'enabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'main_tab',
 					'data' => [ 
 						'label' => __(
-							'Disable the creation of cache files when saving products',
+							'Сreate cache files when saving products',
 							'yml-for-yandex-market'
 						),
 						'desc' => sprintf( '%s. %s',
@@ -443,35 +471,6 @@ class Y4YM_Data_Arr {
 							),
 							__(
 								'However, disabling this option leads to a significant increase in the feed creation time',
-								'yml-for-yandex-market'
-							)
-						),
-						'woo_attr' => false,
-						'key_value_arr' => [ 
-							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
-							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
-						],
-						'tr_class' => ''
-					]
-				],
-				[ 
-					'opt_name' => 'yfym_del_identical_ids',
-					'def_val' => 'disabled',
-					'mark' => 'public',
-					'type' => 'select',
-					'tab' => 'main_tab',
-					'data' => [ 
-						'label' => __(
-							'Take steps to remove products with the same ID from the feed',
-							'yml-for-yandex-market'
-						),
-						'desc' => sprintf( '%s. %s',
-							__(
-								'This is an experimental feature',
-								'yml-for-yandex-market'
-							),
-							__(
-								'It should only be used if you have an error related to the presence of products with the same identifier in the product feed',
 								'yml-for-yandex-market'
 							)
 						),
@@ -1184,6 +1183,8 @@ class Y4YM_Data_Arr {
 							[ 'value' => 'enabled', 'text' => __( 'Enable. No default value', 'yml-for-yandex-market' ) ],
 							[ 'value' => 'NO_VAT', 'text' => __( 'No VAT', 'yml-for-yandex-market' ) . ' (NO_VAT)' ],
 							[ 'value' => 'VAT_0', 'text' => '0% (VAT_0)' ],
+							[ 'value' => 'VAT_5', 'text' => '5% (VAT_5)' ],
+							[ 'value' => 'VAT_7', 'text' => '7% (VAT_7)' ],
 							[ 'value' => 'VAT_10', 'text' => '10% (VAT_10)' ],
 							[ 'value' => 'VAT_10_110', 'text' => 'VAT_10_110' ],
 							[ 'value' => 'VAT_18', 'text' => '18% (VAT_18)' ],
@@ -1383,7 +1384,8 @@ class Y4YM_Data_Arr {
 						'key_value_arr' => [ 
 							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
 						],
-						'tag_name' => 'typePrefix'
+						'tag_name' => 'type_prefix',
+						'tag_name_for_desc' => 'typePrefix'
 					]
 				],
 				[ 
@@ -2113,6 +2115,24 @@ class Y4YM_Data_Arr {
 						'tag_name_for_desc' => ''
 					]
 				],
+				[ // ! добавить в новой версии плагина
+					'opt_name' => 'yfym_name',
+					'def_val' => 'enabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'wp_list_table',
+					'data' => [ 
+						'label' => __( 'Product name', 'yml-for-yandex-market' ),
+						'desc' => '',
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ] // ,
+							// [ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'name'
+					]
+				],
 				[ 
 					'opt_name' => 'yfym_params_arr',
 					'def_val' => '',
@@ -2491,6 +2511,35 @@ class Y4YM_Data_Arr {
 							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
 							[ 'value' => 'on', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
 						]
+					]
+				],
+				[ 
+					'opt_name' => 'yfym_del_identical_ids',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'filtration_tab',
+					'data' => [ 
+						'label' => __(
+							'Take steps to remove products with the same ID from the feed',
+							'yml-for-yandex-market'
+						),
+						'desc' => sprintf( '%s. %s',
+							__(
+								'This is an experimental feature',
+								'yml-for-yandex-market'
+							),
+							__(
+								'It should only be used if you have an error related to the presence of products with the same identifier in the product feed',
+								'yml-for-yandex-market'
+							)
+						),
+						'woo_attr' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+						],
+						'tr_class' => ''
 					]
 				],
 				[ 

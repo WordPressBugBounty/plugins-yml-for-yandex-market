@@ -234,6 +234,9 @@ class Y4YM_Settings_Page {
 
 						wp_clear_scheduled_hook( 'yfym_cron_sborki', [ $feed_id ] );
 						common_option_upd( 'yfym_cron_sborki', '-1', 'no', $feed_id, 'yfym' );
+
+						// TODO: отказаться от этой строки в будущем
+						yfym_optionUPD( 'yfym_status_sborki', '-1', $this->get_feed_id() );
 					} else if ( $run_cron === 'once' ) {
 						// единоразовый импорт
 						common_option_upd( 'yfym_cron_sborki', '-1', 'no', $feed_id, 'yfym' );
@@ -359,6 +362,8 @@ class Y4YM_Settings_Page {
 				}
 
 				// обнулим часть значений т.к фид-клон ещё не создавался
+				$new_data_arr['yfym_feed_url'] = '';
+				$new_data_arr['yfym_feed_path'] = '';
 				$new_data_arr['yfym_file_url'] = '';
 				$new_data_arr['yfym_file_file'] = '';
 				$new_data_arr['yfym_status_cron'] = 'off';

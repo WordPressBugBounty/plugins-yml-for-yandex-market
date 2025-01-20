@@ -6,7 +6,7 @@
  * @subpackage              YML for Yandex Market
  * @since                   4.1.12
  * 
- * @version                 4.9.2 (19-12-2024)
+ * @version                 4.9.3 (19-01-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -55,19 +55,19 @@ class Y4YM_Rules_List {
 					'offer_tag', 'market_category_id', 'url', 'disabled', 'enable_auto_discounts', 'vat', 'delivery', 'pickup', 'delivery_options',
 					'pickup_options', 'count', 'oldprice' // ? есть ли поддержка 'store', 
 				],
-				'yandex_direct' => [ 'currencies', // https://yandex.ru/support/direct/feeds/requirements-yml.html
+				'yandex_direct' => [ 'currencies', // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'name', 'vendor',
 					'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty', 'country_of_origin',
 					'age', 'downloadable', 'params', 'collection_id',
 					'oldprice', 'adult', 'market_category', 'custom_labels', 'custom_score'
 				],
-				'yandex_direct_free_from' => [ 'currencies', // https://yandex.ru/support/direct/feeds/requirements-yml.html
+				'yandex_direct_free_from' => [ 'currencies', // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'type_prefix', 'vendor',
 					'model', 'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty', 'country_of_origin',
 					'age', 'downloadable', 'params', 'collection_id', 'oldprice',
 					'adult', 'market_category', 'custom_labels', 'custom_score'
 				],
-				'yandex_direct_combined' => [ 'currencies', // https://yandex.ru/support/direct/feeds/requirements-yml.html
+				'yandex_direct_combined' => [ 'currencies', // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'type_prefix', 'name',
 					'vendor', 'model', 'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty',
 					'country_of_origin', 'age', 'downloadable', 'params',
@@ -126,7 +126,7 @@ class Y4YM_Rules_List {
 					'downloadable', 'enable_auto_discounts', 'expiry', 'instock', 'keywords', 'manufacturer_warranty',
 					'warranty_days', 'manufacturer', 'market_sku', 'min_quantity', 'model', 'name', 'outlets', 'params',
 					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
-					'recommend_stock_data', 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
+					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
 					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'cofinance_price', 'purchase_price', 'type_prefix', 'oldprice', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score'

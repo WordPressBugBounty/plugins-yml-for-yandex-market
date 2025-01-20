@@ -6,7 +6,7 @@
  * @subpackage              
  * @since                   0.1.0
  * 
- * @version                 4.9.2 (19-12-2024)
+ * @version                 4.9.3 (19-01-2024)
  * @author                  Maxim Glazunov
  * @link                    https://icopydoc.ru/
  * @see                     
@@ -142,6 +142,7 @@ class YFYM_Generation_XML {
 					__LINE__
 				) );
 				yfym_optionUPD( 'yfym_file_file', urlencode( $upload['file'] ), $this->get_feed_id(), 'yes', 'set_arr' );
+				yfym_optionUPD( 'yfym_feed_path', urlencode( $upload['file'] ), $this->get_feed_id(), 'yes', 'set_arr' );
 				return true;
 			}
 		}
@@ -1264,6 +1265,7 @@ class YFYM_Generation_XML {
 			return false;
 		} else {
 			yfym_optionUPD( 'yfym_file_url', urlencode( $feed_url_new ), $this->get_feed_id(), 'yes', 'set_arr' );
+			yfym_optionUPD( 'yfym_feed_url', urlencode( $feed_url_new ), $this->get_feed_id(), 'yes', 'set_arr' );
 			new YFYM_Error_Log( sprintf(
 				'FEED № %1$s; SUCCESS: Файл фида успешно переименован из %2$s в %3$s; Файл: %4$s; Строка: %5$s',
 				$this->get_feed_id(),

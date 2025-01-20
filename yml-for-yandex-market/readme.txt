@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 4.5
 Tested up to: 6.7.1
-Stable tag: 4.9.2
+Stable tag: 4.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,12 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 4.9.3 =
+*Release Date 20-01-2024*
+
+* Fixed bugs.
+* Added new VAT rates.
 
 = 4.9.2 =
 *Release Date 19-12-2024*
@@ -287,8 +293,8 @@ to:
 
 == Upgrade Notice ==
 
-= 4.9.2 =
-*Release Date 19-12-2024*
+= 4.9.3 =
+*Release Date 20-01-2024*
 
-* Slightly improved interface
-* This update prepares the plugin for the transition to a new kernel.
+* Fixed bugs.
+* Added new VAT rates.
