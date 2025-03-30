@@ -1,109 +1,94 @@
 <?php
+
 /**
- * Creates a paired tag 
+ * This class registers and outputs plugin notifications.
  *
- * @package                 iCopyDoc Plugins (ICPD)
- * @subpackage              
- * 
- * @version                 0.1.0 (29-08-2023)
- * @author                  Maxim Glazunov
- * @link                    https://icopydoc.ru/
- * @see				        
+ * @link       https://icopydoc.ru
+ * @since      0.1.0
+ * @version    0.2.0 (22-10-2024)
  *
- * @depends                 classes:    
- *                          traits:     
- *                          methods:    
- *                          functions:  
- *                          constants:  
- *                          actions:    
- *                          filters:    
- * Usage example:
- *                          new ICPD_Set_Admin_Notices('Logs were cleared', 'notice-success is-dismissible');
+ * @package    iCopyDoc Plugins (ICPD)
+ * @subpackage 
  */
-defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'ICPD_Set_Admin_Notices' ) ) {
+
+	/**
+	 * This class registers and outputs plugin notifications. Hooked into `admin_notices` action hook.
+	 *
+	 * Usage example: `new ICPD_Set_Admin_Notices('Logs were cleared', 'success', true);`
+	 *
+	 * @package    Y4YM
+	 * @subpackage Y4YM/includes/common-libs
+	 * @author     Maxim Glazunov <icopydoc@gmail.com>
+	 */
 	class ICPD_Set_Admin_Notices {
+
 		/**
-		 * The notice message value
-		 * @var 
+		 * The notice message value.
+		 * @var string
 		 */
 		protected $message;
-		/**
-		 * The notice message class
-		 * @var 
-		 */
-		protected $class;
 
 		/**
-		 * Initialize notice
-		 * 
-		 * @param string $message - Required - notice message value
-		 * @param string $class - Optional - notice message class. Default value: 'notice-info'
+		 * The notice arguments.
+		 * @var array
 		 */
-		public function __construct( $message, $class = 'notice-info' ) {
+		protected $args;
+
+		/**
+		 * Initialization notice.
+		 * 
+		 * @param string $message Notice message value.
+		 * @param string $class Notice message class. Maybe: `success`, `error`, `warning`, `info`, `(empty)`.
+		 * @param bool $dismissible
+		 */
+		public function __construct( $message, $class = 'info', $dismissible = false ) {
+
 			$this->message = $message;
-			$this->class = $class;
-			$this->init_classes();
+			$this->args = [ 
+				'type' => $class,
+				'dismissible' => $dismissible
+			];
 			$this->init_hooks();
+
 		}
 
 		/**
-		 * Summary of __toString
-		 * 
-		 * @return string
-		 */
-		public function __toString() {
-			if ( empty( $this->get_message() ) ) {
-				return '';
-			} else {
-				return sprintf( '<div class="notice %1$s"><p>%2$s</p></div>',
-					$this->get_message(),
-					$this->get_class()
-				) . PHP_EOL;
-			}
-		}
-
-		/**
-		 * Init classes
-		 * 
-		 * @return void
-		 */
-		public function init_classes() {
-			return;
-		}
-
-		/**
-		 * Init hooks
+		 * Initialization hooks.
 		 * 
 		 * @return void
 		 */
 		public function init_hooks() {
+
 			// наш класс, вероятно, вызывается не раньше срабатывания хука admin_menu.
-			// admin_init - следующий в очереди срабатывания, на хуки раньше admin_menu нет смысла вешать
+			// admin_init - следующий в очереди срабатывания, на хуки раньше admin_menu нет смысла вешать.
 			// add_action('admin_init', [ $this, 'my_func' ], 10, 1);
 			$message = $this->get_message();
-			$class = $this->get_class();
-			add_action( 'admin_notices', function () use ($message, $class) {
-				$this->print_admin_notices( $message, $class );
+			$args = $this->get_args();
+			add_action( 'admin_notices', function () use ($message, $args) {
+				$this->print_admin_notices( $message, $args );
 			}, 10, 2 );
 
-			return;
 		}
 
 		/**
-		 * Print admin notice
+		 * Print admin notice.
+		 * @see https://wp-kama.ru/function/wp_admin_notice
 		 * 
-		 * @param string $message - Required - notice message value
-		 * @param string $class - Required - notice message class
+		 * @param string $message Notice message value.
+		 * @param array $args The notice arguments.
 		 * 
 		 * @return void
 		 */
-		private function print_admin_notices( $message, $class ) {
-			printf( '<div class="notice %1$s"><p>%2$s</p></div>', $class, $message );
+		private function print_admin_notices( $message, $args ) {
+
+			wp_admin_notice( $message, $args );
+
 		}
 
 		/**
-		 * Get notice message value
+		 * Get notice message value.
+		 * 
 		 * @return string
 		 */
 		public function get_message() {
@@ -111,12 +96,14 @@ if ( ! class_exists( 'ICPD_Set_Admin_Notices' ) ) {
 		}
 
 		/**
-		 * Get notice message class
+		 * Get notice message arguments.
 		 * 
-		 * @return string
+		 * @return array
 		 */
-		public function get_class() {
-			return $this->class;
+		public function get_args() {
+			return $this->args;
 		}
+
 	}
+
 }

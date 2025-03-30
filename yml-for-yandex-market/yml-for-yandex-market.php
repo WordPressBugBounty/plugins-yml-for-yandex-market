@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link                    https://icopydoc.ru
- * @since                   1.0.0
+ * @since                   0.1.0
  * @package                 Y4YM
  *
  * @wordpress-plugin
@@ -17,27 +17,18 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 4.9.3
+ * Version:                 5.0.0
  * Requires at least:       4.5
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
  * Author URI:              https://icopydoc.ru/
- * License:                 GPL v2 or later
- * License URI:             https://www.gnu.org/licenses/gpl-2.0.html
+ * License:                 GPL-2.0+
+ * License URI:             http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:             yml-for-yandex-market
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         9.6.0
- *
- * This program is free software; you can redistribute it and/or modify it under the terms of the GNU
- * General Public License version 2, as published by the Free Software Foundation. You may NOT assume
- * that you can use any other version of the GPL.
- *
- * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
- * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * 
- * Copyright 2018-2024 (Author emails: djdiplomat@yandex.ru, support@icopydoc.ru)
+ * WC tested up to:         9.7.2
  */
 
 // If this file is called directly, abort.
@@ -104,48 +95,201 @@ if ( ! function_exists( 'warning_notice' ) ) {
 	}
 }
 
-// Define constants
-define( 'YFYM_PLUGIN_VERSION', '4.9.3' );
+/**
+ * Updating the plugin database.
+ *
+ * @return void
+ */
+function y4ym_plugin_database_upd() {
 
-$upload_dir = wp_get_upload_dir();
-// http://site.ru/wp-content/uploads
-define( 'YFYM_SITE_UPLOADS_URL', $upload_dir['baseurl'] );
+	$new_settings_arr = [];
+	if ( is_multisite() ) {
+		$old_settings_arr = get_blog_option( get_current_blog_id(), 'yfym_settings_arr', [] );
+		$registered_feeds_arr = get_blog_option(
+			get_current_blog_id(),
+			'yfym_registered_feeds_arr',
+			[ 0 => [ 'last_id' => '0' ] ]
+		);
+		$last_id = $registered_feeds_arr[0]['last_id'];
+		update_blog_option( get_current_blog_id(), 'y4ym_last_feed_id', $last_id );
+	} else {
+		$old_settings_arr = get_option( 'yfym_settings_arr', [] );
+		$registered_feeds_arr = get_option(
+			'yfym_registered_feeds_arr',
+			[ 0 => [ 'last_id' => '0' ] ]
+		);
+		$last_id = $registered_feeds_arr[0]['last_id'];
+		update_option( 'y4ym_last_feed_id', $last_id );
+	}
+	if ( ! empty( $old_settings_arr ) ) {
+		if ( is_multisite() ) {
+			$p_arr = get_blog_option( get_current_blog_id(), 'p_arr', [] );
+		} else {
+			$p_arr = get_option( 'p_arr', [] );
+		}
+		$feed_ids_arr = array_keys( $old_settings_arr );
+		for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
+			$feed_id = (string) $feed_ids_arr[ $i ]; // $key
 
-// /home/site.ru/public_html/wp-content/uploads
-define( 'YFYM_SITE_UPLOADS_DIR_PATH', $upload_dir['basedir'] );
+			$arrs_old = [ 
+				'yfym_params_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
+				'yfymp_exclude_cat_arr' // pro
+			];
+			$arrs_new = [ 
+				'y4ym_params_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
+				'y4ymp_exclude_cat_arr' // pro
+			];
+			for ( $n = 0; $n < count( $arrs_old ); $n++ ) {
+				if ( $feed_id === '1' ) {
+					$opt_name_old = $arrs_old[ $n ];
+				} else {
+					$opt_name_old = $arrs_old[ $n ] . $feed_id;
+				}
+				if ( is_multisite() ) {
+					$old_arr = get_blog_option( get_current_blog_id(), $opt_name_old, [] );
+					$old_arr = maybe_unserialize( $old_arr );
+					update_blog_option( get_current_blog_id(), $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+				} else {
+					$old_arr = get_option( $opt_name_old, [] );
+					$old_arr = maybe_unserialize( $old_arr );
+					update_option( $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+				}
+			}
 
-// http://site.ru/wp-content/uploads/yfym
-define( 'YFYM_PLUGIN_UPLOADS_DIR_URL', $upload_dir['baseurl'] . '/yfym' );
+			$new_settings_arr[ $feed_id ] = y4ym_change_data_one_feed( $old_settings_arr[ $feed_id ] );
 
-// /home/site.ru/public_html/wp-content/uploads/yfym
-define( 'YFYM_PLUGIN_UPLOADS_DIR_PATH', $upload_dir['basedir'] . '/yfym' );
-unset( $upload_dir );
+			// конструктор параметров в прошке
+			if ( ! empty( $p_arr ) && isset( $p_arr[ $feed_id ] ) ) {
+				$new_arr = [];
+				for ( $n = 1; $n < 16; $n++ ) {
+					if ( $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] === 'on' ) {
+						$p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] = 'enabled';
+					}
+					$new_arr[ $n ] = [ 
+						'param_use' => $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ],
+						'param_name_select' => $p_arr[ $feed_id ][ 'yfymp_p_name_s' . $n ],
+						'param_name_custom' => $p_arr[ $feed_id ][ 'yfymp_p_name_custom' . $n ],
+						'param_unit_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_s' . $n ],
+						'param_unit_default_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_default_s' . $n ],
+						'param_unit_custom' => $p_arr[ $feed_id ][ 'yfymp_p_unit_custom' . $n ],
+						'param_value_select' => $p_arr[ $feed_id ][ 'yfymp_p_val_s' . $n ],
+						'param_value_custom' => $p_arr[ $feed_id ][ 'yfymp_p_val_custom' . $n ]
+					];
+				}
+				if ( is_multisite() ) {
+					update_blog_option( get_current_blog_id(), 'y4ymp_constructor_params' . $feed_id, $new_arr );
+				} else {
+					update_option( 'y4ymp_constructor_params' . $feed_id, $new_arr );
+				}
+			}
+		}
+	}
+	if ( is_multisite() ) {
+		update_blog_option( get_current_blog_id(), 'y4ym_settings_arr', $new_settings_arr );
+		update_blog_option( get_current_blog_id(), 'y4ym_version', Y4YM_PLUGIN_VERSION );
+	} else {
+		update_option( 'y4ym_settings_arr', $new_settings_arr );
+		update_option( 'y4ym_version', Y4YM_PLUGIN_VERSION );
+	}
 
-// http://site.ru/wp-content/plugins/yml-for-yandex-market/
-define( 'YFYM_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+}
 
-// /home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/
-define( 'YFYM_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+/**
+ * Changes feed settings data. It is used when updating the plugin database.
+ * 
+ * @param array $settings_arr
+ *
+ * @return array
+ */
+function y4ym_change_data_one_feed( $settings_arr ) {
 
-// /home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/yml-for-yandex-market.php
-define( 'YFYM_PLUGIN_MAIN_FILE_PATH', __FILE__ );
+	$new_settings_arr = [];
+	foreach ( $settings_arr as $key => $value ) {
+		$skip_flag = false;
+		$new_key = str_replace( 'yfym', 'y4ym', $key );
+		switch ( $key ) {
 
-// yml-for-yandex-market - псевдоним плагина
-define( 'YFYM_PLUGIN_SLUG', wp_basename( dirname( __FILE__ ) ) );
+			case "yfym_status_cron":
+			case "yfym_type_sborki":
+			case "yfym_file_ids_in_ymli":
+			case "yfym_magazin_type":
+			case "yfym_behavior_stip_symbol":
+			case "yfym_main_product":
+			case "yfym_product_tag_arr":
+			case "yfym_enable_auto_discount":
+			case "yfym_enable_auto_discounts":
+			case "yfym_ebay_stock";
+			case "yfym_file_ids_in_xml";
+			case "yfym_cron_sborki":
+			case "yfym_barcode_post_meta_var":
 
-// yml-for-yandex-market/yml-for-yandex-market.php - полный псевдоним плагина (папка плагина + имя главного файла)
-define( 'YFYM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+			case "yfym_params_arr":
+			case "yfym_consists_arr":
+			case "yfym_no_group_id_arr":
+			case "yfym_add_in_name_arr":
+			case "yfymp_exclude_cat_arr":
 
-// $not_run = apply_filters('y4ym_f_nr', $not_run);
+				// на удаление
+				$skip_flag = true;
+				break;
+			case "yfym_date_sborki":
+				$new_key = 'y4ym_date_sborki_start';
+				break;
+			case "yfym_file_url":
+				$new_key = 'y4ym_feed_url';
+				break;
+			case "yfym_file_file":
+				$new_key = 'y4ym_feed_path';
+				break;
+			case "yfym_errors":
+				$new_key = 'y4ym_critical_errors';
+				break;
+			case "yfym_cache":
+				$new_key = 'y4ym_ignore_cache';
+				break;
 
-// load translation
-add_action( 'init', function () {
-	load_plugin_textdomain( 'yml-for-yandex-market', false, dirname( YFYM_PLUGIN_BASENAME ) . '/languages/' );
-} );
+		}
+
+		switch ( $key ) {
+
+			case "yfym_ufup":
+			case "yfym_downloadable":
+			case "yfym_pickup_options":
+			case "yfym_delivery_options":
+			case "yfym_delivery_options2":
+			case "yfym_no_default_png_products":
+			case "yfym_skip_products_without_pic":
+			case "yfym_skip_missing_products":
+			case "yfym_skip_backorders_products":
+				if ( $value === 'on' ) {
+					$new_value = 'enabled';
+				} else {
+					$new_value = $value;
+				}
+				break;
+			default:
+				if ( isset( $new_settings_arr[ $new_key ] ) && ! empty( $new_settings_arr[ $new_key ] ) ) {
+					$skip_flag = true;
+				} else {
+					$new_value = $value;
+				}
+
+		}
+
+		if ( true === $skip_flag ) {
+			continue;
+		} else {
+			$new_settings_arr[ $new_key ] = $new_value;
+		}
+
+	}
+	return $new_settings_arr;
+
+}
 
 if ( false === $not_run ) {
-
 	unset( $not_run );
+
 	// for wp_kses
 	define( 'Y4YM_ALLOWED_HTML_ARR', [ 
 		'a' => [ 
@@ -193,10 +337,10 @@ if ( false === $not_run ) {
 
 	/**
 	 * Currently plugin version.
-	 * Start at version 1.0.0 and use SemVer - https://semver.org
+	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '4.9.3' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.0.0' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -212,17 +356,148 @@ if ( false === $not_run ) {
 	define( 'Y4YM_PLUGIN_UPLOADS_DIR_PATH', $upload_dir['basedir'] . '/y4ym' );
 	unset( $upload_dir );
 
+	// /home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/
+	define( 'Y4YM_PLUGIN_DIR_PATH', plugin_dir_path( __FILE__ ) );
+
+	/**
+	 * The plugin autoloader.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-y4ym-autoloader.php';
+	new Y4YM_Autoloader( Y4YM_PLUGIN_DIR_PATH, 'Y4YM' );
+
 	/**
 	 * The code that runs during plugin activation.
 	 * This action is documented in includes/class-y4ym-activator.php.
 	 * 
 	 * @return void
 	 */
+	function activate_y4ym() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-y4ym-activator.php';
+		Y4YM_Activator::activate();
+	}
 
-	require_once YFYM_PLUGIN_DIR_PATH . '/packages.php';
-	register_activation_hook( __FILE__, [ 'YmlforYandexMarket', 'on_activation' ] );
-	register_deactivation_hook( __FILE__, [ 'YmlforYandexMarket', 'on_deactivation' ] );
-	add_action( 'plugins_loaded', [ 'YmlforYandexMarket', 'init' ], 10 ); // активируем плагин
-	define( 'YFYM_ACTIVE', true );
+	/**
+	 * The code that runs during plugin deactivation.
+	 * This action is documented in includes/class-y4ym-deactivator.php.
+	 * 
+	 * @return void
+	 */
+	function deactivate_y4ym() {
+		require_once plugin_dir_path( __FILE__ ) . 'includes/class-y4ym-deactivator.php';
+		Y4YM_Deactivator::deactivate();
+	}
+
+	register_activation_hook( __FILE__, 'activate_y4ym' );
+	register_deactivation_hook( __FILE__, 'deactivate_y4ym' );
+
+	/**
+	 * The core plugin class that is used to define internationalization,
+	 * admin-specific hooks, and public-facing site hooks.
+	 */
+	require plugin_dir_path( __FILE__ ) . 'includes/class-y4ym.php';
+
+	/**
+	 * The sandbox function.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'sandbox.php';
+
+	/**
+	 * The plugin function.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'function.php';
+
+	/**
+	 * Begins execution of the plugin.
+	 *
+	 * Since everything within the plugin is registered via hooks,
+	 * then kicking off the plugin from this point in the file does
+	 * not affect the page life cycle.
+	 *
+	 * @since 0.1.0
+	 * 
+	 * @return void
+	 */
+	function run_y4ym() {
+
+		$plugin = new Y4YM();
+		$plugin->run();
+
+	}
+
+	run_y4ym();
+
+	if ( is_multisite() ) {
+		$y4ym_v = get_blog_option( get_current_blog_id(), 'y4ym_version', '0.1.0' );
+	} else {
+		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
+	}
+	if ( version_compare( $y4ym_v, '5.0.0', '<' ) ) {
+		y4ym_plugin_database_upd();
+	}
+
+	if ( class_exists( 'YmlforYandexMarketPro' ) ) {
+		$msg = sprintf(
+			'<h1><strong style="font-weight: 700;">%1$s</strong> %2$s! %3$s 6.0.0.</h1>',
+			'YML for Yandex Market PRO',
+			__(
+				'plugin DOES NOT WORK',
+				'yml-for-yandex-market'
+			),
+			__(
+				'To restore its functionality, urgently update the plugin to a version not lower than',
+				'yml-for-yandex-market'
+			)
+		);
+		new ICPD_Set_Admin_Notices( $msg, 'error', true );
+
+		if ( is_multisite() ) {
+			$y4ymp_id = get_blog_option( get_current_blog_id(), 'yfymp_order_id', '' );
+			$y4ymp_email = get_blog_option( get_current_blog_id(), 'yfymp_order_email', '' );
+			update_blog_option( get_current_blog_id(), 'y4ymp_order_id', $y4ymp_id );
+			update_blog_option( get_current_blog_id(), 'y4ymp_order_email', $y4ymp_email );
+			update_blog_option(
+				get_current_blog_id(),
+				'woo_hook_isc' . 'y4ymp',
+				get_blog_option( get_current_blog_id(), 'woo_hook_isc' . 'yfymp', '0' )
+			);
+			update_blog_option(
+				get_current_blog_id(),
+				'woo_hook_isd' . 'y4ymp',
+				get_blog_option( get_current_blog_id(), 'woo_hook_isd' . 'yfymp', '0' )
+			);
+		} else {
+			$y4ymp_id = get_option( 'yfymp_order_id', '' );
+			$y4ymp_email = get_option( 'yfymp_order_email', '' );
+			update_option( 'y4ymp_order_id', $y4ymp_id );
+			update_option( 'y4ymp_order_email', $y4ymp_email );
+			update_option(
+				'woo_hook_isc' . 'y4ymp',
+				get_option( 'woo_hook_isc' . 'yfymp', '0' )
+			);
+			update_option(
+				'woo_hook_isd' . 'y4ymp',
+				get_option( 'woo_hook_isd' . 'yfymp', '0' )
+			);
+		}
+		// add_filter( 'yfymp_f_nr', function ($not_run) {
+		//	return true;
+		// } );
+	}
+
+	if ( defined( 'Y4YMS_PLUGIN_VERSION' ) && version_compare( Y4YMS_PLUGIN_VERSION, '0.3.0', '<' ) ) {
+		$msg = sprintf(
+			'<h1><strong style="font-weight: 700;">%1$s</strong> %2$s! %3$s 0.3.0.</h1>',
+			'YML for Yandex Market SETS',
+			__(
+				'plugin DOES NOT WORK',
+				'yml-for-yandex-market'
+			),
+			__(
+				'To restore its functionality, urgently update the plugin to a version not lower than',
+				'yml-for-yandex-market'
+			)
+		);
+		new ICPD_Set_Admin_Notices( $msg, 'error', true );
+	}
 
 }
