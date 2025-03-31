@@ -1,10 +1,10 @@
-﻿=== YML for Yandex Market ===
+=== YML for Yandex Market ===
 Contributors: icopydoc
 Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
-Requires at least: 4.5
-Tested up to: 6.7.1
-Stable tag: 4.9.3
+Requires at least: 5.0
+Tested up to: 6.7.2
+Stable tag: 5.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Creates a YML-feed to upload to Yandex Market and not only. In addition to Yande
 * GOODS.ru
 * boo.ua
 * 2gis.com
-* AliExpress.com*
+* AliExpress.com
 * Маркетплейс Маркета (BERU)
 * CDEK (partial support)
 * OZON (partial support)
@@ -77,224 +77,23 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Changelog ==
 
-= 4.9.3 =
-*Release Date 20-01-2024*
+= 5.0.1 =
+*Release Date 31-03-2025*
 
-* Fixed bugs.
-* Added new VAT rates.
+* Fixed bug with `wp_admin_notice()`.
 
-= 4.9.2 =
-*Release Date 19-12-2024*
+= 5.0.0 =
+*Release Date 30-03-2025*
 
-* Slightly improved interface
-* This update prepares the plugin for the transition to a new kernel.
-
-= 4.9.1 =
-* Fixed bugs with VK rules
-
-= 4.9.0 =
-* This update prepares the plugin for the transition to a new kernel. The names of the post meta have been changed from:
-'yfym_individual_delivery',
-'yfym_cost',
-'yfym_days',
-'yfym_order_before',
-'yfym_individual_pickup',
-'yfym_pickup_cost',
-'yfym_pickup_days',
-'yfym_pickup_order_before',
-'yfym_credit_template'
-to:
-'_yfym_individual_delivery',
-'_yfym_cost',
-'_yfym_days',
-'_yfym_order_before',
-'_yfym_individual_pickup',
-'_yfym_pickup_cost',
-'_yfym_pickup_days',
-'_yfym_pickup_order_before',
-'_yfym_credit_template'
-
-= 4.8.2 =
-* Fixed bugs
-* 5 photos included in it are automatically added to the "collection" tag
-
-= 4.8.1 =
-* Fixed bugs
+* New plugin core
 
 = 4.8.0 =
 * Fixed bugs
 * Added the ability to set the start time of feed generation
 
-= 4.7.3 =
-* Fixed bugs
-
-= 4.7.2 =
-* Fixed bugs with tn-ved-code
-
-= 4.7.1 =
-* Fixed bugs
-* Added support for this tag: shipment-options
-
-= 4.7.0 =
-* Slightly improved interface
-* Added support for this tags: custom_label, custom_score, market_category, market_category_id
-
-= 4.6.2 =
-* Fixed bugs
-
-= 4.6.1 =
-* Fixed bugs
-
-= 4.6.0 =
-* Fixed bugs
-* Added support for flowwow.com marketplace
-
-= 4.4.4 =
-* Fixed bugs
-
-= 4.4.3 =
-* Fixed bugs
-* Now the plugin automatically skips images that are not supported by the marketplace
-
-= 4.4.2 =
-* Fixed bugs
-* Added compatibility with the plugin UPC/EAN/GTIN Code Generator
-
-= 4.4.1 =
-* Fixed bugs
-
-= 4.4.0 =
-* Added a mechanism for checking the integrity of the DOOM tree of the feed
-
-= 4.3.6 =
-* Fixed interface bugs
-* Added support for this tag: adult
-
-= 4.3.5 =
-* Fixed bugs
-
-= 4.3.3 =
-* Fixed interface bugs
-* Added support for this tags: warranty-days, collectionId
-
-= 4.3.2 =
-* Fixed interface bugs
-* Updated plugin libraries
-
-= 4.3.1 =
-* Fixed interface bugs
-* Updated plugin libraries
-
-= 4.3.0 =
-* Cumulative update
-* The process of working with meta fields has been optimized
-
-= 4.2.7 =
-* Minor update
-
-= 4.2.6 =
-* Cumulative update
-
-= 4.2.5 =
-* Fixed interface bugs
-* Added compatibility with the Saphali Custom Brands Pro plugin
-
-= 4.2.4 =
-* Fixed a security issue
-
-= 4.2.3 =
-* Fixed bugs
-
-= 4.2.1 =
-* Added support for 'archived' tag
-
-= 4.2.0 =
-* Slightly improved interface
-* Fixed interface bugs
-* Added new filters
-
-= 4.1.13 =
-* Fixed interface bugs
-
-= 4.1.11 =
-* Slightly improved interface
-
-= 4.1.10 =
-* Fix critical bugs
-
-= 4.1.9 =
-* Fixed bugs
-* Slightly improved interface
-
-= 4.1.6 =
-* Some changes
-
-= 4.1.5 =
-* Fixed bugs
-
-= 4.1.4 =
-* Added support for 'typePrefix' tag
-
-= 4.1.3 =
-* Fixed bugs
-
-= 4.1.2 =
-* Fixed bugs
-
-= 4.1.1 =
-* Added support for this tags: additional_expenses, cofinance_price, purchase_price
-
-= 4.1.0 =
-* Added support for UZS currency
-* Improved compatibility with the Docketcache plugin
-* Improved the mechanism for gluing a feed from cache elements
-* Fixed bugs
-
-= 4.0.10 =
-* Fixed bugs
-
-= 4.0.9 =
-* Fixed bugs
-
-= 4.0.8 =
-* Fixed bugs
-* Added extensions SETS for downloading information about online educational courses and lessons. See extensions page!
-
-= 4.0.7 =
-* Fixed interface bugs
-
-= 4.0.6 =
-* Fix bugs
-
-= 4.0.5 =
-* Fix bugs
-* Now you can give feeds arbitrary names
-
-= 4.0.4 =
-* Fix bugs
-
-= 4.0.3 =
-* Added support for "Yandex - Direct"
-* Added support for 'video' tag
-
-= 4.0.2 =
-* Fixed bugs with interface
-
-= 4.0.1 =
-* Added information about compatibility with HPOS
-* Fixed bugs with interface
-* Fixed bugs with tn-ved-code
-
-= 4.0.0 =
-* New plugin core
-
-= 3.15.0 =
-* Fixed bugs
-
 == Upgrade Notice ==
 
-= 4.9.3 =
-*Release Date 20-01-2024*
+= 5.0.1 =
+*Release Date 31-03-2025*
 
-* Fixed bugs.
-* Added new VAT rates.
+* Fixed bug with `wp_admin_notice()`.
