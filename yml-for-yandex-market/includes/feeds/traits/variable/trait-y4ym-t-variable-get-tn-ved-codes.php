@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -49,7 +49,17 @@ trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
 		if ( $additional_expenses === 'enabled' ) {
 			$tag_value = $this->get_variable_product_post_meta( 'tn_ved_code' );
 			if ( ! empty( $tag_value ) ) {
-				$result_xml = get_nested_tag( $wrapper_tag_name, 'tn-ved-code', $tag_value );
+				$yml_rules = common_option_get(
+					'y4ym_yml_rules',
+					'yandex_market_assortment',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				if ( $yml_rules === 'aliexpress' ) {
+					$result_xml = $this->get_variable_tag( 'tnved', $tag_value );
+				} else {
+					$result_xml = get_nested_tag( $wrapper_tag_name, 'tn-ved-code', $tag_value );
+				}			
 			}
 		}
 		$result_xml = apply_filters(

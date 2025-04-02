@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -114,7 +114,13 @@ class Y4YM_Rules_List {
 				'ozon' => [ 
 					// https://seller-edu.ozon.ru/work-with-goods/zagruzka-tovarov/created-goods/fid
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'min_price', 'outlets', 'disabled', 'name', 'url', // 'premium_price',
-					'categoryid', 'market_sku', 'oldprice' // 'count', 'amount', 
+					'categoryid', 'market_sku' // 'count', 'amount', 
+				],
+				'aliexpress' => [ 
+					// https://help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu
+					'offer_tag', 'price', 'discount_price', 'categoryid', 'picture', 'name', 'description', 'url',
+					'weight', 'dimensions', 'quantity', 'params', 'cus_skucolor', 'size', 'sku_code',
+					'tn_ved_codes' // TODO: добавить ,'okpd2'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
 					'offer_tag', 'currencyid', 'price', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'name', 'vendor', 'vendorcode',

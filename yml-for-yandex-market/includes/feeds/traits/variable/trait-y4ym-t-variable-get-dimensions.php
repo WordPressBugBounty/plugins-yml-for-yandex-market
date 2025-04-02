@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -98,7 +98,12 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			$height_yml = round( wc_get_dimension( (float) $tag_value, 'cm' ), 3 );
 		}
 
-		$yml_rules = common_option_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
+		$yml_rules = common_option_get(
+			'y4ym_yml_rules',
+			'yandex_market_assortment',
+			$this->get_feed_id(),
+			'y4ym'
+		);
 		if ( $yml_rules === 'flowwow' ) {
 			if ( $length_yml > 0 ) {
 				$result_xml .= new Y4YM_Get_Paired_Tag( 'param', $length_yml, [ 'name' => 'Длина, см' ] );
@@ -108,6 +113,16 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			}
 			if ( $height_yml > 0 ) {
 				$result_xml .= new Y4YM_Get_Paired_Tag( 'param', $height_yml, [ 'name' => 'Высота, см' ] );
+			}
+		} else if ( $yml_rules === 'aliexpress' ) {
+			if ( $length_yml > 0 ) {
+				$result_xml .= new Y4YM_Get_Paired_Tag( 'length', $length_yml );
+			}
+			if ( $width_yml > 0 ) {
+				$result_xml .= new Y4YM_Get_Paired_Tag( 'width', $width_yml );
+			}
+			if ( $height_yml > 0 ) {
+				$result_xml .= new Y4YM_Get_Paired_Tag( 'height', $height_yml );
 			}
 		} else if ( ( $length_yml > 0 ) && ( $width_yml > 0 ) && ( $height_yml > 0 ) ) {
 			$result_xml = '<dimensions>' . $length_yml . '/' . $width_yml . '/' . $height_yml . '</dimensions>' . PHP_EOL;

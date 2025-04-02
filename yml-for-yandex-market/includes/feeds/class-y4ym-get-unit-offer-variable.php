@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -22,6 +22,7 @@
  *                          Y4YM_Get_Closed_Tag
  */
 class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
+
 	use Y4YM_T_Common_Get_CatId;
 	use Y4YM_T_Common_Skips;
 
@@ -41,6 +42,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Variable_Get_Country_Of_Origin;
 	use Y4YM_T_Variable_Get_Credit_Template;
 	use Y4YM_T_Variable_Get_Currencyid;
+	use Y4YM_T_Variable_Get_Cus_Skucolor;
 	use Y4YM_T_Variable_Get_Custom_Labels;
 	use Y4YM_T_Variable_Get_Custom_Score;
 	use Y4YM_T_Variable_Get_Delivery_Options;
@@ -48,6 +50,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Variable_Get_Description;
 	use Y4YM_T_Variable_Get_Dimensions;
 	use Y4YM_T_Variable_Get_Disabled;
+	use Y4YM_T_Simple_Get_Discount_Price;
 	use Y4YM_T_Variable_Get_Downloadable;
 	use Y4YM_T_Variable_Get_Expiry;
 	use Y4YM_T_Variable_Get_Group_Id;
@@ -73,9 +76,12 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Variable_Get_Price;
 	use Y4YM_T_Variable_Get_Purchase_Price;
 	use Y4YM_T_Variable_Get_Qty;
+	use Y4YM_T_Variable_Get_Quantity;
 	use Y4YM_T_Variable_Get_Sales_Notes;
 	use Y4YM_T_Variable_Get_Shipment_Options;
 	use Y4YM_T_Variable_Get_Shop_Sku;
+	use Y4YM_T_Variable_Get_Size;
+	use Y4YM_T_Variable_Get_Sku_Code;
 	use Y4YM_T_Variable_Get_Step_Quantity;
 	use Y4YM_T_Variable_Get_Store;
 	use Y4YM_T_Variable_Get_Supplier;
@@ -134,6 +140,9 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 				break;
 			case "ozon": // OZON (только обновление цен и остатков на складе)
 				$result_xml = $this->ozon();
+				break;
+			case "aliexpress": // AliExpress
+				$result_xml = $this->aliexpress();
 				break;
 			case "all_elements": // Нет правил (Для опытных пользователей)
 				$result_xml = $this->all_elements();
@@ -375,6 +384,22 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	}
 
 	/**
+	 * AliExpress.
+	 * 
+	 * @see https://help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	private function aliexpress( $result_xml = '' ) {
+
+		$result_xml .= $this->get_tags( 'aliexpress', $result_xml );
+		return $result_xml;
+
+	}
+
+	/**
 	 * Яндекс Вебмастер (Товарный фид, Товары и предложения).
 	 * 
 	 * @see https://yandex.ru/support/products/features.html - Поиск по товарам
@@ -451,9 +476,9 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	 * Get paired XML tag for feed. Example: `<tag_name>tag_value</tag_name>`.
 	 * 
 	 * This function processes the tag value using filters:
-	 *    - `y4ym_f_variable_tag_value_{tag_value}`
-	 *    - `y4ym_f_variable_tag_name_{tag_value}`
-	 *    - `y4ym_f_variable_tag_{tag_value}`
+	 *    - `y4ym_f_variable_tag_value_{tag_name}`
+	 *    - `y4ym_f_variable_tag_name_{tag_name}`
+	 *    - `y4ym_f_variable_tag_{tag_name}`
 	 * 
 	 * @param string $tag_name
 	 * @param mixed $tag_value

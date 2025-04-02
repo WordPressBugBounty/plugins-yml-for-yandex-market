@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -881,6 +881,43 @@ class Y4YM_Admin {
 			}
 		}
 		return $save_if_empty;
+
+	}
+
+	/**
+	 * Дополнительная информация для формы обратной связи.
+	 * 
+	 * Function for `y4ym_f_feedback_additional_info` action-hook.
+	 * 
+	 * @param string $additional_info
+	 * 
+	 * @return string
+	 */
+	public function feedback_additional_info( $additional_info ) {
+
+		if ( is_multisite() ) {
+			$settings_arr = get_blog_option( get_current_blog_id(), 'y4ym_settings_arr', [] );
+		} else {
+			$settings_arr = get_option( 'y4ym_settings_arr', [] );
+		}
+		if ( ! empty( $settings_arr ) ) {
+			$feed_ids_arr = array_keys( $settings_arr );
+			if ( ! empty( $feed_ids_arr ) ) {
+				for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
+					$feed_id_str = (string) $feed_ids_arr[ $i ];
+					$additional_info .= sprintf( '<h2>Feed # %s</h2>', $feed_id_str );
+
+					// URL-фида
+					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_feed_url'] ) ) {
+						$feed_url = $settings_arr[ $feed_id_str ]['y4ym_feed_url'];
+						$additional_info .= sprintf( '<p>URL: %s</p>', $feed_url );
+					} else {
+						$additional_info .= sprintf( '<p>URL: %s</p>', '-' );
+					}
+				}
+			}
+		}
+		return $additional_info;
 
 	}
 

@@ -8,7 +8,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -276,6 +276,9 @@ class Y4YM {
 			$plugin_admin,
 			'select2_get_posts_ajax_callback'
 		);
+
+		// дополнительная информация для фидбэка
+		$this->loader->add_action( 'y4ym_f_feedback_additional_info', $plugin_admin, 'feedback_additional_info', 11 );
 
 		// Разрешим загрузку xml и csv файлов
 		$this->loader->add_action( 'upload_mimes', $plugin_admin, 'add_mime_types' );

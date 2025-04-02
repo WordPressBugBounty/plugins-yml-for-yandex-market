@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  * @see        https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
  *             https://wp-kama.ru/function/wp_list_table
  *
@@ -25,7 +25,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	/**	
 	 * Constructor.
 	 */
-	function __construct() {
+	public function __construct() {
 
 		global $status, $page;
 		parent::__construct( [ 
@@ -255,15 +255,16 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 						);
 					}
 
-					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_critical_errors'] )
-						&& ! empty( $settings_arr[ $feed_id_str ]['y4ym_critical_errors'] )
-					) {
-						$text_column_feed_summary .= sprintf(
-							'<strong>%s:</strong> %s',
-							esc_html__( 'Errors', 'yml-for-yandex-market' ),
-							$settings_arr[ $feed_id_str ]['y4ym_critical_errors']
-						);
-					}
+					// ? возможно удалить в перспективе. Пока в комментах
+					// if ( isset( $settings_arr[ $feed_id_str ]['y4ym_critical_errors'] )
+					// 	&& ! empty( $settings_arr[ $feed_id_str ]['y4ym_critical_errors'] )
+					// ) {
+					// 	$text_column_feed_summary .= sprintf(
+					// 		'<strong>%s:</strong> %s',
+					// 		esc_html__( 'Errors', 'yml-for-yandex-market' ),
+					// 		$settings_arr[ $feed_id_str ]['y4ym_critical_errors']
+					// 	);
+					// }
 
 					$table_data_arr[ $i ] = [ 
 						'html_feed_url' => $text_column_feed_url,
@@ -291,7 +292,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 *
 	 * @return void
 	 */
-	function prepare_items() {
+	public function prepare_items() {
 
 		$columns = $this->get_columns();
 		$hidden = [];
@@ -325,7 +326,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return string
 	 */
-	function column_default( $item, $column_name ) {
+	public function column_default( $item, $column_name ) {
 
 		switch ( $column_name ) {
 			case 'html_feed_url':
@@ -360,7 +361,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return array
 	 */
-	function get_sortable_columns() {
+	public function get_sortable_columns() {
 
 		$sortable_columns = [
 			// 'html_feed_url' => [ 'html_feed_url', false ]
@@ -379,7 +380,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return string
 	 */
-	function column_html_feed_url( $item ) {
+	public function column_html_feed_url( $item ) {
 
 		$actions = [ 
 			'id' => 'ID: ' . $item['feed_id'],
@@ -450,7 +451,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return array
 	 */
-	function get_bulk_actions() {
+	public function get_bulk_actions() {
 
 		$actions = [ 
 			'delete' => __( 'Delete', 'yml-for-yandex-market' )
@@ -467,7 +468,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return string
 	 */
-	function column_cb( $item ) {
+	public function column_cb( $item ) {
 
 		return sprintf(
 			'<input type="checkbox" name="checkbox_xml_file[]" value="%s" />', $item['feed_id']
@@ -480,7 +481,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * @return void
 	 */
-	function no_items() {
+	public function no_items() {
 
 		$utm = sprintf(
 			'?utm_source=%1$s&utm_medium=organic&utm_campaign=in-plugin-%1$s&utm_content=settings&utm_term=%2$s',

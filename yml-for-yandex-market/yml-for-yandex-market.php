@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.0.1
+ * Version:                 5.0.2
  * Requires at least:       5.0
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -93,7 +93,7 @@ if ( ! function_exists( 'wp_get_admin_notice' ) ) {
 					__FUNCTION__,
 					sprintf(
 						/* translators: %s: The "type" key. */
-						__( 'The %s key must be a string without spaces.' ),
+						__( 'The %s key must be a string without spaces' ),
 						'<code>type</code>'
 					),
 					'6.4.0'
@@ -206,98 +206,108 @@ if ( ! function_exists( 'warning_notice' ) ) {
 
 /**
  * Updating the plugin database.
+ * 
+ * @param string $old_version Example: `5.0.0`.
  *
  * @return void
  */
-function y4ym_plugin_database_upd() {
+function y4ym_plugin_database_upd( $old_version ) {
 
-	$new_settings_arr = [];
-	if ( is_multisite() ) {
-		$old_settings_arr = get_blog_option( get_current_blog_id(), 'yfym_settings_arr', [] );
-		$registered_feeds_arr = get_blog_option(
-			get_current_blog_id(),
-			'yfym_registered_feeds_arr',
-			[ 0 => [ 'last_id' => '0' ] ]
-		);
-		$last_id = $registered_feeds_arr[0]['last_id'];
-		update_blog_option( get_current_blog_id(), 'y4ym_last_feed_id', $last_id );
-	} else {
-		$old_settings_arr = get_option( 'yfym_settings_arr', [] );
-		$registered_feeds_arr = get_option(
-			'yfym_registered_feeds_arr',
-			[ 0 => [ 'last_id' => '0' ] ]
-		);
-		$last_id = $registered_feeds_arr[0]['last_id'];
-		update_option( 'y4ym_last_feed_id', $last_id );
-	}
-	if ( ! empty( $old_settings_arr ) ) {
+	// если ядро плагина ниже версии 5.0.0, то нужно перенести настройки плагина из старых версий в новую базу
+	if ( version_compare( $old_version, '5.0.0', '<' ) ) {
+		$new_settings_arr = [];
 		if ( is_multisite() ) {
-			$p_arr = get_blog_option( get_current_blog_id(), 'p_arr', [] );
+			$old_settings_arr = get_blog_option( get_current_blog_id(), 'yfym_settings_arr', [] );
+			$registered_feeds_arr = get_blog_option(
+				get_current_blog_id(),
+				'yfym_registered_feeds_arr',
+				[ 0 => [ 'last_id' => '0' ] ]
+			);
+			$last_id = $registered_feeds_arr[0]['last_id'];
+			update_blog_option( get_current_blog_id(), 'y4ym_last_feed_id', $last_id );
 		} else {
-			$p_arr = get_option( 'p_arr', [] );
+			$old_settings_arr = get_option( 'yfym_settings_arr', [] );
+			$registered_feeds_arr = get_option(
+				'yfym_registered_feeds_arr',
+				[ 0 => [ 'last_id' => '0' ] ]
+			);
+			$last_id = $registered_feeds_arr[0]['last_id'];
+			update_option( 'y4ym_last_feed_id', $last_id );
 		}
-		$feed_ids_arr = array_keys( $old_settings_arr );
-		for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
-			$feed_id = (string) $feed_ids_arr[ $i ]; // $key
-
-			$arrs_old = [ 
-				'yfym_params_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
-				'yfymp_exclude_cat_arr' // pro
-			];
-			$arrs_new = [ 
-				'y4ym_params_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
-				'y4ymp_exclude_cat_arr' // pro
-			];
-			for ( $n = 0; $n < count( $arrs_old ); $n++ ) {
-				if ( $feed_id === '1' ) {
-					$opt_name_old = $arrs_old[ $n ];
-				} else {
-					$opt_name_old = $arrs_old[ $n ] . $feed_id;
-				}
-				if ( is_multisite() ) {
-					$old_arr = get_blog_option( get_current_blog_id(), $opt_name_old, [] );
-					$old_arr = maybe_unserialize( $old_arr );
-					update_blog_option( get_current_blog_id(), $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
-				} else {
-					$old_arr = get_option( $opt_name_old, [] );
-					$old_arr = maybe_unserialize( $old_arr );
-					update_option( $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
-				}
+		if ( ! empty( $old_settings_arr ) ) {
+			if ( is_multisite() ) {
+				$p_arr = get_blog_option( get_current_blog_id(), 'p_arr', [] );
+			} else {
+				$p_arr = get_option( 'p_arr', [] );
 			}
+			$feed_ids_arr = array_keys( $old_settings_arr );
+			for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
+				$feed_id = (string) $feed_ids_arr[ $i ]; // $key
 
-			$new_settings_arr[ $feed_id ] = y4ym_change_data_one_feed( $old_settings_arr[ $feed_id ] );
-
-			// конструктор параметров в прошке
-			if ( ! empty( $p_arr ) && isset( $p_arr[ $feed_id ] ) ) {
-				$new_arr = [];
-				for ( $n = 1; $n < 16; $n++ ) {
-					if ( $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] === 'on' ) {
-						$p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] = 'enabled';
+				$arrs_old = [ 
+					'yfym_params_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
+					'yfymp_exclude_cat_arr' // pro
+				];
+				$arrs_new = [ 
+					'y4ym_params_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
+					'y4ymp_exclude_cat_arr' // pro
+				];
+				for ( $n = 0; $n < count( $arrs_old ); $n++ ) {
+					if ( $feed_id === '1' ) {
+						$opt_name_old = $arrs_old[ $n ];
+					} else {
+						$opt_name_old = $arrs_old[ $n ] . $feed_id;
 					}
-					$new_arr[ $n ] = [ 
-						'param_use' => $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ],
-						'param_name_select' => $p_arr[ $feed_id ][ 'yfymp_p_name_s' . $n ],
-						'param_name_custom' => $p_arr[ $feed_id ][ 'yfymp_p_name_custom' . $n ],
-						'param_unit_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_s' . $n ],
-						'param_unit_default_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_default_s' . $n ],
-						'param_unit_custom' => $p_arr[ $feed_id ][ 'yfymp_p_unit_custom' . $n ],
-						'param_value_select' => $p_arr[ $feed_id ][ 'yfymp_p_val_s' . $n ],
-						'param_value_custom' => $p_arr[ $feed_id ][ 'yfymp_p_val_custom' . $n ]
-					];
+					if ( is_multisite() ) {
+						$old_arr = get_blog_option( get_current_blog_id(), $opt_name_old, [] );
+						$old_arr = maybe_unserialize( $old_arr );
+						update_blog_option( get_current_blog_id(), $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+					} else {
+						$old_arr = get_option( $opt_name_old, [] );
+						$old_arr = maybe_unserialize( $old_arr );
+						update_option( $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+					}
 				}
-				if ( is_multisite() ) {
-					update_blog_option( get_current_blog_id(), 'y4ymp_constructor_params' . $feed_id, $new_arr );
-				} else {
-					update_option( 'y4ymp_constructor_params' . $feed_id, $new_arr );
+
+				$new_settings_arr[ $feed_id ] = y4ym_change_data_one_feed( $old_settings_arr[ $feed_id ] );
+
+				// конструктор параметров в прошке
+				if ( ! empty( $p_arr ) && isset( $p_arr[ $feed_id ] ) ) {
+					$new_arr = [];
+					for ( $n = 1; $n < 16; $n++ ) {
+						if ( $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] === 'on' ) {
+							$p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] = 'enabled';
+						}
+						$new_arr[ $n ] = [ 
+							'param_use' => $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ],
+							'param_name_select' => $p_arr[ $feed_id ][ 'yfymp_p_name_s' . $n ],
+							'param_name_custom' => $p_arr[ $feed_id ][ 'yfymp_p_name_custom' . $n ],
+							'param_unit_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_s' . $n ],
+							'param_unit_default_select' => $p_arr[ $feed_id ][ 'yfymp_p_unit_default_s' . $n ],
+							'param_unit_custom' => $p_arr[ $feed_id ][ 'yfymp_p_unit_custom' . $n ],
+							'param_value_select' => $p_arr[ $feed_id ][ 'yfymp_p_val_s' . $n ],
+							'param_value_custom' => $p_arr[ $feed_id ][ 'yfymp_p_val_custom' . $n ]
+						];
+					}
+					if ( is_multisite() ) {
+						update_blog_option( get_current_blog_id(), 'y4ymp_constructor_params' . $feed_id, $new_arr );
+					} else {
+						update_option( 'y4ymp_constructor_params' . $feed_id, $new_arr );
+					}
 				}
 			}
+		}
+		if ( is_multisite() ) {
+			update_blog_option( get_current_blog_id(), 'y4ym_settings_arr', $new_settings_arr );
+		} else {
+			update_option( 'y4ym_settings_arr', $new_settings_arr );
 		}
 	}
+
+	// настройки обновлены, меняем номер версии в БД
 	if ( is_multisite() ) {
-		update_blog_option( get_current_blog_id(), 'y4ym_settings_arr', $new_settings_arr );
 		update_blog_option( get_current_blog_id(), 'y4ym_version', Y4YM_PLUGIN_VERSION );
 	} else {
-		update_option( 'y4ym_settings_arr', $new_settings_arr );
 		update_option( 'y4ym_version', Y4YM_PLUGIN_VERSION );
 	}
 
@@ -351,7 +361,7 @@ function y4ym_change_data_one_feed( $settings_arr ) {
 				$new_key = 'y4ym_feed_path';
 				break;
 			case "yfym_errors":
-				$new_key = 'y4ym_critical_errors';
+				$new_key = 'y4ym_critical_errors'; // ? возможно удалить в перспективе
 				break;
 			case "yfym_cache":
 				$new_key = 'y4ym_ignore_cache';
@@ -449,7 +459,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.0.1' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.0.2' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -540,8 +550,8 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.0.0', '<' ) ) {
-		y4ym_plugin_database_upd();
+	if ( version_compare( $y4ym_v, '5.0.2', '<' ) ) {
+		y4ym_plugin_database_upd( $y4ym_v );
 	}
 
 	if ( class_exists( 'YmlforYandexMarketPro' ) ) {

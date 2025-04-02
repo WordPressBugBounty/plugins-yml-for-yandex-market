@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -94,7 +94,7 @@ class Y4YM_Data {
 					'tab' => 'none'
 				],
 				[ // сюда будем записывать критически ошибки при сборке фида
-					'opt_name' => 'y4ym_critical_errors',
+					'opt_name' => 'y4ym_critical_errors', // ? возможно удалить в перспективе
 					'def_val' => '',
 					'mark' => 'private',
 					'type' => 'auto',
@@ -292,6 +292,10 @@ class Y4YM_Data {
 								'text' => sprintf( 'OZON (%s)',
 									__( 'only updating prices and stock balances', 'yml-for-yandex-market' )
 								)
+							],
+							[ 
+								'value' => 'aliexpress',
+								'text' => 'AliExpress'
 							],
 							[ 
 								'value' => 'all_elements',
@@ -1034,6 +1038,27 @@ class Y4YM_Data {
 					]
 				],
 				[ 
+					'opt_name' => 'y4ym_quantity',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'label' => __( 'Quantity of products', 'yml-for-yandex-market' ),
+						'desc' => __(
+							'To make it work you must enable "Manage stock" and indicate "Stock quantity"',
+							'yml-for-yandex-market'
+						),
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'quantity'
+					]
+				],
+				[ 
 					'opt_name' => 'y4ym_length',
 					'def_val' => 'woo_shippings',
 					'mark' => 'public',
@@ -1205,6 +1230,51 @@ class Y4YM_Data {
 					]
 				],
 				[ 
+					'opt_name' => 'y4ym_sku_code',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'has_next' => true,
+						'table_location' => 'th-td',
+						'label' => __( 'SKU', 'yml-for-yandex-market' ),
+						'desc' => __(
+							'Source ID of the code for a product variation. You should specify it if product ID contains numbers and symbols',
+							'yml-for-yandex-market'
+						),
+						'woo_attr' => true,
+						'default_value' => true,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'sku', 'text' => __( 'Substitute from SKU', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'products_id', 'text' => __( 'Add from products ID', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'post_meta', 'text' => __( 'Substitute from post meta', 'yml-for-yandex-market' ) ]
+							// ,
+							// [ 
+							//	'value' => 'germanized',
+							//	'text' => __( 'Substitute from', 'yml-for-yandex-market' ) . 'WooCommerce Germanized'
+							// ]
+						],
+						'tag_name' => 'sku_code'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_sku_code_post_meta',
+					'def_val' => '',
+					'mark' => 'public',
+					'type' => 'text',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'has_next' => false,
+						'table_location' => 'td-td',
+						'label' => __( 'Name post_meta', 'yml-for-yandex-market' ),
+						'desc' => '',
+						'placeholder' => __( 'Name post_meta', 'yml-for-yandex-market' ),
+						'tag_name' => 'sku_code'
+					]
+				],
+				[ 
 					'opt_name' => 'y4ym_manufacturer',
 					'def_val' => 'disabled',
 					'mark' => 'public',
@@ -1325,6 +1395,43 @@ class Y4YM_Data {
 							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
 						],
 						'tag_name' => 'country_of_origin'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_cus_skucolor',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'label' => __( 'Color', 'yml-for-yandex-market' ),
+						'desc' => __(
+							'Color of product variation, specified by seller',
+							'yml-for-yandex-market'
+						),
+						'woo_attr' => true,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'cus_skucolor'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_size',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'label' => __( 'Size', 'yml-for-yandex-market' ),
+						'desc' => __( 'Size in your system', 'yml-for-yandex-market' ),
+						'woo_attr' => true,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'size'
 					]
 				],
 				[ 
@@ -1486,6 +1593,27 @@ class Y4YM_Data {
 							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
 						],
 						'tag_name' => 'oldprice'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_discount_price',
+					'def_val' => 'enabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'label' => __( 'Old price', 'yml-for-yandex-market' ),
+						'desc' => __(
+							'This price will be up-to-date. Discount price should be less than 90 percentage of initial price',
+							'yml-for-yandex-market'
+						),
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'discount_price'
 					]
 				],
 				[ 

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.2 (02-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -52,6 +52,18 @@ trait Y4YM_T_Variable_Get_Picture {
 			$size_pic = $picture;
 		}
 
+		$thumb_yml = get_the_post_thumbnail_url( $this->get_offer()->get_id(), $size_pic );
+		if ( empty( $thumb_yml ) ) {
+			if ( has_post_thumbnail( $this->get_product()->get_id() ) ) {
+				$thumb_id = get_post_thumbnail_id( $this->get_product()->get_id() );
+				$thumb_url = wp_get_attachment_image_src( $thumb_id, $size_pic, true );
+				$tag_value = $thumb_url[0]; // урл оригинал миниатюры товара
+				$tag_value = get_from_url( $tag_value );
+				$result_xml = $this->skip_gif( $tag_name, $tag_value );
+			}
+		} else {
+			$result_xml = $this->skip_gif( $tag_name, $thumb_yml );
+		}
 		$no_default_png_products = common_option_get(
 			'y4ym_no_default_png_products',
 			'disabled',
@@ -59,20 +71,11 @@ trait Y4YM_T_Variable_Get_Picture {
 		);
 		if ( ( $no_default_png_products === 'enabled' ) ) {
 			// включён пропуск default.png из фида
-		} else {
-			$thumb_yml = get_the_post_thumbnail_url( $this->get_offer()->get_id(), $size_pic );
-			if ( empty( $thumb_yml ) ) {
-				if ( has_post_thumbnail( $this->get_product()->get_id() ) ) {
-					$thumb_id = get_post_thumbnail_id( $this->get_product()->get_id() );
-					$thumb_url = wp_get_attachment_image_src( $thumb_id, $size_pic, true );
-					$tag_value = $thumb_url[0]; // урл оригинал миниатюры товара
-					$tag_value = get_from_url( $tag_value );
-					$result_xml = $this->skip_gif( $tag_name, $tag_value );
-				}
-			} else {
-				$result_xml = $this->skip_gif( $tag_name, $thumb_yml );
+			if ( false !== strpos( $result_xml, 'default.' ) ) {
+				$result_xml = '';
 			}
 		}
+
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_picture',
 			$result_xml,
@@ -120,6 +123,7 @@ trait Y4YM_T_Variable_Get_Picture {
 		// удаляем из фида gif и svg картинки
 		if ( false === strpos( $tag_value, '.gif' )
 			&& false === strpos( $tag_value, '.svg' ) ) {
+			$tag_value = get_from_url( $tag_value, 'url' ); // ? оправдано ли
 			$picture_yml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
 		} else {
 			$picture_yml = '';

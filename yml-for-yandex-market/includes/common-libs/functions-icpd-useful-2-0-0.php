@@ -60,7 +60,7 @@ if ( ! function_exists( 'get_from_url' ) ) {
 	 * @since 1.0.0 (23-05-2023)
 	 *
 	 * @param string $url
-	 * @param string $whot
+	 * @param string $whot Maybe: `url`, `get_params`
 	 *
 	 * @return string|false
 	 */
