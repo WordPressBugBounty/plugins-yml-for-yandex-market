@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.3 (03-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -2569,9 +2569,28 @@ class Y4YM_Data {
 							[ 
 								'value' => 'fullplusexcerpt',
 								'text' => __( 'Full plus Excerpt description', 'yml-for-yandex-market' )
+							],
+							[ 
+								'value' => 'post_meta',
+								'text' => __( 'Substitute from post meta', 'yml-for-yandex-market' )
 							]
 						],
 						'tr_class' => 'y4ym_tr',
+						'tag_name' => 'description'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_source_description_post_meta',
+					'def_val' => '',
+					'mark' => 'public',
+					'type' => 'text',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'has_next' => true,
+						'table_location' => 'td-td',
+						'label' => __( 'Name post_meta', 'yml-for-yandex-market' ),
+						'desc' => '',
+						'placeholder' => __( 'Name post_meta', 'yml-for-yandex-market' ),
 						'tag_name' => 'description'
 					]
 				],

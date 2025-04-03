@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.3 (03-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -107,6 +107,21 @@ trait Y4YM_T_Variable_Get_Description {
 					);
 				}
 				break;
+			case 'post_meta':
+
+				$post_meta = common_option_get(
+					'y4ym_source_description_post_meta',
+					'',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				if ( get_post_meta( $this->get_product()->get_id(), $post_meta, true ) !== '' ) {
+					$tag_value = get_post_meta( $this->get_product()->get_id(), $post_meta, true );
+				} else {
+					$tag_value = '';
+				}
+				break;
+
 			default:
 				if ( empty( $tag_value ) ) {
 					$tag_value = $this->get_product()->get_description();

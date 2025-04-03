@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 5.0.2
+Stable tag: 5.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,12 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Changelog ==
 
+= 5.0.3 =
+*Release Date 03-04-2025*
+
+* Fixed minor bugs.
+* Expanded the list of sources for product descriptions.
+
 = 5.0.2 =
 *Release Date 02-04-2025*
 
@@ -93,14 +99,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 * New plugin core
 
-= 4.8.0 =
-* Fixed bugs
-* Added the ability to set the start time of feed generation
-
 == Upgrade Notice ==
 
-= 5.0.2 =
-*Release Date 02-04-2025*
+= 5.0.3 =
+*Release Date 03-04-2025*
 
-* Fixed bug with pictures.
-* Now you can create feeds for Aliexpress.
+* Fixed minor bugs.
+* Expanded the list of sources for product descriptions.

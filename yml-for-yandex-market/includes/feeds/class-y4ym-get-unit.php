@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.3 (03-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -61,7 +61,18 @@ class Y4YM_Get_Unit {
 
 		$args_arr = [ 'post_id' => $post_id, 'feed_id' => $feed_id ];
 		do_action( 'y4ym_before_wc_get_product', $args_arr );
-		$this->product = wc_get_product( $post_id );
+		$product = wc_get_product( $post_id );
+		if ( empty( $product ) ) {
+			$this->result_xml = '';
+			array_push(
+				$this->skip_reasons_arr,
+				__( 'There is no product with this ID', 'yml-for-yandex-market' )
+			);
+			return;
+		} else {
+			$this->product = $product;
+			unset( $product );
+		}
 		do_action( 'y4ym_after_wc_get_product', $args_arr, $this->get_product() );
 		$date_product_modified = strtotime( $this->get_product()->get_date_modified() );
 		$data_from_cache = 'no';
@@ -137,7 +148,7 @@ class Y4YM_Get_Unit {
 
 		$product = $this->get_product();
 
-		if ( null == $product ) {
+		if ( null == $product ) { // ? возможно ли удалить условие тк в конструкторе есть проверка
 			$this->result_xml = '';
 			array_push(
 				$this->skip_reasons_arr,

@@ -2,7 +2,7 @@
 /**
  * Print Extensions page.
  * 
- * @version 5.0.0 (25-03-2025)
+ * @version 5.0.3 (03-04-2025)
  * @see     
  * @package 
  */
@@ -106,82 +106,6 @@ defined( 'ABSPATH' ) || exit;
 											</ul>
 											<p style="text-align: center;"><a class="button-primary"
 													href="https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-yml-pro"
-													target="_blank">
-													<?php esc_html_e( 'Get Now', 'yml-for-yandex-market' ); ?>
-												</a><br /></p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="postbox-container-2" class="postbox-container">
-				<div class="meta-box-sortables">
-					<div class="postbox">
-						<div class="inside">
-							<table class="form-table">
-								<tbody>
-									<tr>
-										<td class="overalldesc" style="font-size: 18px;">
-											<h1 style="text-align: center; color: #5b2942;">Aliexpress Export</h1>
-											<a href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-aliexpress-export/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-aliexpress-export-img"
-												target="_blank"><img
-													style="max-width: 100%; display: block; margin: 0 auto;"
-													src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>/imgs/yml-for-yandex-market-aliexpress-export-350x350.jpg"
-													alt="img" /></a>
-											<p>
-												<?php esc_html_e( 'This extension adds to the plugin support for special attributes needed to export products on', 'yml-for-yandex-market' ); ?>
-												Aliexpress
-												<?php esc_html_e( 'among which', 'yml-for-yandex-market' ); ?>:
-											</p>
-											<p><code>length</code><br />
-												<code>width</code><br />
-												<code>height</code><br />
-												<code>quantity</code><br />
-												<?php esc_html_e( 'and so on', 'yml-for-yandex-market' ); ?>.
-											</p>
-											<p>(<a target="_blank"
-													href="//help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu">
-													<?php esc_html_e( 'Read more on aliexpress', 'yml-for-yandex-market' ); ?>
-												</a>)</p><br />
-											<p style="text-align: center;"><a class="button-primary"
-													href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-aliexpress-export/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-aliexpress-export"
-													target="_blank">
-													<?php esc_html_e( 'Get Now', 'yml-for-yandex-market' ); ?>
-												</a><br /></p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="postbox-container-3" class="postbox-container">
-				<div class="meta-box-sortables">
-					<div class="postbox">
-						<div class="inside">
-							<table class="form-table">
-								<tbody>
-									<tr>
-										<td class="overalldesc">
-											<h1 style="text-align: center; color: #5b2942;">Book Export</h1>
-											<a href="https://icopydoc.ru/product/yml-for-yandex-market-book-export/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-book-export-img"
-												target="_blank"><img
-													style="max-width: 100%; display: block; margin: 0 auto;"
-													src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>/imgs/yml-for-yandex-market-book-export-350x350.jpg"
-													alt="img" /></a>
-											<p>
-												<?php esc_html_e( 'This extension adds to the plugin support for a special type of export by Yandex Market for books', 'yml-for-yandex-market' ); ?>.
-											</p>
-											<p>(<a target="_blank"
-													href="//yandex.ru/support/partnermarket/export/books.html">
-													<?php esc_html_e( 'Read more on Yandex', 'yml-for-yandex-market' ); ?>
-												</a>)</p><br />
-											<p style="text-align: center;"><a class="button-primary"
-													href="https://icopydoc.ru/product/yml-for-yandex-market-book-export/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-book-export"
 													target="_blank">
 													<?php esc_html_e( 'Get Now', 'yml-for-yandex-market' ); ?>
 												</a><br /></p>
