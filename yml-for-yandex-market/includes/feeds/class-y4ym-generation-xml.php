@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.4 (05-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -743,8 +743,152 @@ class Y4YM_Generation_XML {
 
 		$result_xml .= $this->get_feed_body( $result_xml );
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'offers' );
+
+		$yml_rules = common_option_get(
+			'y4ym_yml_rules',
+			'yandex_market_assortment',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $yml_rules == 'yandex_direct' ||
+			$yml_rules == 'yandex_direct_free_from' ||
+			$yml_rules == 'yandex_direct_combined' ||
+			$yml_rules == 'all_elements' ) {
+			$collection_id = common_option_get(
+				'y4ym_collection_id',
+				false,
+				$this->get_feed_id(),
+				'y4ym'
+			);
+			if ( 'enabled' === $collection_id ) {
+				$result_xml .= $this->get_collections();
+			}
+		}
+
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'shop' );
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'yml_catalog' );
+		return $result_xml;
+
+	}
+
+	/**
+	 * Get YML list of collections.
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	public function get_collections( $result_xml = '' ) {
+		$collections_yml = '';
+		$args_terms_arr = [ 
+			'hide_empty' => false,
+			'taxonomy' => 'yfym_collection'
+		];
+		$args_terms_arr = apply_filters(
+			'y4ym_f_collection_args_terms_arr',
+			$args_terms_arr,
+			$this->get_feed_id()
+		);
+		$terms = get_terms( $args_terms_arr );
+		$count = count( $terms );
+		if ( $count > 0 ) {
+			foreach ( $terms as $term ) {
+				$skip_flag_collection = false;
+				$skip_flag_collection = apply_filters(
+					'y4ym_f_skip_flag_collection',
+					$skip_flag_collection,
+					[ 
+						'terms' => $terms,
+						'term' => $term
+					],
+					$this->get_feed_id()
+				);
+				if ( true === $skip_flag_collection ) {
+					continue;
+				}
+				// у категории НЕТ родительской категории или настройками задано делать все родительскими
+				$collection_attr_arr = [ 
+					'id' => $term->term_id
+				];
+				$collection_attr_arr = apply_filters(
+					'y4ym_f_collection_attr_arr',
+					$collection_attr_arr,
+					[ 
+						'terms' => $terms,
+						'term' => $term
+					],
+					$this->get_feed_id()
+				);
+				$collections_yml .= new Y4YM_Get_Open_Tag( 'collection', [ 'id' => $term->term_id ] );
+				if ( get_term_meta( $term->term_id, 'yfym_collection_url', true ) !== '' ) {
+					$yfym_collection_url = get_term_meta( $term->term_id, 'yfym_collection_url', true );
+					$collections_yml .= new Y4YM_Get_Paired_Tag( 'url', htmlspecialchars( $yfym_collection_url ) );
+				}
+				if ( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) !== '' ) {
+					$yfym_collection_picture = get_term_meta( $term->term_id, 'yfym_collection_picture', true );
+					$collections_yml .= new Y4YM_Get_Paired_Tag( 'picture', htmlspecialchars( $yfym_collection_picture ) );
+				}
+				if ( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) !== '' ) {
+					$collection_num_product_picture = (int) get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true );
+				} else {
+					$collection_num_product_picture = 0;
+				}
+				if ( $collection_num_product_picture > 0 ) {
+					$args = [ 
+						'post_type' => 'product',
+						'post_status' => 'publish',
+						'posts_per_page' => $collection_num_product_picture,
+						'tax_query' => [ 
+							'relation' => 'AND',
+							[ 
+								'taxonomy' => 'yfym_collection',
+								'field' => 'id',
+								'terms' => $term->term_id,
+								'operator' => 'IN'
+							]
+						],
+						'relation' => 'AND',
+						'orderby' => 'ID',
+						'fields' => 'ids'
+					];
+					$collection_query = new \WP_Query( $args );
+					if ( $collection_query->have_posts() ) {
+						for ( $i = 0; $i < count( $collection_query->posts ); $i++ ) {
+							$product_id = $collection_query->posts[ $i ];
+							$thumb_id = get_post_thumbnail_id( $product_id );
+							$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
+							$collections_yml .= new Y4YM_Get_Paired_Tag(
+								'picture',
+								htmlspecialchars( $thumb_url[0] )
+							);
+						}
+						wp_reset_query();
+					}
+				}
+
+				$collections_yml .= new Y4YM_Get_Paired_Tag( 'name', $term->name );
+				if ( ! empty( $term->description ) ) {
+					$collections_yml .= new Y4YM_Get_Paired_Tag( 'description', $term->description );
+				}
+				$collections_yml .= new Y4YM_Get_Closed_Tag( 'collection' );
+			}
+		}
+
+		$result_xml .= new Y4YM_Get_Open_Tag( 'collections' );
+		$collections_yml = apply_filters(
+			'y4ym_f_collection',
+			$collections_yml,
+			[],
+			$this->get_feed_id()
+		);
+		$result_xml .= $collections_yml;
+		$result_xml = apply_filters(
+			'yfym_append_collection_filter',
+			$result_xml,
+			$this->get_feed_id()
+		);
+		$result_xml .= new Y4YM_Get_Closed_Tag( 'collections' );
+
 		return $result_xml;
 
 	}

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.4 (05-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -906,11 +906,10 @@ class Y4YM_Admin {
 				for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
 					$feed_id_str = (string) $feed_ids_arr[ $i ];
 					$additional_info .= sprintf( '<h2>Feed # %s</h2>', $feed_id_str );
-
 					// URL-фида
 					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_feed_url'] ) ) {
 						$feed_url = $settings_arr[ $feed_id_str ]['y4ym_feed_url'];
-						$additional_info .= sprintf( '<p>URL: %s</p>', $feed_url );
+						$additional_info .= sprintf( '<p>URL: %s</p>', urldecode( $feed_url ) );
 					} else {
 						$additional_info .= sprintf( '<p>URL: %s</p>', '-' );
 					}
@@ -1215,13 +1214,12 @@ class Y4YM_Admin {
 	 */
 	public function add_meta_product_cat( $term ) {
 
-		global $post; ?>
+		?>
 		<div class="form-field term-cat_meta-wrap">
 			<label>
 				<?php esc_html_e( 'Collection URL', 'yml-for-yandex-market' ); ?>
 			</label>
-			<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]"
-				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_url', true ) ) ?>" />
+			<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]" value="" />
 			<p>
 				<?php esc_html_e( 'URL of the collection page', 'yml-for-yandex-market' ); ?>.
 			</p>
@@ -1230,8 +1228,7 @@ class Y4YM_Admin {
 			<label>
 				<?php esc_html_e( 'Main picture URL', 'yml-for-yandex-market' ); ?>
 			</label>
-			<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]"
-				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) ) ?>" />
+			<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]" value="" />
 			<p>
 				<?php esc_html_e( 'For example', 'yml-for-yandex-market' ); ?>: <code>https://site.ru/picture-1.jpg</code>.
 				<?php esc_html_e( 'URL of the main picture of the collection', 'yml-for-yandex-market' ); ?>.
@@ -1242,8 +1239,7 @@ class Y4YM_Admin {
 				<?php esc_html_e( 'Add the main photos of products to the collection', 'yml-for-yandex-market' ); ?>
 			</label>
 			<input id="y4ym_collection_num_product_picture" type="number" step="1" min="0" max="20"
-				name="y4ym_cat_meta[yfym_collection_num_product_picture]"
-				value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) ) ?>" />
+				name="y4ym_cat_meta[yfym_collection_num_product_picture]" value="" />
 			<p>
 				<?php esc_html_e( 'Indicate the number from 0 to 20', 'yml-for-yandex-market' ); ?>.
 			</p>
