@@ -2,7 +2,7 @@
 /**
  * The Another page tab
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.5 (07-04-2025)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -83,7 +83,9 @@ for ( $i = 0; $i < count( $attr_arr ); $i++ ) {
 	}
 
 	if ( ! isset( $attr_arr[ $i + 1 ]['data']['tag_name'] )
-		|| $attr_arr[ $i ]['data']['tag_name'] !== $attr_arr[ $i + 1 ]['data']['tag_name'] ) : ?>
+		|| $attr_arr[ $i + 1 ]['data']['tag_name'] === 'always'
+		|| ( $attr_arr[ $i ]['data']['tag_name'] !== $attr_arr[ $i + 1 ]['data']['tag_name'] )
+	) : ?>
 		<div class="y4ym-postbox postbox closed">
 			<div class="postbox-header">
 				<h2 class="hndle ui-sortable-handle"><?php echo wp_kses( $html_header, Y4YM_ALLOWED_HTML_ARR ); ?></h2>

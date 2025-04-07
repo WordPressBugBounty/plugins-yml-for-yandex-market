@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.4 (05-04-2025)
+ * @version    5.0.5 (07-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -80,7 +80,7 @@ class Y4YM_Generation_XML {
 
 		$result_xml = $this->get_feed_header();
 		new Y4YM_Write_File( $result_xml, '-1.tmp', $this->get_feed_id() );
-		$result_xml = $this->get_feed_footer();
+		$result_xml = $this->get_feed_footer( 'quick_generation(); line ' . __LINE__ );
 		// обновляем временный файл фида
 		if ( is_multisite() ) {
 			$feed_tmp_full_file_name = sprintf( '%1$s-feed-yml-%2$s-tmp.xml',
@@ -429,7 +429,7 @@ class Y4YM_Generation_XML {
 						__LINE__
 					)
 				);
-				$result_xml = $this->get_feed_footer();
+				$result_xml = $this->get_feed_footer( 'run(); case 3; line ' . __LINE__ );
 				// обновляем временный файл фида
 				if ( is_multisite() ) {
 					$feed_tmp_full_file_name = sprintf( '%1$s-feed-yml-%2$s-tmp.xml',
@@ -556,6 +556,7 @@ class Y4YM_Generation_XML {
 		$result_xml .= new Y4YM_Get_Paired_Tag( 'url', y4ym_replace_domain( $res_home_url, $this->get_feed_id() ) );
 		$result_xml .= new Y4YM_Get_Paired_Tag( 'platform', 'WordPress - YML for Yandex Market' );
 		$result_xml .= new Y4YM_Get_Paired_Tag( 'version', get_bloginfo( 'version' ) );
+		$result_xml .= $this->get_currencies();
 		$result_xml .= $this->get_categories();
 		$result_xml = apply_filters(
 			'y4ym_f_before_offers',
@@ -566,6 +567,69 @@ class Y4YM_Generation_XML {
 			$this->get_feed_id()
 		);
 		$result_xml .= new Y4YM_Get_Open_Tag( 'offers' );
+		return $result_xml;
+
+	}
+
+	/**
+	 * Get `currencies` tag.
+	 * 
+	 * @see https://yandex.ru/support/merchants/ru/elements/currencies.html
+	 * 
+	 * @param string $tag_name
+	 * @param string $result_xml
+	 * 
+	 * @return string Example: `<currencies><currency id="RUR" rate="1"/></currencies>`.
+	 */
+	public function get_currencies( $tag_name = 'currencies', $result_xml = '' ) {
+
+		$currencies = common_option_get(
+			'y4ym_currencies',
+			'enabled',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $currencies === 'enabled' ) {
+			$allow_currencies_arr = [];
+			$res = get_woocommerce_currency(); // получаем валюта магазина
+			switch ( $res ) {
+				case "RUB":
+					$currency_id_xml = "RUR";
+					break;
+				case "USD":
+					$currency_id_xml = "USD";
+					break;
+				case "EUR":
+					$currency_id_xml = "EUR";
+					break;
+				case "UAH":
+					$currency_id_xml = "UAH";
+					break;
+				case "KZT":
+					$currency_id_xml = "KZT";
+					break;
+				case "UZS":
+					$currency_id_xml = "UZS";
+					break;
+				case "BYN":
+					$currency_id_xml = "BYN";
+					break;
+				case "BYR":
+					$currency_id_xml = "BYN";
+					break;
+				case "ABC":
+					$currency_id_xml = "BYN";
+					break;
+				default:
+					$currency_id_xml = "RUR";
+			}
+			$currency_id_xml = apply_filters( 'y4ym_currency_id', $currency_id_xml, $this->get_feed_id() );
+			$attr_arr = [ 'id' => $currency_id_xml ];
+			$result_xml = new Y4YM_Get_Open_Tag( 'currencies' );
+			$result_xml .= new Y4YM_Get_Open_Tag( 'currency', $attr_arr, true );
+			$result_xml .= new Y4YM_Get_Closed_Tag( 'currencies' );
+		}
+
 		return $result_xml;
 
 	}
@@ -736,12 +800,26 @@ class Y4YM_Generation_XML {
 	 * Get feed footer.
 	 * 
 	 * @param string $result_xml
+	 * @param string $tracing For debug.
 	 * 
 	 * @return string
 	 */
-	protected function get_feed_footer( $result_xml = '' ) {
+	protected function get_feed_footer( $tracing = '' ) {
 
+		$result_xml = '';
 		$result_xml .= $this->get_feed_body( $result_xml );
+		if ( empty( $result_xml ) ) {
+			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
+				$this->get_feed_id(),
+				__( 'Data loss when writing a feed file', 'yml-for-yandex-market' ),
+				$tracing,
+				__( 'File', 'yml-for-yandex-market' ),
+				'class-y4ym-generation-xml.php',
+				__( 'Line', 'yml-for-yandex-market' ),
+				__LINE__
+			) );
+			return $result_xml;
+		}
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'offers' );
 
 		$yml_rules = common_option_get(

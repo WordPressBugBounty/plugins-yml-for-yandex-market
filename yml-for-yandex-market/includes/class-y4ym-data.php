@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.3 (03-04-2025)
+ * @version    5.0.5 (07-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -529,7 +529,8 @@ class Y4YM_Data {
 						),
 						'default_value' => false,
 						'placeholder' => 'Super Shop',
-						'tag_name' => 'name'
+						'tag_name' => 'always',
+						'tag_name_for_desc' => 'name'
 					]
 				],
 				[ 
@@ -543,7 +544,27 @@ class Y4YM_Data {
 						'desc' => __( 'Full name of the company that owns the store', 'yml-for-yandex-market' ),
 						'default_value' => false,
 						'placeholder' => 'OOO Top Market',
-						'tag_name' => 'company'
+						'tag_name' => 'always',
+						'tag_name_for_desc' => 'company'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_currencies',
+					'def_val' => 'enabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'shop_data_tab',
+					'data' => [ 
+						'label' => __( 'Shop currencies', 'yml-for-yandex-market' ),
+						'desc' => '',
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'always',
+						'tag_name_for_desc' => 'currencies'
 					]
 				],
 				[ 
@@ -935,24 +956,6 @@ class Y4YM_Data {
 							[ 'value' => 'sku', 'text' => __( 'Substitute from SKU', 'yml-for-yandex-market' ) ]
 						],
 						'tag_name' => 'vendorcode'
-					]
-				],
-				[ 
-					'opt_name' => 'y4ym_currencies',
-					'def_val' => 'enabled',
-					'mark' => 'public',
-					'type' => 'select',
-					'tab' => 'offer_data_tab',
-					'data' => [ 
-						'label' => __( 'Shop currencies', 'yml-for-yandex-market' ),
-						'desc' => '',
-						'woo_attr' => false,
-						'default_value' => false,
-						'key_value_arr' => [ 
-							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ],
-							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
-						],
-						'tag_name' => 'currencies'
 					]
 				],
 				[ 
