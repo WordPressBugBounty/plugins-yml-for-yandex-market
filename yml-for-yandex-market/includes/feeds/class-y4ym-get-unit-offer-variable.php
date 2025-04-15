@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.6 (15-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -489,7 +489,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	private function get_variable_tag( $tag_name, $tag_value, $tag_attributes_arr = [] ) {
 
 		$tag_value = apply_filters(
-			'y4ym_f_variable_tag_value_' . $tag_name,
+			'y4ym_f_variable_tag_value_' . strtolower( $tag_name ),
 			$tag_value,
 			[ 
 				'product' => $this->get_product(),
@@ -501,7 +501,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 
 		if ( $tag_value === (float) 0 || $tag_value === (int) 0 || ! empty( $tag_value ) ) {
 			$tag_name = apply_filters(
-				'y4ym_f_variable_tag_name_' . $tag_name,
+				'y4ym_f_variable_tag_name_' . strtolower( $tag_name ),
 				$tag_name,
 				[ 
 					'product' => $this->get_product(),
@@ -520,7 +520,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 		}
 
 		$result_xml = apply_filters(
-			'y4ym_f_variable_tag_' . $tag_name,
+			'y4ym_f_variable_tag_' . strtolower( $tag_name ),
 			$result_xml,
 			[ 
 				'product' => $this->get_product(),

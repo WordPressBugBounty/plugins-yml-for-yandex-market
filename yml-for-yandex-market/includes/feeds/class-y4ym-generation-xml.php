@@ -799,7 +799,6 @@ class Y4YM_Generation_XML {
 	/**
 	 * Get feed footer.
 	 * 
-	 * @param string $result_xml
 	 * @param string $tracing For debug.
 	 * 
 	 * @return string

@@ -47,7 +47,7 @@ trait Y4YM_T_Variable_Get_Name {
 			$result_yml_name,
 			[ 
 				'product' => $this->get_product(),
-				'offer' => $this->get_offer()
+				'offer' => $this->get_offer() // ! не удалять тк полезен в прошке
 			],
 			$this->get_feed_id()
 		);
