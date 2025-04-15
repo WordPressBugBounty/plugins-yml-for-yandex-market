@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.7 (15-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -81,7 +81,7 @@ trait Y4YM_T_Variable_Get_Outlets {
 				} else {
 					$args_arr['warehouse_name'] = $warehouse;
 				}
-				$result_xml .= new Y4YM_Get_Paired_Tag( $tag_name, '', $args_arr );
+				$result_xml .= new Y4YM_Get_Paired_Tag( 'outlet', '', $args_arr );
 				$result_xml .= new Y4YM_Get_Closed_Tag( $tag_name );
 			}
 		}
