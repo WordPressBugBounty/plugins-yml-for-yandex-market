@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.3 (03-04-2025)
+ * @version    5.0.8 (26-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -169,6 +169,18 @@ class Y4YM_Get_Unit {
 			);
 
 			$variation_count = count( $variations_arr );
+			if ( $variation_count > 256 ) {
+				new Y4YM_Error_Log( sprintf( 'FEED #%1$s; WARNING: %2$s (%3$s; ID = %4$s); %5$s: %6$s; %7$s: %8$s',
+					$this->get_feed_id(),
+					__( 'A variation product has more than 256 variations', 'yml-for-yandex-market' ),
+					$variation_count,
+					$product->get_id(),
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				) );
+			}
 			for ( $i = 0; $i < $variation_count; $i++ ) {
 				$offer_id = $variations_arr[ $i ]['variation_id'];
 				$offer = new WC_Product_Variation( $offer_id ); // получим вариацию

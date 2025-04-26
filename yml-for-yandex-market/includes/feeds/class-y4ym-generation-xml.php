@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.5 (07-04-2025)
+ * @version    5.0.8 (26-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -353,6 +353,16 @@ class Y4YM_Generation_XML {
 					);
 					for ( $i = 0; $i < count( $products_query->posts ); $i++ ) {
 						$product_id = $products_query->posts[ $i ];
+						new Y4YM_Error_Log( sprintf(
+							'FEED #%1$s; INFO: %2$s ID = %3$s; %4$s: %5$s; %6$s: %7$s',
+							$this->get_feed_id(),
+							__( 'Getting started with the product', 'yml-for-yandex-market' ),
+							$product_id,
+							__( 'File', 'yml-for-yandex-market' ),
+							'class-y4ym-generation-xml.php',
+							__( 'Line', 'yml-for-yandex-market' ),
+							__LINE__
+						) );
 						$result_get_unit_obj = new Y4YM_Get_Unit(
 							$product_id,
 							$this->get_feed_id(),
@@ -624,7 +634,7 @@ class Y4YM_Generation_XML {
 					$currency_id_xml = "RUR";
 			}
 			$currency_id_xml = apply_filters( 'y4ym_currency_id', $currency_id_xml, $this->get_feed_id() );
-			$attr_arr = [ 'id' => $currency_id_xml ];
+			$attr_arr = [ 'id' => $currency_id_xml, 'rate' => '1' ];
 			$result_xml = new Y4YM_Get_Open_Tag( 'currencies' );
 			$result_xml .= new Y4YM_Get_Open_Tag( 'currency', $attr_arr, true );
 			$result_xml .= new Y4YM_Get_Closed_Tag( 'currencies' );

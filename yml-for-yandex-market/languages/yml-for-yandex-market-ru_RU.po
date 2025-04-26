@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-04-15 20:34+0300\n"
-"PO-Revision-Date: 2025-04-15 20:35+0300\n"
+"POT-Creation-Date: 2025-04-26 19:51+0300\n"
+"PO-Revision-Date: 2025-04-26 19:52+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -93,20 +93,22 @@ msgstr "во время создания нового фида"
 #: includes/feeds/class-y4ym-generation-xml.php:284
 #: includes/feeds/class-y4ym-generation-xml.php:299
 #: includes/feeds/class-y4ym-generation-xml.php:339
-#: includes/feeds/class-y4ym-generation-xml.php:403
-#: includes/feeds/class-y4ym-generation-xml.php:428
-#: includes/feeds/class-y4ym-generation-xml.php:453
-#: includes/feeds/class-y4ym-generation-xml.php:476
-#: includes/feeds/class-y4ym-generation-xml.php:772
-#: includes/feeds/class-y4ym-generation-xml.php:817
-#: includes/feeds/class-y4ym-generation-xml.php:1135
-#: includes/feeds/class-y4ym-generation-xml.php:1161
-#: includes/feeds/class-y4ym-generation-xml.php:1188
-#: includes/feeds/class-y4ym-generation-xml.php:1212
+#: includes/feeds/class-y4ym-generation-xml.php:363
+#: includes/feeds/class-y4ym-generation-xml.php:413
+#: includes/feeds/class-y4ym-generation-xml.php:438
+#: includes/feeds/class-y4ym-generation-xml.php:463
+#: includes/feeds/class-y4ym-generation-xml.php:486
+#: includes/feeds/class-y4ym-generation-xml.php:782
+#: includes/feeds/class-y4ym-generation-xml.php:827
+#: includes/feeds/class-y4ym-generation-xml.php:1145
+#: includes/feeds/class-y4ym-generation-xml.php:1171
+#: includes/feeds/class-y4ym-generation-xml.php:1198
+#: includes/feeds/class-y4ym-generation-xml.php:1222
 #: includes/feeds/class-y4ym-get-unit.php:99
 #: includes/feeds/class-y4ym-get-unit.php:117
-#: includes/feeds/class-y4ym-get-unit.php:257
-#: includes/feeds/class-y4ym-get-unit.php:277
+#: includes/feeds/class-y4ym-get-unit.php:179
+#: includes/feeds/class-y4ym-get-unit.php:268
+#: includes/feeds/class-y4ym-get-unit.php:288
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:199
 #: includes/updates/class-y4ym-plugin-upd.php:542
 #: includes/updates/class-y4ym-plugin-upd.php:581
@@ -127,20 +129,22 @@ msgstr "Строка"
 #: includes/feeds/class-y4ym-generation-xml.php:282
 #: includes/feeds/class-y4ym-generation-xml.php:297
 #: includes/feeds/class-y4ym-generation-xml.php:337
-#: includes/feeds/class-y4ym-generation-xml.php:401
-#: includes/feeds/class-y4ym-generation-xml.php:426
-#: includes/feeds/class-y4ym-generation-xml.php:451
-#: includes/feeds/class-y4ym-generation-xml.php:474
-#: includes/feeds/class-y4ym-generation-xml.php:770
-#: includes/feeds/class-y4ym-generation-xml.php:815
-#: includes/feeds/class-y4ym-generation-xml.php:1133
-#: includes/feeds/class-y4ym-generation-xml.php:1159
-#: includes/feeds/class-y4ym-generation-xml.php:1186
-#: includes/feeds/class-y4ym-generation-xml.php:1210
+#: includes/feeds/class-y4ym-generation-xml.php:361
+#: includes/feeds/class-y4ym-generation-xml.php:411
+#: includes/feeds/class-y4ym-generation-xml.php:436
+#: includes/feeds/class-y4ym-generation-xml.php:461
+#: includes/feeds/class-y4ym-generation-xml.php:484
+#: includes/feeds/class-y4ym-generation-xml.php:780
+#: includes/feeds/class-y4ym-generation-xml.php:825
+#: includes/feeds/class-y4ym-generation-xml.php:1143
+#: includes/feeds/class-y4ym-generation-xml.php:1169
+#: includes/feeds/class-y4ym-generation-xml.php:1196
+#: includes/feeds/class-y4ym-generation-xml.php:1220
 #: includes/feeds/class-y4ym-get-unit.php:97
 #: includes/feeds/class-y4ym-get-unit.php:115
-#: includes/feeds/class-y4ym-get-unit.php:255
-#: includes/feeds/class-y4ym-get-unit.php:275
+#: includes/feeds/class-y4ym-get-unit.php:177
+#: includes/feeds/class-y4ym-get-unit.php:266
+#: includes/feeds/class-y4ym-get-unit.php:286
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:197
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:215
 #: includes/updates/class-y4ym-plugin-upd.php:540
@@ -2178,7 +2182,7 @@ msgid "An error occurred while creating an empty temporary feed file"
 msgstr "Произошла ошибка при создании пустого временного файла фида"
 
 #: includes/feeds/class-y4ym-generation-xml.php:224
-#: includes/feeds/class-y4ym-generation-xml.php:450
+#: includes/feeds/class-y4ym-generation-xml.php:460
 msgid "The creation of the feed has been stopped"
 msgstr "Создание фида было остановлено"
 
@@ -2188,7 +2192,7 @@ msgid "on step"
 msgstr "на шаге"
 
 #: includes/feeds/class-y4ym-generation-xml.php:279
-#: includes/feeds/class-y4ym-generation-xml.php:423
+#: includes/feeds/class-y4ym-generation-xml.php:433
 msgid "We continue to create the feed"
 msgstr "Мы продолжаем создание фида"
 
@@ -2197,45 +2201,49 @@ msgid "Sending a request to the database"
 msgstr "Отправка запроса к базе данных"
 
 #: includes/feeds/class-y4ym-generation-xml.php:335
-#: includes/feeds/class-y4ym-generation-xml.php:400
+#: includes/feeds/class-y4ym-generation-xml.php:410
 msgid "The number of records returned by the server"
 msgstr "Количество записей, возвращенных сервером"
 
-#: includes/feeds/class-y4ym-generation-xml.php:449
+#: includes/feeds/class-y4ym-generation-xml.php:359
+msgid "Getting started with the product"
+msgstr "Начало работы с товаром"
+
+#: includes/feeds/class-y4ym-generation-xml.php:459
 msgid "In this step, an error occurred while creating a temporary feed file"
 msgstr "На этом шаге произошла ошибка при создании временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:472
+#: includes/feeds/class-y4ym-generation-xml.php:482
 msgid "Checking whether the feed needs to be archived"
 msgstr "Проверка необходимости архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:768
+#: includes/feeds/class-y4ym-generation-xml.php:778
 msgid ""
 "The list of product IDs in the feed is empty or the temporary file has been "
 "deleted"
 msgstr "Список ID товаров в фиде пуст или временный файл был удален"
 
-#: includes/feeds/class-y4ym-generation-xml.php:813
+#: includes/feeds/class-y4ym-generation-xml.php:823
 msgid "Data loss when writing a feed file"
 msgstr "Потеря данных при записи файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1129
+#: includes/feeds/class-y4ym-generation-xml.php:1139
 msgid "I can't rename the feed file from"
 msgstr "Я не могу переименовать файл фида из"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1131
+#: includes/feeds/class-y4ym-generation-xml.php:1141
 msgid "to"
 msgstr "в"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1156
+#: includes/feeds/class-y4ym-generation-xml.php:1166
 msgid "The temporary feed file has been successfully renamed to the main one"
 msgstr "Временный файл фида был успешно переименован в основной"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1185
+#: includes/feeds/class-y4ym-generation-xml.php:1195
 msgid "Starting archiving the feed"
 msgstr "Начинаю архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1209
+#: includes/feeds/class-y4ym-generation-xml.php:1219
 msgid "The archiving was successful"
 msgstr "Архивация прошла успешно"
 
@@ -2261,11 +2269,15 @@ msgstr "Для товара с"
 msgid "the data is taken from the file"
 msgstr "данные взяты из файла"
 
-#: includes/feeds/class-y4ym-get-unit.php:254
+#: includes/feeds/class-y4ym-get-unit.php:175
+msgid "A variation product has more than 256 variations"
+msgstr "Вариативный товар имеет более 256 вариаций"
+
+#: includes/feeds/class-y4ym-get-unit.php:265
 msgid "The data could not be received. The cache usage ban is enabled"
 msgstr "Данные не удалось получить. Запрет на использование кэша включен"
 
-#: includes/feeds/class-y4ym-get-unit.php:273
+#: includes/feeds/class-y4ym-get-unit.php:284
 msgid "Error when receiving data from the CACHE file"
 msgstr "Ошибка при получении данных из КЭШ файла"
 
@@ -2323,7 +2335,7 @@ msgstr "У товара нет описания"
 msgid "Product has no images"
 msgstr "Товар не имеет изображений"
 
-#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:78
+#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:77
 #: includes/feeds/traits/variable/trait-y4ym-t-variable-get-price.php:80
 msgid "The product has no price"
 msgstr "Товар не имеет цены"

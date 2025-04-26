@@ -17,8 +17,8 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.0.7
- * Requires at least:       5.0
+ * Version:                 5.0.8
+ * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
  * Author URI:              https://icopydoc.ru/
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         9.7.1
+ * WC tested up to:         9.8.2
  */
 
 // If this file is called directly, abort.
@@ -461,7 +461,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.0.7' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.0.8' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -552,7 +552,7 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.0.7', '<' ) ) {
+	if ( version_compare( $y4ym_v, '5.0.8', '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 

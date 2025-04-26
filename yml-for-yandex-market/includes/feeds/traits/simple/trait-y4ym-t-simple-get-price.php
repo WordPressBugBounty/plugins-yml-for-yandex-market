@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.8 (26-04-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -74,7 +74,6 @@ trait Y4YM_T_Simple_Get_Price {
 			// если цены нет - пропускаем товар. Работает для всех правил кроме "Без правил"
 			if ( $tag_value == 0 || empty( $tag_value ) ) {
 				$this->add_skip_reason( [ 
-					'offer_id' => $this->get_product()->get_id(),
 					'reason' => __( 'The product has no price', 'y4ym' ),
 					'post_id' => $this->get_product()->get_id(),
 					'file' => 'trait-y4ym-t-simple-get-price.php',
@@ -115,7 +114,6 @@ trait Y4YM_T_Simple_Get_Price {
 			}
 		} else {
 			$this->add_skip_reason( [ 
-				'offer_id' => $this->get_product()->get_id(),
 				'reason' => $skip_price_reason,
 				'post_id' => $this->get_product()->get_id(),
 				'file' => 'trait-y4ym-t-simple-get-price.php',
