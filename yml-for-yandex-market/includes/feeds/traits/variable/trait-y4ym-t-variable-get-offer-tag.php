@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -115,7 +115,7 @@ trait Y4YM_T_Variable_Get_Offer_Tag {
 			)
 		);
 		if ( empty( $no_group_id_arr ) ) {
-			$offer_tag_attrs_arr['group_id'] = $this->get_product()->get_id();
+			$offer_tag_attrs_arr['group_id'] = $this->get_group_id_value();
 		} else {
 			// массив с group_id заполнен
 			$сur_сategory_id = (string) $this->get_feed_category_id();
@@ -124,7 +124,7 @@ trait Y4YM_T_Variable_Get_Offer_Tag {
 
 			} else {
 				// совпадений нет. подставляем group_id
-				$offer_tag_attrs_arr['group_id'] = $this->get_product()->get_id();
+				$offer_tag_attrs_arr['group_id'] = $this->get_group_id_value();
 			}
 		}
 

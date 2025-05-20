@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.8 (26-04-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -321,13 +321,14 @@ class Y4YM_Generation_XML {
 					],
 					$this->get_feed_id()
 				);
-				$products_query = new \WP_Query( $args );
 				new Y4YM_Error_Log( sprintf(
 					'FEED #%1$s; %2$s =>',
 					$this->get_feed_id(),
 					__( 'Sending a request to the database', 'yml-for-yandex-market' )
 				) );
 				new Y4YM_Error_Log( $args );
+				new Y4YM_Error_Log( json_encode( $args ) );
+				$products_query = new \WP_Query( $args );
 				if ( $products_query->have_posts() ) {
 					new Y4YM_Error_Log( sprintf(
 						'FEED #%1$s; %2$s: %3$s; %4$s: %5$s; %6$s: %7$s',
@@ -629,6 +630,9 @@ class Y4YM_Generation_XML {
 					break;
 				case "ABC":
 					$currency_id_xml = "BYN";
+					break;
+				case "TRY":
+					$currency_id_xml = "TRY";
 					break;
 				default:
 					$currency_id_xml = "RUR";

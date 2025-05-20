@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -48,12 +48,35 @@ trait Y4YM_T_Variable_Get_Group_Id {
 		);
 
 		if ( $group_id === 'enabled' ) {
-			$tag_value = $this->get_product()->get_id();
+			$tag_value = $this->get_group_id_value();
 			$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		}
 
 		return $result_xml;
 
 	}
+
+	/**
+	 * Get `group_id` value.
+	 * 
+	 * @return string Example: `153`.
+	 */
+	public function get_group_id_value() {
+
+		$tag_value = $this->get_product()->get_id();
+		$tag_value = apply_filters(
+			'y4ym_f_group_id_value',
+			$tag_value,
+			[ 
+				'product' => $this->get_product(),
+				'offer' => $this->get_offer(),
+				'feed_category_id' => $this->get_feed_category_id()
+			],
+			$this->get_feed_id()
+		);
+		return (string) $tag_value;
+
+	}
+
 
 }

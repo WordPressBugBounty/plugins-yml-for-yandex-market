@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -34,6 +34,7 @@ class Y4YM_Rules_List {
 	 * @param array $rules_arr
 	 */
 	public function __construct( $rules_arr = [] ) {
+
 		if ( empty( $rules_arr ) ) {
 			$this->rules_arr = [ 
 				'yandex_market_assortment' => [ 
@@ -123,9 +124,9 @@ class Y4YM_Rules_List {
 					'tn_ved_codes' // TODO: добавить ,'okpd2'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
-					'offer_tag', 'currencyid', 'price', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'name', 'vendor', 'vendorcode',
-					'description', 'sales_notes', 'delivery_options', 'pickup_options', 'qty',
-					'params', 'weight', 'dimensions', 'consists'
+					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup',
+					'delivery', 'name', 'vendor', 'vendorcode', 'description', 'sales_notes', 'delivery_options',
+					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'consists'
 				],
 				'all_elements' => [ 
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'age',
@@ -145,6 +146,7 @@ class Y4YM_Rules_List {
 		}
 
 		$this->rules_arr = apply_filters( 'y4ym_f_set_rules_arr', $this->get_rules_arr() );
+
 	}
 
 	/**

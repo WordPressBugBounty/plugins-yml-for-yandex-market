@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.4 (05-04-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -909,7 +909,9 @@ class Y4YM_Admin {
 					// URL-фида
 					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_feed_url'] ) ) {
 						$feed_url = $settings_arr[ $feed_id_str ]['y4ym_feed_url'];
+						$feed_rules = $settings_arr[ $feed_id_str ]['y4ym_yml_rules'];
 						$additional_info .= sprintf( '<p>URL: %s</p>', urldecode( $feed_url ) );
+						$additional_info .= sprintf( '<p>Придерживаться правил: %s</p>', $feed_rules );
 					} else {
 						$additional_info .= sprintf( '<p>URL: %s</p>', '-' );
 					}

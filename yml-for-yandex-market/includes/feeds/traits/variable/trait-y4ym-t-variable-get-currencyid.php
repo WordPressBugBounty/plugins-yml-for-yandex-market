@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -44,36 +44,39 @@ trait Y4YM_T_Variable_Get_Currencyid {
 		$res = get_woocommerce_currency(); // получаем валюта магазина
 		switch ( $res ) { /*  RUR, BYN, EUR, USD, UAN, KZT */
 			case "RUB":
-				$currency_id_yml = "RUR";
+				$currency_id_xml = "RUR";
 				break;
 			case "USD":
-				$currency_id_yml = "USD";
+				$currency_id_xml = "USD";
 				break;
 			case "EUR":
-				$currency_id_yml = "EUR";
+				$currency_id_xml = "EUR";
 				break;
 			case "UAH":
-				$currency_id_yml = "UAH";
+				$currency_id_xml = "UAH";
 				break;
 			case "KZT":
-				$currency_id_yml = "KZT";
+				$currency_id_xml = "KZT";
 				break;
 			case "UZS":
-				$currency_id_yml = "UZS";
+				$currency_id_xml = "UZS";
 				break;
 			case "BYN":
-				$currency_id_yml = "BYN";
+				$currency_id_xml = "BYN";
 				break;
 			case "BYR":
-				$currency_id_yml = "BYN";
+				$currency_id_xml = "BYN";
 				break;
 			case "ABC":
-				$currency_id_yml = "BYN";
+				$currency_id_xml = "BYN";
+				break;
+			case "TRY":
+				$currency_id_xml = "TRY";
 				break;
 			default:
-				$currency_id_yml = "RUR";
+				$currency_id_xml = "RUR";
 		}
-		$tag_value = apply_filters( 'y4ym_currency_id', $currency_id_yml, $this->get_feed_id() );
+		$tag_value = apply_filters( 'y4ym_currency_id', $currency_id_xml, $this->get_feed_id() );
 
 		$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		return $result_xml;

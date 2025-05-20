@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -121,14 +121,14 @@ trait Y4YM_T_Variable_Get_Picture {
 	public function skip_gif( $tag_name, $tag_value ) {
 
 		// удаляем из фида gif и svg картинки
-		if ( false === strpos( $tag_value, '.gif' )
-			&& false === strpos( $tag_value, '.svg' ) ) {
-			$tag_value = get_from_url( $tag_value, 'url' ); // ? оправдано ли
-			$picture_yml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
+		$tag_value = get_from_url( $tag_value, 'url' );
+		if ( preg_match( '/\.(gif|svg)$/i', $tag_value ) ) {
+			// это gif или svg
+			$picture_xml = '';
 		} else {
-			$picture_yml = '';
+			$picture_xml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
 		}
-		return $picture_yml;
+		return $picture_xml;
 
 	}
 

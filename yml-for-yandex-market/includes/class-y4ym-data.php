@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.5 (07-04-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -1459,7 +1459,7 @@ class Y4YM_Data {
 								'text' => __( 'Substitute from', 'yml-for-yandex-market' ) . 'WooCommerce Germanized'
 							]
 						],
-						'tag_name' => 'always',
+						'tag_name' => 'always', // ! заменить на 'id'
 						'tag_name_for_desc' => 'id'
 					]
 				],
@@ -1475,7 +1475,7 @@ class Y4YM_Data {
 						'label' => __( 'Name post_meta', 'yml-for-yandex-market' ),
 						'desc' => '',
 						'placeholder' => __( 'Name post_meta', 'yml-for-yandex-market' ),
-						'tag_name' => 'always',
+						'tag_name' => 'always', // ! заменить на 'id'
 						'tag_name_for_desc' => 'id'
 					]
 				],
@@ -3014,7 +3014,7 @@ class Y4YM_Data {
 						__( 'Indicate in what currency the prices should be', 'yml-for-yandex-market' ),
 						__( 'Please note', 'yml-for-yandex-market' ),
 						__( 'Yandex Market only supports the following currencies', 'yml-for-yandex-market' ),
-						'RUR, RUB, UAH, BYN, KZT, UZS, USD, EUR',
+						'RUR, RUB, UAH, BYN, KZT, UZS, USD, EUR, TRY',
 						__( 'Choosing a different currency can lead to errors', 'yml-for-yandex-market' )
 					),
 					'woo_attr' => false,
