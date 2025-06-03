@@ -118,7 +118,10 @@ trait Y4YM_T_Common_Get_CatId {
 
 		if ( empty( $site_category_id ) ) {
 			$this->add_skip_reason( [ 
-				'reason' => __( 'The product has no categories', 'yml-for-yandex-market' ),
+				'reason' => sprintf( '%s %s',
+					__( 'The product has no categories', 'yml-for-yandex-market' ),
+					__( 'or filtering by category is enabled', 'yml-for-yandex-market' )
+				),
 				'post_id' => $this->get_product()->get_id(),
 				'file' => 'trait-y4ym-t-common-get-catid.php',
 				'line' => __LINE__
