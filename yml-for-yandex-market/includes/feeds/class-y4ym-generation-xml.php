@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.9 (20-05-2025)
+ * @version    5.0.11 (05-06-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -329,6 +329,44 @@ class Y4YM_Generation_XML {
 				new Y4YM_Error_Log( $args );
 				new Y4YM_Error_Log( json_encode( $args ) );
 				$products_query = new \WP_Query( $args );
+				$query_time = (int) time() - $time_start;
+				new Y4YM_Error_Log( sprintf(
+					'FEED #%1$s; %2$s: %3$s; %4$s: %5$s; %6$s: %7$s',
+					$this->get_feed_id(),
+					__( 'The query time to the database was', 'yml-for-yandex-market' ),
+					$query_time,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				) );
+				$script_execution_time = (int) common_option_get(
+					'y4ym_script_execution_time',
+					'26',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				if ( $query_time > $script_execution_time ) {
+					new Y4YM_Error_Log( sprintf(
+						'FEED #%1$s; WARNING: %2$s: %3$s > %4$s. %5$s "%6$s" %7$s %8$s %9$s; %10$s: %11$s; %12$s: %13$s',
+						$this->get_feed_id(),
+						__( 'The query time to the database was', 'yml-for-yandex-market' ),
+						$query_time,
+						$script_execution_time,
+						__(
+							'If you experience freezes when creating the feed, try increasing the',
+							'yml-for-yandex-market'
+						),
+						__( 'The maximum script execution time', 'yml-for-yandex-market' ),
+						__( 'parameter to', 'yml-for-yandex-market' ),
+						$query_time + 5,
+						__( 'points', 'yml-for-yandex-market' ),
+						__( 'File', 'yml-for-yandex-market' ),
+						'class-y4ym-generation-xml.php',
+						__( 'Line', 'yml-for-yandex-market' ),
+						__LINE__
+					) );
+				}
 				if ( $products_query->have_posts() ) {
 					new Y4YM_Error_Log( sprintf(
 						'FEED #%1$s; %2$s: %3$s; %4$s: %5$s; %6$s: %7$s',
@@ -343,13 +381,13 @@ class Y4YM_Generation_XML {
 					$date_successful_feed_update = common_option_get(
 						'y4ym_date_successful_feed_update',
 						50,
-						20,
+						$this->get_feed_id(),
 						'y4ym'
 					);
 					$date_save_set = common_option_get(
 						'y4ym_date_save_set',
 						50,
-						20,
+						$this->get_feed_id(),
 						'y4ym'
 					);
 					for ( $i = 0; $i < count( $products_query->posts ); $i++ ) {
@@ -389,7 +427,7 @@ class Y4YM_Generation_XML {
 
 						$time_end = time();
 						$time = $time_end - $time_start;
-						if ( $time > 25 ) {
+						if ( $time > $script_execution_time ) {
 							break;
 						} else {
 							$last_element_feed++;

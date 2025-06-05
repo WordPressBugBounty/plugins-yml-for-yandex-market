@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.11 (05-06-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -87,6 +87,9 @@ class Y4YM_Autoloader {
 			$this->prefix = $prefix;
 		}
 		$this->map_file = __DIR__ . '/classmap.php';
+		if ( ! file_exists( __DIR__ . '/classmap.php' ) ) {
+			file_put_contents( $this->map_file, '<?php return [];' );
+		}
 		$this->map = @include $this->map_file;
 		$this->map = is_array( $this->map ) ? $this->map : [];
 		spl_autoload_register( [ $this, 'autoload' ] );

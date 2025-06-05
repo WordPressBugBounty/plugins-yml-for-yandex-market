@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.11 (05-06-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -47,7 +47,7 @@ trait Y4YM_T_Simple_Get_Downloadable {
 			'y4ym'
 		);
 		if ( $downloadable === 'enabled' ) {
-			if ( $this->get_product()->is_downloadable( 'yes' ) ) {
+			if ( $this->get_product()->is_downloadable() ) {
 				$tag_value = 'true';
 			} else {
 				$tag_value = 'false';
