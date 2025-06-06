@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.11 (05-06-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -245,7 +245,7 @@ class Y4YM_Admin {
 	public function add_plugin_admin_menu() {
 
 		add_menu_page(
-			'YML for Yandex Market',
+			null,
 			__( 'Y4YM', 'yml-for-yandex-market' ),
 			'manage_woocommerce',
 			$this->plugin_name,

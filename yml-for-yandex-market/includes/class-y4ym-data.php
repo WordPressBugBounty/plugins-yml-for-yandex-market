@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.11 (05-06-2025)
+ * @version    5.0.9 (20-05-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -427,30 +427,6 @@ class Y4YM_Data {
 							[ 'value' => '1500', 'text' => '1500' ]
 						],
 						'tr_class' => 'y4ym_tr'
-					]
-				],
-				[ 
-					'opt_name' => 'y4ym_script_execution_time',
-					'def_val' => '26',
-					'mark' => 'public',
-					'type' => 'text',
-					'tab' => 'main_tab',
-					'data' => [ 
-						'label' => __( 'The maximum script execution time', 'yml-for-yandex-market' ),
-						'desc' => sprintf( '%s. <strong>%s:</strong> 26. %s 10-30 %s',
-							__(
-								'The maximum script execution time in seconds',
-								'yml-for-yandex-market'
-							),
-							__( 'Default value', 'yml-for-yandex-market' ),
-							__(
-								'If you experience freezes when creating the feed, try increasing this parameter by',
-								'yml-for-yandex-market'
-							),
-							__( 'points', 'yml-for-yandex-market' ),
-						),
-						'placeholder' => '26',
-						'tr_class' => ''
 					]
 				],
 				[ 
