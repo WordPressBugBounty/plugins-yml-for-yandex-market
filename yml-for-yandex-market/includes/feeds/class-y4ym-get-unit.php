@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.8 (26-04-2025)
+ * @version    5.0.13 (09-06-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -95,7 +95,7 @@ class Y4YM_Get_Unit {
 				$date_save_set,
 				__( 'Requesting data from the cache', 'yml-for-yandex-market' ),
 				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-generation-xml.php',
+				'class-y4ym-get-unit.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
 			) );
@@ -113,7 +113,7 @@ class Y4YM_Get_Unit {
 				$post_id,
 				__( 'the data is taken from the file', 'yml-for-yandex-market' ),
 				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-generation-xml.php',
+				'class-y4ym-get-unit.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
 			) );
@@ -176,7 +176,7 @@ class Y4YM_Get_Unit {
 					$variation_count,
 					$product->get_id(),
 					__( 'File', 'yml-for-yandex-market' ),
-					'class-y4ym-generation-xml.php',
+					'class-y4ym-get-unit.php',
 					__( 'Line', 'yml-for-yandex-market' ),
 					__LINE__
 				) );
@@ -265,7 +265,7 @@ class Y4YM_Get_Unit {
 				$this->get_feed_id(),
 				__( 'The data could not be received. The cache usage ban is enabled', 'yml-for-yandex-market' ),
 				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-generation-xml.php',
+				'class-y4ym-get-unit.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
 			) );
@@ -285,13 +285,20 @@ class Y4YM_Get_Unit {
 				__( 'Error when receiving data from the CACHE file', 'yml-for-yandex-market' ),
 				$tmp_file_path,
 				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-generation-xml.php',
+				'class-y4ym-get-unit.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
 			) );
 			return 'no';
 		} else {
 			$this->result_xml = $file_content;
+			$this->ids_in_xml = sprintf( '%s;%s;%s;%s%s',
+				$this->get_product()->get_id(),
+				'', // $offer->get_id()
+				'', // $offer_variable_obj->get_feed_price(),
+				'', // $offer_variable_obj->get_feed_category_id(),
+				PHP_EOL // ! когда мы тянем товары из кэша, то теряется часть данных... но используем ли мы их?
+			);
 			return 'yes';
 		}
 
