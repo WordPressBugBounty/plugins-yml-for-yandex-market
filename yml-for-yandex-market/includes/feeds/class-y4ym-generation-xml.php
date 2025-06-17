@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.13 (09-06-2025)
+ * @version    5.0.14 (17-06-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -78,6 +78,14 @@ class Y4YM_Generation_XML {
 	 */
 	public function quick_generation() {
 
+		$date_sborki_start = current_time( 'Y-m-d H:i' );
+		common_option_upd(
+			'y4ym_date_sborki_start',
+			$date_sborki_start,
+			'no',
+			$this->get_feed_id(),
+			'y4ym'
+		);
 		$result_xml = $this->get_feed_header();
 		new Y4YM_Write_File( $result_xml, '-1.tmp', $this->get_feed_id() );
 		$result_xml = $this->get_feed_footer( 'quick_generation(); line ' . __LINE__ );

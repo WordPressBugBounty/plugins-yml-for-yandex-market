@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.14 (17-06-2025)
  * @see        https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
  *             https://wp-kama.ru/function/wp_list_table
  *
@@ -130,7 +130,15 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 					}
 
 					if ( empty( $feed_url ) ) {
-						$text_column_feed_url = __( 'Not created yet', 'yml-for-yandex-market' );
+						if ( empty( $feed_assignment ) ) {
+							$text_column_feed_url = __( 'Not created yet', 'yml-for-yandex-market' );
+						} else {
+							$text_column_feed_url = sprintf(
+								'%1$s<br/>(%2$s)',
+								__( 'Not created yet', 'yml-for-yandex-market' ),
+								$feed_assignment
+							);
+						}
 					} else {
 						if ( empty( $feed_assignment ) ) {
 							$text_column_feed_url = sprintf(
