@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.15 (09-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -52,7 +52,7 @@ trait Y4YM_T_Simple_Get_Condition {
 		if ( empty( $reason ) ) {
 			$reason = common_option_get(
 				'y4ym_reason',
-				'disabled',
+				'',
 				$this->get_feed_id(),
 				'y4ym'
 			);
@@ -61,7 +61,7 @@ trait Y4YM_T_Simple_Get_Condition {
 		if ( empty( $quality ) || $quality === 'default' ) {
 			$quality = common_option_get(
 				'y4ym_quality',
-				false,
+				'perfect',
 				$this->get_feed_id(),
 				'y4ym'
 			);

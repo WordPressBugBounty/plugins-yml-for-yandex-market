@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.15 (09-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -43,7 +43,7 @@ trait Y4YM_T_Simple_Get_Market_Category {
 
 		$market_category = common_option_get(
 			'y4ym_market_category',
-			false,
+			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);

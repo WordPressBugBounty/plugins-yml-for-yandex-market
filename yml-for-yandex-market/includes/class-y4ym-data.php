@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.11 (05-06-2025)
+ * @version    5.0.15 (09-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -171,7 +171,7 @@ class Y4YM_Data {
 							[ 'value' => '8am', 'text' => '08-00' ],
 							[ 'value' => '9am', 'text' => '09-00' ],
 							[ 'value' => '10am', 'text' => '10-00' ],
-							[ 'value' => '11am', 'text' => '10-00' ],
+							[ 'value' => '11am', 'text' => '11-00' ],
 							[ 'value' => '12am', 'text' => '12-00' ],
 							[ 'value' => '1pm', 'text' => '13-00' ],
 							[ 'value' => '2pm', 'text' => '14-00' ],
@@ -774,7 +774,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_pickup_options',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'shop_data_tab',
@@ -2111,7 +2111,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_collection_id',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2134,7 +2134,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_warranty_days',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2239,7 +2239,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_condition',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2303,7 +2303,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_quality',
-					'def_val' => 'true',
+					'def_val' => 'perfect',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2347,7 +2347,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_custom_score',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2371,7 +2371,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_custom_labels',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2395,7 +2395,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_market_category',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',
@@ -2423,7 +2423,7 @@ class Y4YM_Data {
 				],
 				[ 
 					'opt_name' => 'y4ym_market_category_id',
-					'def_val' => 'true',
+					'def_val' => 'disabled',
 					'mark' => 'public',
 					'type' => 'select',
 					'tab' => 'offer_data_tab',

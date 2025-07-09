@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.14 (17-06-2025)
+ * @version    5.0.15 (09-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -893,7 +893,7 @@ class Y4YM_Generation_XML {
 			$yml_rules == 'all_elements' ) {
 			$collection_id = common_option_get(
 				'y4ym_collection_id',
-				false,
+				'disabled',
 				$this->get_feed_id(),
 				'y4ym'
 			);
