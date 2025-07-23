@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -101,7 +101,9 @@ abstract class Y4YM_Get_Unit_Offer {
 			$this->variation_count = null;
 		}
 
+		y4ym_global_set_woocommerce_currency( $this->get_feed_id() );
 		$r = $this->generation_product_xml();
+		y4ym_global_rest_woocommerce_currency();
 
 		// если нет нужды пропускать
 		if ( empty( $this->get_skip_reasons_arr() ) ) {

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -49,7 +49,7 @@ trait Y4YM_T_Variable_Get_Market_Category_Id {
 			'y4ym'
 		);
 		if ( $market_category_id === 'enabled' ) {
-			$tag_value = $this->get_variable_product_post_meta( '_yfym_market_category_id' );
+			$tag_value = $this->get_variable_product_post_meta( 'market_category_id' );
 			$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		}
 		return $result_xml;

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -648,8 +648,12 @@ class Y4YM_Generation_XML {
 		);
 		if ( $currencies === 'enabled' ) {
 			$allow_currencies_arr = [];
-			$res = get_woocommerce_currency(); // получаем валюта магазина
-			switch ( $res ) {
+
+			y4ym_global_set_woocommerce_currency( $this->get_feed_id() );
+			$main_currency = get_woocommerce_currency(); // получаем валюту магазина
+			y4ym_global_rest_woocommerce_currency();
+
+			switch ( $main_currency ) {
 				case "RUB":
 					$currency_id_xml = "RUR";
 					break;

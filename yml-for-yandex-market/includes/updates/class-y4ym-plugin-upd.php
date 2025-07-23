@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -451,6 +451,32 @@ final class Y4YM_Plugin_Upd {
 		];
 		$api_url = apply_filters( 'y4ym_f_api_url', self::API_URL );
 		$response = wp_remote_post( esc_url_raw( $api_url ), $request_arr );
+		if ( is_wp_error( $response ) ) {
+			$response = $this->response_to_reserved_servers( $request_arr );
+		}
+		return $response;
+
+	}
+
+	/**
+	 * Reserved response to an API request.
+	 * 
+	 * @param array $request_arr
+	 * 
+	 * @return WP_Error|array
+	 */
+	private function response_to_reserved_servers( $request_arr ) {
+
+		$backup_servers_arr = [ 
+			'https://icopydoc.com/api/v1',
+			'https://icopydoc.com/api/v2'
+		];
+		for ( $i = 0; $i < count( $backup_servers_arr ); $i++ ) {
+			$response = wp_remote_post( esc_url_raw( $backup_servers_arr[ $i ] ), $request_arr );
+			if ( false === is_wp_error( $response ) ) {
+				break;
+			}
+		}
 		return $response;
 
 	}

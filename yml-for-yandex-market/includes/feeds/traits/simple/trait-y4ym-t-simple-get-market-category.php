@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -48,7 +48,7 @@ trait Y4YM_T_Simple_Get_Market_Category {
 			'y4ym'
 		);
 		if ( $market_category === 'enabled' ) {
-			$tag_value = $this->get_simple_product_post_meta( '_yfym_market_category' );
+			$tag_value = $this->get_simple_product_post_meta( 'market_category' );
 			$result_xml = $this->get_simple_tag( $tag_name, $tag_value );
 		}
 		return $result_xml;

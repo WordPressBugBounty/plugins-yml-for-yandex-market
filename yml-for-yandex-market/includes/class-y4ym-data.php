@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -271,6 +271,13 @@ class Y4YM_Data {
 								'value' => 'single_catalog',
 								'text' => sprintf( 'FBY, FBY+ (%s)',
 									__( 'in a single catalog', 'yml-for-yandex-market' )
+								)
+							],
+							[ 
+								'value' => 'yandex_products',
+								'text' => sprintf( 'Яндекс.Товары (%s - %s)',
+									__( 'Yandex products', 'yml-for-yandex-market' ),
+									__( 'Simplified type', 'yml-for-yandex-market' )
 								)
 							],
 							[ 
@@ -3034,7 +3041,7 @@ class Y4YM_Data {
 					'label' => __( 'Feed currency', 'yml-for-yandex-market' ),
 					'desc' => sprintf( '%s %s. %s.<br/><strong>%s:</strong> %s %s %s',
 						__( 'You have plugin installed', 'yml-for-yandex-market' ),
-						'WooCommerce Currency Switcher by PluginUs.NET. Woo Multi Currency and Woo Multi Pay',
+						'FOX – Currency Switcher Professional for WooCommerce',
 						__( 'Indicate in what currency the prices should be', 'yml-for-yandex-market' ),
 						__( 'Please note', 'yml-for-yandex-market' ),
 						__( 'Yandex Market only supports the following currencies', 'yml-for-yandex-market' ),

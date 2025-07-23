@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.9 (20-05-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -92,6 +92,16 @@ class Y4YM_Rules_List {
 					'market_sku', 'min_quantity', 'model', 'name', 'params', 'period_of_validity_days',
 					'picture', /*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'tn_ved_codes',
 					'url', 'cargo_types', 'vendor', 'vendorcode', 'weight'
+				],
+				'yandex_products' => [ 
+					// https://yandex.ru/support/merchants/ru/offers
+					'offer_tag', 'currencyid', 'name', 'vendor', 'vendorcode',
+					'url', 'price', 'oldprice', 'categoryid', 'picture',
+					'delivery', 'delivery_options', 'pickup', 'pickup_options',
+					'description', 'sales_notes', 'adult', 'barcode', 'params',
+					'weight', 'dimensions', 'period_of_validity_days',
+					// TODO: 'certificate', 'comment_validity_days',  'service_life_days', 'comment_life_days', 
+					'warranty_days', 'comment_warranty', 'tn_ved_codes', 'condition'
 				],
 				'vk' => [ 
 					/**

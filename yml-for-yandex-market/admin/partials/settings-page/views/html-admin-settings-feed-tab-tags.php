@@ -2,7 +2,7 @@
 /**
  * The Another page tab
  * 
- * @version    5.0.5 (07-04-2025)
+ * @version    5.0.16 (23-07-2025)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -13,7 +13,9 @@ defined( 'ABSPATH' ) || exit;
 
 // придерживаться правил. 1 из 2
 $plugin_date = new Y4YM_Data();
-$attr_arr = $plugin_date->get_options( [ 'y4ym_yml_rules' ] );
+// * в качестве аргумента фукнцкии передаём массив опций, которые будут на 
+// * вкладках `offer_data_tab` и `shop_data_tab`.
+$attr_arr = $plugin_date->get_options( [ 'y4ym_yml_rules', 'y4ym_wooc_currencies' ] );
 if ( $view_arr['tab_name'] === 'offer_data_tab' || $view_arr['tab_name'] === 'shop_data_tab' ) {
 	$html_header = $view_arr['tab_name'];
 	$html_body = '';
@@ -39,10 +41,12 @@ $html_th = '';
 $html_td = '';
 
 // придерживаться правил. 2 из 2
-$yml_rules = common_option_get( 'y4ym_yml_rules', false, $view_arr['feed_id'], 'y4ym' );
-if ( $yml_rules === 'yandex_market' ) { // TODO: 5.0.0 (25-03-2025) - удалить со временем это условие
-	$yml_rules = 'yandex_market_assortment';
-}
+$yml_rules = common_option_get(
+	'y4ym_yml_rules',
+	'yandex_market_assortment',
+	$view_arr['feed_id'],
+	'y4ym'
+);
 $rules_obj = new Y4YM_Rules_List();
 $rules_arr = $rules_obj->get_rules_arr();
 $attr_arr_new = [];

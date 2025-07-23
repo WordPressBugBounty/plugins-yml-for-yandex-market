@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.6 (15-04-2025)
+ * @version    5.0.16 (23-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -128,6 +128,9 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 				break;
 			case "yandex_direct_combined": // Яндекс Директ (Комбинированный тип)
 				$result_xml = $this->yandex_direct_combined();
+				break;
+			case "yandex_products": // Яндекс.Товары
+				$result_xml = $this->yandex_products();
 				break;
 			case "yandex_webmaster": // Яндекс Вебмастер (Товарный фид, Товары и предложения)
 				$result_xml = $this->yandex_webmaster();
@@ -395,6 +398,22 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	private function aliexpress( $result_xml = '' ) {
 
 		$result_xml .= $this->get_tags( 'aliexpress', $result_xml );
+		return $result_xml;
+
+	}
+
+	/**
+	 * Яндекс Товары.
+	 * 
+	 * @see https://yandex.ru/support/merchants/ru/connect/form-feed
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	private function yandex_products( $result_xml = '' ) {
+
+		$result_xml .= $this->get_tags( 'yandex_products', $result_xml );
 		return $result_xml;
 
 	}
