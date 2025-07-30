@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 6.8.2
-Stable tag: 5.0.16
+Stable tag: 5.0.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,14 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.0.17 =
+*Release Date 30-07-2025*
+
+* Updated plugin libraries.
+* Fixed minor bugs.
+* The option to choose the abbreviation `RUR` or `RUB` has been added for the Russian ruble.
+* The mechanism of counting products in the feed has been changed.
 
 = 5.0.16 =
 *Release Date 23-07-2025*
@@ -169,10 +177,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.0.16 =
-*Release Date 23-07-2025*
+= 5.0.17 =
+*Release Date 30-07-2025*
 
-* Added the new rule 'Яндекс.Товары'.
-* Added compatibility with the plugin FOX - Currency Switcher Professional for WooCommerce.
-* Fixed interface bugs.
-* Fixed bugs in the following tags: `market_category`, `market_category_id`.
+* Updated plugin libraries.
+* Fixed minor bugs.
+* The option to choose the abbreviation `RUR` or `RUB` has been added for the Russian ruble.
+* The mechanism of counting products in the feed has been changed.

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -596,6 +596,28 @@ class Y4YM_Data {
 						],
 						'tag_name' => 'always',
 						'tag_name_for_desc' => 'currencies'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_ru_currency',
+					'def_val' => 'RUB',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'shop_data_tab',
+					'data' => [ 
+						'label' => __( 'Russian ruble format', 'yml-for-yandex-market' ),
+						'desc' => __(
+							'If the shop currency is the Russian ruble, this value will be used as the currency identifier',
+							'yml-for-yandex-market'
+						),
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'RUB', 'text' => 'RUB' ],
+							[ 'value' => 'RUR', 'text' => 'RUR' ]
+						],
+						'tag_name' => 'always',
+						'tag_name_for_desc' => 'RUB/RUR'
 					]
 				],
 				[ 
@@ -3050,7 +3072,8 @@ class Y4YM_Data {
 					),
 					'woo_attr' => false,
 					'default_value' => false,
-					'key_value_arr' => $key_value_arr
+					'key_value_arr' => $key_value_arr,
+					'tag_name' => 'no_tag'
 				]
 			];
 		}

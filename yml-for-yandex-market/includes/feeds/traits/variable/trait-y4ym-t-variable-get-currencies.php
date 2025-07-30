@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -37,7 +37,7 @@ trait Y4YM_T_Variable_Get_Currencies {
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<currencies><currency id="RUR" rate="1"/></currencies>`.
+	 * @return string Example: `<currencies><currency id="RUB" rate="1"/></currencies>`.
 	 */
 	public function get_currencies( $tag_name = 'currencies', $result_xml = '' ) {
 

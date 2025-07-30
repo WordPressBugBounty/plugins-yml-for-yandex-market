@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -147,8 +147,11 @@ trait Y4YM_T_Simple_Get_Vendor {
 			$this->get_feed_id()
 		);
 		if ( false === $skip_vendor_reason ) {
-			// ! обернул $tag_value в htmlspecialchars т.к у нас могут быть амперсанды
-			$tag_value = htmlspecialchars( $vendor_name );
+			// ! в некоторых случаях, в том числе при неправильных действиях пользователя тут может быть массив
+			if ( is_string( $vendor_name ) ) {
+				// ! обернул $tag_value в htmlspecialchars т.к у нас могут быть амперсанды
+				$tag_value = htmlspecialchars( $vendor_name );
+			}
 		} else {
 			$this->add_skip_reason( [ 
 				'reason' => $skip_vendor_reason,

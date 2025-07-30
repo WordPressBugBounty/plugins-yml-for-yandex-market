@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -23,6 +23,7 @@
  */
 class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 
+	use Y4YM_T_Common_Currency_Switcher;
 	use Y4YM_T_Common_Get_CatId;
 	use Y4YM_T_Common_Skips;
 

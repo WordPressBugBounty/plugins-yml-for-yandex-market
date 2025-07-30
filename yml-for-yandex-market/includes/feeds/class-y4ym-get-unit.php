@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.13 (09-06-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -278,7 +278,11 @@ class Y4YM_Get_Unit {
 			$this->get_feed_id(),
 			$this->get_product()->get_id()
 		);
-		$file_content = file_get_contents( $tmp_file_path );
+		if ( file_exists( $tmp_file_path ) ) {
+			$file_content = file_get_contents( $tmp_file_path );
+		} else {
+			$file_content = false;
+		}
 		if ( false === $file_content ) {
 			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; WARNING: %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
 				$this->get_feed_id(),

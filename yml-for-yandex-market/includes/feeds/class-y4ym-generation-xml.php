@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.17 (30-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -23,6 +23,8 @@
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
 class Y4YM_Generation_XML {
+
+	use Y4YM_T_Common_Currency_Switcher;
 
 	/**
 	 * Feed ID.
@@ -636,7 +638,7 @@ class Y4YM_Generation_XML {
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<currencies><currency id="RUR" rate="1"/></currencies>`.
+	 * @return string Example: `<currencies><currency id="RUB" rate="1"/></currencies>`.
 	 */
 	public function get_currencies( $tag_name = 'currencies', $result_xml = '' ) {
 
@@ -647,47 +649,7 @@ class Y4YM_Generation_XML {
 			'y4ym'
 		);
 		if ( $currencies === 'enabled' ) {
-			$allow_currencies_arr = [];
-
-			y4ym_global_set_woocommerce_currency( $this->get_feed_id() );
-			$main_currency = get_woocommerce_currency(); // получаем валюту магазина
-			y4ym_global_rest_woocommerce_currency();
-
-			switch ( $main_currency ) {
-				case "RUB":
-					$currency_id_xml = "RUR";
-					break;
-				case "USD":
-					$currency_id_xml = "USD";
-					break;
-				case "EUR":
-					$currency_id_xml = "EUR";
-					break;
-				case "UAH":
-					$currency_id_xml = "UAH";
-					break;
-				case "KZT":
-					$currency_id_xml = "KZT";
-					break;
-				case "UZS":
-					$currency_id_xml = "UZS";
-					break;
-				case "BYN":
-					$currency_id_xml = "BYN";
-					break;
-				case "BYR":
-					$currency_id_xml = "BYN";
-					break;
-				case "ABC":
-					$currency_id_xml = "BYN";
-					break;
-				case "TRY":
-					$currency_id_xml = "TRY";
-					break;
-				default:
-					$currency_id_xml = "RUR";
-			}
-			$currency_id_xml = apply_filters( 'y4ym_currency_id', $currency_id_xml, $this->get_feed_id() );
+			$currency_id_xml = $this->common_currency_switcher();
 			$attr_arr = [ 'id' => $currency_id_xml, 'rate' => '1' ];
 			$result_xml = new Y4YM_Get_Open_Tag( 'currencies' );
 			$result_xml .= new Y4YM_Get_Open_Tag( 'currency', $attr_arr, true );
@@ -840,17 +802,25 @@ class Y4YM_Generation_XML {
 		}
 		$ids_in_xml_arr = $this->get_ids_in_xml_arr( $file_content );
 
+		$products_count = 0;
 		$name_dir = Y4YM_SITE_UPLOADS_DIR_PATH . '/y4ym/feed' . $this->get_feed_id();
 		foreach ( $ids_in_xml_arr as $key => $value ) {
 			$product_id = (int) $key;
 			$filename = sprintf( '%s/%s.tmp', $name_dir, $product_id );
-			$result_xml .= file_get_contents( $filename );
+			if ( file_exists( $filename ) ) { // ? стоит ли добавить ещё и is_readable
+				$offer_xml = file_get_contents( $filename );
+				if ( $offer_xml === ' ' ) {
+					continue;
+				}
+				$products_count++;
+				$result_xml .= $offer_xml;
+			}
 		}
 
-		$offer_count = count( $ids_in_xml_arr ); // число товаров попавших в фид
+		// TODO: удалить 30-07-2025 $products_count = count( $ids_in_xml_arr ); // число товаров попавших в фид
 		common_option_upd(
 			'y4ym_count_products_in_feed',
-			$offer_count,
+			$products_count,
 			'no',
 			$this->get_feed_id(),
 			'y4ym'
