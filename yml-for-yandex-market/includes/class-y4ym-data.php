@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -1262,6 +1262,24 @@ class Y4YM_Data {
 							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
 						],
 						'tag_name' => 'tn_ved_code'
+					]
+				],
+				[ 
+					'opt_name' => 'y4ym_okpd2',
+					'def_val' => 'disabled',
+					'mark' => 'public',
+					'type' => 'select',
+					'tab' => 'offer_data_tab',
+					'data' => [ 
+						'label' => 'Код ОКПД2',
+						'desc' => '',
+						'woo_attr' => false,
+						'default_value' => false,
+						'key_value_arr' => [ 
+							[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+							[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+						],
+						'tag_name' => 'okpd2'
 					]
 				],
 				[ 

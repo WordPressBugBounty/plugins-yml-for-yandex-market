@@ -1,0 +1,1 @@
+<?php return ['Y4YM_T_Common_Currency_Switcher' => 'C:\xampp\htdocs\www\yml-for-yandex-market\wp-content\plugins\yml-for-yandex-market/includes/feeds/traits/common/trait-y4ym-t-common-currency-switcher.php',];

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -32,7 +32,6 @@ final class Y4YM_Plugin_Upd {
 	 * @var array
 	 */
 	private $list_plugin_names = [ 
-		'yfymp' => [ 'name' => 'PRO', 'code' => 'renewlicense20yp' ], // TODO: удалить в след.версиях
 		'y4ymp' => [ 'name' => 'PRO', 'code' => 'renewlicense20yp' ],
 		'y4ymae' => [ 'name' => 'Aliexpress Export', 'code' => 'renewlicense20ali' ],
 		'y4yms' => [ 'name' => 'SETS', 'code' => 'renewlicense23sets' ]

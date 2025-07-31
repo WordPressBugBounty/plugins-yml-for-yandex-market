@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -67,6 +67,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Variable_Get_Model;
 	use Y4YM_T_Variable_Get_Name;
 	use Y4YM_T_Variable_Get_Offer_Tag;
+	use Y4YM_T_Variable_Get_Okpd2;
 	use Y4YM_T_Variable_Get_Oldprice;
 	use Y4YM_T_Variable_Get_Outlets;
 	use Y4YM_T_Variable_Get_Params;

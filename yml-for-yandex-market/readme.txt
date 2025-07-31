@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 6.8.2
-Stable tag: 5.0.17
+Stable tag: 5.0.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,12 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.0.18 =
+*Release Date 31-07-2025*
+
+* Fixed bugs.
+* Added the `okpd2` tag to the `AliExpress` rules.
 
 = 5.0.17 =
 *Release Date 30-07-2025*
@@ -177,10 +183,8 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.0.17 =
-*Release Date 30-07-2025*
+= 5.0.18 =
+*Release Date 31-07-2025*
 
-* Updated plugin libraries.
-* Fixed minor bugs.
-* The option to choose the abbreviation `RUR` or `RUB` has been added for the Russian ruble.
-* The mechanism of counting products in the feed has been changed.
+* Fixed bugs.
+* Added the `okpd2` tag to the `AliExpress` rules.

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.2 (02-04-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -25,6 +25,7 @@
  *                          get_offer
  *                          get_feed_id
  *             functions:   common_option_get
+ *                          get_nested_tag
  */
 trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
 
@@ -40,13 +41,13 @@ trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
 	 */
 	public function get_tn_ved_codes( $wrapper_tag_name = 'tn-ved-codes', $result_xml = '' ) {
 
-		$additional_expenses = common_option_get(
+		$tn_ved_code = common_option_get(
 			'y4ym_tn_ved_code',
 			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		if ( $additional_expenses === 'enabled' ) {
+		if ( $tn_ved_code === 'enabled' ) {
 			$tag_value = $this->get_variable_product_post_meta( 'tn_ved_code' );
 			if ( ! empty( $tag_value ) ) {
 				$yml_rules = common_option_get(
@@ -59,7 +60,7 @@ trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
 					$result_xml = $this->get_variable_tag( 'tnved', $tag_value );
 				} else {
 					$result_xml = get_nested_tag( $wrapper_tag_name, 'tn-ved-code', $tag_value );
-				}			
+				}
 			}
 		}
 		$result_xml = apply_filters(

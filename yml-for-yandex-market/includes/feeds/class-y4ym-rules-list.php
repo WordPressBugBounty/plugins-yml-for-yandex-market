@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -101,7 +101,8 @@ class Y4YM_Rules_List {
 					'description', 'sales_notes', 'adult', 'barcode', 'params',
 					'weight', 'dimensions', 'period_of_validity_days',
 					// TODO: 'certificate', 'comment_validity_days',  'service_life_days', 'comment_life_days', 
-					'warranty_days', 'comment_warranty', 'tn_ved_codes', 'condition'
+					'warranty_days', // TODO: 'comment_warranty',
+					'tn_ved_codes', 'condition'
 				],
 				'vk' => [ 
 					/**
@@ -131,7 +132,7 @@ class Y4YM_Rules_List {
 					// https://help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu
 					'offer_tag', 'price', 'discount_price', 'categoryid', 'picture', 'name', 'description', 'url',
 					'weight', 'dimensions', 'quantity', 'params', 'cus_skucolor', 'size', 'sku_code',
-					'tn_ved_codes' // TODO: добавить ,'okpd2'
+					'tn_ved_codes', 'okpd2'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup',

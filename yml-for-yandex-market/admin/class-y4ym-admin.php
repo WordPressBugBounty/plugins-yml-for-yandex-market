@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.11 (05-06-2025)
+ * @version    5.0.18 (31-07-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -1433,8 +1433,8 @@ class Y4YM_Admin {
 				woocommerce_wp_text_input( [ 
 					'id' => '_yfym_tn_ved_code',
 					'label' => sprintf(
-						'%s <i>[tn-ved-codes]</i>',
-						__( 'Code ТН ВЭД', 'yml-for-yandex-market' )
+						'%s ТН ВЭД <i>[tn-ved-codes]</i>',
+						__( 'Code', 'yml-for-yandex-market' )
 					),
 					'description' => sprintf( '%s <code>|</code>. <a target="_blank" href="%s">%s</a>',
 						__( 'If you need to specify multiple values, separate them with a', 'yml-for-yandex-market' ),
@@ -1812,6 +1812,21 @@ class Y4YM_Admin {
 				<?php
 
 				woocommerce_wp_text_input( [ 
+					'id' => '_yfym_okpd2',
+					'label' => sprintf(
+						'%s ОКПД2 <i>[okpd2]</i>',
+						__( 'Code', 'yml-for-yandex-market' )
+					),
+					'description' => sprintf( '%s <code>|</code>. <a target="_blank" href="%s">%s</a>',
+						__( 'If you need to specify multiple values, separate them with a', 'yml-for-yandex-market' ),
+						'//help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu',
+						__( 'Read more on AliExpress', 'yml-for-yandex-market' )
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+
+				woocommerce_wp_text_input( [ 
 					'id' => '_yfym_credit_template',
 					'label' => sprintf(
 						'%s <i>[credit-template]</i>',
@@ -1984,6 +1999,7 @@ class Y4YM_Admin {
 			'_yfym_custom_label_4',
 			'_yfym_quality',
 			'_yfym_warranty_days',
+			'_yfym_okpd2',
 			'_yfym_credit_template',
 			'_yfym_supplier',
 			'_yfym_min_quantity',
