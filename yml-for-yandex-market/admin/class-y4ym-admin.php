@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.18 (31-07-2025)
+ * @version    5.0.19 (26-08-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -266,7 +266,10 @@ class Y4YM_Admin {
 		add_submenu_page(
 			$this->plugin_name,
 			__( 'Extensions', 'yml-for-yandex-market' ),
-			__( 'Extensions', 'yml-for-yandex-market' ),
+			sprintf(
+				'<span style="font-weight: 700; text-transform: uppercase;">%s</span>',
+				__( 'More features', 'yml-for-yandex-market' )
+			),
 			'manage_woocommerce',
 			$this->plugin_name . '-extensions',
 			[ $this, 'display_plugin_extensions_page' ]
