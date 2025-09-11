@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 6.8.2
-Stable tag: 5.0.19
+Stable tag: 5.0.20
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,12 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.0.20 =
+*Release Date 10-09-2025*
+
+* Fixed compatibility with the plugin FOX - Currency Switcher Professional for WooCommerce.
+* Improvedimproved mechanism for recording temporary files.
 
 = 5.0.19 =
 *Release Date 26-08-2025*
@@ -188,7 +194,8 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.0.19 =
-*Release Date 26-08-2025*
+= 5.0.20 =
+*Release Date 10-09-2025*
 
-* Fixed interface bugs.
+* Fixed compatibility with the plugin FOX - Currency Switcher Professional for WooCommerce.
+* Improvedimproved mechanism for recording temporary files.

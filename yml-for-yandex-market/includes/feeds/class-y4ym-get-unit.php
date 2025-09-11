@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.0.20 (10-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -74,7 +74,11 @@ class Y4YM_Get_Unit {
 			unset( $product );
 		}
 		do_action( 'y4ym_after_wc_get_product', $args_arr, $this->get_product() );
-		$date_product_modified = strtotime( $this->get_product()->get_date_modified() );
+		if ( null === $this->get_product()->get_date_modified() ) {
+			$date_product_modified = (int) 0;
+		} else {
+			$date_product_modified = strtotime( $this->get_product()->get_date_modified() );
+		}
 		$data_from_cache = 'no';
 		if (
 			( (int) $date_successful_feed_update > 0 )

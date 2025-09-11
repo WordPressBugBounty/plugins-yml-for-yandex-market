@@ -118,13 +118,13 @@ class Y4YM_Rules_List {
 				'sbermegamarket' => [ 
 					// https://partner-wiki.megamarket.ru/pravila-zapolneniya-fida-dlya-tovarnoj-kategorii-fashion-393286.html
 					// https://s3.megamarket.tech/mms/documents/assortment/Инструкция%20к%20фиду%20xml.pdf
-					// https://partner-wiki.megamarket.ru/merchant-api/1-vvedenie/1-1-tovarnyj-fi
+					// https://partner-wiki.megamarket.ru/merchant-api/1-vvedenie/1-1-tovarnyj-fid
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'name', 'categoryid', 'picture', 'vat', 'shipment_options',
 					'vendor', 'vendorcode', 'model', 'description', 'barcode', 'outlets', 'params',
 					'disabled', 'dimensions', 'weight'
 				],
 				'ozon' => [ 
-					// https://seller-edu.ozon.ru/work-with-goods/zagruzka-tovarov/created-goods/fid
+					// https://seller-edu.ozon.ru/work-with-goods/zagruzka-tovarov/created-goods/fidi
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'min_price', 'outlets', 'disabled', 'name', 'url', // 'premium_price',
 					'categoryid', 'market_sku' // 'count', 'amount', 
 				],

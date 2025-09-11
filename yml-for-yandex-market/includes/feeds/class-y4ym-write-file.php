@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.20 (10-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -127,16 +127,32 @@ final class Y4YM_Write_File {
 		if ( empty( $xml_string ) ) {
 			$xml_string = ' ';
 		}
-		$fp = fopen( $this->get_file_path(), "w" );
+		$fp = fopen( $this->get_file_path(), "wb" );
 		if ( false === $fp ) {
 			error_log(
 				'ERROR: Y4YM_Write_File : File opening return (bool) false "' . $this->get_file_path() . '"; Line: ' . __LINE__,
 				0
 			);
 		} else {
-			fwrite( $fp, $xml_string ); // записываем в файл текст
-			fclose( $fp ); // закрываем
+
+			// Применяем эксклюзивную блокировку
+			if ( ! flock( $fp, LOCK_EX ) ) { // Ждем получения блокировки
+				error_log(
+					'ERROR: Failed to acquire lock on file: ' . $this->get_file_path()
+				);
+			} else {
+				// Записываем данные в файл
+				fwrite( $fp, $xml_string );
+
+				// Освобождаем блокировку
+				flock( $fp, LOCK_UN );
+			}
+
+			// Закрываем файл
+			fclose( $fp );
+
 			$this->result = true;
+			
 		}
 
 	}
@@ -151,7 +167,7 @@ final class Y4YM_Write_File {
 	protected function append_to_file( $xml_string ) {
 
 		$fa = file_put_contents(
-			$this->get_file_path(), $xml_string, FILE_APPEND
+			$this->get_file_path(), $xml_string, FILE_APPEND | LOCK_EX
 		);
 
 		if ( false == $fa ) { // ! важно именно двойное равенство из за особенностей file_put_contents

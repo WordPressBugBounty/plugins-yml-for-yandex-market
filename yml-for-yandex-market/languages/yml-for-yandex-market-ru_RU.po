@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-08-26 21:20+0300\n"
-"PO-Revision-Date: 2025-08-26 21:28+0300\n"
+"POT-Creation-Date: 2025-09-11 09:59+0300\n"
+"PO-Revision-Date: 2025-09-11 10:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;esc_html_e;esc_html__\n"
@@ -110,11 +110,11 @@ msgstr "во время создания нового фида"
 #: includes/feeds/class-y4ym-generation-xml.php:1195
 #: includes/feeds/class-y4ym-generation-xml.php:1222
 #: includes/feeds/class-y4ym-generation-xml.php:1246
-#: includes/feeds/class-y4ym-get-unit.php:99
-#: includes/feeds/class-y4ym-get-unit.php:117
-#: includes/feeds/class-y4ym-get-unit.php:180
-#: includes/feeds/class-y4ym-get-unit.php:269
-#: includes/feeds/class-y4ym-get-unit.php:293
+#: includes/feeds/class-y4ym-get-unit.php:103
+#: includes/feeds/class-y4ym-get-unit.php:121
+#: includes/feeds/class-y4ym-get-unit.php:184
+#: includes/feeds/class-y4ym-get-unit.php:273
+#: includes/feeds/class-y4ym-get-unit.php:297
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:202
 #: includes/updates/class-y4ym-plugin-upd.php:567
 #: includes/updates/class-y4ym-plugin-upd.php:606
@@ -148,11 +148,11 @@ msgstr "Строка"
 #: includes/feeds/class-y4ym-generation-xml.php:1193
 #: includes/feeds/class-y4ym-generation-xml.php:1220
 #: includes/feeds/class-y4ym-generation-xml.php:1244
-#: includes/feeds/class-y4ym-get-unit.php:97
-#: includes/feeds/class-y4ym-get-unit.php:115
-#: includes/feeds/class-y4ym-get-unit.php:178
-#: includes/feeds/class-y4ym-get-unit.php:267
-#: includes/feeds/class-y4ym-get-unit.php:291
+#: includes/feeds/class-y4ym-get-unit.php:101
+#: includes/feeds/class-y4ym-get-unit.php:119
+#: includes/feeds/class-y4ym-get-unit.php:182
+#: includes/feeds/class-y4ym-get-unit.php:271
+#: includes/feeds/class-y4ym-get-unit.php:295
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:200
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:218
 #: includes/updates/class-y4ym-plugin-upd.php:565
@@ -332,7 +332,7 @@ msgstr "ID товара на Яндексе или другом маркетпл
 
 #: admin/class-y4ym-admin.php:1440 admin/class-y4ym-admin.php:1821
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 #: admin/class-y4ym-admin.php:1443 admin/class-y4ym-admin.php:1824
 msgid "If you need to specify multiple values, separate them with a"
@@ -762,105 +762,110 @@ msgstr "Фид"
 msgid "Possible problems"
 msgstr "Возможные проблемы"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:134
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:133
 msgid "Upgrade the"
 msgstr "Прокачайте"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:148
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:189
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:147
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:190
 msgid "All features of the free version"
 msgstr "Все возможности бесплатной версии"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:150
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:192
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:149
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:193
+msgid "Automatic mark-up on products"
+msgstr "Автоматическая наценка на товары"
+
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:151
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:196
 msgid "Filter products by price"
 msgstr "Фильтр товаров по цене"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:151
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:195
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:152
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:199
 msgid "Product filter based on stock availability"
 msgstr "Фильтр товаров по наличию на складе"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:153
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:198
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:154
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:202
 msgid "Filter products by categories and tags"
 msgstr "Фильтр товаров по категориям и тегам"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:155
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:201
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:156
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:205
 msgid "Product filter by brand"
 msgstr "Фильтр товаров по бренду"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:156
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:204
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:157
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:208
 msgid "Product filter by ID"
 msgstr "Фильтр товаров по ID"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:157
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:207
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:158
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:211
 msgid "Product filter by \"checkmark\""
 msgstr "Фильтр товаров по \"галочке\""
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:158
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:210
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:159
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:214
 msgid "Support for UTM tags"
 msgstr "Поддержка UTM-меток"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:159
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:213
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:160
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:217
 msgid "Support for RS tags"
 msgstr "Поддержка RS-меток"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:160
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:216
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:161
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:220
 msgid "Multiple photos instead of one"
 msgstr "Несколько фотографий вместо одной"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:161
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:218
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:162
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:222
 msgid "Constructor params"
 msgstr "Конструктор параметров"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:162
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:164
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:166
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:220
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:222
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:163
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:165
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:167
 #: admin/partials/extensions-page/views/html-admin-extensions-page.php:224
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:226
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:228
 msgid "SET format"
 msgstr "SET-формат"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:163
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:221
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:164
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:225
 msgid "Service providers"
 msgstr "Исполнители"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:165
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:223
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:166
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:227
 msgid "Vehicles"
 msgstr "Транспортные средства"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:167
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:225
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:168
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:229
 msgid "Education"
 msgstr "Образование"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:168
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:226
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:169
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:230
 msgid "1 year of technical support"
 msgstr "1 год технической поддержки"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:169
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:227
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:170
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:231
 msgid "Unlimited updates throughout the year"
 msgstr "Неограниченное количество обновлений в течение года"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:176
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:234
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:177
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:238
 msgid "Get Now"
 msgstr "Получить сейчас"
 
-#: admin/partials/extensions-page/views/html-admin-extensions-page.php:241
+#: admin/partials/extensions-page/views/html-admin-extensions-page.php:245
 msgid "Both versions can work together with each other"
 msgstr "Обе версии могут работать вместе друг с другом"
 
@@ -2329,36 +2334,36 @@ msgid "The archiving was successful"
 msgstr "Архивация прошла успешно"
 
 #: includes/feeds/class-y4ym-get-unit.php:69
-#: includes/feeds/class-y4ym-get-unit.php:155
+#: includes/feeds/class-y4ym-get-unit.php:159
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:46
 msgid "There is no product with this ID"
 msgstr "Нет товара с таким ID"
 
-#: includes/feeds/class-y4ym-get-unit.php:91
+#: includes/feeds/class-y4ym-get-unit.php:95
 msgid "The product was updated earlier than the YML feed"
 msgstr "Товар был обновлен раньше, чем YML-фид"
 
-#: includes/feeds/class-y4ym-get-unit.php:96
+#: includes/feeds/class-y4ym-get-unit.php:100
 msgid "Requesting data from the cache"
 msgstr "Запрос данных из кэша"
 
-#: includes/feeds/class-y4ym-get-unit.php:112
+#: includes/feeds/class-y4ym-get-unit.php:116
 msgid "For the product with"
 msgstr "Для товара с"
 
-#: includes/feeds/class-y4ym-get-unit.php:114
+#: includes/feeds/class-y4ym-get-unit.php:118
 msgid "the data is taken from the file"
 msgstr "данные взяты из файла"
 
-#: includes/feeds/class-y4ym-get-unit.php:175
+#: includes/feeds/class-y4ym-get-unit.php:179
 msgid "A variation product has more than 256 variations"
 msgstr "Вариативный товар имеет более 256 вариаций"
 
-#: includes/feeds/class-y4ym-get-unit.php:266
+#: includes/feeds/class-y4ym-get-unit.php:270
 msgid "The data could not be received. The cache usage ban is enabled"
 msgstr "Данные не удалось получить. Запрет на использование кэша включен"
 
-#: includes/feeds/class-y4ym-get-unit.php:289
+#: includes/feeds/class-y4ym-get-unit.php:293
 msgid "Error when receiving data from the CACHE file"
 msgstr "Ошибка при получении данных из КЭШ файла"
 
@@ -2411,7 +2416,7 @@ msgstr "Вариативный товар"
 msgid "Product is simple"
 msgstr "Простой товар"
 
-#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-description.php:178
+#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-description.php:210
 msgid "Product has no description"
 msgstr "У товара нет описания"
 
@@ -2425,7 +2430,7 @@ msgstr "Товар не имеет изображений"
 msgid "The product has no price"
 msgstr "Товар не имеет цены"
 
-#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-description.php:204
+#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-description.php:254
 msgid "Variation product has no description"
 msgstr "У вариативного товара нет описания"
 

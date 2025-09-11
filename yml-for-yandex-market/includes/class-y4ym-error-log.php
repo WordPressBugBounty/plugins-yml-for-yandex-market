@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.20 (10-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -103,9 +103,20 @@ final class Y4YM_Error_Log {
 			$text_to_log_str = $text_to_log;
 		}
 		unset( $text_to_log );
+
+		// Проверяем и устанавливаем кодировку
+		if ( 'UTF-8' !== mb_detect_encoding( $text_to_log_str, [ 'UTF-8' ], true ) ) {
+			$text_to_log_str = mb_convert_encoding( $text_to_log_str, 'UTF-8', 'auto' );
+		}
+
+		// Готовим полную строку для записи
+		$full_text = '[' . gmdate( 'Y-m-d H:i:s' ) . '] ' . $text_to_log_str . PHP_EOL;
+
+		// Записываем данные с эксклюзивной блокировкой
 		file_put_contents(
 			$this->get_file_path(),
-			'[' . gmdate( 'Y-m-d H:i:s' ) . '] ' . $text_to_log_str . PHP_EOL, FILE_APPEND
+			$full_text,
+			FILE_APPEND | LOCK_EX
 		);
 
 	}

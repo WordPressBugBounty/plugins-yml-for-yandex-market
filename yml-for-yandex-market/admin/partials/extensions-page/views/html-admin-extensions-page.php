@@ -2,7 +2,7 @@
 /**
  * Print Extensions page.
  * 
- * @version 5.0.19 (26-08-2025)
+ * @version 5.0.20 (10-09-2025)
  * @see     
  * @package 
  */
@@ -146,6 +146,8 @@ defined( 'ABSPATH' ) || exit;
 			<ul class="description-list">
 				<li><span><?php esc_html_e( 'All features of the free version', 'yml-for-yandex-market' ); ?></span>
 				</li>
+				<li><span><?php esc_html_e( 'Automatic mark-up on products', 'yml-for-yandex-market' ); ?></span>
+				</li>
 				<li><span><?php esc_html_e( 'Filter products by price', 'yml-for-yandex-market' ); ?></span></li>
 				<li><span><?php esc_html_e( 'Product filter based on stock availability', 'yml-for-yandex-market' ); ?></span>
 				</li>
@@ -186,6 +188,9 @@ defined( 'ABSPATH' ) || exit;
 			<h2 style="text-align: center;">YML for Yandex Market SETS</h2>
 			<ul class="description-list">
 				<li><span><?php esc_html_e( 'All features of the free version', 'yml-for-yandex-market' ); ?></span>
+				</li>
+				<li class="red-cross">
+					<span><?php esc_html_e( 'Automatic mark-up on products', 'yml-for-yandex-market' ); ?></span>
 				</li>
 				<li class="red-cross">
 					<span><?php esc_html_e( 'Filter products by price', 'yml-for-yandex-market' ); ?></span>

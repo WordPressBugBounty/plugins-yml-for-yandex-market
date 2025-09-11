@@ -2,7 +2,7 @@
 /**
  * The Another page tab
  * 
- * @version    5.0.16 (23-07-2025)
+ * @version    5.0.20 (28-08-2025)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -87,7 +87,12 @@ for ( $i = 0; $i < count( $attr_arr ); $i++ ) {
 	}
 
 	if ( ! isset( $attr_arr[ $i + 1 ]['data']['tag_name'] )
-		|| $attr_arr[ $i + 1 ]['data']['tag_name'] === 'always'
+		|| (
+			$attr_arr[ $i + 1 ]['data']['tag_name'] === 'always'
+			// ! тут у нас небольшой костыль для метаполя `y4ym_source_id_post_meta`
+			// ! по хорошему нужно как-то иначе без строки ниже
+			&& $attr_arr[ $i + 1 ]['data']['tag_name_for_desc'] !== 'id'
+		)
 		|| ( $attr_arr[ $i ]['data']['tag_name'] !== $attr_arr[ $i + 1 ]['data']['tag_name'] )
 	) : ?>
 		<div class="y4ym-postbox postbox closed">

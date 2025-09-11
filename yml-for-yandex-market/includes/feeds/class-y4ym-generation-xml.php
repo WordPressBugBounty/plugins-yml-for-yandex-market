@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.0.20 (10-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -649,7 +649,7 @@ class Y4YM_Generation_XML {
 			'y4ym'
 		);
 		if ( $currencies === 'enabled' ) {
-			$currency_id_xml = $this->common_currency_switcher();
+			$currency_id_xml = $this->common_currency_switcher( 'get_currencies' );
 			$attr_arr = [ 'id' => $currency_id_xml, 'rate' => '1' ];
 			$result_xml = new Y4YM_Get_Open_Tag( 'currencies' );
 			$result_xml .= new Y4YM_Get_Open_Tag( 'currency', $attr_arr, true );

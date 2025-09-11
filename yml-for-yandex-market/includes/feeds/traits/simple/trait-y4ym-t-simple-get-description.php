@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.3 (03-04-2025)
+ * @version    5.0.20 (28-08-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -41,12 +41,32 @@ trait Y4YM_T_Simple_Get_Description {
 
 		$tag_value = '';
 
-		$y4ym_yml_rules = common_option_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
-		$y4ym_desc = common_option_get( 'y4ym_desc', 'fullexcerpt', $this->get_feed_id(), 'y4ym' );
-		$y4ym_the_content = common_option_get( 'y4ym_the_content', 'enabled', $this->get_feed_id(), 'y4ym' );
-		$y4ym_enable_tags_behavior = common_option_get( 'y4ym_enable_tags_behavior', 'default', $this->get_feed_id(), 'y4ym' );
+		$yml_rules = common_option_get(
+			'y4ym_yml_rules',
+			'yandex_market_assortment',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		$desc_source = common_option_get(
+			'y4ym_desc',
+			'fullexcerpt',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		$y4ym_the_content = common_option_get(
+			'y4ym_the_content',
+			'enabled',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		$enable_tags_behavior = common_option_get(
+			'y4ym_enable_tags_behavior',
+			'default',
+			$this->get_feed_id(),
+			'y4ym'
+		);
 
-		switch ( $y4ym_desc ) {
+		switch ( $desc_source ) {
 			case "full":
 				// сейчас и далее проверка на случай, если описание вариации главнее
 
@@ -112,7 +132,7 @@ trait Y4YM_T_Simple_Get_Description {
 					$tag_value = apply_filters( 'y4ym_f_simple_switchcase_default_description',
 						$tag_value,
 						[ 
-							'y4ym_desc' => $y4ym_desc,
+							'y4ym_desc' => $desc_source,
 							'product' => $this->get_product()
 						],
 						$this->get_feed_id()
@@ -143,13 +163,20 @@ trait Y4YM_T_Simple_Get_Description {
 			$this->get_feed_id()
 		);
 		if ( ! empty( $tag_value ) ) {
-			if ( $y4ym_yml_rules === 'vk' ) {
+			if ( $yml_rules === 'vk'
+				|| $yml_rules === 'yandex_direct'
+				|| $yml_rules === 'yandex_direct_free_from'
+				|| $yml_rules === 'yandex_direct_combined' ) {
+
 				$tag_value = y4ym_strip_tags( $tag_value, '' );
 				$tag_value = htmlspecialchars( $tag_value );
 				// $tag_value = mb_strimwidth($tag_value, 0, 256);
+
 			} else {
-				$tag_value = $this->replace_tags( $tag_value, $y4ym_enable_tags_behavior );
+
+				$tag_value = $this->replace_tags( $tag_value, $enable_tags_behavior );
 				$tag_value = '<![CDATA[' . $tag_value . ']]>';
+
 			}
 			$tag_name = apply_filters(
 				'y4ym_f_simple_tag_name_description',
@@ -172,7 +199,12 @@ trait Y4YM_T_Simple_Get_Description {
 		);
 		if ( empty( $result_xml ) ) {
 			// пропускаем товары без описания
-			$skip_products_without_desc = common_option_get( 'y4ym_skip_products_without_desc', 'disabled', $this->get_feed_id(), 'y4ym' );
+			$skip_products_without_desc = common_option_get(
+				'y4ym_skip_products_without_desc',
+				'disabled',
+				$this->get_feed_id(),
+				'y4ym'
+			);
 			if ( ( $skip_products_without_desc === 'enabled' ) && ( $tag_value == '' ) ) {
 				$this->add_skip_reason( [ 
 					'reason' => __( 'Product has no description', 'yml-for-yandex-market' ),
@@ -191,24 +223,33 @@ trait Y4YM_T_Simple_Get_Description {
 	 * Summary of replace_tags.
 	 * 
 	 * @param string $description_yml
-	 * @param string $y4ym_enable_tags_behavior
+	 * @param string $enable_tags_behavior
 	 * 
 	 * @return string
 	 */
-	private function replace_tags( $tag_value, $y4ym_enable_tags_behavior ) {
+	private function replace_tags( $tag_value, $enable_tags_behavior ) {
 
-		if ( $y4ym_enable_tags_behavior == 'default' ) {
+		if ( $enable_tags_behavior === 'default' ) {
 			$tag_value = str_replace( '<ul>', '', $tag_value );
 			$tag_value = str_replace( '<li>', '', $tag_value );
 			$tag_value = str_replace( '</li>', '<br/>', $tag_value );
 		}
 
-		$y4ym_enable_tags_custom = common_option_get( 'y4ym_enable_tags_custom', '', $this->get_feed_id(), 'y4ym' );
-		if ( $y4ym_enable_tags_behavior == 'default' ) {
+		$enable_tags_custom = common_option_get(
+			'y4ym_enable_tags_custom',
+			'',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $enable_tags_behavior === 'default' ) {
 			$enable_tags = '<p>,<br/>,<br>';
-			$enable_tags = apply_filters( 'y4ym_enable_tags_filter', $enable_tags, $this->get_feed_id() );
+			$enable_tags = apply_filters(
+				'y4ym_enable_tags_filter',
+				$enable_tags,
+				$this->get_feed_id()
+			);
 		} else {
-			$enable_tags = trim( $y4ym_enable_tags_custom );
+			$enable_tags = trim( $enable_tags_custom );
 			if ( $enable_tags !== '' ) {
 				$enable_tags = '<' . str_replace( ',', '>,<', $enable_tags ) . '>';
 			}

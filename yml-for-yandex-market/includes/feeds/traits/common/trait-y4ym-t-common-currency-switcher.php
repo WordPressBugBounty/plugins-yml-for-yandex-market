@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.17
- * @version    5.0.17 (30-07-2025)
+ * @version    5.0.20 (10-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/common
@@ -39,11 +39,19 @@ trait Y4YM_T_Common_Currency_Switcher {
 	 * 
 	 * @return string Example: `RUB`.
 	 */
-	public function common_currency_switcher() {
+	public function common_currency_switcher( $calling_function = '' ) {
 
-		y4ym_global_set_woocommerce_currency( $this->get_feed_id() );
+		// ! get_currencies срабатывает при создании шапки фида, по этой причине
+		// ! мы устанавливаем валюту через $WOOCS->set_currency() при работе
+		// ! с товарами так делать не нужно, т.к мы ранее УЖЕ обернули
+		// ! в конструкторе класса Y4YM_Get_Unit_Offer
+		if ( $calling_function === 'get_currencies' ) {
+			y4ym_global_set_woocommerce_currency( $this->get_feed_id() );
+		}
 		$main_currency = get_woocommerce_currency(); // получаем валюту магазина
-		y4ym_global_rest_woocommerce_currency();
+		if ( $calling_function === 'get_currencies' ) {
+			y4ym_global_rest_woocommerce_currency();
+		}
 
 		$ru_currency = common_option_get(
 			'y4ym_ru_currency',
