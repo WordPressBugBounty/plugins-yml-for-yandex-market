@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.19 (26-08-2025)
+ * @version    5.0.21 (18-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -542,7 +542,7 @@ class Y4YM_Data {
 							[ 'value' => 'rfc', 'text' => 'RFC 3339 full (2022-03-21T17:47:19+03:00)' ],
 							[ 'value' => 'unixtime', 'text' => 'Unix time (2022-03-21 17:47)' ]
 						],
-						'tag_name' => 'y4ym_format_date',
+						'tag_name' => 'always',
 						'tag_name_for_desc' => 'yml_catalog date="XXX"'
 					]
 				],

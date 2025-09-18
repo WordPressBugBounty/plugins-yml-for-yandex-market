@@ -126,6 +126,8 @@ final class Y4YM_Write_File {
 
 		if ( empty( $xml_string ) ) {
 			$xml_string = ' ';
+		} else {
+			$xml_string = trim( $xml_string );
 		}
 		$fp = fopen( $this->get_file_path(), "wb" );
 		if ( false === $fp ) {
@@ -152,7 +154,7 @@ final class Y4YM_Write_File {
 			fclose( $fp );
 
 			$this->result = true;
-			
+
 		}
 
 	}

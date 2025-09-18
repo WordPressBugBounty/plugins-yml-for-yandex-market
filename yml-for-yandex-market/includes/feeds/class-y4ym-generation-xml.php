@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.20 (10-09-2025)
+ * @version    5.0.21 (18-09-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -356,6 +356,10 @@ class Y4YM_Generation_XML {
 					$this->get_feed_id(),
 					'y4ym'
 				);
+				if ( $script_execution_time == 0 ) {
+					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро эту проверку можно будет удалить
+					$script_execution_time = 26;
+				}
 				if ( $query_time > $script_execution_time ) {
 					new Y4YM_Error_Log( sprintf(
 						'FEED #%1$s; WARNING: %2$s: %3$s > %4$s. %5$s "%6$s" %7$s %8$s %9$s; %10$s: %11$s; %12$s: %13$s',
@@ -805,19 +809,44 @@ class Y4YM_Generation_XML {
 		$products_count = 0;
 		$name_dir = Y4YM_SITE_UPLOADS_DIR_PATH . '/y4ym/feed' . $this->get_feed_id();
 		foreach ( $ids_in_xml_arr as $key => $value ) {
+
 			$product_id = (int) $key;
 			$filename = sprintf( '%s/%s.tmp', $name_dir, $product_id );
-			if ( file_exists( $filename ) ) { // ? стоит ли добавить ещё и is_readable
-				$offer_xml = file_get_contents( $filename );
-				if ( $offer_xml === ' ' ) {
+			if ( file_exists( $filename ) && is_readable( $filename ) ) {
+
+				$offer_xml = @file_get_contents( $filename );
+				if ( false === $offer_xml ) {
+					new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s}; %4$s: %5$s; %6$s: %7$s',
+						$this->get_feed_id(),
+						__( 'Error reading the file', 'yml-for-yandex-market' ),
+						$filename,
+						__( 'File', 'yml-for-yandex-market' ),
+						'class-y4ym-generation-xml.php',
+						__( 'Line', 'yml-for-yandex-market' ),
+						__LINE__
+					) );
 					continue;
 				}
-				$products_count++;
+
+				if ( trim( $offer_xml ) === '' ) {
+					continue;
+				}
+
+				if ( $product_id > 0 ) {
+
+					if ( $this->check_xml_fragment( $offer_xml, $filename ) === 'not_valid' ) {
+						continue;
+					}
+
+				}
+
 				$result_xml .= $offer_xml;
+				$products_count++;
+
 			}
+
 		}
 
-		// TODO: удалить 30-07-2025 $products_count = count( $ids_in_xml_arr ); // число товаров попавших в фид
 		common_option_upd(
 			'y4ym_count_products_in_feed',
 			$products_count,
@@ -827,6 +856,70 @@ class Y4YM_Generation_XML {
 		);
 
 		return $result_xml;
+
+	}
+
+	/**
+	 * Checking XML fragment.
+	 * 
+	 * @param string $xml_string
+	 * @param string $filename
+	 * 
+	 * @return string Maybe `valid` or `not_valid`.
+	 */
+	public function check_xml_fragment( $offer_xml, $filename ) {
+
+		// Добавляем временный общий корневой элемент вокруг всего содержимого
+		$wrapped_xml_content = "<wrapper>" . $offer_xml . "</wrapper>";
+		// Включаем обработку внутренних ошибок
+		libxml_use_internal_errors( true );
+		try {
+			// Создаем объект DOMDocument
+			$dom = new DOMDocument();
+
+			// Загружаем преобразованный XML
+			$dom_result = $dom->loadXML( $wrapped_xml_content );
+
+			// Проверяем успешность загрузки
+			if ( ! $dom_result || ! empty( libxml_get_errors() ) ) {
+				throw new Exception(
+					sprintf( '%s {%s}',
+						__(
+							'Error checking the XML fragment',
+							'yml-for-yandex-market'
+						),
+						$filename
+					)
+				);
+			}
+		} catch (\Exception $e) {
+			$errors_list = '';
+			foreach ( libxml_get_errors() as $error ) {
+				$errors_list .= sprintf(
+					'%1$s: %2$s, %3$s: %4$s - %5$s',
+					__( 'Line', 'yml-for-yandex-market' ),
+					$error->line,
+					__( 'Column', 'yml-for-yandex-market' ),
+					$error->column,
+					$error->message
+				);
+			}
+			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s [%4$s]}; %5$s: %6$s; %7$s: %8$s',
+				$this->get_feed_id(),
+				__( 'Error reading the file', 'yml-for-yandex-market' ),
+				$e->getMessage(),
+				$errors_list,
+				__( 'File', 'yml-for-yandex-market' ),
+				'class-y4ym-generation-xml.php',
+				__( 'Line', 'yml-for-yandex-market' ),
+				__LINE__
+			) );
+			libxml_clear_errors();
+			return 'not_valid';
+		}
+
+		libxml_clear_errors();
+		return 'valid';
 
 	}
 
