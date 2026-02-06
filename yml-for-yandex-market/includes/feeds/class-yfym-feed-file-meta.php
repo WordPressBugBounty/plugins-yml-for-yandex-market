@@ -1,27 +1,30 @@
 <?php
-/**
- * Get the feed file meta
- *
- * @package                 YML for Yandex Market
- * @subpackage              
- * @since                   4.0.5
- * 
- * @version                 4.3.2 (22-04-2024)
- * @author                  Maxim Glazunov
- * @link                    https://icopydoc.ru/
- * @see                     
- * 
- * @param    string|int     $feed_id - Required
- *
- * @depends                 classes:    
- *                          traits:     Y4YM_T_Get_Feed_Id
- *                          methods:    
- *                          functions:  common_option_get
- *                          constants:  
- *                          options:    
- */
-defined( 'ABSPATH' ) || exit;
 
+/**
+ * Get the feed file meta.
+ *
+ * @link       https://icopydoc.ru
+ * @since      0.1.0
+ * @version    5.0.26 (24-12-2025)
+ *
+ * @package    Y4YM
+ * @subpackage Y4YM/includes
+ */
+
+/**
+ * Get the feed file meta.
+ *
+ * @package    Y4YM
+ * @subpackage Y4YM/includes
+ * @author     Maxim Glazunov <icopydoc@gmail.com>
+ * 
+ * @depends    classes:    
+ *             traits:     Y4YM_T_Get_Feed_Id
+ *             methods:    
+ *             functions:  common_option_get
+ *             constants:  
+ *             options:  
+ */
 class Y4YM_Feed_File_Meta {
 
 	use Y4YM_T_Get_Feed_Id;
@@ -54,7 +57,12 @@ class Y4YM_Feed_File_Meta {
 			$blog_index = '0';
 		}
 
-		$feed_name = common_option_get( 'y4ym_feed_name', false, $this->get_feed_id(), 'y4ym' );
+		$feed_name = common_option_get(
+			'y4ym_feed_name',
+			'',
+			$this->get_feed_id(),
+			'y4ym'
+		);
 		if ( empty( $feed_name ) ) {
 			$file_feed_name = sprintf( '%1$sfeed-yml-%2$s', $pref_feed, $blog_index );
 		} else {
@@ -74,14 +82,15 @@ class Y4YM_Feed_File_Meta {
 
 		$file_extension = common_option_get(
 			'y4ym_file_extension',
-			false,
+			'xml',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		if ( empty( $file_extension ) ) {
+		if ( ! in_array( $file_extension, [ 'xml', 'yml', 'csv', 'txt' ] ) ) {
 			$file_extension = 'xml';
 		}
 		return $file_extension;
+
 	}
 
 	/**
@@ -95,7 +104,7 @@ class Y4YM_Feed_File_Meta {
 
 		$archive_to_zip = common_option_get(
 			'y4ym_archive_to_zip',
-			false,
+			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);

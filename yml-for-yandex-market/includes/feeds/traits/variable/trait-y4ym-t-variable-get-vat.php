@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.1.0 (27-01-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -31,12 +31,12 @@ trait Y4YM_T_Variable_Get_Vat {
 	/**
 	 * Get `vat` tag.
 	 * 
-	 * @see https://yandex.ru/support/marketplace/ru/assortment/fields/#vat
+	 * @see https://yandex.ru/support/marketplace/ru/assortment/auto/yml-file#vat
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<vat>VAT_10<</vat>`.
+	 * @return string Example: `<vat>VAT_10</vat>`.
 	 */
 	public function get_vat( $tag_name = 'vat', $result_xml = '' ) {
 
@@ -69,7 +69,7 @@ trait Y4YM_T_Variable_Get_Vat {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_vat',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],

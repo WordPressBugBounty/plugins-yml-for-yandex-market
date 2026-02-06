@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.18 (31-07-2025)
+ * @version    5.0.24 (27-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -149,10 +149,10 @@ final class Y4YM_Plugin_Form_Activate {
 									value="<?php echo esc_attr( $order_id ); ?>" /><br />
 								<span class="description">
 									<a target="_blank" href="<?php
-									printf( '%1$s?utm_source=%2$s&utm_medium=organic&utm_campaign=%2$s%3$s',
+									printf( '%1$s?utm_source=%2$s&utm_medium=documentation&utm_campaign=%2$s%3$s',
 										esc_attr( self::INSTRUCTION_URL ),
 										esc_attr( $this->slug ),
-										'&utm_content=settings&utm_term=how-to-activate-order-id'
+										'&utm_content=activate-form&utm_term=how-to-activate-order-id'
 									); ?>"><?php esc_attr_e( 'Read more', 'yml-for-yandex-market' ); ?></a>
 								</span>
 							</td>
@@ -166,10 +166,10 @@ final class Y4YM_Plugin_Form_Activate {
 									value="<?php echo esc_attr( $order_email ); ?>" type="text" /><br />
 								<span class="description">
 									<a target="_blank" href="<?php
-									printf( '%1$s?utm_source=%2$s&utm_medium=organic&utm_campaign=%2$s%3$s',
+									printf( '%1$s?utm_source=%2$s&utm_medium=documentation&utm_campaign=%2$s%3$s',
 										esc_attr( self::INSTRUCTION_URL ),
 										esc_attr( $this->slug ),
-										'&utm_content=settings&utm_term=how-to-activate-order-email'
+										'&utm_content=activate-form&utm_term=how-to-activate-order-email'
 									); ?>"><?php esc_attr_e( 'Read more', 'yml-for-yandex-market' ); ?></a></span>
 							</td>
 						</tr>

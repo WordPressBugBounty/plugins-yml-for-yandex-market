@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.0.21
+ * Version:                 5.2.0
  * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         10.1.2
+ * WC tested up to:         10.4.3
  */
 
 // If this file is called directly, abort.
@@ -246,11 +246,11 @@ function y4ym_plugin_database_upd( $old_version ) {
 			for ( $i = 0; $i < count( $feed_ids_arr ); $i++ ) {
 				$feed_id = (string) $feed_ids_arr[ $i ]; // $key
 
-				$arrs_old = [ 
+				$arrs_old = [
 					'yfym_params_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
 					'yfymp_exclude_cat_arr' // pro
 				];
-				$arrs_new = [ 
+				$arrs_new = [
 					'y4ym_params_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
 					'y4ymp_exclude_cat_arr' // pro
 				];
@@ -263,11 +263,11 @@ function y4ym_plugin_database_upd( $old_version ) {
 					if ( is_multisite() ) {
 						$old_arr = get_blog_option( get_current_blog_id(), $opt_name_old, [] );
 						$old_arr = maybe_unserialize( $old_arr );
-						update_blog_option( get_current_blog_id(), $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+						update_blog_option( get_current_blog_id(), $arrs_new[ $n ] . $feed_id, $old_arr );
 					} else {
 						$old_arr = get_option( $opt_name_old, [] );
 						$old_arr = maybe_unserialize( $old_arr );
-						update_option( $arrs_new[ $n ] . $feed_id, maybe_serialize( $old_arr ) );
+						update_option( $arrs_new[ $n ] . $feed_id, $old_arr );
 					}
 				}
 
@@ -280,7 +280,7 @@ function y4ym_plugin_database_upd( $old_version ) {
 						if ( $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] === 'on' ) {
 							$p_arr[ $feed_id ][ 'yfymp_p_use' . $n ] = 'enabled';
 						}
-						$new_arr[ $n ] = [ 
+						$new_arr[ $n ] = [
 							'param_use' => $p_arr[ $feed_id ][ 'yfymp_p_use' . $n ],
 							'param_name_select' => $p_arr[ $feed_id ][ 'yfymp_p_name_s' . $n ],
 							'param_name_custom' => $p_arr[ $feed_id ][ 'yfymp_p_name_custom' . $n ],
@@ -412,8 +412,8 @@ if ( false === $not_run ) {
 	unset( $not_run );
 
 	// for wp_kses
-	define( 'Y4YM_ALLOWED_HTML_ARR', [ 
-		'a' => [ 
+	define( 'Y4YM_ALLOWED_HTML_ARR', [
+		'a' => [
 			'href' => true,
 			'title' => true,
 			'target' => true,
@@ -426,7 +426,7 @@ if ( false === $not_run ) {
 		'strong' => [ 'class' => true, 'style' => true ],
 		'p' => [ 'class' => true, 'style' => true ],
 		'kbd' => [ 'class' => true ],
-		'input' => [ 
+		'input' => [
 			'id' => true,
 			'name' => true,
 			'class' => true,
@@ -438,7 +438,7 @@ if ( false === $not_run ) {
 			'min' => true,
 			'max' => true
 		],
-		'textarea' => [ 
+		'textarea' => [
 			'id' => true,
 			'name' => true,
 			'class' => true,
@@ -448,7 +448,7 @@ if ( false === $not_run ) {
 			'row' => true
 		],
 		'select' => [ 'id' => true, 'class' => true, 'name' => true, 'style' => true, 'size' => true, 'multiple' => true ],
-		'option' => [ 
+		'option' => [
 			'id' => true,
 			'class' => true,
 			'style' => true,
@@ -470,7 +470,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.0.21' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.2.0' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -561,7 +561,7 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.0.21', '<' ) ) {
+	if ( version_compare( $y4ym_v, '5.2.0', '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 

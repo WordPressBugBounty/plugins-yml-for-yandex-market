@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -66,7 +66,7 @@ trait Y4YM_T_Variable_Get_Weight {
 		$tag_value = apply_filters(
 			'y4ym_f_variable_tag_value_weight',
 			$tag_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],
@@ -76,24 +76,31 @@ trait Y4YM_T_Variable_Get_Weight {
 			$tag_name = apply_filters(
 				'y4ym_f_variable_tag_name_weight',
 				$tag_name,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'offer' => $this->get_offer()
 				],
 				$this->get_feed_id()
 			);
-			$yml_rules = common_option_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
+			$result_xml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
+			$yml_rules = common_option_get(
+				'y4ym_yml_rules',
+				'yandex_market_assortment',
+				$this->get_feed_id(),
+				'y4ym'
+			);
 			if ( $yml_rules === 'flowwow' ) {
-				$result_xml = new Y4YM_Get_Paired_Tag( 'param', $tag_value, [ 'name' => 'Вес, кг' ] );
-			} else {
-				$result_xml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
+				// ? строки оставил тк МП пока не определился, в кг они хотят или в г
+				// $tag_value = round( wc_get_weight( $weight_yml, 'kg' ), 3 );
+				// $result_xml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
+				$result_xml .= new Y4YM_Get_Paired_Tag( 'param', $tag_value, [ 'name' => 'Вес, кг' ] );
 			}
 		}
 
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_weight',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.14 (17-06-2025)
+ * @version    5.0.24 (27-11-2025)
  * @see        https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
  *             https://wp-kama.ru/function/wp_list_table
  *
@@ -28,7 +28,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	public function __construct() {
 
 		global $status, $page;
-		parent::__construct( [ 
+		parent::__construct( [
 			// По умолчанию: '' ($this->screen->base);
 			// Название для множественного числа, используется во всяких заголовках, например в css классах,
 			// в заметках, например 'posts', тогда 'posts' будет добавлен в класс table
@@ -74,7 +74,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 */
 	public function get_columns() {
 
-		$columns = [ 
+		$columns = [
 			'cb' => '<input type="checkbox" />',
 			'html_feed_url' => __(
 				'Feed URL',
@@ -274,7 +274,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 					// 	);
 					// }
 
-					$table_data_arr[ $i ] = [ 
+					$table_data_arr[ $i ] = [
 						'html_feed_url' => $text_column_feed_url,
 						'html_feed_generation_status' => $text_column_feed_generation_status,
 						'html_feed_summary' => $text_column_feed_summary,
@@ -311,7 +311,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 		$current_page = $this->get_pagenum();
 		$total_items = count( $this->table_data() );
 		$found_data = array_slice( $this->table_data(), ( ( $current_page - 1 ) * $per_page ), $per_page );
-		$this->set_pagination_args( [ 
+		$this->set_pagination_args( [
 			'total_items' => $total_items, // Мы должны вычислить общее количество элементов
 			'per_page' => $per_page // Мы должны определить, сколько элементов отображается на странице
 		] );
@@ -390,7 +390,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 */
 	public function column_html_feed_url( $item ) {
 
-		$actions = [ 
+		$actions = [
 			'id' => 'ID: ' . $item['feed_id'],
 			'edit' => sprintf(
 				'<a href="?page=%s&action=%s&feed_id=%s&current_display=%s">%s</a>',
@@ -461,7 +461,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 */
 	public function get_bulk_actions() {
 
-		$actions = [ 
+		$actions = [
 			'delete' => __( 'Delete', 'yml-for-yandex-market' )
 		];
 		return $actions;
@@ -492,7 +492,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	public function no_items() {
 
 		$utm = sprintf(
-			'?utm_source=%1$s&utm_medium=organic&utm_campaign=in-plugin-%1$s&utm_content=settings&utm_term=%2$s',
+			'?utm_source=%1$s&utm_medium=documentation&utm_campaign=basic_version&utm_content=settings-page&utm_term=%2$s',
 			'yml-for-yandex-market',
 			'main-instruction-in-feeds-list'
 		);

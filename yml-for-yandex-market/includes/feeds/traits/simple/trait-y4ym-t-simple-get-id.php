@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -48,6 +48,7 @@ trait Y4YM_T_Simple_Get_Id {
 		);
 		switch ( $source_id ) {
 			case 'sku':
+
 				$sku_xml = $this->get_product()->get_sku();
 				if ( empty( $sku_xml ) ) {
 					$tag_value = htmlspecialchars( $sku_xml );
@@ -55,24 +56,33 @@ trait Y4YM_T_Simple_Get_Id {
 					// ? возможно тут нужно делать пропуск товара тк нет источника ID
 					$tag_value = $this->get_product()->get_id();
 				}
+
 				break;
 			case 'post_meta':
+
 				$post_meta = common_option_get(
 					'y4ym_source_id_post_meta',
 					'',
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				if ( get_post_meta( $this->get_product()->get_id(), $post_meta, true ) !== '' ) {
-					$tag_value = get_post_meta( $this->get_product()->get_id(), $post_meta, true );
-				} else {
-					// ? возможно тут нужно делать пропуск товара тк нет источника ID
+				if ( empty( $post_meta ) || get_post_meta( $this->get_product()->get_id(), $post_meta, true ) == '' ) {
 					$tag_value = '';
+					// ? возможно тут нужно делать пропуск товара тк нет источника ID
+				} else {
+					$tag_value = get_post_meta( $this->get_product()->get_id(), $post_meta, true );
 				}
+
 				break;
 			case 'germanized':
+
 				$tag_value = '';
-				// TODO: добавить поддержку плагина
+				if ( class_exists( 'WooCommerce_Germanized' ) ) {
+					if ( get_post_meta( $this->get_product->get_id(), '_ts_gtin', true ) !== '' ) {
+						$tag_value = get_post_meta( $this->get_product->get_id(), '_ts_gtin', true );
+					}
+				}
+
 				break;
 			default:
 		}

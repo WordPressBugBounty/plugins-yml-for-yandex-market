@@ -3,7 +3,7 @@
  * Sandbox function.
  * 
  * @since 0.1.0
- * @version 5.0.0 (25-03-2025)
+ * @version 5.0.26 (16-12-2025)
  *
  * @return void
  */
@@ -30,7 +30,7 @@ function y4ym_run_sandbox() {
 			esc_html__( 'seconds', 'yml-for-yandex-market' )
 		);
 	} else {
-		printf( '%s sanbox.php',
+		printf( '%s sandbox.php',
 			esc_html__( 'The sandbox is not active. To activate, edit the file', 'yml-for-yandex-market' )
 		);
 	}

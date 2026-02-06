@@ -4,7 +4,7 @@
 	$(document).ready(function () {
 		// select2 - place 4 from 5 (with woocommerce serch)
 		// simple multiple select with AJAX search
-		$('#y4ym_select2_arr').select2({
+		$('.y4ym_select2').select2({
 			ajax: {
 				url: ajaxurl, // AJAX URL is predefined in WordPress admin
 				dataType: 'json',

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.18 (31-07-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -31,7 +31,7 @@ final class Y4YM_Plugin_Upd {
 	 * @access private
 	 * @var array
 	 */
-	private $list_plugin_names = [ 
+	private $list_plugin_names = [
 		'y4ymp' => [ 'name' => 'PRO', 'code' => 'renewlicense20yp' ],
 		'y4ymae' => [ 'name' => 'Aliexpress Export', 'code' => 'renewlicense20ali' ],
 		'y4yms' => [ 'name' => 'SETS', 'code' => 'renewlicense23sets' ]
@@ -164,27 +164,37 @@ final class Y4YM_Plugin_Upd {
 		}
 		switch ( $i ) {
 			case "202":
+
 				$message = __( 'License is active', 'yml-for-yandex-market' );
 				$color = 'green';
+
 				break;
 			case "402":
+
 				$message = __( 'License expired', 'yml-for-yandex-market' );
 				$color = '#dc3232';
+
 				break;
 			case "412":
+
 				$message = __( 'License data is invalid', 'yml-for-yandex-market' );
 				$color = '#dc3232';
+
 				break;
 			case "418":
+
 				$message = __(
 					'This license cannot be used on this site. The package limit has been exceeded',
 					'yml-for-yandex-market'
 				);
 				$color = '#dc3232';
+
 				break;
 			default: // или ошибка 520
+
 				$message = __( 'License data is invalid', 'yml-for-yandex-market' );
 				$color = '#dc3232';
+
 				break;
 		}
 		$settings_link = sprintf( '<span style="color: %s; font-weight: 700;">%s</span>',
@@ -197,7 +207,7 @@ final class Y4YM_Plugin_Upd {
 	}
 
 	/**
-	 * Summary of get_info
+	 * Get info.
 	 * 
 	 * @return void
 	 */
@@ -212,8 +222,9 @@ final class Y4YM_Plugin_Upd {
 			case "202":
 				break;
 			case "402":
+
 				$message = sprintf(
-					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %3$s, <a href="https://icopydoc.ru/product/%4$s/?utm_source=%4$s&utm_medium=organic&utm_campaign=in-plugin&utm_content=notice&utm_term=license-expired" target="_blank">%5$s</a> (%6$s: <span style="font-weight: 700;">%7$s</span>). %8$s <a href="/wp-admin/admin.php?page=%9$s">%10$s</a>.',
+					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %3$s, <a href="https://icopydoc.ru/product/%4$s/?utm_source=yml-for-yandex-market&utm_medium=renewal&utm_campaign=%4$s&utm_content=notice&utm_term=license-expired" target="_blank">%5$s</a> (%6$s: <span style="font-weight: 700;">%7$s</span>). %8$s <a href="%11$sadmin.php?page=%9$s">%10$s</a>.',
 					$this->list_plugin_names[ $this->get_pref()]['name'],
 					__( 'License expired', 'yml-for-yandex-market' ),
 					__( 'Please', 'yml-for-yandex-market' ),
@@ -223,12 +234,15 @@ final class Y4YM_Plugin_Upd {
 					$this->list_plugin_names[ $this->get_pref()]['code'],
 					__( 'If you have already done this', 'yml-for-yandex-market' ),
 					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium',
-					__( 'enter the new license information here', 'yml-for-yandex-market' )
+					__( 'enter the new license information here', 'yml-for-yandex-market' ),
+					admin_url()
 				);
+
 				break;
 			case "412":
+
 				$message = sprintf(
-					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %1$s %3$s. <a href="/wp-admin/admin.php?page=%8$s">%4$s</a> %5$s <a href="https://icopydoc.ru/product/%6$s/?utm_source=%6$s&utm_medium=organic&utm_campaign=in-plugin&utm_content=license-err&utm_term=notice" target="_blank">%7$s</a>.',
+					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %1$s %3$s. <a href="%9$sadmin.php?page=%8$s">%4$s</a> %5$s <a href="https://icopydoc.ru/product/%6$s/?utm_source=yml-for-yandex-market&utm_medium=renewal&utm_campaign=%6$s&utm_content=notice&utm_term=license-invalid" target="_blank">%7$s</a>.',
 					$this->list_plugin_names[ $this->get_pref()]['name'],
 					__( 'License data is invalid', 'yml-for-yandex-market' ),
 					__( 'version features do not work and you can not install updates', 'yml-for-yandex-market' ),
@@ -236,12 +250,15 @@ final class Y4YM_Plugin_Upd {
 					__( 'or', 'yml-for-yandex-market' ),
 					$this->get_slug(),
 					__( 'purchase a new one', 'yml-for-yandex-market' ),
-					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium'
+					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium',
+					admin_url()
 				);
+
 				break;
 			case "418":
+
 				$message = sprintf(
-					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! <a href="/wp-admin/admin.php?page=%7$s">%3$s</a> %4$s <a href="https://icopydoc.ru/product/%5$s/?utm_source=%5$s&utm_medium=organic&utm_campaign=in-plugin&utm_content=license-limit&utm_term=notice" target="_blank">%6$s</a>.',
+					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! <a href="%8$sadmin.php?page=%7$s">%3$s</a> %4$s <a href="https://icopydoc.ru/product/%5$s/?utm_source=yml-for-yandex-market&utm_medium=renewal&utm_campaign=%5$s&utm_content=notice&utm_term=license-limit" target="_blank">%6$s</a>.',
 					$this->list_plugin_names[ $this->get_pref()]['name'],
 					__(
 						'This license cannot be used on this site. The package limit has been exceeded',
@@ -251,12 +268,15 @@ final class Y4YM_Plugin_Upd {
 					__( 'or', 'yml-for-yandex-market' ),
 					$this->get_slug(),
 					__( 'purchase a new one', 'yml-for-yandex-market' ),
-					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium'
+					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium',
+					admin_url()
 				);
+
 				break;
 			default: // или ошибка 520
+
 				$message = sprintf(
-					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %1$s %3$s. <a href="/wp-admin/admin.php?page=%8$s">%4$s</a> %5$s <a href="https://icopydoc.ru/product/%6$s/?utm_source=%6$s&utm_medium=organic&utm_campaign=in-plugin&utm_content=license-err&utm_term=notice" target="_blank">%7$s</a>.',
+					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s! %1$s %3$s. <a href="%9$sadmin.php?page=%8$s">%4$s</a> %5$s <a href="https://icopydoc.ru/product/%6$s/?utm_source=yml-for-yandex-market&utm_medium=renewal&utm_campaign=%6$s&utm_content=notice&utm_term=license-err" target="_blank">%7$s</a>.',
 					$this->list_plugin_names[ $this->get_pref()]['name'],
 					__( 'License data is invalid', 'yml-for-yandex-market' ),
 					__( 'version features do not work and you can not install updates', 'yml-for-yandex-market' ),
@@ -264,8 +284,10 @@ final class Y4YM_Plugin_Upd {
 					__( 'or', 'yml-for-yandex-market' ),
 					$this->get_slug(),
 					__( 'purchase a new one', 'yml-for-yandex-market' ),
-					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium'
+					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium',
+					admin_url()
 				);
+
 				break;
 		}
 
@@ -279,10 +301,10 @@ final class Y4YM_Plugin_Upd {
 			$remaining_days = ceil( ( $remaining_seconds / ( 24 * 60 * 60 ) ) );
 			if ( $remaining_days > 0 && $remaining_days < 8 ) {
 				$message = sprintf(
-					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s <span style="font-weight: 700; color: red;">%3$s</span>. %4$s, <a href="https://icopydoc.ru/product/%5$s/?utm_source=link&utm_medium=organic&utm_campaign=in-plugin&utm_content=notice&utm_term=license-remaining" target="_blank">%6$s</a> (%7$s: <span style="font-weight: 700;">%8$s</span>). %9$s <a href="/wp-admin/admin.php?page=%10$s">%11$s</a>.',
+					'<span style="font-weight: 700;">YML for Yandex Market %1$s:</span> %2$s <span style="font-weight: 700; color: red;">%3$s</span>. %4$s, <a href="https://icopydoc.ru/product/%5$s/?utm_source=yml-for-yandex-market&utm_medium=renewal&utm_campaign=%5$s&utm_content=notice&utm_term=license-remaining" target="_blank">%6$s</a> (%7$s: <span style="font-weight: 700;">%8$s</span>). %9$s <a href="%12$sadmin.php?page=%10$s">%11$s</a>.',
 					$this->list_plugin_names[ $this->get_pref()]['name'],
 					__( 'License expires in', 'yml-for-yandex-market' ),
-					$this->num_decline( $remaining_days, [ 
+					$this->num_decline( $remaining_days, [
 						__( 'day', 'yml-for-yandex-market' ),
 						_x( 'days', '2 days', 'yml-for-yandex-market' ),
 						_x( 'days', '5 days', 'yml-for-yandex-market' )
@@ -295,7 +317,8 @@ final class Y4YM_Plugin_Upd {
 					$this->list_plugin_names[ $this->get_pref()]['code'],
 					__( 'If you have already done this', 'yml-for-yandex-market' ),
 					__( 'enter the new license information here', 'yml-for-yandex-market' ),
-					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium'
+					'yml-for-yandex-market-debug&action=edit&current_display=debug_page&tab=premium',
+					admin_url()
 				);
 				if ( ! empty( $message ) ) {
 					$class = 'error';
@@ -347,7 +370,7 @@ final class Y4YM_Plugin_Upd {
 	 */
 	private function get_body_request() {
 
-		$body_request = [ 
+		$body_request = [
 			'action' => 'basic_check',
 			'slug' => $this->get_slug(),
 			'plugin_slug' => $this->get_plugin_slug(),
@@ -358,7 +381,7 @@ final class Y4YM_Plugin_Upd {
 			'order_email' => $this->get_order_email(),
 			'order_home_url' => home_url( '/' )
 		];
-		new Y4YM_Error_Log( $body_request );
+		Y4YM_Error_Log::record( $body_request );
 		return $body_request;
 
 	}
@@ -444,7 +467,7 @@ final class Y4YM_Plugin_Upd {
 
 		global $wp_version;
 		$response = false;
-		$request_arr = [ 
+		$request_arr = [
 			'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ),
 			'body' => [ 'request' => $this->get_body_request() ] // request будет передан как $_POST['request']
 		];
@@ -466,7 +489,7 @@ final class Y4YM_Plugin_Upd {
 	 */
 	private function response_to_reserved_servers( $request_arr ) {
 
-		$backup_servers_arr = [ 
+		$backup_servers_arr = [
 			'https://icopydoc.com/api/v1',
 			'https://icopydoc.com/api/v2'
 		];
@@ -481,7 +504,7 @@ final class Y4YM_Plugin_Upd {
 	}
 
 	/**
-	 * Summary of save_resp
+	 * Save resp.
 	 * 
 	 * @param string|int $v
 	 * @param string $d
@@ -558,7 +581,7 @@ final class Y4YM_Plugin_Upd {
 
 			$transient->response[ $this->plugin_slug ] = $plugin;
 		} else {
-			new Y4YM_Error_Log( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
+			Y4YM_Error_Log::record( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
 				$response_code,
 				__( 'Error checking for updates', 'yml-for-yandex-market' ),
 				$response_message,
@@ -597,7 +620,7 @@ final class Y4YM_Plugin_Upd {
 				$plugin = $this->get_plugin_response_data( $resp );
 				return $plugin;
 			} else {
-				new Y4YM_Error_Log( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
+				Y4YM_Error_Log::record( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
 					$response_code,
 					__( 'Error when requesting information about the plugin', 'yml-for-yandex-market' ),
 					$response_message,

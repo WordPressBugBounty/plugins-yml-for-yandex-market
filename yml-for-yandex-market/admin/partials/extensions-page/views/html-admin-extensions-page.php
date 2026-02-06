@@ -2,7 +2,7 @@
 /**
  * Print Extensions page.
  * 
- * @version 5.0.20 (10-09-2025)
+ * @version 5.0.23 (15-11-2025)
  * @see     
  * @package 
  */
@@ -136,7 +136,7 @@ defined( 'ABSPATH' ) || exit;
 	</div>
 	<div class="grid-container">
 		<div class="extension-card">
-			<a href="https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-yml-pro-img"
+			<a href="https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=yml-for-yandex-market&utm_medium=purchase&utm_campaign=basic_version&utm_content=extensions-page&utm_term=product-image-yml-for-yandex-market-pro"
 				target="_blank">
 				<img style="max-width: 100%; display: block; margin: 0 auto;"
 					src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>/imgs/yml-for-yandex-market-pro-350x350.jpg"
@@ -172,14 +172,14 @@ defined( 'ABSPATH' ) || exit;
 			</ul>
 			<p style="text-align: center;">
 				<a class="button-primary"
-					href="https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-yml-pro"
+					href="https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=yml-for-yandex-market&utm_medium=purchase&utm_campaign=basic_version&utm_content=extensions-page&utm_term=poluchit-yml-pro"
 					target="_blank">
 					<?php esc_html_e( 'Get Now', 'yml-for-yandex-market' ); ?>
 				</a>
 			</p>
 		</div>
 		<div class="extension-card">
-			<a href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-sets/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-sets-img"
+			<a href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-sets/?utm_source=yml-for-yandex-market&utm_medium=purchase&utm_campaign=basic_version&utm_content=extensions-page&utm_term=product-image-yml-for-yandex-market-sets"
 				target="_blank">
 				<img style="max-width: 100%; display: block; margin: 0 auto;"
 					src="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>/imgs/yml-for-yandex-market-sets-350x350.jpg"
@@ -233,7 +233,7 @@ defined( 'ABSPATH' ) || exit;
 			</ul>
 			<p style="text-align: center;">
 				<a class="button-primary"
-					href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-sets/?utm_source=yml-for-yandex-market&utm_medium=organic&utm_campaign=in-plugin-yml-for-yandex-market&utm_content=extensions&utm_term=poluchit-sets"
+					href="https://icopydoc.ru/product/plagin-yml-for-yandex-market-sets/?utm_source=yml-for-yandex-market&utm_medium=purchase&utm_campaign=basic_version&utm_content=extensions-page&utm_term=poluchit-yml-sets"
 					target="_blank">
 					<?php esc_html_e( 'Get Now', 'yml-for-yandex-market' ); ?>
 				</a>

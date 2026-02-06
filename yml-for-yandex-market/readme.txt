@@ -3,8 +3,8 @@ Contributors: icopydoc
 Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
-Tested up to: 6.8.2
-Stable tag: 5.0.21
+Tested up to: 6.9.1
+Stable tag: 5.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,11 +29,12 @@ Creates a YML-feed to upload to Yandex Market and not only. In addition to Yande
 * ВКонтакте (vk.com) (partial support)
 * EBay (partial support)
 * Flowwow (flowwow.com) (partial support)
+* Youla (youla.ru) (partial support)
 and not only...
 
 The plugin Woocommerce is required!
 
-PRO version: [https://icopydoc.ru/product/yml-for-yandex-market-pro/](https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=wp-repository&utm_medium=organic&utm_campaign=yml-for-yandex-market&utm_content=readme&utm_term=pro-version)
+PRO version: [https://icopydoc.ru/product/yml-for-yandex-market-pro/](https://icopydoc.ru/product/yml-for-yandex-market-pro/?utm_source=wp-repository&utm_medium=content&utm_campaign=yml-for-yandex-market&utm_content=readme&utm_term=pro-version)
 
 ---
 *If there is an appropriate supplement. See Extensions page.
@@ -66,7 +67,7 @@ Only Woocommerce.
 
 = How to create a YML feed? =
 
-Detailed instructions with screenshots [here](https://icopydoc.ru/kak-sozdat-woocommerce-yml-instruktsiya/?utm_source=wp-repository&utm_medium=organic&utm_campaign=yml-for-yandex-market&utm_content=readme&utm_term=main-instruction)
+Detailed instructions with screenshots [here](https://icopydoc.ru/kak-sozdat-woocommerce-yml-instruktsiya/?utm_source=wp-repository&utm_medium=content&utm_campaign=yml-for-yandex-market&utm_content=readme&utm_term=documentation)
 
 Go to Yandex Market-->Settings. In the box called "Automatic file creation" select another menu entry (which differs from "off"). You can also change values in other boxes if necessary, then press "Save".
 After 1-7 minutes (depending on the number of products), the feed will be generated and a link will appear instead of this message.
@@ -76,6 +77,55 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.2.0 =
+*Release Date 03-02-2026*
+
+* Fixed interface bugs.
+* Improved plugin performance.
+* Added compatibility with the plugin: `ACF`.
+* Code refactoring.
+
+= 5.1.0 =
+*Release Date 27-01-2026*
+
+* Improved support VAT 22%.
+* Added compatibility with plugins: `Perfect Woocommerce Brands`, `Saphali Custom Brands Pro`, `Premmerce Brands for WooCommerce`, `Woocomerce Brands Pro`, `YITH WooCommerce Brands Add-On`.
+* Code refactoring.
+
+= 5.0.26 =
+*Release Date 24-12-2025*
+
+* Added support VAT 22%.
+* Improved the mechanism for generating tags `price` and `oldprice'.
+* Fixed a security bug.
+
+= 5.0.25 =
+*Release Date 15-12-2025*
+
+* Fixed interface bugs.
+* The mechanism for automatically deleting products from the feed for Yandex Direct rules has been changed.
+
+= 5.0.24 =
+*Release Date 27-11-2025*
+
+* Fixed interface bugs.
+* Fixed the bug of double serialization of arrays.
+
+= 5.0.23 =
+*Release Date 15-11-2025*
+
+* Added following tags: `certificate`, `service_life_days`, `comment_life_days`, `comment_validity_days`, `comment_warranty`, `keywords`.
+* Fixed interface bugs.
+* Fixed a weight tag to the rule for marketplace Flowwow.
+* Fixed bugs with tags: `delivery-options`, `pickup-options`.
+
+= 5.0.22 =
+*Release Date 15-10-2025*
+
+* Fixed an bug where the most recent product was not included in the feed.
+* Added a weight tag to the rule for marketplace Flowwow.
+* Added support for marketplace Youla.
 
 = 5.0.21 =
 *Release Date 18-09-2025*
@@ -200,8 +250,10 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.0.21 =
-*Release Date 18-09-2025*
+= 5.2.0 =
+*Release Date 03-02-2026*
 
 * Fixed interface bugs.
-* Added feed integrity check.
+* Improved plugin performance.
+* Added compatibility with the plugin: `ACF`.
+* Code refactoring.

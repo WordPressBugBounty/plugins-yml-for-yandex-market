@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.26 (24-12-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -54,14 +54,15 @@ trait Y4YM_T_Simple_Get_Oldprice {
 			$old_price_value = apply_filters(
 				'y4ym_f_simple_price',
 				$old_price_value,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'product_category_id' => $this->get_feed_category_id()
 				],
 				$this->get_feed_id()
 			);
+			$old_price_value = number_format( (float) $old_price_value, wc_get_price_decimals(), '.', '' );
 			$result_xml .= new Y4YM_Get_Paired_Tag( $tag_name, $old_price_value );
-		}	
+		}
 		return $result_xml;
 
 	}

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -31,41 +31,24 @@ class Y4YM_Activator {
 	 * @return   void
 	 */
 	public static function activate() {
+
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			return;
 		}
 
-		if ( ! is_dir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-			if ( ! mkdir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-				error_log(
-					sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-activator.php; %5$s: %6$s',
-						__( 'Folder creation error', 'yml-for-yandex-market' ),
-						Y4YM_PLUGIN_UPLOADS_DIR_PATH,
-						__( 'at the time of plugin activation', 'yml-for-yandex-market' ),
-						__( 'Line', 'yml-for-yandex-market' ),
-						__( 'File', 'yml-for-yandex-market' ),
-						__LINE__
-					),
-					0
-				);
-			}
-		}
-
 		$name_dir = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/feed1';
-		if ( ! is_dir( $name_dir ) ) {
-			if ( ! mkdir( $name_dir ) ) {
-				error_log(
-					sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-activator.php; %5$s: %6$s',
-						__( 'Folder creation error', 'yml-for-yandex-market' ),
-						$name_dir,
-						__( 'at the time of plugin activation', 'yml-for-yandex-market' ),
-						__( 'Line', 'yml-for-yandex-market' ),
-						__( 'File', 'yml-for-yandex-market' ),
-						__LINE__
-					),
-					0
-				);
-			}
+		if ( ! wp_mkdir_p( $name_dir ) ) {
+			error_log(
+				sprintf( 'Y4YM: Y4YM_Activator: %1$s "%2$s" %3$s; %4$s: class-y4ym-activator.php; %5$s: %6$s',
+					__( 'Folder creation error', 'yml-for-yandex-market' ),
+					$name_dir,
+					__( 'at the time of plugin activation', 'yml-for-yandex-market' ),
+					__( 'Line', 'yml-for-yandex-market' ),
+					__( 'File', 'yml-for-yandex-market' ),
+					__LINE__
+				),
+				0
+			);
 		}
 
 		if ( is_multisite() ) {

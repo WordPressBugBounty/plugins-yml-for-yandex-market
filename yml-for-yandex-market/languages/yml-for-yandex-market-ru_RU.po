@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-09-18 13:44+0300\n"
-"PO-Revision-Date: 2025-09-18 13:45+0300\n"
+"POT-Creation-Date: 2026-02-03 20:55+0300\n"
+"PO-Revision-Date: 2026-02-03 20:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -61,7 +61,7 @@ msgstr "Склейка фида"
 msgid "Completing the assembly"
 msgstr "Завершение сборки"
 
-#: admin/class-y4ym-admin.php:504 admin/class-y4ym-admin.php:829
+#: admin/class-y4ym-admin.php:504 admin/class-y4ym-admin.php:796
 msgid "Updated"
 msgstr "Обновлено"
 
@@ -73,534 +73,520 @@ msgstr "Задача по созданию фида была поставлен�
 msgid "Feed ID"
 msgstr "Фид ID"
 
-#: admin/class-y4ym-admin.php:586 admin/class-y4ym-admin.php:601
-#: admin/class-y4ym-admin.php:732 admin/class-y4ym-admin.php:747
-#: includes/class-y4ym-activator.php:42 includes/class-y4ym-activator.php:59
+#: admin/class-y4ym-admin.php:586 admin/class-y4ym-admin.php:715
+#: includes/class-y4ym-activator.php:43
 msgid "Folder creation error"
 msgstr "Ошибка создания папки"
 
-#: admin/class-y4ym-admin.php:588 admin/class-y4ym-admin.php:603
+#: admin/class-y4ym-admin.php:588
 msgid "during the creation of a new feed"
 msgstr "во время создания нового фида"
 
-#: admin/class-y4ym-admin.php:589 admin/class-y4ym-admin.php:604
-#: admin/class-y4ym-admin.php:735 admin/class-y4ym-admin.php:750
-#: admin/class-y4ym-admin.php:988 admin/class-y4ym-admin.php:1009
-#: admin/class-y4ym-admin.php:1019 admin/class-y4ym-admin.php:1062
-#: admin/class-y4ym-admin.php:2153 admin/class-y4ym-admin.php:2198
-#: includes/class-y4ym-activator.php:45 includes/class-y4ym-activator.php:62
+#: admin/class-y4ym-admin.php:589 admin/class-y4ym-admin.php:718
+#: includes/class-y4ym-activator.php:46
+#: includes/cron/class-yfym-cron-manager.php:72
+#: includes/cron/class-yfym-cron-manager.php:93
+#: includes/cron/class-yfym-cron-manager.php:103
+#: includes/cron/class-yfym-cron-manager.php:146
 #: includes/feeds/class-y4ym-generation-xml.php:114
 #: includes/feeds/class-y4ym-generation-xml.php:158
 #: includes/feeds/class-y4ym-generation-xml.php:205
 #: includes/feeds/class-y4ym-generation-xml.php:237
-#: includes/feeds/class-y4ym-generation-xml.php:271
-#: includes/feeds/class-y4ym-generation-xml.php:294
-#: includes/feeds/class-y4ym-generation-xml.php:309
-#: includes/feeds/class-y4ym-generation-xml.php:350
-#: includes/feeds/class-y4ym-generation-xml.php:380
-#: includes/feeds/class-y4ym-generation-xml.php:392
+#: includes/feeds/class-y4ym-generation-xml.php:255
+#: includes/feeds/class-y4ym-generation-xml.php:279
+#: includes/feeds/class-y4ym-generation-xml.php:295
+#: includes/feeds/class-y4ym-generation-xml.php:318
+#: includes/feeds/class-y4ym-generation-xml.php:333
+#: includes/feeds/class-y4ym-generation-xml.php:374
+#: includes/feeds/class-y4ym-generation-xml.php:404
 #: includes/feeds/class-y4ym-generation-xml.php:416
-#: includes/feeds/class-y4ym-generation-xml.php:466
-#: includes/feeds/class-y4ym-generation-xml.php:491
-#: includes/feeds/class-y4ym-generation-xml.php:516
-#: includes/feeds/class-y4ym-generation-xml.php:539
-#: includes/feeds/class-y4ym-generation-xml.php:802
-#: includes/feeds/class-y4ym-generation-xml.php:825
-#: includes/feeds/class-y4ym-generation-xml.php:893
-#: includes/feeds/class-y4ym-generation-xml.php:907
-#: includes/feeds/class-y4ym-generation-xml.php:937
-#: includes/feeds/class-y4ym-generation-xml.php:1255
-#: includes/feeds/class-y4ym-generation-xml.php:1281
-#: includes/feeds/class-y4ym-generation-xml.php:1308
-#: includes/feeds/class-y4ym-generation-xml.php:1332
-#: includes/feeds/class-y4ym-get-unit.php:103
-#: includes/feeds/class-y4ym-get-unit.php:121
-#: includes/feeds/class-y4ym-get-unit.php:184
-#: includes/feeds/class-y4ym-get-unit.php:273
-#: includes/feeds/class-y4ym-get-unit.php:297
+#: includes/feeds/class-y4ym-generation-xml.php:440
+#: includes/feeds/class-y4ym-generation-xml.php:490
+#: includes/feeds/class-y4ym-generation-xml.php:515
+#: includes/feeds/class-y4ym-generation-xml.php:540
+#: includes/feeds/class-y4ym-generation-xml.php:563
+#: includes/feeds/class-y4ym-generation-xml.php:936
+#: includes/feeds/class-y4ym-generation-xml.php:959
+#: includes/feeds/class-y4ym-generation-xml.php:1034
+#: includes/feeds/class-y4ym-generation-xml.php:1048
+#: includes/feeds/class-y4ym-generation-xml.php:1078
+#: includes/feeds/class-y4ym-generation-xml.php:1395
+#: includes/feeds/class-y4ym-generation-xml.php:1411
+#: includes/feeds/class-y4ym-generation-xml.php:1437
+#: includes/feeds/class-y4ym-generation-xml.php:1464
+#: includes/feeds/class-y4ym-generation-xml.php:1488
+#: includes/feeds/class-y4ym-get-unit.php:112
+#: includes/feeds/class-y4ym-get-unit.php:130
+#: includes/feeds/class-y4ym-get-unit.php:182
+#: includes/feeds/class-y4ym-get-unit.php:271
+#: includes/feeds/class-y4ym-get-unit.php:295
+#: includes/feeds/class-yfym-feed-updater.php:65
+#: includes/feeds/class-yfym-feed-updater.php:110
+#: includes/feeds/class-yfym-feed-updater.php:174
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:202
-#: includes/updates/class-y4ym-plugin-upd.php:567
-#: includes/updates/class-y4ym-plugin-upd.php:606
+#: includes/updates/class-y4ym-plugin-upd.php:590
+#: includes/updates/class-y4ym-plugin-upd.php:629
 msgid "Line"
 msgstr "Строка"
 
-#: admin/class-y4ym-admin.php:590 admin/class-y4ym-admin.php:605
-#: admin/class-y4ym-admin.php:736 admin/class-y4ym-admin.php:751
-#: admin/class-y4ym-admin.php:986 admin/class-y4ym-admin.php:1007
-#: admin/class-y4ym-admin.php:1017 admin/class-y4ym-admin.php:1060
-#: admin/class-y4ym-admin.php:2151 admin/class-y4ym-admin.php:2196
-#: includes/class-y4ym-activator.php:46 includes/class-y4ym-activator.php:63
+#: admin/class-y4ym-admin.php:590 admin/class-y4ym-admin.php:719
+#: includes/class-y4ym-activator.php:47
+#: includes/cron/class-yfym-cron-manager.php:70
+#: includes/cron/class-yfym-cron-manager.php:91
+#: includes/cron/class-yfym-cron-manager.php:101
+#: includes/cron/class-yfym-cron-manager.php:144
 #: includes/feeds/class-y4ym-generation-xml.php:112
 #: includes/feeds/class-y4ym-generation-xml.php:156
 #: includes/feeds/class-y4ym-generation-xml.php:203
 #: includes/feeds/class-y4ym-generation-xml.php:235
-#: includes/feeds/class-y4ym-generation-xml.php:269
-#: includes/feeds/class-y4ym-generation-xml.php:292
-#: includes/feeds/class-y4ym-generation-xml.php:307
-#: includes/feeds/class-y4ym-generation-xml.php:348
-#: includes/feeds/class-y4ym-generation-xml.php:378
-#: includes/feeds/class-y4ym-generation-xml.php:390
+#: includes/feeds/class-y4ym-generation-xml.php:253
+#: includes/feeds/class-y4ym-generation-xml.php:277
+#: includes/feeds/class-y4ym-generation-xml.php:293
+#: includes/feeds/class-y4ym-generation-xml.php:316
+#: includes/feeds/class-y4ym-generation-xml.php:331
+#: includes/feeds/class-y4ym-generation-xml.php:372
+#: includes/feeds/class-y4ym-generation-xml.php:402
 #: includes/feeds/class-y4ym-generation-xml.php:414
-#: includes/feeds/class-y4ym-generation-xml.php:464
-#: includes/feeds/class-y4ym-generation-xml.php:489
-#: includes/feeds/class-y4ym-generation-xml.php:514
-#: includes/feeds/class-y4ym-generation-xml.php:537
-#: includes/feeds/class-y4ym-generation-xml.php:800
-#: includes/feeds/class-y4ym-generation-xml.php:823
-#: includes/feeds/class-y4ym-generation-xml.php:905
-#: includes/feeds/class-y4ym-generation-xml.php:935
-#: includes/feeds/class-y4ym-generation-xml.php:1253
-#: includes/feeds/class-y4ym-generation-xml.php:1279
-#: includes/feeds/class-y4ym-generation-xml.php:1306
-#: includes/feeds/class-y4ym-generation-xml.php:1330
-#: includes/feeds/class-y4ym-get-unit.php:101
-#: includes/feeds/class-y4ym-get-unit.php:119
-#: includes/feeds/class-y4ym-get-unit.php:182
-#: includes/feeds/class-y4ym-get-unit.php:271
-#: includes/feeds/class-y4ym-get-unit.php:295
+#: includes/feeds/class-y4ym-generation-xml.php:438
+#: includes/feeds/class-y4ym-generation-xml.php:488
+#: includes/feeds/class-y4ym-generation-xml.php:513
+#: includes/feeds/class-y4ym-generation-xml.php:538
+#: includes/feeds/class-y4ym-generation-xml.php:561
+#: includes/feeds/class-y4ym-generation-xml.php:934
+#: includes/feeds/class-y4ym-generation-xml.php:957
+#: includes/feeds/class-y4ym-generation-xml.php:1046
+#: includes/feeds/class-y4ym-generation-xml.php:1076
+#: includes/feeds/class-y4ym-generation-xml.php:1393
+#: includes/feeds/class-y4ym-generation-xml.php:1409
+#: includes/feeds/class-y4ym-generation-xml.php:1435
+#: includes/feeds/class-y4ym-generation-xml.php:1462
+#: includes/feeds/class-y4ym-generation-xml.php:1486
+#: includes/feeds/class-y4ym-get-unit.php:110
+#: includes/feeds/class-y4ym-get-unit.php:128
+#: includes/feeds/class-y4ym-get-unit.php:180
+#: includes/feeds/class-y4ym-get-unit.php:269
+#: includes/feeds/class-y4ym-get-unit.php:293
+#: includes/feeds/class-yfym-feed-updater.php:63
+#: includes/feeds/class-yfym-feed-updater.php:108
+#: includes/feeds/class-yfym-feed-updater.php:172
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:200
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:218
-#: includes/updates/class-y4ym-plugin-upd.php:565
-#: includes/updates/class-y4ym-plugin-upd.php:604
+#: includes/updates/class-y4ym-plugin-upd.php:588
+#: includes/updates/class-y4ym-plugin-upd.php:627
 msgid "File"
 msgstr "Файл"
 
-#: admin/class-y4ym-admin.php:636
+#: admin/class-y4ym-admin.php:620
 msgid "Feed creation error. Failed to create a folder for temporary files"
 msgstr "Ошибка создания фида. Не удалось создать папку для временных файлов"
 
-#: admin/class-y4ym-admin.php:688
+#: admin/class-y4ym-admin.php:671
 msgid "Feed with"
 msgstr "Фид с"
 
-#: admin/class-y4ym-admin.php:690
+#: admin/class-y4ym-admin.php:673
 msgid "has been successfully deleted"
 msgstr "был успешно удалён"
 
-#: admin/class-y4ym-admin.php:734 admin/class-y4ym-admin.php:749
+#: admin/class-y4ym-admin.php:717
 msgid "during the duplicate of a new feed"
 msgstr "во время дублирования фида"
 
-#: admin/class-y4ym-admin.php:790
+#: admin/class-y4ym-admin.php:757
 msgid "Feed duplicate error. Failed to create a folder for temporary files"
 msgstr ""
 "Ошибка дублирования фида. Не удалось создать папку для временных файлов"
 
-#: admin/class-y4ym-admin.php:849
+#: admin/class-y4ym-admin.php:816
 msgid "Logs were cleared"
 msgstr "Логи были очищены"
 
-#: admin/class-y4ym-admin.php:853
+#: admin/class-y4ym-admin.php:820
 msgid "Error accessing log file. The log file may have been deleted previously"
 msgstr "Ошибка доступа к log-файлу. Возможно log-файл был удален ранее"
 
-#: admin/class-y4ym-admin.php:955
-msgid "Every minute"
-msgstr "Каждую минуту"
-
-#: admin/class-y4ym-admin.php:959
-#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:175
-msgid "Every three hours"
-msgstr "Каждые 3 часа"
-
-#: admin/class-y4ym-admin.php:963
-#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:178
-msgid "Every six hours"
-msgstr "Каждые 6 часов"
-
-#: admin/class-y4ym-admin.php:967
-#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:187
-msgid "Every two days"
-msgstr "Каждые два дня"
-
-#: admin/class-y4ym-admin.php:985
-msgid "The CRON task for creating a feed has started"
-msgstr "Запущена CRON задача для создания фида"
-
-#: admin/class-y4ym-admin.php:1006
-#: includes/feeds/class-y4ym-generation-xml.php:267
-#: includes/feeds/class-y4ym-generation-xml.php:305
-msgid "Failed to schedule a CRON task"
-msgstr "Не удалось запланировать CRON задачу"
-
-#: admin/class-y4ym-admin.php:1016
-msgid "Successful CRON task planning"
-msgstr "CRON задача успешно запланирована"
-
-#: admin/class-y4ym-admin.php:1059
-msgid "The CRON task started"
-msgstr "Стартовала CRON задача"
-
-#: admin/class-y4ym-admin.php:1175
+#: admin/class-y4ym-admin.php:919
 msgid "Сollections for YML feed"
 msgstr "Сollections для YML фида"
 
-#: admin/class-y4ym-admin.php:1177
+#: admin/class-y4ym-admin.php:921
 msgid "Search collection"
 msgstr "Поиск collection"
 
-#: admin/class-y4ym-admin.php:1179
+#: admin/class-y4ym-admin.php:923
 msgid "All collections"
 msgstr "Все collections"
 
-#: admin/class-y4ym-admin.php:1182
+#: admin/class-y4ym-admin.php:926
 msgid "Edit collection"
 msgstr "Редактировать collection"
 
-#: admin/class-y4ym-admin.php:1183
+#: admin/class-y4ym-admin.php:927
 msgid "Update collection"
 msgstr "Обновить collection"
 
-#: admin/class-y4ym-admin.php:1184
+#: admin/class-y4ym-admin.php:928
 msgid "Add new collection"
 msgstr "Добавить новую collection"
 
-#: admin/class-y4ym-admin.php:1185
+#: admin/class-y4ym-admin.php:929
 msgid "New collection"
 msgstr "Добавить collection"
 
-#: admin/class-y4ym-admin.php:1186
+#: admin/class-y4ym-admin.php:930
 msgid "Сollections for YML"
 msgstr "Сollections для YML"
 
-#: admin/class-y4ym-admin.php:1225 admin/class-y4ym-admin.php:1271
+#: admin/class-y4ym-admin.php:969 admin/class-y4ym-admin.php:1015
 msgid "Collection URL"
 msgstr "URL-адрес коллекции"
 
-#: admin/class-y4ym-admin.php:1229 admin/class-y4ym-admin.php:1278
+#: admin/class-y4ym-admin.php:973 admin/class-y4ym-admin.php:1022
 msgid "URL of the collection page"
 msgstr "URL страницы коллекции"
 
-#: admin/class-y4ym-admin.php:1234 admin/class-y4ym-admin.php:1285
+#: admin/class-y4ym-admin.php:978 admin/class-y4ym-admin.php:1029
 msgid "Main picture URL"
 msgstr "URL главного фото"
 
-#: admin/class-y4ym-admin.php:1238 admin/class-y4ym-admin.php:1292
-#: admin/class-y4ym-admin.php:1941 admin/class-y4ym-admin.php:2069
-#: includes/class-y4ym-data.php:2703
+#: admin/class-y4ym-admin.php:982 admin/class-y4ym-admin.php:1036
+#: admin/class-y4ym-admin.php:1823 admin/class-y4ym-admin.php:1959
+#: includes/class-y4ym-data.php:2966
 msgid "For example"
 msgstr "Например"
 
-#: admin/class-y4ym-admin.php:1239 admin/class-y4ym-admin.php:1293
+#: admin/class-y4ym-admin.php:983 admin/class-y4ym-admin.php:1037
 msgid "URL of the main picture of the collection"
 msgstr "URL главного фото коллекции"
 
-#: admin/class-y4ym-admin.php:1244 admin/class-y4ym-admin.php:1300
+#: admin/class-y4ym-admin.php:988 admin/class-y4ym-admin.php:1044
 msgid "Add the main photos of products to the collection"
 msgstr "Добавить главные фото товаров в коллекцию"
 
-#: admin/class-y4ym-admin.php:1249 admin/class-y4ym-admin.php:1308
+#: admin/class-y4ym-admin.php:993 admin/class-y4ym-admin.php:1052
 msgid "Indicate the number from 0 to 20"
 msgstr "Укажите число от 0 до 20"
 
-#: admin/class-y4ym-admin.php:1352
+#: admin/class-y4ym-admin.php:1096
 msgid "YML for Yandex Market"
 msgstr "YML for Yandex Market"
 
-#: admin/class-y4ym-admin.php:1393
+#: admin/class-y4ym-admin.php:1137
 msgid "Individual product settings for YML-feed"
 msgstr "Индивидуальные настройки товара для YML-фида"
 
-#: admin/class-y4ym-admin.php:1401
+#: admin/class-y4ym-admin.php:1145
 msgid "Individual product settings for Yandex for sellers"
 msgstr "Индивидуальные настройки товара в Яндексе для продавцов"
 
-#: admin/class-y4ym-admin.php:1406
+#: admin/class-y4ym-admin.php:1150
 msgid "Here you can set up individual settings for Yandex for sellers"
 msgstr ""
 "Здесь вы можете настроить индивидуальные настройки Яндекса для продавцов"
 
-#: admin/class-y4ym-admin.php:1408 admin/class-y4ym-admin.php:1445
-#: admin/class-y4ym-admin.php:1459 admin/class-y4ym-admin.php:1552
-#: admin/class-y4ym-admin.php:1613 admin/class-y4ym-admin.php:1683
-#: admin/class-y4ym-admin.php:1759 admin/class-y4ym-admin.php:1852
-#: includes/class-y4ym-data.php:637 includes/class-y4ym-data.php:729
-#: includes/class-y4ym-data.php:818 includes/class-y4ym-data.php:1721
+#: admin/class-y4ym-admin.php:1152 admin/class-y4ym-admin.php:1189
+#: admin/class-y4ym-admin.php:1203 admin/class-y4ym-admin.php:1314
+#: admin/class-y4ym-admin.php:1375 admin/class-y4ym-admin.php:1445
+#: admin/class-y4ym-admin.php:1521 admin/class-y4ym-admin.php:1655
+#: includes/class-y4ym-data.php:732 includes/class-y4ym-data.php:824
+#: includes/class-y4ym-data.php:913 includes/class-y4ym-data.php:1835
 msgid "Read more on Yandex"
 msgstr "Прочитать подробности на Яндексе"
 
-#: admin/class-y4ym-admin.php:1417 includes/class-y4ym-data.php:2478
+#: admin/class-y4ym-admin.php:1161 includes/class-y4ym-data.php:2741
 msgid "Market category ID"
 msgstr "ID категории на Маркете"
 
-#: admin/class-y4ym-admin.php:1420
+#: admin/class-y4ym-admin.php:1164
 msgid "Do not confuse it with the \"market_category\" parameter"
 msgstr "Не путайте его с параметром \"market_category\""
 
-#: admin/class-y4ym-admin.php:1430
+#: admin/class-y4ym-admin.php:1174
 msgid "Product ID on Yandex"
 msgstr "Идентификатор товара на Яндексе"
 
-#: admin/class-y4ym-admin.php:1432
+#: admin/class-y4ym-admin.php:1176
 msgid "Product ID on Yandex or other marketplace"
 msgstr "ID товара на Яндексе или другом маркетплейсе"
 
-#: admin/class-y4ym-admin.php:1440 admin/class-y4ym-admin.php:1821
+#: admin/class-y4ym-admin.php:1184 admin/class-y4ym-admin.php:1624
 msgid "Code"
 msgstr "Код"
 
-#: admin/class-y4ym-admin.php:1443 admin/class-y4ym-admin.php:1824
+#: admin/class-y4ym-admin.php:1187 admin/class-y4ym-admin.php:1627
 msgid "If you need to specify multiple values, separate them with a"
 msgstr "Если вам нужно указать несколько значений, разделите их символом"
 
-#: admin/class-y4ym-admin.php:1454
+#: admin/class-y4ym-admin.php:1198
 msgid "I'll product marking"
 msgstr "Я буду маркировать товары"
 
-#: admin/class-y4ym-admin.php:1457 admin/class-y4ym-admin.php:1550
-#: admin/class-y4ym-admin.php:1571 admin/class-y4ym-admin.php:1628
-#: admin/class-y4ym-admin.php:1652 admin/class-y4ym-admin.php:1669
-#: admin/class-y4ym-admin.php:1698 admin/class-y4ym-admin.php:1722
-#: admin/class-y4ym-admin.php:1739 includes/class-y4ym-data.php:636
-#: includes/class-y4ym-data.php:704 includes/class-y4ym-data.php:728
-#: includes/class-y4ym-data.php:796 includes/class-y4ym-data.php:817
-#: includes/class-y4ym-data.php:882 includes/class-y4ym-data.php:903
-#: includes/class-y4ym-data.php:949
+#: admin/class-y4ym-admin.php:1201 admin/class-y4ym-admin.php:1312
+#: admin/class-y4ym-admin.php:1333 admin/class-y4ym-admin.php:1390
+#: admin/class-y4ym-admin.php:1414 admin/class-y4ym-admin.php:1431
+#: admin/class-y4ym-admin.php:1460 admin/class-y4ym-admin.php:1484
+#: admin/class-y4ym-admin.php:1501 includes/class-y4ym-data.php:731
+#: includes/class-y4ym-data.php:799 includes/class-y4ym-data.php:823
+#: includes/class-y4ym-data.php:891 includes/class-y4ym-data.php:912
+#: includes/class-y4ym-data.php:977 includes/class-y4ym-data.php:998
+#: includes/class-y4ym-data.php:1044
 msgid "Optional element"
 msgstr "Необязательный элемент"
 
-#: admin/class-y4ym-admin.php:1462 admin/class-y4ym-admin.php:1563
-#: admin/class-y4ym-admin.php:1581 includes/class-y4ym-data.php:367
-#: includes/class-y4ym-data.php:385 includes/class-y4ym-data.php:529
-#: includes/class-y4ym-data.php:2539 includes/class-y4ym-data.php:2595
-#: includes/class-y4ym-data.php:2685 includes/class-y4ym-data.php:2723
-#: includes/class-y4ym-data.php:2746
+#: admin/class-y4ym-admin.php:1206 admin/class-y4ym-admin.php:1325
+#: admin/class-y4ym-admin.php:1343 includes/class-y4ym-data.php:462
+#: includes/class-y4ym-data.php:480 includes/class-y4ym-data.php:624
+#: includes/class-y4ym-data.php:2802 includes/class-y4ym-data.php:2858
+#: includes/class-y4ym-data.php:2948 includes/class-y4ym-data.php:2986
+#: includes/class-y4ym-data.php:3009
 msgid "Default"
 msgstr "По умолчанию"
 
-#: admin/class-y4ym-admin.php:1463 admin/class-y4ym-admin.php:1564
-#: admin/class-y4ym-admin.php:1623 admin/class-y4ym-admin.php:1693
+#: admin/class-y4ym-admin.php:1207 admin/class-y4ym-admin.php:1326
+#: admin/class-y4ym-admin.php:1385 admin/class-y4ym-admin.php:1455
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:22
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:57
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:163
-#: includes/class-y4ym-data.php:208 includes/class-y4ym-data.php:386
-#: includes/class-y4ym-data.php:390 includes/class-y4ym-data.php:482
-#: includes/class-y4ym-data.php:511 includes/class-y4ym-data.php:595
-#: includes/class-y4ym-data.php:642 includes/class-y4ym-data.php:734
-#: includes/class-y4ym-data.php:823 includes/class-y4ym-data.php:910
-#: includes/class-y4ym-data.php:989 includes/class-y4ym-data.php:1008
-#: includes/class-y4ym-data.php:1026 includes/class-y4ym-data.php:1048
-#: includes/class-y4ym-data.php:1069 includes/class-y4ym-data.php:1090
-#: includes/class-y4ym-data.php:1111 includes/class-y4ym-data.php:1225
-#: includes/class-y4ym-data.php:1243 includes/class-y4ym-data.php:1261
-#: includes/class-y4ym-data.php:1279 includes/class-y4ym-data.php:1300
-#: includes/class-y4ym-data.php:1323 includes/class-y4ym-data.php:1365
-#: includes/class-y4ym-data.php:1412 includes/class-y4ym-data.php:1469
-#: includes/class-y4ym-data.php:1489 includes/class-y4ym-data.php:1506
-#: includes/class-y4ym-data.php:1566 includes/class-y4ym-data.php:1583
-#: includes/class-y4ym-data.php:1601 includes/class-y4ym-data.php:1620
-#: includes/class-y4ym-data.php:1644 includes/class-y4ym-data.php:1667
-#: includes/class-y4ym-data.php:1688 includes/class-y4ym-data.php:1705
-#: includes/class-y4ym-data.php:1726 includes/class-y4ym-data.php:1744
-#: includes/class-y4ym-data.php:1762 includes/class-y4ym-data.php:1783
-#: includes/class-y4ym-data.php:1825 includes/class-y4ym-data.php:1856
-#: includes/class-y4ym-data.php:1876 includes/class-y4ym-data.php:1928
-#: includes/class-y4ym-data.php:1946 includes/class-y4ym-data.php:1963
-#: includes/class-y4ym-data.php:1980 includes/class-y4ym-data.php:1999
-#: includes/class-y4ym-data.php:2016 includes/class-y4ym-data.php:2035
-#: includes/class-y4ym-data.php:2054 includes/class-y4ym-data.php:2073
-#: includes/class-y4ym-data.php:2090 includes/class-y4ym-data.php:2109
-#: includes/class-y4ym-data.php:2127 includes/class-y4ym-data.php:2152
-#: includes/class-y4ym-data.php:2175 includes/class-y4ym-data.php:2196
-#: includes/class-y4ym-data.php:2233 includes/class-y4ym-data.php:2280
-#: includes/class-y4ym-data.php:2305 includes/class-y4ym-data.php:2412
-#: includes/class-y4ym-data.php:2436 includes/class-y4ym-data.php:2464
-#: includes/class-y4ym-data.php:2489 includes/class-y4ym-data.php:2729
-#: includes/class-y4ym-data.php:2753 includes/class-y4ym-data.php:2821
-#: includes/class-y4ym-data.php:2950 includes/class-y4ym-data.php:2978
-#: includes/class-y4ym-data.php:2996 includes/class-y4ym-data.php:3014
-#: includes/class-y4ym-data.php:3034 includes/class-y4ym-data.php:3051
-#: includes/class-y4ym-data.php:3280
+#: includes/class-y4ym-data.php:43 includes/class-y4ym-data.php:281
+#: includes/class-y4ym-data.php:302 includes/class-y4ym-data.php:481
+#: includes/class-y4ym-data.php:485 includes/class-y4ym-data.php:577
+#: includes/class-y4ym-data.php:606 includes/class-y4ym-data.php:690
+#: includes/class-y4ym-data.php:737 includes/class-y4ym-data.php:829
+#: includes/class-y4ym-data.php:918 includes/class-y4ym-data.php:1005
+#: includes/class-y4ym-data.php:1084 includes/class-y4ym-data.php:1106
+#: includes/class-y4ym-data.php:1140 includes/class-y4ym-data.php:1162
+#: includes/class-y4ym-data.php:1183 includes/class-y4ym-data.php:1204
+#: includes/class-y4ym-data.php:1225 includes/class-y4ym-data.php:1339
+#: includes/class-y4ym-data.php:1357 includes/class-y4ym-data.php:1375
+#: includes/class-y4ym-data.php:1393 includes/class-y4ym-data.php:1414
+#: includes/class-y4ym-data.php:1437 includes/class-y4ym-data.php:1479
+#: includes/class-y4ym-data.php:1499 includes/class-y4ym-data.php:1583
+#: includes/class-y4ym-data.php:1603 includes/class-y4ym-data.php:1620
+#: includes/class-y4ym-data.php:1680 includes/class-y4ym-data.php:1697
+#: includes/class-y4ym-data.php:1715 includes/class-y4ym-data.php:1734
+#: includes/class-y4ym-data.php:1758 includes/class-y4ym-data.php:1781
+#: includes/class-y4ym-data.php:1802 includes/class-y4ym-data.php:1819
+#: includes/class-y4ym-data.php:1840 includes/class-y4ym-data.php:1858
+#: includes/class-y4ym-data.php:1876 includes/class-y4ym-data.php:1897
+#: includes/class-y4ym-data.php:1939 includes/class-y4ym-data.php:1981
+#: includes/class-y4ym-data.php:2001 includes/class-y4ym-data.php:2053
+#: includes/class-y4ym-data.php:2072 includes/class-y4ym-data.php:2089
+#: includes/class-y4ym-data.php:2110 includes/class-y4ym-data.php:2132
+#: includes/class-y4ym-data.php:2155 includes/class-y4ym-data.php:2193
+#: includes/class-y4ym-data.php:2212 includes/class-y4ym-data.php:2231
+#: includes/class-y4ym-data.php:2251 includes/class-y4ym-data.php:2273
+#: includes/class-y4ym-data.php:2295 includes/class-y4ym-data.php:2314
+#: includes/class-y4ym-data.php:2331 includes/class-y4ym-data.php:2350
+#: includes/class-y4ym-data.php:2368 includes/class-y4ym-data.php:2393
+#: includes/class-y4ym-data.php:2416 includes/class-y4ym-data.php:2437
+#: includes/class-y4ym-data.php:2475 includes/class-y4ym-data.php:2496
+#: includes/class-y4ym-data.php:2543 includes/class-y4ym-data.php:2568
+#: includes/class-y4ym-data.php:2675 includes/class-y4ym-data.php:2699
+#: includes/class-y4ym-data.php:2727 includes/class-y4ym-data.php:2752
+#: includes/class-y4ym-data.php:2992 includes/class-y4ym-data.php:3016
+#: includes/class-y4ym-data.php:3084 includes/class-y4ym-data.php:3213
+#: includes/class-y4ym-data.php:3241 includes/class-y4ym-data.php:3259
+#: includes/class-y4ym-data.php:3277 includes/class-y4ym-data.php:3297
+#: includes/class-y4ym-data.php:3314 includes/class-y4ym-data.php:3543
 msgid "Disabled"
 msgstr "Отключено"
 
-#: admin/class-y4ym-admin.php:1470 includes/class-y4ym-data.php:1848
+#: admin/class-y4ym-admin.php:1214 includes/class-y4ym-data.php:1973
 msgid "Video"
 msgstr "Видео"
 
-#: admin/class-y4ym-admin.php:1472
+#: admin/class-y4ym-admin.php:1216
 msgid "Video URL"
 msgstr "Ссылка на видео"
 
-#: admin/class-y4ym-admin.php:1481
+#: admin/class-y4ym-admin.php:1225
 msgid "Minimum number of products"
 msgstr "Минимальное количество товаров"
 
-#: admin/class-y4ym-admin.php:1484 includes/class-y4ym-data.php:2011
+#: admin/class-y4ym-admin.php:1228 includes/class-y4ym-data.php:2243
 msgid "Minimum number of products per order"
 msgstr "Минимальное количество товаров в заказе"
 
-#: admin/class-y4ym-admin.php:1485 admin/class-y4ym-admin.php:1498
+#: admin/class-y4ym-admin.php:1229 admin/class-y4ym-admin.php:1242
 msgid "For these categories only"
 msgstr "Только для этих категорий"
 
-#: admin/class-y4ym-admin.php:1495
+#: admin/class-y4ym-admin.php:1239
 msgid "Quantum of sale"
 msgstr "Квант продажи"
 
-#: admin/class-y4ym-admin.php:1508 includes/class-y4ym-data.php:2191
+#: admin/class-y4ym-admin.php:1252 includes/class-y4ym-data.php:2432
 msgid "The warranty period"
 msgstr "Гарантийный срок"
 
-#: admin/class-y4ym-admin.php:1509
+#: admin/class-y4ym-admin.php:1253 admin/class-y4ym-admin.php:1773
 msgid "days"
 msgstr "дней"
 
-#: admin/class-y4ym-admin.php:1513
+#: admin/class-y4ym-admin.php:1257
 msgid "The number of days of the warranty period"
 msgstr "Количество дней гарантийного срока"
 
-#: admin/class-y4ym-admin.php:1515
+#: admin/class-y4ym-admin.php:1259 admin/class-y4ym-admin.php:1779
 msgid ""
 "The number that you specify here will be converted to a format ISO 8601 like"
 msgstr ""
 "Число, указанное здесь, будет преобразовано в формат ISO 8601, например"
 
-#: admin/class-y4ym-admin.php:1531 admin/class-y4ym-admin.php:1537
-#: includes/class-y4ym-data.php:1817
+#: admin/class-y4ym-admin.php:1274 admin/class-y4ym-admin.php:1277
+#: includes/class-y4ym-data.php:2467
+msgid "Comment on the warranty"
+msgstr "Комментарий к дате истечения срока службы"
+
+#: admin/class-y4ym-admin.php:1286 admin/class-y4ym-admin.php:1292
+#: includes/class-y4ym-data.php:1931
 msgid "VAT rate"
 msgstr "НДС"
 
-#: admin/class-y4ym-admin.php:1532 admin/class-y4ym-admin.php:1560
+#: admin/class-y4ym-admin.php:1287 admin/class-y4ym-admin.php:1322
 msgid "Сondition"
 msgstr "Состояние товара"
 
-#: admin/class-y4ym-admin.php:1539 admin/class-y4ym-admin.php:1622
-#: admin/class-y4ym-admin.php:1692
+#: admin/class-y4ym-admin.php:1294 admin/class-y4ym-admin.php:1384
+#: admin/class-y4ym-admin.php:1454
 msgid "Use global settings"
 msgstr "Использовать глобальные настройки"
 
-#: admin/class-y4ym-admin.php:1540 includes/class-y4ym-data.php:1827
+#: admin/class-y4ym-admin.php:1295 includes/class-y4ym-data.php:1941
 msgid "No VAT"
 msgstr "Без НДС"
 
-#: admin/class-y4ym-admin.php:1565 includes/class-y4ym-data.php:2308
+#: admin/class-y4ym-admin.php:1307 includes/class-y4ym-data.php:1956
+msgid "Use it only if VAT_22 failed"
+msgstr "Используйте только если VAT_22 не сработал"
+
+#: admin/class-y4ym-admin.php:1327 includes/class-y4ym-data.php:2571
 msgid "Showcase sample"
 msgstr "Витринный образец"
 
-#: admin/class-y4ym-admin.php:1566 includes/class-y4ym-data.php:2312
+#: admin/class-y4ym-admin.php:1328 includes/class-y4ym-data.php:2575
 msgid "Reduction"
 msgstr "Уцененный товар"
 
-#: admin/class-y4ym-admin.php:1567 admin/class-y4ym-admin.php:1568
-#: includes/class-y4ym-data.php:2316 includes/class-y4ym-data.php:2320
+#: admin/class-y4ym-admin.php:1329 admin/class-y4ym-admin.php:1330
+#: includes/class-y4ym-data.php:2579 includes/class-y4ym-data.php:2583
 msgid "Fashionpreowned"
 msgstr "Повторная продажа"
 
-#: admin/class-y4ym-admin.php:1569 includes/class-y4ym-data.php:2324
+#: admin/class-y4ym-admin.php:1331 includes/class-y4ym-data.php:2587
 msgid "Like New"
 msgstr "Как новый"
 
-#: admin/class-y4ym-admin.php:1578 includes/class-y4ym-data.php:2364
+#: admin/class-y4ym-admin.php:1340 includes/class-y4ym-data.php:2627
 msgid "Quality"
 msgstr "Качество"
 
-#: admin/class-y4ym-admin.php:1582 includes/class-y4ym-data.php:2369
+#: admin/class-y4ym-admin.php:1344 includes/class-y4ym-data.php:2632
 msgid "Perfect"
 msgstr "Как новый"
 
-#: admin/class-y4ym-admin.php:1583 includes/class-y4ym-data.php:2370
+#: admin/class-y4ym-admin.php:1345 includes/class-y4ym-data.php:2633
 msgid "Excellent"
 msgstr "Отличное"
 
-#: admin/class-y4ym-admin.php:1584 includes/class-y4ym-data.php:2371
+#: admin/class-y4ym-admin.php:1346 includes/class-y4ym-data.php:2634
 msgid "Good"
 msgstr "Хорошее"
 
-#: admin/class-y4ym-admin.php:1587 admin/class-y4ym-admin.php:1600
-#: admin/class-y4ym-admin.php:1639 admin/class-y4ym-admin.php:1709
-#: includes/class-y4ym-data.php:661 includes/class-y4ym-data.php:681
-#: includes/class-y4ym-data.php:753 includes/class-y4ym-data.php:773
-#: includes/class-y4ym-data.php:842 includes/class-y4ym-data.php:862
-#: includes/class-y4ym-data.php:929
+#: admin/class-y4ym-admin.php:1349 admin/class-y4ym-admin.php:1362
+#: admin/class-y4ym-admin.php:1401 admin/class-y4ym-admin.php:1471
+#: includes/class-y4ym-data.php:756 includes/class-y4ym-data.php:776
+#: includes/class-y4ym-data.php:848 includes/class-y4ym-data.php:868
+#: includes/class-y4ym-data.php:937 includes/class-y4ym-data.php:957
+#: includes/class-y4ym-data.php:1024
 msgid "Required element"
 msgstr "Обязательный элемент"
 
-#: admin/class-y4ym-admin.php:1588 admin/class-y4ym-admin.php:1601
-#: admin/class-y4ym-admin.php:1640 admin/class-y4ym-admin.php:1653
-#: admin/class-y4ym-admin.php:1670 admin/class-y4ym-admin.php:1710
-#: admin/class-y4ym-admin.php:1723 admin/class-y4ym-admin.php:1740
-#: includes/class-y4ym-data.php:662 includes/class-y4ym-data.php:682
-#: includes/class-y4ym-data.php:705 includes/class-y4ym-data.php:754
-#: includes/class-y4ym-data.php:774 includes/class-y4ym-data.php:797
-#: includes/class-y4ym-data.php:843 includes/class-y4ym-data.php:863
-#: includes/class-y4ym-data.php:883 includes/class-y4ym-data.php:930
-#: includes/class-y4ym-data.php:950
+#: admin/class-y4ym-admin.php:1350 admin/class-y4ym-admin.php:1363
+#: admin/class-y4ym-admin.php:1402 admin/class-y4ym-admin.php:1415
+#: admin/class-y4ym-admin.php:1432 admin/class-y4ym-admin.php:1472
+#: admin/class-y4ym-admin.php:1485 admin/class-y4ym-admin.php:1502
+#: includes/class-y4ym-data.php:757 includes/class-y4ym-data.php:777
+#: includes/class-y4ym-data.php:800 includes/class-y4ym-data.php:849
+#: includes/class-y4ym-data.php:869 includes/class-y4ym-data.php:892
+#: includes/class-y4ym-data.php:938 includes/class-y4ym-data.php:958
+#: includes/class-y4ym-data.php:978 includes/class-y4ym-data.php:1025
+#: includes/class-y4ym-data.php:1045
 msgid "of attribute"
 msgstr "атрибута"
 
-#: admin/class-y4ym-admin.php:1597 includes/class-y4ym-data.php:2344
+#: admin/class-y4ym-admin.php:1359 includes/class-y4ym-data.php:2607
 msgid "Reason"
 msgstr "Причина"
 
-#: admin/class-y4ym-admin.php:1611
+#: admin/class-y4ym-admin.php:1373
 msgid "Here you can set up individual options terms for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия доставки для данного товара"
 
-#: admin/class-y4ym-admin.php:1620 admin/class-y4ym-admin.php:1690
-#: includes/class-y4ym-data.php:1796
+#: admin/class-y4ym-admin.php:1382 admin/class-y4ym-admin.php:1452
+#: includes/class-y4ym-data.php:1910
 msgid "Delivery"
 msgstr "Доставка"
 
-#: admin/class-y4ym-admin.php:1636 admin/class-y4ym-admin.php:1706
-#: includes/class-y4ym-data.php:679 includes/class-y4ym-data.php:771
-#: includes/class-y4ym-data.php:927
+#: admin/class-y4ym-admin.php:1398 admin/class-y4ym-admin.php:1468
+#: includes/class-y4ym-data.php:774 includes/class-y4ym-data.php:866
+#: includes/class-y4ym-data.php:1022
 msgid "Delivery days"
 msgstr "Срок доставки"
 
-#: admin/class-y4ym-admin.php:1649 admin/class-y4ym-admin.php:1719
-#: includes/class-y4ym-data.php:659 includes/class-y4ym-data.php:751
+#: admin/class-y4ym-admin.php:1411 admin/class-y4ym-admin.php:1481
+#: includes/class-y4ym-data.php:754 includes/class-y4ym-data.php:846
 msgid "Delivery cost"
 msgstr "Стоимость доставки"
 
-#: admin/class-y4ym-admin.php:1666 admin/class-y4ym-admin.php:1736
+#: admin/class-y4ym-admin.php:1428 admin/class-y4ym-admin.php:1498
 msgid "The time"
 msgstr "Время"
 
-#: admin/class-y4ym-admin.php:1671 admin/class-y4ym-admin.php:1742
-#: includes/class-y4ym-data.php:700 includes/class-y4ym-data.php:792
-#: includes/class-y4ym-data.php:880 includes/class-y4ym-data.php:947
+#: admin/class-y4ym-admin.php:1433 admin/class-y4ym-admin.php:1504
+#: includes/class-y4ym-data.php:795 includes/class-y4ym-data.php:887
+#: includes/class-y4ym-data.php:975 includes/class-y4ym-data.php:1042
 msgid "The time in which you need to place an order to get it at this time"
 msgstr "Время, до которого нужно сделать заказ, чтобы получить его в этот срок"
 
-#: admin/class-y4ym-admin.php:1681
+#: admin/class-y4ym-admin.php:1443
 msgid "Here you can configure the pickup conditions for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия самовывоза для данного "
 "товара"
 
-#: admin/class-y4ym-admin.php:1753
+#: admin/class-y4ym-admin.php:1515
 msgid "Individual product settings for Yandex Direct"
 msgstr "Индивидуальные настройки товара для Яндекс Директ"
 
-#: admin/class-y4ym-admin.php:1757
+#: admin/class-y4ym-admin.php:1519
 msgid "Here you can set up individual settings for Yandex Direct"
 msgstr "Здесь вы можете задать индивидуальные настройки для Яндекс Директа"
 
-#: admin/class-y4ym-admin.php:1768 includes/class-y4ym-data.php:2450
+#: admin/class-y4ym-admin.php:1530 includes/class-y4ym-data.php:2713
 msgid "Market category"
 msgstr "Категория на Маркете"
 
-#: admin/class-y4ym-admin.php:1771 includes/class-y4ym-data.php:2454
+#: admin/class-y4ym-admin.php:1533 includes/class-y4ym-data.php:2717
 msgid "The product category in which it should be placed on Yandex Market"
 msgstr "Категория товара, в которой он должен быть размещен на Яндекс Маркете"
 
-#: admin/class-y4ym-admin.php:1779 admin/class-y4ym-admin.php:1794
-#: admin/class-y4ym-admin.php:1798 includes/class-y4ym-data.php:2402
-#: includes/class-y4ym-data.php:2426
+#: admin/class-y4ym-admin.php:1541 admin/class-y4ym-admin.php:1556
+#: admin/class-y4ym-admin.php:1560 includes/class-y4ym-data.php:2665
+#: includes/class-y4ym-data.php:2689
 msgid "Custom elements"
 msgstr "Кастомные элементы"
 
-#: admin/class-y4ym-admin.php:1780
+#: admin/class-y4ym-admin.php:1542
 msgid "The value is zero or any positive integer"
 msgstr "Значение — ноль или любое целое положительное число"
 
-#: admin/class-y4ym-admin.php:1799
+#: admin/class-y4ym-admin.php:1561
 msgid "An arbitrary description"
 msgstr "Произвольное описание"
 
-#: admin/class-y4ym-admin.php:1801
+#: admin/class-y4ym-admin.php:1563
 msgid ""
 "Latin and Cyrillic letters, numbers. The length of one element is up to 175 "
 "characters"
@@ -608,64 +594,116 @@ msgstr ""
 "Латинские и кириллические буквы, цифры. Длина одного элемента — до 175 "
 "символов"
 
-#: admin/class-y4ym-admin.php:1813
+#: admin/class-y4ym-admin.php:1575
+msgid "Individual product settings for Youla"
+msgstr "Индивидуальные настройки товара для Юлы"
+
+#: admin/class-y4ym-admin.php:1579
+msgid "Here you can set up individual settings for Youla"
+msgstr "Здесь вы можете задать индивидуальные настройки для Юлы"
+
+#: admin/class-y4ym-admin.php:1581
+#: includes/common-libs/class-icpd-promo.php:200
+msgid "Read more"
+msgstr "Подробнее"
+
+#: admin/class-y4ym-admin.php:1590
+msgid "Youla category"
+msgstr "Категория на Юле"
+
+#: admin/class-y4ym-admin.php:1593 admin/class-y4ym-admin.php:1606
+msgid "The product category in which it should be placed on Youla"
+msgstr "Категория товара, в которой он должен быть размещен на Юле"
+
+#: admin/class-y4ym-admin.php:1603
+msgid "Youla subcategory"
+msgstr "Подкатегория на Юле"
+
+#: admin/class-y4ym-admin.php:1616
 msgid "Other"
 msgstr "Прочее"
 
-#: admin/class-y4ym-admin.php:1826
+#: admin/class-y4ym-admin.php:1629
 msgid "Read more on AliExpress"
 msgstr "Прочитать подробности на AliExpress"
 
-#: admin/class-y4ym-admin.php:1836 admin/class-y4ym-admin.php:1841
-#: includes/class-y4ym-data.php:2049
+#: admin/class-y4ym-admin.php:1639 admin/class-y4ym-admin.php:1644
+#: includes/class-y4ym-data.php:2287
 msgid "Credit program identifier"
 msgstr "ID кредитной программы"
 
-#: admin/class-y4ym-admin.php:1862 admin/class-y4ym-admin.php:1865
+#: admin/class-y4ym-admin.php:1665 admin/class-y4ym-admin.php:1668
 msgid "Minimum price"
 msgstr "Минимальная цена"
 
-#: admin/class-y4ym-admin.php:1878 includes/class-y4ym-data.php:1775
-#: includes/class-y4ym-data.php:1777
+#: admin/class-y4ym-admin.php:1681 includes/class-y4ym-data.php:1889
+#: includes/class-y4ym-data.php:1891
 msgid "Additional costs for the product"
 msgstr "Дополнительные затраты на товар"
 
-#: admin/class-y4ym-admin.php:1894
+#: admin/class-y4ym-admin.php:1697
 msgid "Threshold for discounts"
 msgstr "Порог для получения скидок"
 
-#: admin/class-y4ym-admin.php:1897 includes/class-y4ym-data.php:1718
+#: admin/class-y4ym-admin.php:1700 includes/class-y4ym-data.php:1832
 msgid "Threshold for receiving discounts in Yandex Market"
 msgstr "Порог получения скидок в Яндекс Маркете"
 
-#: admin/class-y4ym-admin.php:1910 admin/class-y4ym-admin.php:1913
-#: includes/class-y4ym-data.php:1739
+#: admin/class-y4ym-admin.php:1713 admin/class-y4ym-admin.php:1716
+#: includes/class-y4ym-data.php:1853
 msgid "Purchase price"
 msgstr "Себестоимость"
 
-#: admin/class-y4ym-admin.php:1940 admin/class-y4ym-admin.php:2068
+#: admin/class-y4ym-admin.php:1729 admin/class-y4ym-admin.php:1732
+#: admin/class-y4ym-admin.php:1735 includes/class-y4ym-data.php:1474
+msgid "Keywords"
+msgstr "Ключевые слова"
+
+#: admin/class-y4ym-admin.php:1744 includes/class-y4ym-data.php:2124
+msgid "Certificate"
+msgstr "Сертификат"
+
+#: admin/class-y4ym-admin.php:1748
+msgid ""
+"The number of the document for the product: certificate, declaration of "
+"conformity, etc"
+msgstr "Номер документа на товар: сертификата, декларации соответствия и т. п"
+
+#: admin/class-y4ym-admin.php:1758
+msgid "Comment on the validity days"
+msgstr "Комментарий к сроку годности"
+
+#: admin/class-y4ym-admin.php:1762 admin/class-y4ym-admin.php:1798
+msgid "No longer than 250 characters and no special characters"
+msgstr "Не более 250 символов и без спецсимволов"
+
+#: admin/class-y4ym-admin.php:1772
+msgid "Service life days"
+msgstr "Срок службы"
+
+#: admin/class-y4ym-admin.php:1777
+msgid "The number of service life days"
+msgstr "Количество дней срока службы"
+
+#: admin/class-y4ym-admin.php:1794 includes/class-y4ym-data.php:2185
+msgid "Comment on the life days"
+msgstr "Комментарий к сроку службы"
+
+#: admin/class-y4ym-admin.php:1822 admin/class-y4ym-admin.php:1958
 msgid "Barcode for YML"
 msgstr "Штрихкод для YML"
 
-#: admin/class-y4ym-admin.php:1943 admin/class-y4ym-admin.php:2071
+#: admin/class-y4ym-admin.php:1825 admin/class-y4ym-admin.php:1961
 msgid "The data of this field is stored in the"
 msgstr "Данные этого поля хранятся в"
 
-#: admin/class-y4ym-admin.php:1944 admin/class-y4ym-admin.php:2072
+#: admin/class-y4ym-admin.php:1826 admin/class-y4ym-admin.php:1962
 msgid "meta field"
 msgstr "мета поле"
 
-#: admin/class-y4ym-admin.php:1945 admin/class-y4ym-admin.php:2073
+#: admin/class-y4ym-admin.php:1827 admin/class-y4ym-admin.php:1963
 msgid "You can always display them in your website template using"
 msgstr "Вы всегда можете отобразить их в шаблоне своего сайта с помощью"
-
-#: admin/class-y4ym-admin.php:2146
-msgid "Creating a cache file is not required for this type"
-msgstr "Для этого типа файлов создание файла кэша не требуется"
-
-#: admin/class-y4ym-admin.php:2191
-msgid "Starting a quick feed build"
-msgstr "Начинаем быструю сборку фида"
 
 #: admin/partials/debug-page/class-y4ym-debug-page.php:87
 msgid "Everything is normal"
@@ -707,33 +745,36 @@ msgstr "Вести логи"
 
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:25
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:54
-#: includes/class-y4ym-data.php:209 includes/class-y4ym-data.php:391
-#: includes/class-y4ym-data.php:483 includes/class-y4ym-data.php:512
-#: includes/class-y4ym-data.php:594 includes/class-y4ym-data.php:643
-#: includes/class-y4ym-data.php:735 includes/class-y4ym-data.php:824
-#: includes/class-y4ym-data.php:911 includes/class-y4ym-data.php:1049
-#: includes/class-y4ym-data.php:1070 includes/class-y4ym-data.php:1091
-#: includes/class-y4ym-data.php:1112 includes/class-y4ym-data.php:1226
-#: includes/class-y4ym-data.php:1244 includes/class-y4ym-data.php:1262
-#: includes/class-y4ym-data.php:1280 includes/class-y4ym-data.php:1301
-#: includes/class-y4ym-data.php:1565 includes/class-y4ym-data.php:1584
-#: includes/class-y4ym-data.php:1621 includes/class-y4ym-data.php:1645
-#: includes/class-y4ym-data.php:1666 includes/class-y4ym-data.php:1687
-#: includes/class-y4ym-data.php:1706 includes/class-y4ym-data.php:1727
-#: includes/class-y4ym-data.php:1745 includes/class-y4ym-data.php:1763
-#: includes/class-y4ym-data.php:1784 includes/class-y4ym-data.php:1857
-#: includes/class-y4ym-data.php:1929 includes/class-y4ym-data.php:1981
-#: includes/class-y4ym-data.php:1998 includes/class-y4ym-data.php:2017
-#: includes/class-y4ym-data.php:2036 includes/class-y4ym-data.php:2055
-#: includes/class-y4ym-data.php:2176 includes/class-y4ym-data.php:2197
-#: includes/class-y4ym-data.php:2413 includes/class-y4ym-data.php:2437
-#: includes/class-y4ym-data.php:2465 includes/class-y4ym-data.php:2490
-#: includes/class-y4ym-data.php:2724 includes/class-y4ym-data.php:2730
-#: includes/class-y4ym-data.php:2747 includes/class-y4ym-data.php:2754
-#: includes/class-y4ym-data.php:2822 includes/class-y4ym-data.php:2951
-#: includes/class-y4ym-data.php:2979 includes/class-y4ym-data.php:2997
-#: includes/class-y4ym-data.php:3015 includes/class-y4ym-data.php:3035
-#: includes/class-y4ym-data.php:3052
+#: includes/class-y4ym-data.php:282 includes/class-y4ym-data.php:303
+#: includes/class-y4ym-data.php:486 includes/class-y4ym-data.php:578
+#: includes/class-y4ym-data.php:607 includes/class-y4ym-data.php:689
+#: includes/class-y4ym-data.php:738 includes/class-y4ym-data.php:830
+#: includes/class-y4ym-data.php:919 includes/class-y4ym-data.php:1006
+#: includes/class-y4ym-data.php:1163 includes/class-y4ym-data.php:1184
+#: includes/class-y4ym-data.php:1205 includes/class-y4ym-data.php:1226
+#: includes/class-y4ym-data.php:1340 includes/class-y4ym-data.php:1358
+#: includes/class-y4ym-data.php:1376 includes/class-y4ym-data.php:1394
+#: includes/class-y4ym-data.php:1415 includes/class-y4ym-data.php:1480
+#: includes/class-y4ym-data.php:1679 includes/class-y4ym-data.php:1698
+#: includes/class-y4ym-data.php:1735 includes/class-y4ym-data.php:1759
+#: includes/class-y4ym-data.php:1780 includes/class-y4ym-data.php:1801
+#: includes/class-y4ym-data.php:1820 includes/class-y4ym-data.php:1841
+#: includes/class-y4ym-data.php:1859 includes/class-y4ym-data.php:1877
+#: includes/class-y4ym-data.php:1898 includes/class-y4ym-data.php:1982
+#: includes/class-y4ym-data.php:2054 includes/class-y4ym-data.php:2111
+#: includes/class-y4ym-data.php:2133 includes/class-y4ym-data.php:2156
+#: includes/class-y4ym-data.php:2194 includes/class-y4ym-data.php:2213
+#: includes/class-y4ym-data.php:2230 includes/class-y4ym-data.php:2252
+#: includes/class-y4ym-data.php:2274 includes/class-y4ym-data.php:2296
+#: includes/class-y4ym-data.php:2417 includes/class-y4ym-data.php:2438
+#: includes/class-y4ym-data.php:2476 includes/class-y4ym-data.php:2676
+#: includes/class-y4ym-data.php:2700 includes/class-y4ym-data.php:2728
+#: includes/class-y4ym-data.php:2753 includes/class-y4ym-data.php:2987
+#: includes/class-y4ym-data.php:2993 includes/class-y4ym-data.php:3010
+#: includes/class-y4ym-data.php:3017 includes/class-y4ym-data.php:3085
+#: includes/class-y4ym-data.php:3214 includes/class-y4ym-data.php:3242
+#: includes/class-y4ym-data.php:3260 includes/class-y4ym-data.php:3278
+#: includes/class-y4ym-data.php:3298 includes/class-y4ym-data.php:3315
 msgid "Enabled"
 msgstr "Включено"
 
@@ -903,6 +944,16 @@ msgstr "запустить сейчас"
 msgid "Hourly"
 msgstr "Раз в час"
 
+#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:175
+#: includes/cron/class-yfym-cron-manager.php:43
+msgid "Every three hours"
+msgstr "Каждые 3 часа"
+
+#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:178
+#: includes/cron/class-yfym-cron-manager.php:47
+msgid "Every six hours"
+msgstr "Каждые 6 часов"
+
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:181
 msgid "Twice a day"
 msgstr "2 раза в день"
@@ -910,6 +961,11 @@ msgstr "2 раза в день"
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:184
 msgid "Daily"
 msgstr "Раз в день"
+
+#: admin/partials/settings-page/class-y4ym-feeds-list-table.php:187
+#: includes/cron/class-yfym-cron-manager.php:51
+msgid "Every two days"
+msgstr "Каждые два дня"
 
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:190
 msgid "Once a week"
@@ -1029,100 +1085,147 @@ msgstr "Категории"
 msgid "Tags"
 msgstr "Теги"
 
-#: includes/class-y4ym-activator.php:44 includes/class-y4ym-activator.php:61
+#: function.php:386 function.php:396
+msgid "Error when deleting a folder"
+msgstr "Ошибка при удалении папки"
+
+#: function.php:392
+msgid "The catalog does not exist"
+msgstr "Каталог не существует"
+
+#: includes/class-y4ym-activator.php:45
 msgid "at the time of plugin activation"
 msgstr "во время активации плагина"
 
-#: includes/class-y4ym-data.php:113
+#: includes/class-y4ym-data.php:47
+msgid "WooCommerce brands"
+msgstr "Бренды WooCommerce"
+
+#: includes/class-y4ym-data.php:51 includes/class-y4ym-data.php:1108
+#: includes/class-y4ym-data.php:1440 includes/class-y4ym-data.php:1500
+#: includes/class-y4ym-data.php:1641 includes/class-y4ym-data.php:2003
+#: includes/class-y4ym-data.php:2912
+msgid "Substitute from post meta"
+msgstr "Подставлять из метаполя"
+
+#: includes/class-y4ym-data.php:56 includes/class-y4ym-data.php:1504
+#: includes/class-y4ym-data.php:2500
+msgid "Default value from field"
+msgstr "Значение из поля"
+
+#: includes/class-y4ym-data.php:57 includes/class-y4ym-data.php:517
+#: includes/class-y4ym-data.php:547 includes/class-y4ym-data.php:1505
+#: includes/class-y4ym-data.php:1521 includes/class-y4ym-data.php:1524
+#: includes/class-y4ym-data.php:1557 includes/class-y4ym-data.php:1562
+#: includes/class-y4ym-data.php:2501 includes/class-y4ym-data.php:2517
+#: includes/class-y4ym-data.php:2522 includes/class-y4ym-data.php:2561
+#: includes/class-y4ym-data.php:2603 includes/class-y4ym-data.php:2605
+#: includes/class-y4ym-data.php:2609 includes/class-y4ym-data.php:2623
+#: includes/class-y4ym-data.php:2625
+msgid "Default value"
+msgstr "Значение по умолчанию"
+
+#: includes/class-y4ym-data.php:67 includes/class-y4ym-data.php:75
+#: includes/class-y4ym-data.php:83 includes/class-y4ym-data.php:91
+#: includes/class-y4ym-data.php:99 includes/class-y4ym-data.php:107
+#: includes/class-y4ym-data.php:1644
+msgid "Substitute from"
+msgstr "Подставлять из"
+
+#: includes/class-y4ym-data.php:186
 msgid "Creating this feed"
 msgstr "Создание фида"
 
-#: includes/class-y4ym-data.php:115
+#: includes/class-y4ym-data.php:188
 msgid "The refresh interval on your feed"
 msgstr "Интервал обновления вашего фида"
 
-#: includes/class-y4ym-data.php:116
+#: includes/class-y4ym-data.php:189
 msgid "If you select the option"
 msgstr "Если вы выберете"
 
-#: includes/class-y4ym-data.php:117 includes/class-y4ym-data.php:133
+#: includes/class-y4ym-data.php:190 includes/class-y4ym-data.php:206
 msgid "Create a feed once and DO NOT update"
 msgstr "Создать фид один раз и НЕ обновлять его"
 
-#: includes/class-y4ym-data.php:119
+#: includes/class-y4ym-data.php:192
 msgid "after generating the feed, the parameter value will change to"
 msgstr "после создания фида значение параметра изменится на"
 
-#: includes/class-y4ym-data.php:122 includes/class-y4ym-data.php:128
-#: includes/class-y4ym-data.php:203
+#: includes/class-y4ym-data.php:195 includes/class-y4ym-data.php:201
+#: includes/class-y4ym-data.php:276 includes/class-y4ym-data.php:298
 msgid "Disable the creation and updating of this feed"
 msgstr "Отключить создание и обновление этого фида"
 
-#: includes/class-y4ym-data.php:138
+#: includes/class-y4ym-data.php:211
 msgid "Create a feed once an hour"
 msgstr "Создавать фид один раз в час"
 
-#: includes/class-y4ym-data.php:139
+#: includes/class-y4ym-data.php:212
 msgid "Create a feed every three hours"
 msgstr "Создавать фид каждые три часа"
 
-#: includes/class-y4ym-data.php:140
+#: includes/class-y4ym-data.php:213
 msgid "Create a feed every six hours"
 msgstr "Создавать фид каждые шесть часов"
 
-#: includes/class-y4ym-data.php:141
+#: includes/class-y4ym-data.php:214
 msgid "Create a feed twice a day"
 msgstr "Создавать фид два раза в день"
 
-#: includes/class-y4ym-data.php:142
+#: includes/class-y4ym-data.php:215
 msgid "Create a feed once a day"
 msgstr "Создавать фид один раз в день"
 
-#: includes/class-y4ym-data.php:143
+#: includes/class-y4ym-data.php:216
 msgid "Create a feed every two days"
 msgstr "Создавать фид каждые два дня"
 
-#: includes/class-y4ym-data.php:144
+#: includes/class-y4ym-data.php:217
 msgid "Create a feed once a week"
 msgstr "Создавать фид раз в неделю"
 
-#: includes/class-y4ym-data.php:157
+#: includes/class-y4ym-data.php:230
 msgid "Starting at the specified time"
 msgstr "Запустить в указанное время"
 
-#: includes/class-y4ym-data.php:159
+#: includes/class-y4ym-data.php:232
 msgid "The time at which the feed generation should start"
 msgstr "Время, в которое должна начаться генерация фида"
 
-#: includes/class-y4ym-data.php:163
+#: includes/class-y4ym-data.php:236
 msgid "Now"
 msgstr "Сейчас"
 
-#: includes/class-y4ym-data.php:200
+#: includes/class-y4ym-data.php:273
 msgid "Update feed when updating products"
 msgstr "Обновить фид при обновлении карточки товара"
 
-#: includes/class-y4ym-data.php:202
+#: includes/class-y4ym-data.php:275 includes/class-y4ym-data.php:297
 msgid "This option does not work if selected"
 msgstr "Этот параметр не работает, если выбрано"
 
-#: includes/class-y4ym-data.php:204
+#: includes/class-y4ym-data.php:277
 msgid "in the field above"
 msgstr "в поле выше"
 
-#: includes/class-y4ym-data.php:220
+#: includes/class-y4ym-data.php:295
+msgid "Update feed when a customer makes a purchase"
+msgstr "Обновить фид когда клиент совершает покупку"
+
+#: includes/class-y4ym-data.php:314
 msgid "To follow the rules"
 msgstr "Придерживаться правил"
 
-#: includes/class-y4ym-data.php:222
+#: includes/class-y4ym-data.php:316
 msgid "Exclude products that do not meet the requirements"
 msgstr "Исключить товары, которые не соответствуют требованиям"
 
-#: includes/class-y4ym-data.php:223
+#: includes/class-y4ym-data.php:317
 msgid "missing required elements/data"
 msgstr "отсутствуют обязательные элементы/данные"
 
-#: includes/class-y4ym-data.php:225
+#: includes/class-y4ym-data.php:319
 msgid ""
 "The plugin will try to automatically remove products from the YML-feed for "
 "which the required fields for the feed are not filled"
@@ -1130,130 +1233,130 @@ msgstr ""
 "Плагин попытается автоматически удалить товары из YML-фида, для которых не "
 "заполнены обязательные поля для фида"
 
-#: includes/class-y4ym-data.php:228
+#: includes/class-y4ym-data.php:322
 msgid "Also, this item affects the structure of the file"
 msgstr "Также этот пункт влияет на структуру файла"
 
-#: includes/class-y4ym-data.php:230
+#: includes/class-y4ym-data.php:324
 msgid "Learn more about how it works"
 msgstr "Узнайте больше о том, как это работает"
 
-#: includes/class-y4ym-data.php:237 includes/class-y4ym-data.php:245
+#: includes/class-y4ym-data.php:331 includes/class-y4ym-data.php:339
 msgid "Yandex Market"
 msgstr "Яндекс Маркет"
 
-#: includes/class-y4ym-data.php:238
+#: includes/class-y4ym-data.php:332
 msgid "To manage products"
 msgstr "Для управления товарами"
 
-#: includes/class-y4ym-data.php:239 includes/class-y4ym-data.php:253
-#: includes/class-y4ym-data.php:280
+#: includes/class-y4ym-data.php:333 includes/class-y4ym-data.php:347
+#: includes/class-y4ym-data.php:374
 msgid "Simplified type"
 msgstr "Упрощенный тип"
 
-#: includes/class-y4ym-data.php:246
+#: includes/class-y4ym-data.php:340
 msgid "To manage the placement"
 msgstr "Для управления размещением"
 
-#: includes/class-y4ym-data.php:252 includes/class-y4ym-data.php:259
-#: includes/class-y4ym-data.php:266
+#: includes/class-y4ym-data.php:346 includes/class-y4ym-data.php:353
+#: includes/class-y4ym-data.php:360
 msgid "Yandex Direct"
 msgstr "Яндекс Директ"
 
-#: includes/class-y4ym-data.php:260
+#: includes/class-y4ym-data.php:354
 msgid "Free-from type"
 msgstr "Произвольный тип"
 
-#: includes/class-y4ym-data.php:267
+#: includes/class-y4ym-data.php:361
 msgid "Combined type"
 msgstr "Комбинированный тип"
 
-#: includes/class-y4ym-data.php:273
+#: includes/class-y4ym-data.php:367
 msgid "in a single catalog"
 msgstr "в едином каталоге"
 
-#: includes/class-y4ym-data.php:279
+#: includes/class-y4ym-data.php:373
 msgid "Yandex products"
 msgstr "Яндекс товары"
 
-#: includes/class-y4ym-data.php:286
+#: includes/class-y4ym-data.php:380
 msgid "Yandex Webmaster"
 msgstr "Яндекс Вебмастер"
 
-#: includes/class-y4ym-data.php:287
+#: includes/class-y4ym-data.php:381
 msgid "Product feed"
 msgstr "Товарный фид"
 
-#: includes/class-y4ym-data.php:288
+#: includes/class-y4ym-data.php:382
 msgid "Products and offers"
 msgstr "Товары и предложения"
 
-#: includes/class-y4ym-data.php:295
+#: includes/class-y4ym-data.php:390
 msgid "MegaMarket"
 msgstr "МегаМаркет"
 
-#: includes/class-y4ym-data.php:300
+#: includes/class-y4ym-data.php:395
 msgid "only updating prices and stock balances"
 msgstr "только обновление цен и остатков на складе"
 
-#: includes/class-y4ym-data.php:310
+#: includes/class-y4ym-data.php:405
 msgid "No rules"
 msgstr "Нет правил"
 
-#: includes/class-y4ym-data.php:311
+#: includes/class-y4ym-data.php:406
 msgid "For experienced users"
 msgstr "Для опытных пользователей"
 
-#: includes/class-y4ym-data.php:325
+#: includes/class-y4ym-data.php:420
 msgid "Feed assignment"
 msgstr "Назначение фида"
 
-#: includes/class-y4ym-data.php:326
+#: includes/class-y4ym-data.php:421
 msgid "Not used in feed. Inner note for your convenience"
 msgstr "Не используется в фиде. Внутренняя заметка для вашего удобства"
 
-#: includes/class-y4ym-data.php:327
+#: includes/class-y4ym-data.php:422
 msgid "For Yandex Market"
 msgstr "Для Яндекс Маркет"
 
-#: includes/class-y4ym-data.php:340
+#: includes/class-y4ym-data.php:435
 msgid "Name of the feed file"
 msgstr "Имя файла фида"
 
-#: includes/class-y4ym-data.php:343
+#: includes/class-y4ym-data.php:438
 msgid "If you leave the field empty, the default value will be used"
 msgstr ""
 "Если оставить поле пустым, то будет использоваться значение по умолчанию"
 
-#: includes/class-y4ym-data.php:346
+#: includes/class-y4ym-data.php:441
 msgid "Important"
 msgstr "Важно"
 
-#: includes/class-y4ym-data.php:348
+#: includes/class-y4ym-data.php:443
 msgid "Spaces cannot be used"
 msgstr "Пробелы использовать нельзя"
 
-#: includes/class-y4ym-data.php:365
+#: includes/class-y4ym-data.php:460
 msgid "Feed file extension"
 msgstr "Расширение фида"
 
-#: includes/class-y4ym-data.php:371 includes/class-y4ym-data.php:539
+#: includes/class-y4ym-data.php:466 includes/class-y4ym-data.php:634
 msgid "recommend"
 msgstr "рекомендуется"
 
-#: includes/class-y4ym-data.php:383
+#: includes/class-y4ym-data.php:478
 msgid "Archive to ZIP"
 msgstr "Архивировать в ZIP"
 
-#: includes/class-y4ym-data.php:402
+#: includes/class-y4ym-data.php:497
 msgid "Step export"
 msgstr "Шаг экспорта"
 
-#: includes/class-y4ym-data.php:405
+#: includes/class-y4ym-data.php:500
 msgid "The value affects the speed of file creation"
 msgstr "Значение влияет на скорость создания YML фида"
 
-#: includes/class-y4ym-data.php:407
+#: includes/class-y4ym-data.php:502
 msgid ""
 "If you have any problems with the generation of the file - try to reduce the "
 "value in this field"
@@ -1261,32 +1364,20 @@ msgstr ""
 "Если у вас возникли проблемы с генерацией файла - попробуйте уменьшить "
 "значение в данном поле"
 
-#: includes/class-y4ym-data.php:410
+#: includes/class-y4ym-data.php:505
 msgid "More than 500 can only be installed on powerful servers"
 msgstr "Более 500 можно устанавливать только на мощных серверах"
 
-#: includes/class-y4ym-data.php:422 includes/class-y4ym-data.php:452
-#: includes/class-y4ym-data.php:1371 includes/class-y4ym-data.php:1387
-#: includes/class-y4ym-data.php:1390 includes/class-y4ym-data.php:1426
-#: includes/class-y4ym-data.php:1443 includes/class-y4ym-data.php:1448
-#: includes/class-y4ym-data.php:2238 includes/class-y4ym-data.php:2254
-#: includes/class-y4ym-data.php:2259 includes/class-y4ym-data.php:2298
-#: includes/class-y4ym-data.php:2340 includes/class-y4ym-data.php:2342
-#: includes/class-y4ym-data.php:2346 includes/class-y4ym-data.php:2360
-#: includes/class-y4ym-data.php:2362
-msgid "Default value"
-msgstr "Значение по умолчанию"
-
-#: includes/class-y4ym-data.php:446
-#: includes/feeds/class-y4ym-generation-xml.php:374
+#: includes/class-y4ym-data.php:541
+#: includes/feeds/class-y4ym-generation-xml.php:398
 msgid "The maximum script execution time"
 msgstr "Максимальное время выполнения скрипта"
 
-#: includes/class-y4ym-data.php:449
+#: includes/class-y4ym-data.php:544
 msgid "The maximum script execution time in seconds"
 msgstr "Максимальное время выполнения скрипта в секундах"
 
-#: includes/class-y4ym-data.php:454
+#: includes/class-y4ym-data.php:549
 msgid ""
 "If you experience freezes when creating the feed, try increasing this "
 "parameter by"
@@ -1294,16 +1385,16 @@ msgstr ""
 "Если при создании фида у вас возникают зависания, попробуйте увеличить "
 "параметр на"
 
-#: includes/class-y4ym-data.php:457
-#: includes/feeds/class-y4ym-generation-xml.php:377
+#: includes/class-y4ym-data.php:552
+#: includes/feeds/class-y4ym-generation-xml.php:401
 msgid "points"
 msgstr "пунктов"
 
-#: includes/class-y4ym-data.php:470
+#: includes/class-y4ym-data.php:565
 msgid "Ignore plugin cache"
 msgstr "Игнорировать кэш плагина"
 
-#: includes/class-y4ym-data.php:474
+#: includes/class-y4ym-data.php:569
 msgid ""
 "Changing this option can be useful if your feed prices don't change after "
 "syncing"
@@ -1311,15 +1402,15 @@ msgstr ""
 "Изменение этой опции может быть полезно, если цены в фиде не меняются после "
 "синхронизации"
 
-#: includes/class-y4ym-data.php:478 includes/class-y4ym-data.php:2748
+#: includes/class-y4ym-data.php:573 includes/class-y4ym-data.php:3011
 msgid "Learn More"
 msgstr "Подробнее"
 
-#: includes/class-y4ym-data.php:496
+#: includes/class-y4ym-data.php:591
 msgid "Сreate cache files when saving products"
 msgstr "Создавать файлы кэша при сохранении товаров"
 
-#: includes/class-y4ym-data.php:501
+#: includes/class-y4ym-data.php:596
 msgid ""
 "This option allows you to reduce the load on the site at the time of saving "
 "the product card"
@@ -1327,7 +1418,7 @@ msgstr ""
 "Данная опция позволяет снизить нагрузку на сайт в момент сохранения карточки "
 "товара"
 
-#: includes/class-y4ym-data.php:505
+#: includes/class-y4ym-data.php:600
 msgid ""
 "However, disabling this option leads to a significant increase in the feed "
 "creation time"
@@ -1335,35 +1426,35 @@ msgstr ""
 "Однако отключение этой опции приводит к значительному увеличению времени "
 "создания фида"
 
-#: includes/class-y4ym-data.php:527
+#: includes/class-y4ym-data.php:622
 msgid "Date format in the feed header"
 msgstr "Формат даты в заголовке фида"
 
-#: includes/class-y4ym-data.php:556
+#: includes/class-y4ym-data.php:651
 msgid "Shop name"
 msgstr "Название магазина"
 
-#: includes/class-y4ym-data.php:558
+#: includes/class-y4ym-data.php:653
 msgid "The short name of the store should not exceed 20 characters"
 msgstr "Краткое название магазина, должно содержать не более 20 символов"
 
-#: includes/class-y4ym-data.php:574
+#: includes/class-y4ym-data.php:669
 msgid "Company name"
 msgstr "Наименование компании"
 
-#: includes/class-y4ym-data.php:575
+#: includes/class-y4ym-data.php:670
 msgid "Full name of the company that owns the store"
 msgstr "Полное наименование компании, владеющей магазином"
 
-#: includes/class-y4ym-data.php:589
+#: includes/class-y4ym-data.php:684
 msgid "Shop currencies"
 msgstr "Валюты магазина"
 
-#: includes/class-y4ym-data.php:608
+#: includes/class-y4ym-data.php:703
 msgid "Russian ruble format"
 msgstr "Формат российского рубля"
 
-#: includes/class-y4ym-data.php:610
+#: includes/class-y4ym-data.php:705
 msgid ""
 "If the shop currency is the Russian ruble, this value will be used as the "
 "currency identifier"
@@ -1371,84 +1462,94 @@ msgstr ""
 "Если валютой магазина является российский рубль, то это значение будет "
 "использоваться в качестве идентификатора валюты"
 
-#: includes/class-y4ym-data.php:632 includes/class-y4ym-data.php:722
+#: includes/class-y4ym-data.php:727 includes/class-y4ym-data.php:817
 msgid "Delivery time and cost"
 msgstr "Сроки и стоимость доставки"
 
-#: includes/class-y4ym-data.php:723
+#: includes/class-y4ym-data.php:818
 msgid "Add a second delivery methods"
 msgstr "Добавить второй метод доставки"
 
-#: includes/class-y4ym-data.php:813
+#: includes/class-y4ym-data.php:908
 msgid "Pickup of products"
 msgstr "Самовывоз товаров"
 
-#: includes/class-y4ym-data.php:840
+#: includes/class-y4ym-data.php:935
 msgid "Pickup cost"
 msgstr "Стоимость самовывоза"
 
-#: includes/class-y4ym-data.php:860
+#: includes/class-y4ym-data.php:955
 msgid "Pickup days"
 msgstr "Срок самовывоза"
 
-#: includes/class-y4ym-data.php:899
+#: includes/class-y4ym-data.php:994
 msgid "Use shipment-options"
 msgstr "Использовать shipment-options"
 
-#: includes/class-y4ym-data.php:905
+#: includes/class-y4ym-data.php:1000
 msgid "Read more on Megamarket"
 msgstr "Прочитать подробности на Мегамаркете"
 
-#: includes/class-y4ym-data.php:964 includes/class-y4ym-data.php:971
+#: includes/class-y4ym-data.php:1059 includes/class-y4ym-data.php:1066
 msgid "Warehouse"
 msgstr "Склад"
 
-#: includes/class-y4ym-data.php:966
+#: includes/class-y4ym-data.php:1061
 msgid "Warehouse name"
 msgstr "Название склада"
 
-#: includes/class-y4ym-data.php:967
+#: includes/class-y4ym-data.php:1062
 msgid "or ID"
 msgstr "или ID"
 
-#: includes/class-y4ym-data.php:968
+#: includes/class-y4ym-data.php:1063
 msgid "SberMegaMarket"
 msgstr "СберМегаМаркет"
 
-#: includes/class-y4ym-data.php:984 includes/class-y4ym-data.php:985
+#: includes/class-y4ym-data.php:1079 includes/class-y4ym-data.php:1080
 msgid "Shop SKU"
 msgstr "Артикул магазина"
 
-#: includes/class-y4ym-data.php:990 includes/class-y4ym-data.php:1325
+#: includes/class-y4ym-data.php:1085 includes/class-y4ym-data.php:1439
 msgid "Add from products ID"
 msgstr "Добавить из ID товаров"
 
-#: includes/class-y4ym-data.php:991 includes/class-y4ym-data.php:1009
-#: includes/class-y4ym-data.php:1324 includes/class-y4ym-data.php:1526
-#: includes/class-y4ym-data.php:1877 includes/class-y4ym-data.php:2128
+#: includes/class-y4ym-data.php:1086 includes/class-y4ym-data.php:1107
+#: includes/class-y4ym-data.php:1438 includes/class-y4ym-data.php:1640
+#: includes/class-y4ym-data.php:2002 includes/class-y4ym-data.php:2369
 msgid "Substitute from SKU"
 msgstr "Подставлять из Артикул"
 
-#: includes/class-y4ym-data.php:1003 includes/class-y4ym-data.php:1004
+#: includes/class-y4ym-data.php:1101 includes/class-y4ym-data.php:1102
 msgid "Vendor Code"
 msgstr "Артикул"
 
-#: includes/class-y4ym-data.php:1021
+#: includes/class-y4ym-data.php:1122 includes/class-y4ym-data.php:1124
+#: includes/class-y4ym-data.php:1459 includes/class-y4ym-data.php:1461
+#: includes/class-y4ym-data.php:1525 includes/class-y4ym-data.php:1558
+#: includes/class-y4ym-data.php:1563 includes/class-y4ym-data.php:1660
+#: includes/class-y4ym-data.php:1662 includes/class-y4ym-data.php:2035
+#: includes/class-y4ym-data.php:2037 includes/class-y4ym-data.php:2928
+#: includes/class-y4ym-data.php:2930
+msgid "Name post_meta"
+msgstr "Имя метаполя"
+
+#: includes/class-y4ym-data.php:1135
 msgid "Adult Market"
 msgstr "Магазин для взрослых"
 
-#: includes/class-y4ym-data.php:1027 includes/class-y4ym-data.php:1028
-#: includes/class-y4ym-data.php:2153 includes/class-y4ym-data.php:2154
+#: includes/class-y4ym-data.php:1141 includes/class-y4ym-data.php:1142
+#: includes/class-y4ym-data.php:2394 includes/class-y4ym-data.php:2395
 msgid "Add to all"
 msgstr "Добавить всем"
 
-#: includes/class-y4ym-data.php:1040 includes/class-y4ym-data.php:1061
-#: includes/class-y4ym-data.php:1082 includes/class-y4ym-data.php:1103
+#: includes/class-y4ym-data.php:1154 includes/class-y4ym-data.php:1175
+#: includes/class-y4ym-data.php:1196 includes/class-y4ym-data.php:1217
 msgid "Quantity of products"
 msgstr "Количество товаров"
 
-#: includes/class-y4ym-data.php:1042 includes/class-y4ym-data.php:1063
-#: includes/class-y4ym-data.php:1084 includes/class-y4ym-data.php:1105
+#: includes/class-y4ym-data.php:1156 includes/class-y4ym-data.php:1177
+#: includes/class-y4ym-data.php:1198 includes/class-y4ym-data.php:1219
 msgid ""
 "To make it work you must enable \"Manage stock\" and indicate \"Stock "
 "quantity\""
@@ -1456,66 +1557,66 @@ msgstr ""
 "Чтобы это работало, вы должны включить \"Управлять запасами\" и указать "
 "\"Количество в запасе\""
 
-#: includes/class-y4ym-data.php:1124
+#: includes/class-y4ym-data.php:1238
 msgid "Length"
 msgstr "Длина"
 
-#: includes/class-y4ym-data.php:1127
+#: includes/class-y4ym-data.php:1241
 msgid "The first number in the tag"
 msgstr "Первое число в теге"
 
-#: includes/class-y4ym-data.php:1135 includes/class-y4ym-data.php:1161
-#: includes/class-y4ym-data.php:1186 includes/class-y4ym-data.php:1207
+#: includes/class-y4ym-data.php:1249 includes/class-y4ym-data.php:1275
+#: includes/class-y4ym-data.php:1300 includes/class-y4ym-data.php:1321
 msgid "Substitute from WooCommerce Shippings tab"
 msgstr "Подставлять из WooCommerce вкладки Доставка"
 
-#: includes/class-y4ym-data.php:1140
+#: includes/class-y4ym-data.php:1254
 msgid "Dimensions"
 msgstr "Размеры"
 
-#: includes/class-y4ym-data.php:1150
+#: includes/class-y4ym-data.php:1264
 msgid "Width"
 msgstr "Ширина"
 
-#: includes/class-y4ym-data.php:1153
+#: includes/class-y4ym-data.php:1267
 msgid "The second number in the tag"
 msgstr "Второе число в теге"
 
-#: includes/class-y4ym-data.php:1175
+#: includes/class-y4ym-data.php:1289
 msgid "Height"
 msgstr "Высота"
 
-#: includes/class-y4ym-data.php:1178
+#: includes/class-y4ym-data.php:1292
 msgid "The third number in the tag"
 msgstr "Третье число в теге"
 
-#: includes/class-y4ym-data.php:1200
+#: includes/class-y4ym-data.php:1314
 msgid "Weight"
 msgstr "Вес"
 
-#: includes/class-y4ym-data.php:1220
+#: includes/class-y4ym-data.php:1334
 msgid "Automatically remove products from sale"
 msgstr "Автоматическое удаление товаров из продажи"
 
-#: includes/class-y4ym-data.php:1238
+#: includes/class-y4ym-data.php:1352
 msgid "Automatically transfer products to the archive"
 msgstr "Автоматически переносить товары в архив"
 
-#: includes/class-y4ym-data.php:1292
+#: includes/class-y4ym-data.php:1406
 msgid "Add market-sku to feed"
 msgstr "Добавить market-sku в фид"
 
-#: includes/class-y4ym-data.php:1294
+#: includes/class-y4ym-data.php:1408
 msgid "Optional when creating a catalog. A must for price recommendations"
 msgstr ""
 "Необязательно при формировании каталога. Обязательно для получения "
 "рекомендаций по ценам"
 
-#: includes/class-y4ym-data.php:1315
+#: includes/class-y4ym-data.php:1429
 msgid "SKU"
 msgstr "Артикул"
 
-#: includes/class-y4ym-data.php:1317
+#: includes/class-y4ym-data.php:1431
 msgid ""
 "Source ID of the code for a product variation. You should specify it if "
 "product ID contains numbers and symbols"
@@ -1523,127 +1624,103 @@ msgstr ""
 "Источник ID для вариаций товара. Его следует указывать, если идентификатор "
 "продукта содержит цифры и символы"
 
-#: includes/class-y4ym-data.php:1326 includes/class-y4ym-data.php:1366
-#: includes/class-y4ym-data.php:1420 includes/class-y4ym-data.php:1527
-#: includes/class-y4ym-data.php:1878 includes/class-y4ym-data.php:2649
-msgid "Substitute from post meta"
-msgstr "Подставлять из метаполя"
+#: includes/class-y4ym-data.php:1475
+msgid "Keywords can be set on the product editing page"
+msgstr "Ключевые слова можно задать на странице редактирования товара"
 
-#: includes/class-y4ym-data.php:1345 includes/class-y4ym-data.php:1347
-#: includes/class-y4ym-data.php:1391 includes/class-y4ym-data.php:1444
-#: includes/class-y4ym-data.php:1449 includes/class-y4ym-data.php:1546
-#: includes/class-y4ym-data.php:1548 includes/class-y4ym-data.php:1910
-#: includes/class-y4ym-data.php:1912 includes/class-y4ym-data.php:2665
-#: includes/class-y4ym-data.php:2667
-msgid "Name post_meta"
-msgstr "Имя метаполя"
-
-#: includes/class-y4ym-data.php:1360
+#: includes/class-y4ym-data.php:1494
 msgid "Manufacturer company"
 msgstr "Компания-производитель"
 
-#: includes/class-y4ym-data.php:1370 includes/class-y4ym-data.php:1425
-#: includes/class-y4ym-data.php:2237
-msgid "Default value from field"
-msgstr "Значение из поля"
-
-#: includes/class-y4ym-data.php:1405 includes/class-y4ym-data.php:1406
+#: includes/class-y4ym-data.php:1539 includes/class-y4ym-data.php:1540
 msgid "Vendor"
 msgstr "Производитель"
 
-#: includes/class-y4ym-data.php:1416
-msgid "WooCommerce brands"
-msgstr "Бренды WooCommerce"
-
-#: includes/class-y4ym-data.php:1461
+#: includes/class-y4ym-data.php:1575
 msgid "Country of origin"
 msgstr "Страна производитель"
 
-#: includes/class-y4ym-data.php:1463
+#: includes/class-y4ym-data.php:1577
 msgid "This element indicates the country where the product was manufactured"
 msgstr "Элемент предназначен для указания страны производства товара"
 
-#: includes/class-y4ym-data.php:1481
+#: includes/class-y4ym-data.php:1595
 msgid "Color"
 msgstr "Цвет"
 
-#: includes/class-y4ym-data.php:1483
+#: includes/class-y4ym-data.php:1597
 msgid "Color of product variation, specified by seller"
 msgstr "Цвет вариации в системе продавца"
 
-#: includes/class-y4ym-data.php:1501
+#: includes/class-y4ym-data.php:1615
 msgid "Size"
 msgstr "Размер"
 
-#: includes/class-y4ym-data.php:1502
+#: includes/class-y4ym-data.php:1616
 msgid "Size in your system"
 msgstr "Размер в вашей системе"
 
-#: includes/class-y4ym-data.php:1520
+#: includes/class-y4ym-data.php:1634
 msgid "Source ID of the product"
 msgstr "Источник ID товара"
 
-#: includes/class-y4ym-data.php:1525
+#: includes/class-y4ym-data.php:1639
 msgid "Product ID / Variation ID"
 msgstr "ID товара / ID вариации"
 
-#: includes/class-y4ym-data.php:1530
-msgid "Substitute from"
-msgstr "Подставлять из"
-
-#: includes/class-y4ym-data.php:1560
+#: includes/class-y4ym-data.php:1674
 msgid "The ID of the product model"
 msgstr "ID модели товара"
 
-#: includes/class-y4ym-data.php:1578 includes/class-y4ym-data.php:1700
+#: includes/class-y4ym-data.php:1692 includes/class-y4ym-data.php:1814
 msgid "Mark products under the order"
 msgstr "Отметить товары под заказ"
 
-#: includes/class-y4ym-data.php:1579 includes/class-y4ym-data.php:1701
+#: includes/class-y4ym-data.php:1693 includes/class-y4ym-data.php:1815
 msgid "Product under the order"
 msgstr "Товар под заказ"
 
-#: includes/class-y4ym-data.php:1596
+#: includes/class-y4ym-data.php:1710
 msgid "Pickup"
 msgstr "Самовывоз"
 
-#: includes/class-y4ym-data.php:1597
+#: includes/class-y4ym-data.php:1711
 msgid "Option to get order from pickup point"
 msgstr "Возможность самовывоза из пунктов выдачи"
 
-#: includes/class-y4ym-data.php:1602 includes/class-y4ym-data.php:1804
+#: includes/class-y4ym-data.php:1716 includes/class-y4ym-data.php:1918
 msgid "True"
 msgstr "Да"
 
-#: includes/class-y4ym-data.php:1603 includes/class-y4ym-data.php:1805
+#: includes/class-y4ym-data.php:1717 includes/class-y4ym-data.php:1919
 msgid "False"
 msgstr "Нет"
 
-#: includes/class-y4ym-data.php:1615
+#: includes/class-y4ym-data.php:1729
 msgid "Product price"
 msgstr "Цена товара"
 
-#: includes/class-y4ym-data.php:1633 includes/class-y4ym-data.php:1637
+#: includes/class-y4ym-data.php:1747 includes/class-y4ym-data.php:1751
 msgid "Price from"
 msgstr "Цена от"
 
-#: includes/class-y4ym-data.php:1636
+#: includes/class-y4ym-data.php:1750
 msgid "Apply the setting"
 msgstr "Применить настройки"
 
-#: includes/class-y4ym-data.php:1638
+#: includes/class-y4ym-data.php:1752
 msgid "attribute of"
 msgstr "атрибута"
 
-#: includes/class-y4ym-data.php:1639
+#: includes/class-y4ym-data.php:1753
 msgid "Example"
 msgstr "Пример"
 
-#: includes/class-y4ym-data.php:1658 includes/class-y4ym-data.php:1679
+#: includes/class-y4ym-data.php:1772 includes/class-y4ym-data.php:1793
 msgid "Old price"
 msgstr "Старая цена"
 
-#: includes/class-y4ym-data.php:1660
+#: includes/class-y4ym-data.php:1774
 msgid ""
 "In oldprice indicates the old price of the goods, which must necessarily be "
 "higher than the new price (price)"
@@ -1651,7 +1728,7 @@ msgstr ""
 "В oldprice указывается старая цена товара, которая обязательно должна быть "
 "выше новой цены (price)"
 
-#: includes/class-y4ym-data.php:1681
+#: includes/class-y4ym-data.php:1795
 msgid ""
 "This price will be up-to-date. Discount price should be less than 90 "
 "percentage of initial price"
@@ -1659,15 +1736,15 @@ msgstr ""
 "По этой цене будет продаваться товар. Не может быть больше, чем 90 процентов "
 "от исходной цены"
 
-#: includes/class-y4ym-data.php:1757
+#: includes/class-y4ym-data.php:1871
 msgid "Supplier"
 msgstr "Поставщик"
 
-#: includes/class-y4ym-data.php:1778
+#: includes/class-y4ym-data.php:1892
 msgid "For example, for delivery or packaging"
 msgstr "Например, на доставку или упаковку"
 
-#: includes/class-y4ym-data.php:1798
+#: includes/class-y4ym-data.php:1912
 msgid ""
 "The delivery item must be set to false if the item is prohibited to sell "
 "remotely (jewelry, medicines)"
@@ -1675,85 +1752,107 @@ msgstr ""
 "Элемент delivery должен обязательно иметь значение false, если товар "
 "запрещено продавать дистанционно (ювелирные изделия, лекарственные средства)"
 
-#: includes/class-y4ym-data.php:1819
+#: includes/class-y4ym-data.php:1933
 msgid "This element is used when creating an YML feed for Yandex.Delivery"
 msgstr "Этот элемент используется при создании YML-фида для Яндекс Доставки"
 
-#: includes/class-y4ym-data.php:1826
+#: includes/class-y4ym-data.php:1940
 msgid "Enable. No default value"
 msgstr "Включить. Без значений по умолчанию"
 
-#: includes/class-y4ym-data.php:1850
+#: includes/class-y4ym-data.php:1975
 msgid "This element is used when creating an YML feed for Yandex Direct"
 msgstr "Этот элемент используется при создании YML-фида для Яндекс Директ"
 
-#: includes/class-y4ym-data.php:1871
+#: includes/class-y4ym-data.php:1996
 msgid "Barcode"
 msgstr "Штрихкод"
 
-#: includes/class-y4ym-data.php:1882 includes/class-y4ym-data.php:1888
-#: includes/class-y4ym-data.php:1894
+#: includes/class-y4ym-data.php:2007 includes/class-y4ym-data.php:2013
+#: includes/class-y4ym-data.php:2019
 msgid "Substitute from the plugin"
 msgstr "Замена из плагина"
 
-#: includes/class-y4ym-data.php:1941
+#: includes/class-y4ym-data.php:2067
 msgid "Shelf life / service life"
 msgstr "Срок годности / срок службы"
 
-#: includes/class-y4ym-data.php:1942
+#: includes/class-y4ym-data.php:2068
 msgid "Shelf life / service life. expiry date / service life"
 msgstr ""
 "Срок годности / срок службы либо дата истечения срока годности / срока службы"
 
-#: includes/class-y4ym-data.php:1958
+#: includes/class-y4ym-data.php:2084
 msgid "Shelf life"
 msgstr "Срок годности"
 
-#: includes/class-y4ym-data.php:1975
+#: includes/class-y4ym-data.php:2102
+msgid "Comment on the expiration date"
+msgstr "Комментарий к дате истечения срока службы"
+
+#: includes/class-y4ym-data.php:2104 includes/class-y4ym-data.php:2126
+#: includes/class-y4ym-data.php:2149 includes/class-y4ym-data.php:2187
+#: includes/class-y4ym-data.php:2245 includes/class-y4ym-data.php:2267
+#: includes/class-y4ym-data.php:2289 includes/class-y4ym-data.php:2469
+#: includes/class-y4ym-data.php:2667 includes/class-y4ym-data.php:2691
+#: includes/class-y4ym-data.php:2715
+msgid "The value of this option is set on the product edit page"
+msgstr "Значение этой опции устанавливается на странице редактирования товара"
+
+#: includes/class-y4ym-data.php:2147
+msgid "The service life days"
+msgstr "Срок службы в днях"
+
+#: includes/class-y4ym-data.php:2171 includes/class-y4ym-data.php:2173
+#: includes/class-y4ym-data.php:2453 includes/class-y4ym-data.php:2455
+msgid "Default value in days"
+msgstr "Значение по умолчанию в днях"
+
+#: includes/class-y4ym-data.php:2207
 msgid "Mark downloadable products"
 msgstr "Помечать скачиваемые товары"
 
-#: includes/class-y4ym-data.php:1993
+#: includes/class-y4ym-data.php:2225
 msgid "Product name"
 msgstr "Название товара"
 
-#: includes/class-y4ym-data.php:2030
+#: includes/class-y4ym-data.php:2265
 msgid "Step quantity"
 msgstr "Квант продажи"
 
-#: includes/class-y4ym-data.php:2068
+#: includes/class-y4ym-data.php:2309
 msgid "Age"
 msgstr "Возраст"
 
-#: includes/class-y4ym-data.php:2085
+#: includes/class-y4ym-data.php:2326
 msgid "Attribute"
 msgstr "Атрибут"
 
-#: includes/class-y4ym-data.php:2091
+#: includes/class-y4ym-data.php:2332
 msgid "Month"
 msgstr "Месяц"
 
-#: includes/class-y4ym-data.php:2092
+#: includes/class-y4ym-data.php:2333
 msgid "Year"
 msgstr "Год"
 
-#: includes/class-y4ym-data.php:2104
+#: includes/class-y4ym-data.php:2345
 msgid "Product type or category"
 msgstr "Тип или категория товара"
 
-#: includes/class-y4ym-data.php:2105
+#: includes/class-y4ym-data.php:2346
 msgid "This tag is only used in the free-from feed format"
 msgstr "Этот тег используется только в произвольном формате фида"
 
-#: includes/class-y4ym-data.php:2122
+#: includes/class-y4ym-data.php:2363
 msgid "Model"
 msgstr "Модель"
 
-#: includes/class-y4ym-data.php:2140
+#: includes/class-y4ym-data.php:2381
 msgid "Manufacturer warranty"
 msgstr "Гарантия производителя"
 
-#: includes/class-y4ym-data.php:2143
+#: includes/class-y4ym-data.php:2384
 msgid ""
 "This element is used for products that have an official manufacturer's "
 "warranty"
@@ -1761,31 +1860,27 @@ msgstr ""
 "Элемент предназначен для отметки товаров, имеющих официальную гарантию "
 "производителя"
 
-#: includes/class-y4ym-data.php:2146
+#: includes/class-y4ym-data.php:2387
 msgid "Product does not have an official warranty"
 msgstr "Товар не имеет официальной гарантии"
 
-#: includes/class-y4ym-data.php:2147
+#: includes/class-y4ym-data.php:2388
 msgid "Product has an official warranty"
 msgstr "Товар имеет официальную гарантию"
 
-#: includes/class-y4ym-data.php:2166
+#: includes/class-y4ym-data.php:2407
 msgid "Collection ID"
 msgstr "ID коллекции"
 
-#: includes/class-y4ym-data.php:2170
+#: includes/class-y4ym-data.php:2411
 msgid "How it works"
 msgstr "Как это работает"
 
-#: includes/class-y4ym-data.php:2212 includes/class-y4ym-data.php:2214
-msgid "Default value in days"
-msgstr "Значение по умолчанию в днях"
-
-#: includes/class-y4ym-data.php:2228
+#: includes/class-y4ym-data.php:2491
 msgid "Sales notes"
 msgstr "Примечание"
 
-#: includes/class-y4ym-data.php:2256
+#: includes/class-y4ym-data.php:2519
 msgid ""
 "The text may be up to 50 characters in length. Also in the item is forbidden "
 "to specify the terms of delivery and price reduction (discount on "
@@ -1794,63 +1889,62 @@ msgstr ""
 "Не более 50 символов. Также в элементе запрещено указывать условия доставки "
 "и снижение цены (скидку на товар)"
 
-#: includes/class-y4ym-data.php:2270
+#: includes/class-y4ym-data.php:2533
 msgid "Store"
 msgstr "Запас"
 
-#: includes/class-y4ym-data.php:2273
+#: includes/class-y4ym-data.php:2536
 msgid "The product can be purchased in retail stores"
 msgstr "Товар можно купить без предварительного заказа"
 
-#: includes/class-y4ym-data.php:2275
+#: includes/class-y4ym-data.php:2538
 msgid "the product cannot be purchased in retail stores"
 msgstr "товар нельзя купить без предварительного заказа"
 
-#: includes/class-y4ym-data.php:2296
+#: includes/class-y4ym-data.php:2559
 msgid "Condition"
 msgstr "Состояние товара"
 
-#: includes/class-y4ym-data.php:2299 includes/class-y4ym-data.php:2343
-#: includes/class-y4ym-data.php:2363
+#: includes/class-y4ym-data.php:2562 includes/class-y4ym-data.php:2606
+#: includes/class-y4ym-data.php:2626
 msgid "for"
 msgstr "для"
 
-#: includes/class-y4ym-data.php:2384
+#: includes/class-y4ym-data.php:2647
 msgid "Picture"
 msgstr "Изображение"
 
-#: includes/class-y4ym-data.php:2386
+#: includes/class-y4ym-data.php:2649
 msgid "Specify the size of the image to be used in the feed"
 msgstr "Укажите размер изображения, которое будет использоваться в фиде"
 
-#: includes/class-y4ym-data.php:2404 includes/class-y4ym-data.php:2428
-#: includes/class-y4ym-data.php:2452 includes/class-y4ym-data.php:2480
-msgid "To set a value, edit your products"
-msgstr "Чтобы задать значение, отредактируйте свои товары"
-
-#: includes/class-y4ym-data.php:2405 includes/class-y4ym-data.php:2429
-#: includes/class-y4ym-data.php:2457 includes/class-y4ym-data.php:2482
+#: includes/class-y4ym-data.php:2668 includes/class-y4ym-data.php:2692
+#: includes/class-y4ym-data.php:2720 includes/class-y4ym-data.php:2745
 msgid "About this tag"
 msgstr "Об этом теге"
 
-#: includes/class-y4ym-data.php:2407 includes/class-y4ym-data.php:2431
-#: includes/class-y4ym-data.php:2459 includes/class-y4ym-data.php:2484
+#: includes/class-y4ym-data.php:2670 includes/class-y4ym-data.php:2694
+#: includes/class-y4ym-data.php:2722 includes/class-y4ym-data.php:2747
 msgid "see the Yandex help"
 msgstr "см. справку Яндекса"
 
-#: includes/class-y4ym-data.php:2481
+#: includes/class-y4ym-data.php:2743
+msgid "To set a value, edit your products"
+msgstr "Чтобы задать значение, отредактируйте свои товары"
+
+#: includes/class-y4ym-data.php:2744
 msgid "or edit your categories"
 msgstr "или отредактируйте свои категории"
 
-#: includes/class-y4ym-data.php:2505 includes/class-y4ym-data.php:2561
+#: includes/class-y4ym-data.php:2768 includes/class-y4ym-data.php:2824
 msgid "Include these attributes in the values"
 msgstr "Включите эти атрибуты в значения"
 
-#: includes/class-y4ym-data.php:2507 includes/class-y4ym-data.php:2563
+#: includes/class-y4ym-data.php:2770 includes/class-y4ym-data.php:2826
 msgid "Hint"
 msgstr "Совет"
 
-#: includes/class-y4ym-data.php:2509 includes/class-y4ym-data.php:2565
+#: includes/class-y4ym-data.php:2772 includes/class-y4ym-data.php:2828
 msgid ""
 "To select multiple values, hold down the (ctrl) button on Windows or (cmd) "
 "on a Mac. To deselect, press and hold (ctrl) or (cmd), click on the marked "
@@ -1860,113 +1954,113 @@ msgstr ""
 "Windows или (cmd) на Mac. Чтобы отменить выбор, нажмите и удерживайте (ctrl) "
 "или (cmd), нажмите на отмеченные элементы"
 
-#: includes/class-y4ym-data.php:2531 includes/class-y4ym-data.php:2587
+#: includes/class-y4ym-data.php:2794 includes/class-y4ym-data.php:2850
 msgid "If the attribute has multiple values"
 msgstr "Если атрибут имеет несколько значений"
 
-#: includes/class-y4ym-data.php:2540 includes/class-y4ym-data.php:2596
+#: includes/class-y4ym-data.php:2803 includes/class-y4ym-data.php:2859
 msgid "No split"
 msgstr "Не разделять"
 
-#: includes/class-y4ym-data.php:2545 includes/class-y4ym-data.php:2601
+#: includes/class-y4ym-data.php:2808 includes/class-y4ym-data.php:2864
 msgid "Split"
 msgstr "Разделить"
 
-#: includes/class-y4ym-data.php:2617
+#: includes/class-y4ym-data.php:2880
 msgid "Description of the product"
 msgstr "Описание товара"
 
-#: includes/class-y4ym-data.php:2619
+#: includes/class-y4ym-data.php:2882
 msgid "The source of the description"
 msgstr "Источник описания товара"
 
-#: includes/class-y4ym-data.php:2625
+#: includes/class-y4ym-data.php:2888
 msgid "Only Excerpt description"
 msgstr "Только Краткое описание"
 
-#: includes/class-y4ym-data.php:2629
+#: includes/class-y4ym-data.php:2892
 msgid "Only Full description"
 msgstr "Только Полное описание"
 
-#: includes/class-y4ym-data.php:2633
+#: includes/class-y4ym-data.php:2896
 msgid "Excerpt or Full description"
 msgstr "Краткое или Полное описание"
 
-#: includes/class-y4ym-data.php:2637
+#: includes/class-y4ym-data.php:2900
 msgid "Full or Excerpt description"
 msgstr "Полное или Краткое описание"
 
-#: includes/class-y4ym-data.php:2641
+#: includes/class-y4ym-data.php:2904
 msgid "Excerpt plus Full description"
 msgstr "Краткое плюс Полное описание"
 
-#: includes/class-y4ym-data.php:2645
+#: includes/class-y4ym-data.php:2908
 msgid "Full plus Excerpt description"
 msgstr "Полное плюс Краткое описание"
 
-#: includes/class-y4ym-data.php:2680
+#: includes/class-y4ym-data.php:2943
 msgid "List of allowed tags"
 msgstr "Список разрешенных тегов"
 
-#: includes/class-y4ym-data.php:2686
+#: includes/class-y4ym-data.php:2949
 msgid "From the field below"
 msgstr "Из поля ниже"
 
-#: includes/class-y4ym-data.php:2701
+#: includes/class-y4ym-data.php:2964
 msgid "Allowed tags"
 msgstr "Разрешенные теги"
 
-#: includes/class-y4ym-data.php:2719
+#: includes/class-y4ym-data.php:2982
 msgid "The varition description takes precedence over others"
 msgstr "Описание вариации имеет приоритет над другими"
 
-#: includes/class-y4ym-data.php:2744
+#: includes/class-y4ym-data.php:3007
 msgid "Use the filter"
 msgstr "Задействовать фильтр"
 
-#: includes/class-y4ym-data.php:2767
+#: includes/class-y4ym-data.php:3030
 msgid "Whot export"
 msgstr "Что экспортировать"
 
-#: includes/class-y4ym-data.php:2773
+#: includes/class-y4ym-data.php:3036
 msgid "Simple & Variable products"
 msgstr "Вариативные и обычные товары"
 
-#: includes/class-y4ym-data.php:2777
+#: includes/class-y4ym-data.php:3040
 msgid "Only simple products"
 msgstr "Только обычные товары"
 
-#: includes/class-y4ym-data.php:2781
+#: includes/class-y4ym-data.php:3044
 msgid "Only variable products"
 msgstr "Только вариативные товары"
 
-#: includes/class-y4ym-data.php:2794
+#: includes/class-y4ym-data.php:3057
 msgid "Change the domain to"
 msgstr "Изменить домен на"
 
-#: includes/class-y4ym-data.php:2796
+#: includes/class-y4ym-data.php:3059
 msgid ""
 "The option allows you to change the domain of your site in the feed to any "
 "other"
 msgstr "Опция позволяет изменить домен вашего сайта в фиде на любой другой"
 
-#: includes/class-y4ym-data.php:2811
+#: includes/class-y4ym-data.php:3074
 msgid "Clear URL from GET-paramrs"
 msgstr "Очистить URL от GET-параметров"
 
-#: includes/class-y4ym-data.php:2815
+#: includes/class-y4ym-data.php:3078
 msgid "This option may be useful when setting up Turbo pages"
 msgstr "Эта опция может быть полезна при настройке Турбо-страниц"
 
-#: includes/class-y4ym-data.php:2816
+#: includes/class-y4ym-data.php:3079
 msgid "Tips for configuring Turbo pages"
 msgstr "Советы по настройке Турбо-страниц"
 
-#: includes/class-y4ym-data.php:2834
+#: includes/class-y4ym-data.php:3097
 msgid "Categories of variable products for which group_id is not allowed"
 msgstr "Категории вариативных товаров для которых запрещен group_id"
 
-#: includes/class-y4ym-data.php:2838
+#: includes/class-y4ym-data.php:3101
 msgid ""
 "According to Yandex Market rules in this field you need to mark ALL "
 "categories of products not related to \"Clothes, Shoes and Accessories\", "
@@ -1980,11 +2074,11 @@ msgstr ""
 "\"Аксессуары для портативной электроники\". Т.е категории, для которых "
 "запрещено использовать атрибут group_id"
 
-#: includes/class-y4ym-data.php:2858
+#: includes/class-y4ym-data.php:3121
 msgid "Add attributes to the variable products name"
 msgstr "Добавлять атрибуты в название вариативных товаров"
 
-#: includes/class-y4ym-data.php:2860
+#: includes/class-y4ym-data.php:3123
 msgid ""
 "You can only add attributes that are used for variations and that cannot be "
 "grouped using"
@@ -1992,7 +2086,7 @@ msgstr ""
 "Можно добавлять только атрибуты, которые используются для вариаций и которые "
 "не могут быть объединены с помощью"
 
-#: includes/class-y4ym-data.php:2862
+#: includes/class-y4ym-data.php:3125
 msgid ""
 "It works only for variable products that are not in the category \"Clothes, "
 "Shoes and Accessories\", \"Furniture\", \"Cosmetics, perfumes and care\", "
@@ -2002,40 +2096,40 @@ msgstr ""
 "к \"Одежда, обувь и аксессуары\", \"Мебель\", \"Косметика, парфюмерия и "
 "уход\", \"Детские товары\", \"Аксессуары для портативной электроники\""
 
-#: includes/class-y4ym-data.php:2880 includes/class-y4ym-data.php:2881
+#: includes/class-y4ym-data.php:3143 includes/class-y4ym-data.php:3144
 msgid "Separator options"
 msgstr "Варианты разделителя"
 
-#: includes/class-y4ym-data.php:2887 includes/class-y4ym-data.php:2893
-#: includes/class-y4ym-data.php:2899 includes/class-y4ym-data.php:2905
+#: includes/class-y4ym-data.php:3150 includes/class-y4ym-data.php:3156
+#: includes/class-y4ym-data.php:3162 includes/class-y4ym-data.php:3168
 msgid "Type"
 msgstr "Тип"
 
-#: includes/class-y4ym-data.php:2919
+#: includes/class-y4ym-data.php:3182
 msgid "For pre-order products, establish availability equal to"
 msgstr "Для товаров на предзаказ установить доступность, равную"
 
-#: includes/class-y4ym-data.php:2928
+#: includes/class-y4ym-data.php:3191
 msgid "in stock"
 msgstr "в наличии"
 
-#: includes/class-y4ym-data.php:2932
+#: includes/class-y4ym-data.php:3195
 msgid "out of stock"
 msgstr "нет в наличии"
 
-#: includes/class-y4ym-data.php:2945
+#: includes/class-y4ym-data.php:3208
 msgid "Remove default.png from YML"
 msgstr "Удалить default.png из YML"
 
-#: includes/class-y4ym-data.php:2963
+#: includes/class-y4ym-data.php:3226
 msgid "Take steps to remove products with the same ID from the feed"
 msgstr "Примите меры по удалению товаров с одинаковым ID из фида"
 
-#: includes/class-y4ym-data.php:2968
+#: includes/class-y4ym-data.php:3231
 msgid "This is an experimental feature"
 msgstr "Это экспериментальная функция"
 
-#: includes/class-y4ym-data.php:2972
+#: includes/class-y4ym-data.php:3235
 msgid ""
 "It should only be used if you have an error related to the presence of "
 "products with the same identifier in the product feed"
@@ -2043,60 +2137,60 @@ msgstr ""
 "Её следует использовать только в том случае, если у вас возникла ошибка, "
 "связанная с наличием товаров с одинаковым ID в фиде"
 
-#: includes/class-y4ym-data.php:2991
+#: includes/class-y4ym-data.php:3254
 msgid "Skip products without pictures"
 msgstr "Пропустить товары без картинок"
 
-#: includes/class-y4ym-data.php:3009
+#: includes/class-y4ym-data.php:3272
 msgid "Skip products without description"
 msgstr "Пропустить товары без описания"
 
-#: includes/class-y4ym-data.php:3027
+#: includes/class-y4ym-data.php:3290
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:146
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:194
 msgid "Skip missing products"
 msgstr "Исключать товары которых нет в наличии"
 
-#: includes/class-y4ym-data.php:3028
+#: includes/class-y4ym-data.php:3291
 msgid "except for products for which a pre-order is permitted"
 msgstr "за исключением товаров, для которых разрешен предварительный заказ"
 
-#: includes/class-y4ym-data.php:3046
+#: includes/class-y4ym-data.php:3309
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:168
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:178
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:211
 msgid "Skip backorders products"
 msgstr "Исключать из фида товары для предзаказа"
 
-#: includes/class-y4ym-data.php:3081
+#: includes/class-y4ym-data.php:3344
 msgid "Feed currency"
 msgstr "Валюта фида"
 
-#: includes/class-y4ym-data.php:3083
+#: includes/class-y4ym-data.php:3346
 msgid "You have plugin installed"
 msgstr "У вас установлен плагин"
 
-#: includes/class-y4ym-data.php:3085
+#: includes/class-y4ym-data.php:3348
 msgid "Indicate in what currency the prices should be"
 msgstr "Укажите, в какой валюте должны быть цены"
 
-#: includes/class-y4ym-data.php:3086
+#: includes/class-y4ym-data.php:3349
 msgid "Please note"
 msgstr "Обратите внимание"
 
-#: includes/class-y4ym-data.php:3087
+#: includes/class-y4ym-data.php:3350
 msgid "Yandex Market only supports the following currencies"
 msgstr "Яндекс Маркет поддерживает только следующие валюты"
 
-#: includes/class-y4ym-data.php:3089
+#: includes/class-y4ym-data.php:3352
 msgid "Choosing a different currency can lead to errors"
 msgstr "Выбор другой валюты может привести к ошибкам"
 
-#: includes/class-y4ym-data.php:3281
+#: includes/class-y4ym-data.php:3544
 msgid "Full size (default)"
 msgstr "Полный размер (по умолчанию)"
 
-#: includes/class-y4ym-data.php:3289
+#: includes/class-y4ym-data.php:3552
 msgid "сrop thumbnail to exact dimensions"
 msgstr "обрезать миниатюру точно по размерам"
 
@@ -2212,10 +2306,6 @@ msgstr "Создает XML-фид для импорта ваших товаро�
 msgid "My plugins that may interest you"
 msgstr "Мои плагины, которые могут вас заинтересовать"
 
-#: includes/common-libs/class-icpd-promo.php:200
-msgid "Read more"
-msgstr "Подробнее"
-
 #: includes/common-libs/functions-icpd-woocommerce-1-1-1.php:111
 #: includes/common-libs/functions-icpd-woocommerce-1-1-1.php:144
 msgid "products"
@@ -2234,6 +2324,28 @@ msgstr "Нет %s с таким #%d"
 #, php-format
 msgid "This %s cannot be deleted"
 msgstr "%s не может быть удалён"
+
+#: includes/cron/class-yfym-cron-manager.php:39
+msgid "Every minute"
+msgstr "Каждую минуту"
+
+#: includes/cron/class-yfym-cron-manager.php:69
+msgid "The CRON task for creating a feed has started"
+msgstr "Запущена CRON задача для создания фида"
+
+#: includes/cron/class-yfym-cron-manager.php:90
+#: includes/feeds/class-y4ym-generation-xml.php:291
+#: includes/feeds/class-y4ym-generation-xml.php:329
+msgid "Failed to schedule a CRON task"
+msgstr "Не удалось запланировать CRON задачу"
+
+#: includes/cron/class-yfym-cron-manager.php:100
+msgid "Successful CRON task planning"
+msgstr "CRON задача успешно запланирована"
+
+#: includes/cron/class-yfym-cron-manager.php:143
+msgid "The CRON task started"
+msgstr "Стартовала CRON задача"
 
 #: includes/feeds/class-y4ym-generation-xml.php:110
 msgid "An error occurred when writing the temporary feed file"
@@ -2256,134 +2368,164 @@ msgid "We started creating a feed"
 msgstr "Мы начали создавать фид"
 
 #: includes/feeds/class-y4ym-generation-xml.php:232
+#: includes/feeds/class-y4ym-generation-xml.php:274
 msgid "An error occurred while creating an empty temporary feed file"
 msgstr "Произошла ошибка при создании пустого временного файла фида"
 
 #: includes/feeds/class-y4ym-generation-xml.php:234
-#: includes/feeds/class-y4ym-generation-xml.php:513
+#: includes/feeds/class-y4ym-generation-xml.php:252
+#: includes/feeds/class-y4ym-generation-xml.php:276
+#: includes/feeds/class-y4ym-generation-xml.php:537
 msgid "The creation of the feed has been stopped"
 msgstr "Создание фида было остановлено"
 
-#: includes/feeds/class-y4ym-generation-xml.php:268
-#: includes/feeds/class-y4ym-generation-xml.php:306
+#: includes/feeds/class-y4ym-generation-xml.php:250
+msgid "An error occurred while creating a temporary feed file"
+msgstr "Произошла ошибка при создании временного файла фида"
+
+#: includes/feeds/class-y4ym-generation-xml.php:292
+#: includes/feeds/class-y4ym-generation-xml.php:330
 msgid "on step"
 msgstr "на шаге"
 
-#: includes/feeds/class-y4ym-generation-xml.php:289
-#: includes/feeds/class-y4ym-generation-xml.php:486
+#: includes/feeds/class-y4ym-generation-xml.php:313
+#: includes/feeds/class-y4ym-generation-xml.php:510
 msgid "We continue to create the feed"
 msgstr "Мы продолжаем создание фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:337
+#: includes/feeds/class-y4ym-generation-xml.php:361
 msgid "Sending a request to the database"
 msgstr "Отправка запроса к базе данных"
 
-#: includes/feeds/class-y4ym-generation-xml.php:346
-#: includes/feeds/class-y4ym-generation-xml.php:367
+#: includes/feeds/class-y4ym-generation-xml.php:370
+#: includes/feeds/class-y4ym-generation-xml.php:391
 msgid "The query time to the database was"
 msgstr "Время запроса к базе данных составило"
 
-#: includes/feeds/class-y4ym-generation-xml.php:371
+#: includes/feeds/class-y4ym-generation-xml.php:395
 msgid "If you experience freezes when creating the feed, try increasing the"
 msgstr "Если при создании фида возникают зависания, попробуйте увеличить"
 
-#: includes/feeds/class-y4ym-generation-xml.php:375
+#: includes/feeds/class-y4ym-generation-xml.php:399
 msgid "parameter to"
 msgstr "параметр до"
 
-#: includes/feeds/class-y4ym-generation-xml.php:388
-#: includes/feeds/class-y4ym-generation-xml.php:463
+#: includes/feeds/class-y4ym-generation-xml.php:412
+#: includes/feeds/class-y4ym-generation-xml.php:487
 msgid "The number of records returned by the server"
 msgstr "Количество записей, возвращенных сервером"
 
-#: includes/feeds/class-y4ym-generation-xml.php:412
+#: includes/feeds/class-y4ym-generation-xml.php:436
 msgid "Getting started with the product"
 msgstr "Начало работы с товаром"
 
-#: includes/feeds/class-y4ym-generation-xml.php:512
+#: includes/feeds/class-y4ym-generation-xml.php:536
 msgid "In this step, an error occurred while creating a temporary feed file"
 msgstr "На этом шаге произошла ошибка при создании временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:535
+#: includes/feeds/class-y4ym-generation-xml.php:559
 msgid "Checking whether the feed needs to be archived"
 msgstr "Проверка необходимости архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:798
+#: includes/feeds/class-y4ym-generation-xml.php:932
 msgid ""
 "The list of product IDs in the feed is empty or the temporary file has been "
 "deleted"
 msgstr "Список ID товаров в фиде пуст или временный файл был удален"
 
-#: includes/feeds/class-y4ym-generation-xml.php:821
-#: includes/feeds/class-y4ym-generation-xml.php:902
+#: includes/feeds/class-y4ym-generation-xml.php:955
+#: includes/feeds/class-y4ym-generation-xml.php:1043
 msgid "Error reading the file"
 msgstr "Ошибка при чтении файла"
 
-#: includes/feeds/class-y4ym-generation-xml.php:881
+#: includes/feeds/class-y4ym-generation-xml.php:1022
 msgid "Error checking the XML fragment"
 msgstr "Ошибка при проверке XML-фрагмента"
 
-#: includes/feeds/class-y4ym-generation-xml.php:895
+#: includes/feeds/class-y4ym-generation-xml.php:1036
 msgid "Column"
 msgstr "Колонка"
 
-#: includes/feeds/class-y4ym-generation-xml.php:933
+#: includes/feeds/class-y4ym-generation-xml.php:1074
 msgid "Data loss when writing a feed file"
 msgstr "Потеря данных при записи файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1249
+#: includes/feeds/class-y4ym-generation-xml.php:1391
+msgid "Couldn't delete the old feed file"
+msgstr "Я не могу удалить старый файл фида"
+
+#: includes/feeds/class-y4ym-generation-xml.php:1405
 msgid "I can't rename the feed file from"
 msgstr "Я не могу переименовать файл фида из"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1251
+#: includes/feeds/class-y4ym-generation-xml.php:1407
 msgid "to"
 msgstr "в"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1276
+#: includes/feeds/class-y4ym-generation-xml.php:1432
 msgid "The temporary feed file has been successfully renamed to the main one"
 msgstr "Временный файл фида был успешно переименован в основной"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1305
+#: includes/feeds/class-y4ym-generation-xml.php:1461
 msgid "Starting archiving the feed"
 msgstr "Начинаю архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1329
+#: includes/feeds/class-y4ym-generation-xml.php:1485
 msgid "The archiving was successful"
 msgstr "Архивация прошла успешно"
 
 #: includes/feeds/class-y4ym-get-unit.php:69
-#: includes/feeds/class-y4ym-get-unit.php:159
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:46
 msgid "There is no product with this ID"
 msgstr "Нет товара с таким ID"
 
-#: includes/feeds/class-y4ym-get-unit.php:95
+#: includes/feeds/class-y4ym-get-unit.php:78
+msgid "This is the ID of a product variation, not the product itself"
+msgstr "Это ID вариации, а не самого товара"
+
+#: includes/feeds/class-y4ym-get-unit.php:104
 msgid "The product was updated earlier than the YML feed"
 msgstr "Товар был обновлен раньше, чем YML-фид"
 
-#: includes/feeds/class-y4ym-get-unit.php:100
+#: includes/feeds/class-y4ym-get-unit.php:109
 msgid "Requesting data from the cache"
 msgstr "Запрос данных из кэша"
 
-#: includes/feeds/class-y4ym-get-unit.php:116
+#: includes/feeds/class-y4ym-get-unit.php:125
 msgid "For the product with"
 msgstr "Для товара с"
 
-#: includes/feeds/class-y4ym-get-unit.php:118
+#: includes/feeds/class-y4ym-get-unit.php:127
 msgid "the data is taken from the file"
 msgstr "данные взяты из файла"
 
-#: includes/feeds/class-y4ym-get-unit.php:179
+#: includes/feeds/class-y4ym-get-unit.php:177
 msgid "A variation product has more than 256 variations"
 msgstr "Вариативный товар имеет более 256 вариаций"
 
-#: includes/feeds/class-y4ym-get-unit.php:270
+#: includes/feeds/class-y4ym-get-unit.php:268
 msgid "The data could not be received. The cache usage ban is enabled"
 msgstr "Данные не удалось получить. Запрет на использование кэша включен"
 
-#: includes/feeds/class-y4ym-get-unit.php:293
+#: includes/feeds/class-y4ym-get-unit.php:291
 msgid "Error when receiving data from the CACHE file"
 msgstr "Ошибка при получении данных из КЭШ файла"
+
+#: includes/feeds/class-yfym-feed-updater.php:58
+msgid "Creating a cache file is not required for this type"
+msgstr "Для этого типа файлов создание файла кэша не требуется"
+
+#: includes/feeds/class-yfym-feed-updater.php:103
+msgid "Starting a quick feed build"
+msgstr "Начинаем быструю сборку фида"
+
+#: includes/feeds/class-yfym-feed-updater.php:169
+msgid ""
+"After changing the stock product the task of creating the feed has been "
+"queued for completion"
+msgstr ""
+"После изменения остатков товара задача по созданию фида была поставлена в "
+"очередь на выполнение"
 
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:122
 msgid "The product has no categories"
@@ -2443,8 +2585,8 @@ msgstr "У товара нет описания"
 msgid "Product has no images"
 msgstr "Товар не имеет изображений"
 
-#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:77
-#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-price.php:80
+#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:78
+#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-price.php:81
 msgid "The product has no price"
 msgstr "Товар не имеет цены"
 
@@ -2468,100 +2610,100 @@ msgstr "Лицензионные данные были обновлены"
 msgid "Refresh this page"
 msgstr "Обновите эту страницу"
 
-#: includes/updates/class-y4ym-plugin-upd.php:167
+#: includes/updates/class-y4ym-plugin-upd.php:168
 msgid "License is active"
 msgstr "Лицензия активна"
 
-#: includes/updates/class-y4ym-plugin-upd.php:171
-#: includes/updates/class-y4ym-plugin-upd.php:218
+#: includes/updates/class-y4ym-plugin-upd.php:174
+#: includes/updates/class-y4ym-plugin-upd.php:229
 msgid "License expired"
 msgstr "Лицензия истекла"
 
-#: includes/updates/class-y4ym-plugin-upd.php:175
-#: includes/updates/class-y4ym-plugin-upd.php:186
-#: includes/updates/class-y4ym-plugin-upd.php:233
-#: includes/updates/class-y4ym-plugin-upd.php:261
+#: includes/updates/class-y4ym-plugin-upd.php:180
+#: includes/updates/class-y4ym-plugin-upd.php:195
+#: includes/updates/class-y4ym-plugin-upd.php:247
+#: includes/updates/class-y4ym-plugin-upd.php:281
 msgid "License data is invalid"
 msgstr "Данные лицензии недействительны"
 
-#: includes/updates/class-y4ym-plugin-upd.php:180
-#: includes/updates/class-y4ym-plugin-upd.php:247
+#: includes/updates/class-y4ym-plugin-upd.php:187
+#: includes/updates/class-y4ym-plugin-upd.php:264
 msgid ""
 "This license cannot be used on this site. The package limit has been exceeded"
 msgstr ""
 "Эта лицензия не может быть использована на этом сайте. Превышен лимит пакета"
 
-#: includes/updates/class-y4ym-plugin-upd.php:219
-#: includes/updates/class-y4ym-plugin-upd.php:291
+#: includes/updates/class-y4ym-plugin-upd.php:230
+#: includes/updates/class-y4ym-plugin-upd.php:313
 msgid "Please"
 msgstr "Пожалуйста"
 
-#: includes/updates/class-y4ym-plugin-upd.php:221
-#: includes/updates/class-y4ym-plugin-upd.php:293
+#: includes/updates/class-y4ym-plugin-upd.php:232
+#: includes/updates/class-y4ym-plugin-upd.php:315
 msgid "purchase a new license"
 msgstr "приобретите новую лицензию"
 
-#: includes/updates/class-y4ym-plugin-upd.php:222
-#: includes/updates/class-y4ym-plugin-upd.php:294
+#: includes/updates/class-y4ym-plugin-upd.php:233
+#: includes/updates/class-y4ym-plugin-upd.php:316
 msgid "to get a discount, use this promo code"
 msgstr "чтобы получить скидку, используйте этот промо-код"
 
-#: includes/updates/class-y4ym-plugin-upd.php:224
-#: includes/updates/class-y4ym-plugin-upd.php:296
+#: includes/updates/class-y4ym-plugin-upd.php:235
+#: includes/updates/class-y4ym-plugin-upd.php:318
 msgid "If you have already done this"
 msgstr "Если вы уже сделали это"
 
-#: includes/updates/class-y4ym-plugin-upd.php:226
-#: includes/updates/class-y4ym-plugin-upd.php:297
+#: includes/updates/class-y4ym-plugin-upd.php:237
+#: includes/updates/class-y4ym-plugin-upd.php:319
 msgid "enter the new license information here"
 msgstr "введите здесь информацию о новой лицензии"
 
-#: includes/updates/class-y4ym-plugin-upd.php:234
-#: includes/updates/class-y4ym-plugin-upd.php:262
+#: includes/updates/class-y4ym-plugin-upd.php:248
+#: includes/updates/class-y4ym-plugin-upd.php:282
 msgid "version features do not work and you can not install updates"
 msgstr "версии не работают, и вы не можете устанавливать обновления"
 
-#: includes/updates/class-y4ym-plugin-upd.php:235
-#: includes/updates/class-y4ym-plugin-upd.php:250
-#: includes/updates/class-y4ym-plugin-upd.php:263
+#: includes/updates/class-y4ym-plugin-upd.php:249
+#: includes/updates/class-y4ym-plugin-upd.php:267
+#: includes/updates/class-y4ym-plugin-upd.php:283
 msgid "Enter your license information"
 msgstr "Введите информацию о лицензии"
 
-#: includes/updates/class-y4ym-plugin-upd.php:236
-#: includes/updates/class-y4ym-plugin-upd.php:251
-#: includes/updates/class-y4ym-plugin-upd.php:264
+#: includes/updates/class-y4ym-plugin-upd.php:250
+#: includes/updates/class-y4ym-plugin-upd.php:268
+#: includes/updates/class-y4ym-plugin-upd.php:284
 msgid "or"
 msgstr "или"
 
-#: includes/updates/class-y4ym-plugin-upd.php:238
-#: includes/updates/class-y4ym-plugin-upd.php:253
-#: includes/updates/class-y4ym-plugin-upd.php:266
+#: includes/updates/class-y4ym-plugin-upd.php:252
+#: includes/updates/class-y4ym-plugin-upd.php:270
+#: includes/updates/class-y4ym-plugin-upd.php:286
 msgid "purchase a new one"
 msgstr "приобретите новую"
 
-#: includes/updates/class-y4ym-plugin-upd.php:284
+#: includes/updates/class-y4ym-plugin-upd.php:306
 msgid "License expires in"
 msgstr "Лицензия истекает через"
 
-#: includes/updates/class-y4ym-plugin-upd.php:286
+#: includes/updates/class-y4ym-plugin-upd.php:308
 msgid "day"
 msgstr "день"
 
-#: includes/updates/class-y4ym-plugin-upd.php:287
+#: includes/updates/class-y4ym-plugin-upd.php:309
 msgctxt "2 days"
 msgid "days"
 msgstr "дня"
 
-#: includes/updates/class-y4ym-plugin-upd.php:288
+#: includes/updates/class-y4ym-plugin-upd.php:310
 msgctxt "5 days"
 msgid "days"
 msgstr "дней"
 
-#: includes/updates/class-y4ym-plugin-upd.php:563
+#: includes/updates/class-y4ym-plugin-upd.php:586
 msgid "Error checking for updates"
 msgstr "Проверка обновлений на наличие ошибок"
 
-#: includes/updates/class-y4ym-plugin-upd.php:602
+#: includes/updates/class-y4ym-plugin-upd.php:625
 msgid "Error when requesting information about the plugin"
 msgstr "Ошибка при запросе информации о плагине"
 
@@ -2569,19 +2711,19 @@ msgstr "Ошибка при запросе информации о плагин�
 msgid "The sandbox is working. The result will appear below"
 msgstr "Песочница работает. Результат появится ниже"
 
-#: sandbox.php:27
+#: sandbox.php:30
 msgid "The sandbox is working correctly"
 msgstr "Песочница работает правильно"
 
-#: sandbox.php:28
+#: sandbox.php:31
 msgid "The execution time of the test script was"
 msgstr "Время выполнения тестового скрипта составило"
 
-#: sandbox.php:30
+#: sandbox.php:33
 msgid "seconds"
 msgstr "секунд"
 
-#: sandbox.php:34
+#: sandbox.php:37
 msgid "The sandbox is not active. To activate, edit the file"
 msgstr "Песочница не активна. Чтобы активировать ее, отредактируйте файл"
 
@@ -3217,9 +3359,6 @@ msgstr ""
 #~ msgid "If this plugin useful to you, please support the project one way"
 #~ msgstr "Если этот плагин полезен вам, пожалуйста, поддержите проект"
 
-#~ msgid "Leave a comment on the plugin page"
-#~ msgstr "Оставьте комментарий на странице плагина"
-
 #~ msgid "Support the project financially"
 #~ msgstr "Поддержите проект деньгами"
 
@@ -3491,9 +3630,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Элементы, расположенные в этом блоке, важны при создании YML-фида для "
 #~ "одних моделей, но не важны или даже запрещены для других"
-
-#~ msgid "Use only in CDEK feed"
-#~ msgstr "Используйте только для фида СДЭК"
 
 #~ msgid "Do not use it if you create YML-feed for Yandex Market"
 #~ msgstr "Не используйте его, если вы создаёте YML-фид для Яндекс Маркета"

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.21 (18-09-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -105,7 +105,7 @@ class Y4YM_Generation_XML {
 		$r = new Y4YM_Write_File( $result_xml, $feed_tmp_full_file_name, $this->get_feed_id() );
 		$result = $r->get_result();
 		if ( false === $result ) {
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s. (%3$s); %4$s: %5$s; %6$s: %7$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s. (%3$s); %4$s: %5$s; %6$s: %7$s',
 				$this->get_feed_id(),
 				__( 'An error occurred when writing the temporary feed file', 'yml-for-yandex-market' ),
 				$feed_tmp_full_file_name,
@@ -150,7 +150,7 @@ class Y4YM_Generation_XML {
 			case -1:
 
 				// сборка завершена
-				new Y4YM_Error_Log( sprintf( 'FEED #%1$s; `status_sborki` = -1. %2$s; %3$s: %4$s; %5$s: %6$s',
+				Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; `status_sborki` = -1. %2$s; %3$s: %4$s; %5$s: %6$s',
 					$this->get_feed_id(),
 					__( 'Just in case, we disable the CRON task', 'yml-for-yandex-market' ),
 					__( 'File', 'yml-for-yandex-market' ),
@@ -196,7 +196,7 @@ class Y4YM_Generation_XML {
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				new Y4YM_Error_Log( sprintf( 'FEED #%1$s; INFO: `status_sborki` = 1. %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
+				Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; INFO: `status_sborki` = 1. %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
 					$this->get_feed_id(),
 					__( 'We started creating a feed', 'yml-for-yandex-market' ),
 					$date_sborki_start,
@@ -227,7 +227,7 @@ class Y4YM_Generation_XML {
 				$r = new Y4YM_Write_File( $result_xml, $feed_tmp_full_file_name, $this->get_feed_id() );
 				$result = $r->get_result();
 				if ( false === $result ) {
-					new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`. %4$s; %5$s: %6$s; %7$s: %8$s',
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`. %4$s; %5$s: %6$s; %7$s: %8$s',
 						$this->get_feed_id(),
 						__( 'An error occurred while creating an empty temporary feed file', 'yml-for-yandex-market' ),
 						$feed_tmp_full_file_name,
@@ -245,7 +245,18 @@ class Y4YM_Generation_XML {
 				$result_xml = $this->get_feed_header();
 				$r = new Y4YM_Write_File( $result_xml, '-1.tmp', $this->get_feed_id() );
 				if ( false === $result ) {
-					// TODO: Добавить проверку на успешную запись временно файла, как выше.
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`. %4$s; %5$s: %6$s; %7$s: %8$s',
+						$this->get_feed_id(),
+						__( 'An error occurred while creating a temporary feed file', 'yml-for-yandex-market' ),
+						'-1.tmp',
+						__( 'The creation of the feed has been stopped', 'yml-for-yandex-market' ),
+						__( 'File', 'yml-for-yandex-market' ),
+						'class-y4ym-generation-xml.php',
+						__( 'Line', 'yml-for-yandex-market' ),
+						__LINE__
+					) );
+					$this->stop();
+					return;
 				}
 
 				// создаём временный файл с id-шниками товаров, попавших в фид
@@ -253,15 +264,28 @@ class Y4YM_Generation_XML {
 					'-1;;;' . PHP_EOL,
 					sprintf( 'ids-in-xml-feed-%s.tmp', $this->get_feed_id() ),
 					$this->get_feed_id(),
-					'create'
+					'create',
+					Y4YM_PLUGIN_UPLOADS_DIR_PATH,
+					'no_trim' // ! сохраняем символ переноса на другую строку
 				);
 				if ( false === $result ) {
-					// TODO: Добавить проверку на успешную запись временно файла со списком id-шников, как выше.
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`. %4$s; %5$s: %6$s; %7$s: %8$s',
+						$this->get_feed_id(),
+						__( 'An error occurred while creating an empty temporary feed file', 'yml-for-yandex-market' ),
+						sprintf( 'ids-in-xml-feed-%s.tmp', $this->get_feed_id() ),
+						__( 'The creation of the feed has been stopped', 'yml-for-yandex-market' ),
+						__( 'File', 'yml-for-yandex-market' ),
+						'class-y4ym-generation-xml.php',
+						__( 'Line', 'yml-for-yandex-market' ),
+						__LINE__
+					) );
+					$this->stop();
+					return;
 				}
 
-				$planning_result = Y4YM_Admin::cron_sborki_task_planning( $this->get_feed_id() );
+				$planning_result = Y4YM_Cron_Manager::cron_sborki_task_planning( $this->get_feed_id() );
 				if ( false === $planning_result ) {
-					new Y4YM_Error_Log( sprintf(
+					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; ERROR: %2$s `y4ym_cron_sborki` %3$s 1; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'Failed to schedule a CRON task', 'yml-for-yandex-market' ),
@@ -283,7 +307,7 @@ class Y4YM_Generation_XML {
 					'y4ym_last_element_feed_' . $this->get_feed_id(),
 					0
 				);
-				new Y4YM_Error_Log(
+				Y4YM_Error_Log::record(
 					sprintf( 'FEED #%1$s; INFO: %2$s (status_sborki = %3$s, last_element_feed = %4$s); %5$s: %6$s; %7$s: %8$s',
 						$this->get_feed_id(),
 						__( 'We continue to create the feed', 'yml-for-yandex-market' ),
@@ -297,9 +321,9 @@ class Y4YM_Generation_XML {
 				);
 
 				// сразу запланируем задачу через 32 секунды
-				$planning_result = Y4YM_Admin::cron_sborki_task_planning( $this->get_feed_id(), 32 );
+				$planning_result = Y4YM_Cron_Manager::cron_sborki_task_planning( $this->get_feed_id(), 32 );
 				if ( false === $planning_result ) {
-					new Y4YM_Error_Log( sprintf(
+					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; ERROR: %2$s `y4ym_cron_sborki` %3$s 2; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'Failed to schedule a CRON task', 'yml-for-yandex-market' ),
@@ -320,7 +344,7 @@ class Y4YM_Generation_XML {
 				);
 				$args = apply_filters(
 					'y4ym_f_query_args',
-					[ 
+					[
 						'post_type' => 'product',
 						'post_status' => 'publish',
 						'posts_per_page' => $step_export,
@@ -331,16 +355,16 @@ class Y4YM_Generation_XML {
 					],
 					$this->get_feed_id()
 				);
-				new Y4YM_Error_Log( sprintf(
+				Y4YM_Error_Log::record( sprintf(
 					'FEED #%1$s; %2$s =>',
 					$this->get_feed_id(),
 					__( 'Sending a request to the database', 'yml-for-yandex-market' )
 				) );
-				new Y4YM_Error_Log( $args );
-				new Y4YM_Error_Log( json_encode( $args ) );
+				Y4YM_Error_Log::record( $args );
+				Y4YM_Error_Log::record( json_encode( $args ) );
 				$products_query = new \WP_Query( $args );
 				$query_time = (int) time() - $time_start;
-				new Y4YM_Error_Log( sprintf(
+				Y4YM_Error_Log::record( sprintf(
 					'FEED #%1$s; %2$s: %3$s; %4$s: %5$s; %6$s: %7$s',
 					$this->get_feed_id(),
 					__( 'The query time to the database was', 'yml-for-yandex-market' ),
@@ -357,11 +381,11 @@ class Y4YM_Generation_XML {
 					'y4ym'
 				);
 				if ( $script_execution_time == 0 ) {
-					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро эту проверку можно будет удалить
+					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро в которых есть common_option_get эту проверку можно будет удалить
 					$script_execution_time = 26;
 				}
 				if ( $query_time > $script_execution_time ) {
-					new Y4YM_Error_Log( sprintf(
+					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; WARNING: %2$s: %3$s > %4$s. %5$s "%6$s" %7$s %8$s %9$s; %10$s: %11$s; %12$s: %13$s',
 						$this->get_feed_id(),
 						__( 'The query time to the database was', 'yml-for-yandex-market' ),
@@ -382,7 +406,7 @@ class Y4YM_Generation_XML {
 					) );
 				}
 				if ( $products_query->have_posts() ) {
-					new Y4YM_Error_Log( sprintf(
+					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; %2$s: %3$s; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'The number of records returned by the server', 'yml-for-yandex-market' ),
@@ -406,7 +430,7 @@ class Y4YM_Generation_XML {
 					);
 					for ( $i = 0; $i < count( $products_query->posts ); $i++ ) {
 						$product_id = $products_query->posts[ $i ];
-						new Y4YM_Error_Log( sprintf(
+						Y4YM_Error_Log::record( sprintf(
 							'FEED #%1$s; INFO: %2$s ID = %3$s; %4$s: %5$s; %6$s: %7$s',
 							$this->get_feed_id(),
 							__( 'Getting started with the product', 'yml-for-yandex-market' ),
@@ -446,7 +470,7 @@ class Y4YM_Generation_XML {
 						} else {
 							$last_element_feed++;
 						}
-						//new Y4YM_Error_Log(
+						//Y4YM_Error_Log::record(
 						//	'$product_id = ' . $product_id
 						//);
 						// usleep( 200000 ); // притормозим на 0,2 секунды
@@ -457,7 +481,7 @@ class Y4YM_Generation_XML {
 						'no'
 					);
 				} else {
-					new Y4YM_Error_Log( sprintf(
+					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; %2$s: 0; %3$s: %4$s; %5$s: %6$s',
 						$this->get_feed_id(),
 						__( 'The number of records returned by the server', 'yml-for-yandex-market' ),
@@ -473,14 +497,14 @@ class Y4YM_Generation_XML {
 			case 3:
 
 				// сразу запланируем задачу через 32 секунды
-				$planning_result = Y4YM_Admin::cron_sborki_task_planning( $this->get_feed_id(), 32 );
+				$planning_result = Y4YM_Cron_Manager::cron_sborki_task_planning( $this->get_feed_id(), 32 );
 
 				// постов нет, пишем концовку файла
 				$last_element_feed = (int) univ_option_get(
 					'y4ym_last_element_feed_' . $this->get_feed_id(),
 					0
 				);
-				new Y4YM_Error_Log(
+				Y4YM_Error_Log::record(
 					sprintf( 'FEED #%1$s; INFO: %2$s (status_sborki = %3$s, last_element_feed = %4$s); %5$s: %6$s; %7$s: %8$s',
 						$this->get_feed_id(),
 						__( 'We continue to create the feed', 'yml-for-yandex-market' ),
@@ -507,7 +531,7 @@ class Y4YM_Generation_XML {
 				$r = new Y4YM_Write_File( $result_xml, $feed_tmp_full_file_name, $this->get_feed_id() );
 				$result = $r->get_result();
 				if ( false === $result ) {
-					new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'In this step, an error occurred while creating a temporary feed file', 'yml-for-yandex-market' ),
 						__( 'The creation of the feed has been stopped', 'yml-for-yandex-market' ),
@@ -529,7 +553,7 @@ class Y4YM_Generation_XML {
 				break;
 			case 4:
 
-				new Y4YM_Error_Log(
+				Y4YM_Error_Log::record(
 					sprintf( 'FEED #%1$s; INFO: %2$s (status_sborki = %3$s); %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'Checking whether the feed needs to be archived', 'yml-for-yandex-market' ),
@@ -610,7 +634,8 @@ class Y4YM_Generation_XML {
 				'y4ym_company_name',
 				'',
 				$this->get_feed_id(),
-				'y4ym' )
+				'y4ym'
+			)
 		);
 		if ( ! empty( $company_name ) ) {
 			$result_xml .= new Y4YM_Get_Paired_Tag( 'company', esc_html( $company_name ) );
@@ -621,10 +646,11 @@ class Y4YM_Generation_XML {
 		$result_xml .= new Y4YM_Get_Paired_Tag( 'version', get_bloginfo( 'version' ) );
 		$result_xml .= $this->get_currencies();
 		$result_xml .= $this->get_categories();
+		$result_xml .= $this->get_delivery_pickup();
 		$result_xml = apply_filters(
 			'y4ym_f_before_offers',
 			$result_xml,
-			[ 
+			[
 				'yml_rules' => $yml_rules
 			],
 			$this->get_feed_id()
@@ -689,7 +715,7 @@ class Y4YM_Generation_XML {
 			$all_parent_flag,
 			$this->get_feed_id()
 		);
-		$args_terms_arr = [ 
+		$args_terms_arr = [
 			'hide_empty' => false,
 			'taxonomy' => 'product_cat'
 		];
@@ -706,7 +732,7 @@ class Y4YM_Generation_XML {
 				$skip_flag_category = apply_filters(
 					'y4ym_f_skip_flag_category',
 					$skip_flag_category,
-					[ 
+					[
 						'terms' => $terms,
 						'term' => $term
 					],
@@ -717,13 +743,13 @@ class Y4YM_Generation_XML {
 				}
 				if ( $term->parent == 0 || true === $all_parent_flag ) {
 					// у категории НЕТ родительской категории или настройками задано делать все родительскими
-					$categories_attr_arr = [ 
+					$categories_attr_arr = [
 						'id' => $term->term_id
 					];
 					$categories_attr_arr = apply_filters(
 						'y4ym_f_categories_attr_arr',
 						$categories_attr_arr,
-						[ 
+						[
 							'terms' => $terms,
 							'term' => $term
 						],
@@ -736,14 +762,14 @@ class Y4YM_Generation_XML {
 					);
 				} else {
 					// у категории ЕСТЬ родительская категория
-					$categories_attr_arr = [ 
+					$categories_attr_arr = [
 						'id' => $term->term_id,
 						'parentId' => $term->parent
 					];
 					$categories_attr_arr = apply_filters(
 						'y4ym_f_categories_attr_arr',
 						$categories_attr_arr,
-						[ 
+						[
 							'terms' => $terms,
 							'term' => $term
 						],
@@ -778,6 +804,114 @@ class Y4YM_Generation_XML {
 	}
 
 	/**
+	 * Get tags `delivery-options` and `pickup-options`.
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	protected function get_delivery_pickup( $result_xml = '' ) {
+
+		$flag = false;
+		$rules_name = common_option_get(
+			'y4ym_yml_rules',
+			false,
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		$rules_obj = new Y4YM_Rules_List();
+		$rules_arr = $rules_obj->get_rules_arr();
+		if ( isset( $rules_arr[ $rules_name ] ) ) {
+			for ( $i = 0; $i < count( $rules_arr[ $rules_name ] ); $i++ ) {
+				if ( $rules_arr[ $rules_name ][ $i ] === 'delivery_options' ) {
+					$flag = true;
+					break;
+				}
+			}
+		}
+		if ( false === $flag ) {
+			return $result_xml;
+		}
+
+		$postfix_arr = [ '', '2' ];
+		for ( $i = 0; $i < count( $postfix_arr ); $i++ ) {
+			$postfix = $postfix_arr[ $i ];
+			$delivery_options = common_option_get(
+				'y4ym_delivery_options' . $postfix,
+				'disabled',
+				$this->get_feed_id(),
+				'y4ym'
+			);
+			if ( $delivery_options === 'enabled' ) {
+				$cost = common_option_get(
+					'y4ym_delivery_cost' . $postfix,
+					'0',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				$days = common_option_get(
+					'y4ym_delivery_days' . $postfix,
+					'1',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				$order_before = common_option_get(
+					'y4ym_order_before' . $postfix,
+					'',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+
+				$attr_arr = [ 'cost' => $cost, 'days' => $days ];
+				if ( ! empty( $order_before ) ) {
+					$attr_arr['order-before'] = $order_before;
+				}
+				$result_xml .= new Y4YM_Get_Open_Tag( 'delivery-options' );
+				$result_xml .= new Y4YM_Get_Open_Tag( 'option', $attr_arr, true );
+				$result_xml .= new Y4YM_Get_Closed_Tag( 'delivery-options' );
+			}
+		}
+
+		$pickup_options = common_option_get(
+			'y4ym_pickup_options',
+			'disabled',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $pickup_options === 'enabled' ) {
+			$cost = common_option_get(
+				'y4ym_pickup_cost',
+				'0',
+				$this->get_feed_id(),
+				'y4ym'
+			);
+			$days = common_option_get(
+				'y4ym_pickup_days',
+				'1',
+				$this->get_feed_id(),
+				'y4ym'
+			);
+			$order_before = common_option_get(
+				'y4ym_pickup_order_before',
+				'',
+				$this->get_feed_id(),
+				'y4ym'
+			);
+
+			$attr_arr = [ 'cost' => $cost, 'days' => $days ];
+			if ( ! empty( $order_before ) ) {
+				$attr_arr['order-before'] = $order_before;
+			}
+			$result_xml .= new Y4YM_Get_Open_Tag( 'pickup-options' );
+			$result_xml .= new Y4YM_Get_Open_Tag( 'option', $attr_arr, true );
+			$result_xml .= new Y4YM_Get_Closed_Tag( 'pickup-options' );
+		}
+
+		return $result_xml;
+
+	}
+
+	/**
 	 * Get body of XML feed. All tags between the `offers` tag.
 	 * 
 	 * @param string $result_xml
@@ -793,7 +927,7 @@ class Y4YM_Generation_XML {
 		);
 		$file_content = file_get_contents( $ids_in_xml_path );
 		if ( false === $file_content || $file_content == '' ) {
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s (path = %3$s); %4$s: %5$s; %6$s: %7$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s (path = %3$s); %4$s: %5$s; %6$s: %7$s',
 				$this->get_feed_id(),
 				__( 'The list of product IDs in the feed is empty or the temporary file has been deleted', 'yml-for-yandex-market' ),
 				$ids_in_xml_path,
@@ -816,7 +950,7 @@ class Y4YM_Generation_XML {
 
 				$offer_xml = @file_get_contents( $filename );
 				if ( false === $offer_xml ) {
-					new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s}; %4$s: %5$s; %6$s: %7$s',
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s}; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( 'Error reading the file', 'yml-for-yandex-market' ),
 						$filename,
@@ -904,7 +1038,7 @@ class Y4YM_Generation_XML {
 					$error->message
 				);
 			}
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s [%4$s]}; %5$s: %6$s; %7$s: %8$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s [%4$s]}; %5$s: %6$s; %7$s: %8$s',
 				$this->get_feed_id(),
 				__( 'Error reading the file', 'yml-for-yandex-market' ),
 				$e->getMessage(),
@@ -935,7 +1069,7 @@ class Y4YM_Generation_XML {
 		$result_xml = '';
 		$result_xml .= $this->get_feed_body( $result_xml );
 		if ( empty( $result_xml ) ) {
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s (%3$s); %4$s: %5$s; %6$s: %7$s',
 				$this->get_feed_id(),
 				__( 'Data loss when writing a feed file', 'yml-for-yandex-market' ),
 				$tracing,
@@ -983,8 +1117,9 @@ class Y4YM_Generation_XML {
 	 * @return string
 	 */
 	public function get_collections( $result_xml = '' ) {
+
 		$collections_yml = '';
-		$args_terms_arr = [ 
+		$args_terms_arr = [
 			'hide_empty' => false,
 			'taxonomy' => 'yfym_collection'
 		];
@@ -1001,7 +1136,7 @@ class Y4YM_Generation_XML {
 				$skip_flag_collection = apply_filters(
 					'y4ym_f_skip_flag_collection',
 					$skip_flag_collection,
-					[ 
+					[
 						'terms' => $terms,
 						'term' => $term
 					],
@@ -1011,13 +1146,13 @@ class Y4YM_Generation_XML {
 					continue;
 				}
 				// у категории НЕТ родительской категории или настройками задано делать все родительскими
-				$collection_attr_arr = [ 
+				$collection_attr_arr = [
 					'id' => $term->term_id
 				];
 				$collection_attr_arr = apply_filters(
 					'y4ym_f_collection_attr_arr',
 					$collection_attr_arr,
-					[ 
+					[
 						'terms' => $terms,
 						'term' => $term
 					],
@@ -1038,13 +1173,13 @@ class Y4YM_Generation_XML {
 					$collection_num_product_picture = 0;
 				}
 				if ( $collection_num_product_picture > 0 ) {
-					$args = [ 
+					$args = [
 						'post_type' => 'product',
 						'post_status' => 'publish',
 						'posts_per_page' => $collection_num_product_picture,
-						'tax_query' => [ 
+						'tax_query' => [
 							'relation' => 'AND',
-							[ 
+							[
 								'taxonomy' => 'yfym_collection',
 								'field' => 'id',
 								'terms' => $term->term_id,
@@ -1247,11 +1382,25 @@ class Y4YM_Generation_XML {
 			'y4ym'
 		);
 		if ( ! empty( $feed_old_path ) ) {
-			// TODO: Удалить старый файл фида $feed_old_path
+			// Удаляем старый файл фида $feed_old_path
+			if ( file_exists( $feed_old_path ) ) {
+				$res = unlink( $feed_old_path );
+				if ( true !== $res ) {
+					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`; %4$s: %5$s; %6$s: %7$s',
+						$this->get_feed_id(),
+						__( "Couldn't delete the old feed file", "yml-for-yandex-market" ),
+						$feed_old_path,
+						__( 'File', 'yml-for-yandex-market' ),
+						'class-y4ym-generation-xml.php',
+						__( 'Line', 'yml-for-yandex-market' ),
+						__LINE__
+					) );
+				}
+			}
 		}
 
 		if ( false === rename( $feed_tmp_full_file_name, $feed_new_path ) ) {
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; ERROR: %2$s %3$s %4$s %5$s; %6$s: %7$s; %8$s: %9$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s %3$s %4$s %5$s; %6$s: %7$s; %8$s: %9$s',
 				$this->get_feed_id(),
 				__( "I can't rename the feed file from", "yml-for-yandex-market" ),
 				$feed_tmp_full_file_name,
@@ -1278,7 +1427,7 @@ class Y4YM_Generation_XML {
 				$this->get_feed_id(),
 				'y4ym'
 			);
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s); %5$s: %6$s; %7$s: %8$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s); %5$s: %6$s; %7$s: %8$s',
 				$this->get_feed_id(),
 				__( "The temporary feed file has been successfully renamed to the main one", "yml-for-yandex-market" ),
 				$feed_tmp_full_file_name,
@@ -1307,7 +1456,7 @@ class Y4YM_Generation_XML {
 			'y4ym'
 		);
 		if ( $archive_to_zip === 'enabled' ) {
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; %2$s; %3$s: %4$s; %5$s: %6$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; %2$s; %3$s: %4$s; %5$s: %6$s',
 				$this->get_feed_id(),
 				__( 'Starting archiving the feed', 'yml-for-yandex-market' ),
 				__( 'File', 'yml-for-yandex-market' ),
@@ -1331,7 +1480,7 @@ class Y4YM_Generation_XML {
 				$feed_file_meta_obj->get_feed_full_filename( true )
 			);
 			$zip->close();
-			new Y4YM_Error_Log( sprintf( 'FEED #%1$s; SUCCESS: %2$s; %3$s: %4$s; %5$s: %6$s',
+			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; SUCCESS: %2$s; %3$s: %4$s; %5$s: %6$s',
 				$this->get_feed_id(),
 				__( 'The archiving was successful', 'yml-for-yandex-market' ),
 				__( 'File', 'yml-for-yandex-market' ),

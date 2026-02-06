@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.1.0 (27-01-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -84,7 +84,7 @@ trait Y4YM_T_Variable_Get_Vendor {
 				}
 			}
 		} else if ( ( is_plugin_active( 'woocommerce-brands/woocommerce-brands.php' ) )
-			&& ( $vendor === 'woocommerce_brands' ) ) {
+			&& ( $vendor === 'plugin_woocommerce_brands' ) ) {
 			$barnd_terms = get_the_terms( $this->get_product()->get_id(), 'product_brand' );
 			if ( $barnd_terms !== false ) {
 				foreach ( $barnd_terms as $barnd_term ) {
@@ -140,7 +140,7 @@ trait Y4YM_T_Variable_Get_Vendor {
 		$skip_vendor_reason = apply_filters(
 			'y4ym_f_variable_skip_vendor_reason',
 			$skip_vendor_reason,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer(),
 				'vendor_name' => $vendor_name
@@ -154,7 +154,7 @@ trait Y4YM_T_Variable_Get_Vendor {
 				$tag_value = htmlspecialchars( $vendor_name );
 			}
 		} else {
-			$this->add_skip_reason( [ 
+			$this->add_skip_reason( [
 				'reason' => $skip_vendor_reason,
 				'post_id' => $this->get_product()->get_id(),
 				'file' => 'trait-y4ym-t-variable-get-vendor.php',

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.9 (20-05-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -69,7 +69,7 @@ trait Y4YM_T_Simple_Get_Picture {
 			'disabled',
 			$this->get_feed_id(), 'y4ym'
 		);
-		if ( ( $no_default_png_products === 'enabled' ) ) {
+		if ( $no_default_png_products === 'enabled' ) {
 			// включён пропуск default.png из фида
 			if ( false !== strpos( $result_xml, 'default.' ) ) {
 				$result_xml = '';
@@ -79,7 +79,7 @@ trait Y4YM_T_Simple_Get_Picture {
 		$result_xml = apply_filters(
 			'y4ym_f_simple_tag_picture',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'size_pic' => $size_pic
 			],
@@ -94,7 +94,7 @@ trait Y4YM_T_Simple_Get_Picture {
 			'y4ym'
 		);
 		if ( ( $skip_products_without_pic === 'enabled' ) && ( empty( $result_xml ) ) ) {
-			$this->add_skip_reason( [ 
+			$this->add_skip_reason( [
 				'offer_id' => $this->get_product()->get_id(),
 				'reason' => __( 'Product has no images', 'yml-for-yandex-market' ),
 				'post_id' => $this->get_product()->get_id(),

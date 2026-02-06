@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/common
@@ -191,7 +191,7 @@ trait Y4YM_T_Common_Get_CatId {
 	 */
 	private function database_auto_boot( $site_category_id = null ) {
 
-		new Y4YM_Error_Log( sprintf(
+		Y4YM_Error_Log::record( sprintf(
 			'FEED #%1$s; WARNING: %2$s ID = %3$s get_the_terms = false. %4$s wp_get_post_terms; %5$s: %6$s; %7$s: %8$s',
 			$this->get_feed_id(),
 			__( 'For the product', 'yml-for-yandex-market' ),
@@ -207,7 +207,7 @@ trait Y4YM_T_Common_Get_CatId {
 		// wp_set_object_terms($this->get_product()->get_id(), $product_cats, 'product_cat');
 		if ( is_array( $product_cats ) && count( $product_cats ) ) {
 			$site_category_id = $product_cats[0];
-			new Y4YM_Error_Log( sprintf(
+			Y4YM_Error_Log::record( sprintf(
 				'FEED #%1$s; %2$s ID = %3$s. %4$s. wp_get_post_terms %5$s. $site_category_id = %6$s; %7$s: %8$s; %9$s: %10$s',
 				$this->get_feed_id(),
 				__( 'For the product', 'yml-for-yandex-market' ),

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -35,9 +35,10 @@ trait Y4YM_T_Simple_Get_Warranty_Days {
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<P2Y2M10D>P2Y2M10D</P2Y2M10D>`.
+	 * @return string Example: `<warranty-days>P2Y2M10D</warranty-days>`.
 	 */
 	public function get_warranty_days( $tag_name = 'warranty-days', $result_xml = '' ) {
+
 		$tag_value = '';
 
 		$y4ym_warranty_days = common_option_get(

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -28,7 +28,7 @@
 trait Y4YM_T_Simple_Get_Vendorcode {
 
 	/**
-	 * Get `vendorCode` tag. // TODO: Сделать поддержку нескольких кодов через запятую
+	 * Get `vendorCode` tag.
 	 * 
 	 * @see https://yandex.ru/support/marketplace/assortment/fields/index.html
 	 * 
@@ -49,15 +49,29 @@ trait Y4YM_T_Simple_Get_Vendorcode {
 			return $result_xml;
 		}
 		switch ( $vendorcode ) {
-			// disabled, sku, id
+			// disabled, post_meta
 			case "sku":
+
 				$tag_value = $this->get_product()->get_sku();
+
+				break;
+			case 'post_meta':
+
+				$vendorcode_post_meta_id = common_option_get(
+					'y4ym_vendorcode_post_meta',
+					'',
+					$this->get_feed_id(),
+					'y4ym'
+				);
+				$tag_value = $this->get_simple_product_post_meta( $vendorcode_post_meta_id );
+
 				break;
 			default:
+
 				$tag_value = apply_filters(
 					'y4ym_f_simple_tag_value_switch_barcode',
 					'',
-					[ 
+					[
 						'product' => $this->get_product(),
 						'switch_value' => $vendorcode
 					],

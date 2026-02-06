@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.8 (26-04-2025)
+ * @version    5.0.26 (24-12-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -57,7 +57,7 @@ trait Y4YM_T_Simple_Get_Price {
 		$tag_value = apply_filters(
 			'y4ym_f_simple_price',
 			$tag_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'product_category_id' => $this->get_feed_category_id()
 			],
@@ -70,10 +70,11 @@ trait Y4YM_T_Simple_Get_Price {
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		if ( $yml_rules !== 'all_elements' ) {
-			// если цены нет - пропускаем товар. Работает для всех правил кроме "Без правил"
+		$maybe_withiout_price_arr = [ 'yandex_direct', 'yandex_direct_free_from', 'yandex_direct_combined', 'all_elements' ];
+		if ( ! in_array( $yml_rules, $maybe_withiout_price_arr ) ) {
+			// если цены нет - пропускаем вариацию. Работает для всех правил кроме правил для Директа и "Без правил"
 			if ( $tag_value == 0 || empty( $tag_value ) ) {
-				$this->add_skip_reason( [ 
+				$this->add_skip_reason( [
 					'reason' => __( 'The product has no price', 'y4ym' ),
 					'post_id' => $this->get_product()->get_id(),
 					'file' => 'trait-y4ym-t-simple-get-price.php',
@@ -86,7 +87,7 @@ trait Y4YM_T_Simple_Get_Price {
 		$skip_price_reason = apply_filters(
 			'y4ym_f_simple_skip_price_reason',
 			false,
-			[ 
+			[
 				'tag_value' => $tag_value,
 				'product_category_id' => $this->get_feed_category_id(),
 				'product' => $this->get_product()
@@ -94,6 +95,7 @@ trait Y4YM_T_Simple_Get_Price {
 			$this->get_feed_id()
 		);
 		if ( false === $skip_price_reason ) {
+			$tag_value = number_format( (float) $tag_value, wc_get_price_decimals(), '.', '' );
 			$price_from = common_option_get(
 				'y4ym_price_from',
 				false,
@@ -113,7 +115,7 @@ trait Y4YM_T_Simple_Get_Price {
 				);
 			}
 		} else {
-			$this->add_skip_reason( [ 
+			$this->add_skip_reason( [
 				'reason' => $skip_price_reason,
 				'post_id' => $this->get_product()->get_id(),
 				'file' => 'trait-y4ym-t-simple-get-price.php',

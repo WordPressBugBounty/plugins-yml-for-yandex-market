@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.18 (31-07-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -35,8 +35,12 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Barcode;
 	use Y4YM_T_Simple_Get_Cargo_Types;
 	use Y4YM_T_Simple_Get_CategoryId;
+	use Y4YM_T_Simple_Get_Certificate;
 	use Y4YM_T_Simple_Get_Cofinance_Price;
 	use Y4YM_T_Simple_Get_CollectionId;
+	use Y4YM_T_Simple_Get_Comment_Life_Days;
+	use Y4YM_T_Simple_Get_Comment_Validity_Days;
+	use Y4YM_T_Simple_Get_Comment_Warranty;
 	use Y4YM_T_Simple_Get_Condition;
 	use Y4YM_T_Simple_Get_Consists;
 	use Y4YM_T_Simple_Get_Count;
@@ -79,6 +83,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Qty;
 	use Y4YM_T_Simple_Get_Quantity;
 	use Y4YM_T_Simple_Get_Sales_Notes;
+	use Y4YM_T_Simple_Get_Service_Life_Days;
 	use Y4YM_T_Simple_Get_Shipment_Options;
 	use Y4YM_T_Simple_Get_Shop_Sku;
 	use Y4YM_T_Simple_Get_Size;
@@ -95,6 +100,8 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Video;
 	use Y4YM_T_Simple_Get_Warranty_Days;
 	use Y4YM_T_Simple_Get_Weight;
+	use Y4YM_T_Simple_Get_Youlacategoryid;
+	use Y4YM_T_Simple_Get_Youlasubcategoryid;
 
 	/**
 	 * Generating the `offer` tag with all the contents.
@@ -157,6 +164,9 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 			case "flowwow": // Flowwow.com
 				$result_xml = $this->flowwow();
 				break;
+			case "youla":
+				$result_xml = $this->youla();
+				break;
 			default: // Нет правил (Для опытных пользователей)
 				$result_xml = $this->get_tags( $feed_yml_rules, $result_xml );
 		}
@@ -164,7 +174,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 		$result_xml = apply_filters(
 			'y4ym_f_append_simple_offer',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -175,7 +185,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 			$result_xml = apply_filters(
 				'y4ym_f_after_simple_offer',
 				$result_xml,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'feed_category_id' => $this->get_feed_category_id()
 				],
@@ -352,6 +362,22 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	}
 
 	/**
+	 * Youla.ru
+	 * 
+	 * @see https://cloud.mail.ru/public/rRMD/V66Ywbmy6?weblink=rRMD/V66Ywbmy6
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	private function youla( $result_xml = '' ) {
+
+		$result_xml .= $this->get_tags( 'youla', $result_xml );
+		return $result_xml;
+
+	}
+
+	/**
 	 * Нет правил (Для опытных пользователей).
 	 * 
 	 * @see 
@@ -498,7 +524,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 		$tag_value = apply_filters(
 			'y4ym_f_simple_tag_value_' . strtolower( $tag_name ),
 			$tag_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -509,7 +535,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 			$tag_name = apply_filters(
 				'y4ym_f_simple_tag_name_' . strtolower( $tag_name ),
 				$tag_name,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'feed_category_id' => $this->get_feed_category_id()
 				],
@@ -527,7 +553,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 		$result_xml = apply_filters(
 			'y4ym_f_simple_tag_' . strtolower( $tag_name ),
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],

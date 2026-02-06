@@ -352,3 +352,51 @@ if ( ! function_exists( 'y4ym_global_rest_woocommerce_currency' ) ) {
 
 	}
 }
+
+if ( ! function_exists( 'y4ym_remove_directory' ) ) {
+	/**
+	 * Remove non-empty directories.
+	 * 
+	 * @since 5.0.23 (15-11-2025)
+	 *
+	 * @param string $path
+	 *
+	 * @return bool
+	 */
+	function y4ym_remove_directory( $path ) {
+
+		global $wp_filesystem;
+
+		// Подключаем необходимые файлы
+		require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+
+		// Инициализация файловой системы
+		if ( ! is_object( $wp_filesystem ) ) {
+			WP_Filesystem();
+		}
+
+		try {
+			// Проверяем существование каталога
+			if ( $wp_filesystem->exists( $path ) ) {
+				// Удаляем каталог рекурсивно
+				$result = $wp_filesystem->delete( $path, true );
+
+				if ( false === $result ) {
+					throw new Exception(
+						__( 'Error when deleting a folder', 'yml-for-yandex-market' )
+					);
+				}
+
+				return true;
+			} else {
+				throw new Exception( __( 'The catalog does not exist', 'yml-for-yandex-market' ) );
+			}
+		} catch (Exception $e) {
+			error_log(
+				__( 'Error when deleting a folder', 'yml-for-yandex-market' ) . $e->getMessage()
+			);
+			return false;
+		}
+
+	}
+}

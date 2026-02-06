@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -34,15 +34,20 @@ trait Y4YM_T_Simple_Get_Keywords {
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<keywords>солов</keywords>`.
+	 * @return string Example: `<keywords>солово_1, солово_2... солово N</keywords>`.
 	 */
 	public function get_keywords( $tag_name = 'keywords', $result_xml = '' ) {
 
-		$tag_value = '';
-
-		// TODO: Сделать источник тегов
-
-		$result_xml = $this->get_simple_tag( $tag_name, $tag_value );
+		$keywords = common_option_get(
+			'y4ym_keywords',
+			false,
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $keywords === 'enabled' ) {
+			$tag_value = $this->get_simple_product_post_meta( 'keywords' );
+			$result_xml = $this->get_simple_tag( $tag_name, $tag_value );
+		}
 		return $result_xml;
 
 	}

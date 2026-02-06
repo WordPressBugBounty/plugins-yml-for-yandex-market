@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.9 (20-05-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -69,7 +69,7 @@ trait Y4YM_T_Variable_Get_Picture {
 			'disabled',
 			$this->get_feed_id(), 'y4ym'
 		);
-		if ( ( $no_default_png_products === 'enabled' ) ) {
+		if ( $no_default_png_products === 'enabled' ) {
 			// включён пропуск default.png из фида
 			if ( false !== strpos( $result_xml, 'default.' ) ) {
 				$result_xml = '';

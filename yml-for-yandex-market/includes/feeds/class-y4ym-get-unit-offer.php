@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -190,7 +190,7 @@ abstract class Y4YM_Get_Unit_Offer {
 			);
 		}
 		$this->set_skip_reasons_arr( $reason_string );
-		new Y4YM_Error_Log( $reason_string );
+		Y4YM_Error_Log::record( $reason_string );
 
 	}
 

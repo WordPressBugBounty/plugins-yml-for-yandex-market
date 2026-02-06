@@ -8,7 +8,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.14 (17-06-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -50,6 +50,15 @@ class Y4YM {
 	protected $plugin_name;
 
 	/**
+	 * Container for core service objects.
+	 *
+	 * @since 5.1.0
+	 * @access protected
+	 * @var array $services Holds instances of core functionality objects.
+	 */
+	protected $services = [];
+
+	/**
 	 * The current version of the plugin.
 	 *
 	 * @since 0.1.0
@@ -68,6 +77,7 @@ class Y4YM {
 	 * @since 0.1.0
 	 */
 	public function __construct() {
+
 		if ( defined( 'Y4YM_PLUGIN_VERSION' ) ) {
 			$this->version = Y4YM_PLUGIN_VERSION;
 		} else {
@@ -78,7 +88,8 @@ class Y4YM {
 		$this->load_dependencies();
 		$this->set_locale();
 		$this->define_admin_hooks();
-		$this->define_public_hooks();
+		// ! $this->define_public_hooks(); - отключил
+		$this->define_core_hooks();
 
 	}
 
@@ -104,17 +115,33 @@ class Y4YM {
 	private function load_dependencies() {
 
 		/**
+		 * The class responsible for orchestrating the actions and filters of the
+		 * core plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-loader.php';
+
+		/**
+		 * The class responsible for defining internationalization functionality
+		 * of the plugin.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-i18n.php';
+
+		/** ----------------------------------- */
+
+		/**
 		 * These classes are responsible for generating the feed.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/traits/global/traits-y4ym-global-variables.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-y4ym-generation-xml.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-y4ym-write-file.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-yfym-feed-file-meta.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-yfym-feed-updater.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-y4ym-rules-list.php';
 
 		/**
 		 * Adding third-party libraries.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/functions-icpd-useful-2-0-1.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/functions-icpd-useful-2-0-2.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/functions-icpd-woocommerce-1-1-1.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/class-icpd-set-admin-notices.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/class-icpd-promo.php';
@@ -129,49 +156,27 @@ class Y4YM {
 		/**
 		 * The class responsible for the feedback form inside the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-feedback.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feedback/class-y4ym-feedback.php';
 
 		/**
-		 * The class responsible for writes plugin logs.
+		 * The classes are responsible for core the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-error-log.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/core/class-y4ym-error-log.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/core/class-y4ym-get-closed-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/core/class-y4ym-get-open-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/core/class-y4ym-get-paired-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/core/class-y4ym-data.php';
 
 		/**
-		 * The class responsible for creates a closing tag.
+		 * This class manages the CRON tasks of generating the YML feed.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-get-closed-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/cron/class-yfym-cron-manager.php';
 
-		/**
-		 * The class responsible for creates a opening tag.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-get-open-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/woocommerce/class-y4ym-taxonomy.php';
 
-		/**
-		 * The class responsible for creates a paired tag.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-get-paired-tag.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wordpress/class-y4ym-mime-types.php';
 
-		/**
-		 * The class responsible for set and get the plugin data.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-data.php';
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-y4ym-i18n.php';
-
-		/**
-		 * The class responsible for the list of tags.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/feeds/class-y4ym-rules-list.php';
+		/** ----------------------------------- */
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -185,6 +190,11 @@ class Y4YM {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-y4ym-public.php';
 
 		$this->loader = new Y4YM_Loader();
+
+		$this->services['cron_manager'] = new Y4YM_Cron_Manager();
+		$this->services['feed_updater'] = new Y4YM_Feed_Updater();
+		$this->services['taxonomy'] = new Y4YM_Taxonomy();
+		$this->services['mime_types'] = new Y4YM_Mime_Types();
 
 	}
 
@@ -225,13 +235,6 @@ class Y4YM {
 
 		// вызываем служебные классы в админке
 		$this->loader->add_action( 'init', $plugin_admin, 'enqueue_classes' );
-
-		// добавляем новую таксономию для коллекций
-		$this->loader->add_action( 'init', $plugin_admin, 'add_new_taxonomies' );
-		$this->loader->add_action( 'yfym_collection_add_form_fields', $plugin_admin, 'add_meta_product_cat' );
-		$this->loader->add_action( 'yfym_collection_edit_form_fields', $plugin_admin, 'edit_meta_product_cat' );
-		$this->loader->add_action( 'edited_yfym_collection', $plugin_admin, 'save_meta_product_cat' );
-		$this->loader->add_action( 'create_yfym_collection', $plugin_admin, 'save_meta_product_cat' );
 
 		// добавляем вкладку на страницу товара вукомерц
 		$this->loader->add_action( 'woocommerce_product_data_tabs', $plugin_admin, 'add_woocommerce_product_data_tab' );
@@ -280,18 +283,6 @@ class Y4YM {
 		// дополнительная информация для фидбэка
 		$this->loader->add_action( 'y4ym_f_feedback_additional_info', $plugin_admin, 'feedback_additional_info', 11 );
 
-		// Разрешим загрузку xml и csv файлов
-		$this->loader->add_action( 'upload_mimes', $plugin_admin, 'add_mime_types' );
-
-		// Add cron intervals to WordPress
-		$this->loader->add_action( 'cron_schedules', $plugin_admin, 'add_cron_intervals' );
-
-		// этот крон срабатывает в момент запуска генерации фида с нуля
-		$this->loader->add_action( 'y4ym_cron_start_feed_creation', $plugin_admin, 'do_start_feed_creation' );
-
-		// этот крон срабатывает в процессе генерации фида. вызывает кроном y4ym_cron_start_feed_creation
-		$this->loader->add_action( 'y4ym_cron_sborki', $plugin_admin, 'do_it_every_minute' );
-
 	}
 
 	/**
@@ -309,6 +300,46 @@ class Y4YM {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+
+	}
+
+	/**
+	 * Register hooks that are related to core functionality, but not tied 
+	 * to admin or public-facing logic.
+	 * 
+	 * @since 0.1.0
+	 * @access private
+	 * 
+	 * @return void
+	 */
+	private function define_core_hooks() {
+
+		$cron_manager = $this->services['cron_manager'];
+		$feed_updater = $this->services['feed_updater'];
+		$taxonomy = $this->services['taxonomy'];
+		$mime_types = $this->services['mime_types'];
+
+		// Add cron intervals to WordPress
+		$this->loader->add_action( 'cron_schedules', $cron_manager, 'add_cron_intervals' );
+
+		// этот крон срабатывает в момент запуска генерации фида с нуля
+		$this->loader->add_action( 'y4ym_cron_start_feed_creation', $cron_manager, 'do_start_feed_creation' );
+
+		// этот крон срабатывает в процессе генерации фида. вызывает кроном y4ym_cron_start_feed_creation
+		$this->loader->add_action( 'y4ym_cron_sborki', $cron_manager, 'do_it_every_minute' );
+
+		// слушаем изменение количества товаров в заказе
+		$this->loader->add_action( 'woocommerce_reduce_order_item_stock', $feed_updater, 'check_update_feed_stock_change', 50, 3 );
+
+		// добавляем новую таксономию для коллекций
+		$this->loader->add_action( 'init', $taxonomy, 'add_new_taxonomies' );
+		$this->loader->add_action( 'yfym_collection_add_form_fields', $taxonomy, 'add_meta_product_cat' );
+		$this->loader->add_action( 'yfym_collection_edit_form_fields', $taxonomy, 'edit_meta_product_cat' );
+		$this->loader->add_action( 'edited_yfym_collection', $taxonomy, 'save_meta_product_cat' );
+		$this->loader->add_action( 'create_yfym_collection', $taxonomy, 'save_meta_product_cat' );
+
+		// Разрешим загрузку xml и csv файлов
+		$this->loader->add_action( 'upload_mimes', $mime_types, 'add_mime_types' );
 
 	}
 

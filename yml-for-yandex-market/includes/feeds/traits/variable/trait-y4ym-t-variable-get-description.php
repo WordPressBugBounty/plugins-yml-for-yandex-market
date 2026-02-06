@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.20 (10-09-2025)
+ * @version    5.0.23 (15-11-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -152,20 +152,20 @@ trait Y4YM_T_Variable_Get_Description {
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				if ( get_post_meta( $this->get_product()->get_id(), $post_meta, true ) !== '' ) {
-					$tag_value = get_post_meta( $this->get_product()->get_id(), $post_meta, true );
-				} else {
+				if ( empty( $post_meta ) || get_post_meta( $this->get_product()->get_id(), $post_meta, true ) == '' ) {
 					$tag_value = '';
+				} else {
+					$tag_value = get_post_meta( $this->get_product()->get_id(), $post_meta, true );
 				}
-				break;
 
+				break;
 			default:
 
 				if ( empty( $tag_value ) ) {
 					$tag_value = $this->get_product()->get_description();
 					$tag_value = apply_filters( 'y4ym_f_variable_switchcase_default_description',
 						$tag_value,
-						[ 
+						[
 							'y4ym_desc' => $desc_source,
 							'product' => $this->get_product(),
 							'offer' => $this->get_offer()
@@ -197,7 +197,7 @@ trait Y4YM_T_Variable_Get_Description {
 		$tag_value = apply_filters(
 			'y4ym_f_variable_tag_value_description',
 			$tag_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],
@@ -222,7 +222,7 @@ trait Y4YM_T_Variable_Get_Description {
 			$tag_name = apply_filters(
 				'y4ym_f_variable_tag_name_description',
 				$tag_name,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'offer' => $this->get_offer()
 				],
@@ -234,7 +234,7 @@ trait Y4YM_T_Variable_Get_Description {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_description',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],
@@ -249,7 +249,7 @@ trait Y4YM_T_Variable_Get_Description {
 				'y4ym'
 			);
 			if ( ( $skip_products_without_desc === 'enabled' ) && ( $tag_value == '' ) ) {
-				$this->add_skip_reason( [ 
+				$this->add_skip_reason( [
 					'offer_id' => $this->get_offer()->get_id(),
 					'reason' => __( 'Variation product has no description', 'yml-for-yandex-market' ),
 					'post_id' => $this->get_offer()->get_id(),

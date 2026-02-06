@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.19 (26-08-2025)
+ * @version    5.2.0 (03-02-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -127,11 +127,11 @@ class Y4YM_Admin {
 		// select2 - place 2 from 5
 		wp_enqueue_style(
 			'select2',
-			'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'
+			plugin_dir_url( __FILE__ ) . 'css/select2.min.css'
 		);
 		wp_enqueue_script(
 			'select2',
-			'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+			plugin_dir_url( __FILE__ ) . 'js/select2.min.js',
 			[ 'jquery' ]
 		);
 		wp_enqueue_script(
@@ -152,7 +152,7 @@ class Y4YM_Admin {
 	 */
 	public function enqueue_classes() {
 
-		new Y4YM_Feedback( [ 
+		new Y4YM_Feedback( [
 			'plugin_version' => Y4YM_PLUGIN_VERSION,
 			'logs_url' => Y4YM_PLUGIN_UPLOADS_DIR_URL . '/yml-for-yandex-market.log',
 			'logs_path' => Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/yml-for-yandex-market.log'
@@ -194,7 +194,7 @@ class Y4YM_Admin {
 				}
 				$('#y4ym_color_picker').wpColorPicker(myOptions);
 			});</script>
-		<?php
+	<?php // HACK: по хорошему нужно в цикле парсить поля с ColorPicker и выводит ID в скрипте автоматически 
 
 	}
 
@@ -213,7 +213,7 @@ class Y4YM_Admin {
 		$return = [];
 
 		// you can use WP_Query, query_posts() or get_posts() here - it doesn't matter
-		$search_results = new WP_Query( [ 
+		$search_results = new WP_Query( [
 			's' => $_GET['q'], // the search query
 			'post_status' => 'publish', // if you don't want drafts to be returned
 			'post_type' => [ 'product', 'product_variation' ],
@@ -503,7 +503,7 @@ class Y4YM_Admin {
 		}
 		new ICPD_Set_Admin_Notices( __( 'Updated', 'yml-for-yandex-market' ), 'success' );
 
-		$planning_result = self::cron_starting_feed_creation_task_planning( $feed_id );
+		$planning_result = Y4YM_Cron_Manager::cron_starting_feed_creation_task_planning( $feed_id );
 		if ( true === $planning_result ) {
 			new ICPD_Set_Admin_Notices(
 				sprintf( '%s. %s: %s',
@@ -534,7 +534,7 @@ class Y4YM_Admin {
 		if ( isset( $_POST[ $option_name ] ) ) {
 			if ( is_array( $_POST[ $option_name ] ) ) {
 				// массивы храним отдельно от других параметров
-				univ_option_upd( $option_name . $feed_id, maybe_serialize( $_POST[ $option_name ] ) );
+				univ_option_upd( $option_name . $feed_id, $_POST[ $option_name ] );
 			} else {
 				$option_value = preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $_POST[ $option_name ] );
 				common_option_upd( $option_name, $option_value, 'no', $feed_id, 'y4ym' );
@@ -551,7 +551,7 @@ class Y4YM_Admin {
 			}
 			if ( 'empty_arr' === $save_if_empty ) {
 				// массивы храним отдельно от других параметров
-				univ_option_upd( sprintf( '%s%s', $option_name, $feed_id ), maybe_serialize( [] ) );
+				univ_option_upd( sprintf( '%s%s', $option_name, $feed_id ), [] );
 			}
 		}
 
@@ -580,33 +580,17 @@ class Y4YM_Admin {
 		}
 		$new_feed_id_str = (string) $last_feed_id + 1;
 
-		if ( ! is_dir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-			if ( ! mkdir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-				$errors = sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
-					__( 'Folder creation error', 'yml-for-yandex-market' ),
-					Y4YM_PLUGIN_UPLOADS_DIR_PATH,
-					__( 'during the creation of a new feed', 'yml-for-yandex-market' ),
-					__( 'Line', 'yml-for-yandex-market' ),
-					__( 'File', 'yml-for-yandex-market' ),
-					__LINE__
-				);
-				error_log( $errors, 0 );
-			}
-		}
-
 		$name_dir = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/feed' . $new_feed_id_str;
-		if ( ! is_dir( $name_dir ) ) {
-			if ( ! mkdir( $name_dir ) ) {
-				$errors = sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
-					__( 'Folder creation error', 'yml-for-yandex-market' ),
-					$name_dir,
-					__( 'during the creation of a new feed', 'yml-for-yandex-market' ),
-					__( 'Line', 'yml-for-yandex-market' ),
-					__( 'File', 'yml-for-yandex-market' ),
-					__LINE__
-				);
-				error_log( $errors, 0 );
-			}
+		if ( ! wp_mkdir_p( $name_dir ) ) {
+			$errors = sprintf( 'Y4YM: Y4YM_Admin: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
+				__( 'Folder creation error', 'yml-for-yandex-market' ),
+				$name_dir,
+				__( 'during the creation of a new feed', 'yml-for-yandex-market' ),
+				__( 'Line', 'yml-for-yandex-market' ),
+				__( 'File', 'yml-for-yandex-market' ),
+				__LINE__
+			);
+			error_log( $errors, 0 );
 		}
 
 		if ( null === $errors ) {
@@ -647,7 +631,7 @@ class Y4YM_Admin {
 	/**
 	 * Delete feed.
 	 * - Remove feed ID folder;
-	 * - // TODO: Remove feed file;
+	 * - Remove feed file;
 	 * - Remove an element to the array stored in the `y4ym_settings_arr` option;
 	 * - Clear CRON scheduled;
 	 * - Print notice.
@@ -668,8 +652,7 @@ class Y4YM_Admin {
 		for ( $i = 0; $i < count( $checkbox_xml_file_arr ); $i++ ) {
 			$feed_id_str = (string) $checkbox_xml_file_arr[ $i ];
 
-			// ! Пока не работает почему-то...
-			// ! remove_directory( Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/feed' . $feed_id_str );
+			y4ym_remove_directory( Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/feed' . $feed_id_str );
 
 			if ( isset( $settings_arr[ $feed_id_str ] ) ) {
 				unset( $settings_arr[ $feed_id_str ] );
@@ -726,33 +709,17 @@ class Y4YM_Admin {
 		}
 		$new_feed_id_str = (string) $last_feed_id + 1;
 
-		if ( ! is_dir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-			if ( ! mkdir( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) ) {
-				$errors = sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
-					__( 'Folder creation error', 'yml-for-yandex-market' ),
-					Y4YM_PLUGIN_UPLOADS_DIR_PATH,
-					__( 'during the duplicate of a new feed', 'yml-for-yandex-market' ),
-					__( 'Line', 'yml-for-yandex-market' ),
-					__( 'File', 'yml-for-yandex-market' ),
-					__LINE__
-				);
-				error_log( $errors, 0 );
-			}
-		}
-
 		$name_dir = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/feed' . $new_feed_id_str;
-		if ( ! is_dir( $name_dir ) ) {
-			if ( ! mkdir( $name_dir ) ) {
-				$errors = sprintf( 'ERROR: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
-					__( 'Folder creation error', 'yml-for-yandex-market' ),
-					$name_dir,
-					__( 'during the duplicate of a new feed', 'yml-for-yandex-market' ),
-					__( 'Line', 'yml-for-yandex-market' ),
-					__( 'File', 'yml-for-yandex-market' ),
-					__LINE__
-				);
-				error_log( $errors, 0 );
-			}
+		if ( ! wp_mkdir_p( $name_dir ) ) {
+			$errors = sprintf( 'Y4YM: Y4YM_Admin: %1$s "%2$s" %3$s; %4$s: class-y4ym-admin.php; %5$s: %6$s',
+				__( 'Folder creation error', 'yml-for-yandex-market' ),
+				$name_dir,
+				__( 'during the duplicate of a new feed', 'yml-for-yandex-market' ),
+				__( 'Line', 'yml-for-yandex-market' ),
+				__( 'File', 'yml-for-yandex-market' ),
+				__LINE__
+			);
+			error_log( $errors, 0 );
 		}
 
 		if ( null === $errors ) {
@@ -926,418 +893,6 @@ class Y4YM_Admin {
 	}
 
 	/**
-	 * Разрешим загрузку xml и csv файлов. Function for `upload_mimes` action-hook.
-	 * 
-	 * @param array $mimes
-	 * 
-	 * @return array
-	 */
-	public function add_mime_types( $mimes ) {
-
-		$mimes['csv'] = 'text/csv';
-		$mimes['xml'] = 'text/xml';
-		$mimes['yml'] = 'text/xml';
-		return $mimes;
-
-	}
-
-	/**
-	 * Add cron intervals to WordPress. Function for `cron_schedules` action-hook.
-	 * 
-	 * @param array $schedules
-	 * 
-	 * @return array
-	 */
-	public function add_cron_intervals( $schedules ) {
-
-		$schedules['every_minute'] = [ 
-			'interval' => 60,
-			'display' => __( 'Every minute', 'yml-for-yandex-market' )
-		];
-		$schedules['three_hours'] = [ 
-			'interval' => 10800,
-			'display' => __( 'Every three hours', 'yml-for-yandex-market' )
-		];
-		$schedules['six_hours'] = [ 
-			'interval' => 21600,
-			'display' => __( 'Every six hours', 'yml-for-yandex-market' )
-		];
-		$schedules['every_two_days'] = [ 
-			'interval' => 172800,
-			'display' => __( 'Every two days', 'yml-for-yandex-market' )
-		];
-		return $schedules;
-
-	}
-
-	/**
-	 * The function responsible for starting the creation of the feed.
-	 * Function for `y4ym_cron_start_feed_creation` action-hook.
-	 * 
-	 * @param string $feed_id
-	 * 
-	 * @return void
-	 */
-	public function do_start_feed_creation( $feed_id ) {
-
-		new Y4YM_Error_Log( sprintf( 'FEED #%1$s; %2$s; %3$s: %4$s; %5$s: %6$s',
-			$feed_id,
-			__( 'The CRON task for creating a feed has started', 'yml-for-yandex-market' ),
-			__( 'File', 'yml-for-yandex-market' ),
-			'class-y4ym-admin.php',
-			__( 'Line', 'yml-for-yandex-market' ),
-			__LINE__
-		) );
-
-		// счётчик завершенных товаров в положение 0.
-		univ_option_upd(
-			'y4ym_last_element_feed_' . $feed_id,
-			'0',
-			'no'
-		);
-
-		// запланируем CRON сборки
-		$planning_result = self::cron_sborki_task_planning( $feed_id );
-
-		if ( false === $planning_result ) {
-			new Y4YM_Error_Log( sprintf(
-				'FEED #%1$s; ERROR: %2$s `y4ym_cron_sborki`; %3$s: %4$s; %5$s: %6$s',
-				$feed_id,
-				__( 'Failed to schedule a CRON task', 'yml-for-yandex-market' ),
-				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-admin.php',
-				__( 'Line', 'yml-for-yandex-market' ),
-				__LINE__
-			) );
-		} else {
-			new Y4YM_Error_Log( sprintf(
-				'FEED #%1$s; %2$s `y4ym_cron_sborki`; %3$s: %4$s; %5$s: %6$s',
-				$feed_id,
-				__( 'Successful CRON task planning', 'yml-for-yandex-market' ),
-				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-admin.php',
-				__( 'Line', 'yml-for-yandex-market' ),
-				__LINE__
-			) );
-			// сборку начали
-			common_option_upd(
-				'y4ym_status_sborki',
-				'1',
-				'no',
-				$feed_id,
-				'y4ym'
-			);
-			// сразу планируем крон-задачу на начало сброки фида в следующий раз в нужный час
-			$run_cron = common_option_get(
-				'y4ym_run_cron',
-				'disabled',
-				$feed_id,
-				'y4ym'
-			);
-			if ( in_array( $run_cron, [ 'hourly', 'three_hours', 'six_hours', 'twicedaily', 'daily', 'every_two_days', 'weekly' ] ) ) {
-				$arr = wp_get_schedules();
-				if ( isset( $arr[ $run_cron ]['interval'] ) ) {
-					self::cron_starting_feed_creation_task_planning( $feed_id, $arr[ $run_cron ]['interval'] );
-				}
-			}
-		}
-
-	}
-
-	/**
-	 * The function is called every minute until the feed is created or creation is interrupted.
-	 * Function for `y4ym_cron_sborki` action-hook.
-	 * 
-	 * @param string $feed_id
-	 * 
-	 * @return void
-	 */
-	public function do_it_every_minute( $feed_id ) {
-
-		new Y4YM_Error_Log( sprintf( 'FEED #%1$s; %2$s `y4ym_cron_sborki`; %3$s: %4$s; %5$s: %6$s',
-			$feed_id,
-			__( 'The CRON task started', 'yml-for-yandex-market' ),
-			__( 'File', 'yml-for-yandex-market' ),
-			'class-y4ym-admin.php',
-			__( 'Line', 'yml-for-yandex-market' ),
-			__LINE__
-		) );
-
-		$generation = new Y4YM_Generation_XML( $feed_id );
-		$generation->run();
-
-	}
-
-	/**
-	 * Cron starting the feed creation task planning.
-	 * 
-	 * @param string $feed_id
-	 * @param int $delay_second Scheduling task CRON in N seconds.
-	 * 
-	 * @return bool|WP_Error
-	 */
-	public static function cron_starting_feed_creation_task_planning( $feed_id, $delay_second = 0 ) {
-
-		$planning_result = false;
-		$run_cron = common_option_get(
-			'y4ym_run_cron',
-			'disabled',
-			$feed_id,
-			'y4ym'
-		);
-
-		if ( $run_cron === 'disabled' ) {
-			// останавливаем сборку досрочно, если это выбрано в настройках плагина при сохранении
-			wp_clear_scheduled_hook( 'y4ym_cron_start_feed_creation', [ $feed_id ] );
-			wp_clear_scheduled_hook( 'y4ym_cron_sborki', [ $feed_id ] );
-			univ_option_upd(
-				'y4ym_last_element_feed_' . $feed_id,
-				0
-			);
-			common_option_upd(
-				'y4ym_status_sborki',
-				'-1',
-				'no',
-				$feed_id,
-				'y4ym'
-			);
-		} else {
-			wp_clear_scheduled_hook( 'y4ym_cron_start_feed_creation', [ $feed_id ] );
-			if ( ! wp_next_scheduled( 'y4ym_cron_start_feed_creation', [ $feed_id ] ) ) {
-				$cron_start_time = common_option_get(
-					'y4ym_cron_start_time',
-					'disabled',
-					$feed_id,
-					'y4ym'
-				);
-				switch ( $cron_start_time ) {
-					case 'disabled':
-						return false;
-					case 'now':
-						$cron_interval = current_time( 'timestamp', 1 ) + 2; // добавим 2 сек
-						break;
-					default:
-						$gmt_offset = (float) get_option( 'gmt_offset' );
-						$offset_in_seconds = $gmt_offset * 3600;
-						$cron_interval = strtotime( $cron_start_time ) - $offset_in_seconds;
-						if ( $cron_interval < current_time( 'timestamp', 1 ) ) {
-							// если нужный час уже прошел. запланируем на следующие сутки
-							$cron_interval = $cron_interval + 86400;
-						}
-				}
-
-				// планируем крон-задачу на начало сброки фида в нужный час
-				$planning_result = wp_schedule_single_event(
-					$cron_interval + $delay_second,
-					'y4ym_cron_start_feed_creation',
-					[ $feed_id ]
-				);
-			}
-		}
-
-		return $planning_result;
-
-	}
-
-	/**
-	 * Cron sborki task planning.
-	 * 
-	 * @param string $feed_id
-	 * @param int $delay_second Scheduling task CRON in N seconds.
-	 * 
-	 * @return bool|WP_Error
-	 */
-	public static function cron_sborki_task_planning( $feed_id, $delay_second = 5 ) {
-
-		wp_clear_scheduled_hook( 'y4ym_cron_sborki', [ $feed_id ] );
-		if ( ! wp_next_scheduled( 'y4ym_cron_sborki', [ $feed_id ] ) ) {
-			$planning_result = wp_schedule_single_event(
-				current_time( 'timestamp', 1 ) + $delay_second, // добавим 5 секунд
-				'y4ym_cron_sborki',
-				[ $feed_id ]
-			);
-		} else {
-			$planning_result = false;
-		}
-
-		return $planning_result;
-
-	}
-
-	/**
-	 * Add new taxonomy.
-	 * 
-	 * @return void
-	 */
-	public function add_new_taxonomies() {
-
-		$labels_arr = [ 
-			'name' => __( 'Сollections for YML feed', 'yml-for-yandex-market' ),
-			'singular_name' => 'Сollection',
-			'search_items' => __( 'Search collection', 'yml-for-yandex-market' ),
-			'popular_items' => null, // __('Популярные категории', 'yml-for-yandex-market'),
-			'all_items' => __( 'All collections', 'yml-for-yandex-market' ),
-			'parent_item' => null,
-			'parent_item_colon' => null,
-			'edit_item' => __( 'Edit collection', 'yml-for-yandex-market' ),
-			'update_item' => __( 'Update collection', 'yml-for-yandex-market' ),
-			'add_new_item' => __( 'Add new collection', 'yml-for-yandex-market' ),
-			'new_item_name' => __( 'New collection', 'yml-for-yandex-market' ),
-			'menu_name' => __( 'Сollections for YML', 'yml-for-yandex-market' )
-		];
-		$args_arr = [ 
-			'hierarchical' => true, // true - по типу рубрик, false - по типу меток (по умолчанию)
-			'labels' => $labels_arr,
-			'public' => true, // каждый может использовать таксономию, либо только администраторы, по умолчанию - true
-			'show_ui' => true, // добавить интерфейс создания и редактирования
-			'publicly_queryable' => false, // сделать элементы таксономии доступными для добавления в меню сайта. По умолчанию: значение аргумента public.
-			'show_in_nav_menus' => false, // добавить на страницу создания меню
-			'show_tagcloud' => false, // нужно ли разрешить облако тегов для этой таксономии
-			'update_count_callback' => '_update_post_term_count', // callback-функция для обновления счетчика $object_type
-			'query_var' => true, // разрешено ли использование query_var, также можно указать строку, которая будет использоваться в качестве него, по умолчанию - имя таксономии
-			'rewrite' => [ // настройки URL пермалинков
-				'slug' => 'yfym_collection', // ярлык
-				'hierarchical' => false // разрешить вложенность
-			]
-		];
-		register_taxonomy( 'yfym_collection', [ 'product' ], $args_arr );
-
-	}
-
-	public function ss( $term ) {
-		sprintf( '<tr class="form-field term-parent-wrap"><th scope="row" valign="top"><label>%1$s</label></th><td><input id="y4ym_%2$s" type="text" name="y4ym_cat_meta[yfym_%2$s]" value="%3$s" /><p class="description">%4$s.</p></td></tr>', );
-	}
-
-	/**
-	 * Позволяет добавить дополнительные поля на страницу создания элементов таксономии (термина).
-	 * Function for `(taxonomy)_add_form_fields` action-hook.
-	 * 
-	 * @param WP_Term $tag Current taxonomy term object.
-	 * @param string $taxonomy Current taxonomy slug.
-	 *
-	 * @return void
-	 */
-	public function add_meta_product_cat( $term ) {
-
-		?>
-		<div class="form-field term-cat_meta-wrap">
-			<label>
-				<?php esc_html_e( 'Collection URL', 'yml-for-yandex-market' ); ?>
-			</label>
-			<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]" value="" />
-			<p>
-				<?php esc_html_e( 'URL of the collection page', 'yml-for-yandex-market' ); ?>.
-			</p>
-		</div>
-		<div class="form-field term-cat_meta-wrap">
-			<label>
-				<?php esc_html_e( 'Main picture URL', 'yml-for-yandex-market' ); ?>
-			</label>
-			<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]" value="" />
-			<p>
-				<?php esc_html_e( 'For example', 'yml-for-yandex-market' ); ?>: <code>https://site.ru/picture-1.jpg</code>.
-				<?php esc_html_e( 'URL of the main picture of the collection', 'yml-for-yandex-market' ); ?>.
-			</p>
-		</div>
-		<div class="form-field term-cat_meta-wrap">
-			<label>
-				<?php esc_html_e( 'Add the main photos of products to the collection', 'yml-for-yandex-market' ); ?>
-			</label>
-			<input id="y4ym_collection_num_product_picture" type="number" step="1" min="0" max="20"
-				name="y4ym_cat_meta[yfym_collection_num_product_picture]" value="" />
-			<p>
-				<?php esc_html_e( 'Indicate the number from 0 to 20', 'yml-for-yandex-market' ); ?>.
-			</p>
-		</div>
-		<?php
-
-	}
-
-	/**
-	 * Позволяет добавить дополнительные поля на страницу редактирования элементов таксономии (термина).
-	 * Function for `(taxonomy)_edit_form_fields` action-hook.
-	 * 
-	 * @param WP_Term $tag Current taxonomy term object.
-	 * @param string $taxonomy Current taxonomy slug.
-	 *
-	 * @return void
-	 */
-	public function edit_meta_product_cat( $term ) {
-
-		global $post; ?>
-		<tr class="form-field term-parent-wrap">
-			<th scope="row" valign="top">
-				<label>
-					<?php esc_html_e( 'Collection URL', 'yml-for-yandex-market' ); ?>
-				</label>
-			</th>
-			<td>
-				<input id="y4ym_collection_url" type="text" name="y4ym_cat_meta[yfym_collection_url]"
-					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_url', true ) ) ?>" />
-				<p class="description">
-					<?php esc_html_e( 'URL of the collection page', 'yml-for-yandex-market' ); ?>.
-				</p>
-			</td>
-		</tr>
-		<tr class="form-field term-parent-wrap">
-			<th scope="row" valign="top">
-				<label>
-					<?php esc_html_e( 'Main picture URL', 'yml-for-yandex-market' ); ?>
-				</label>
-			</th>
-			<td>
-				<input id="y4ym_collection_picture" type="text" name="y4ym_cat_meta[yfym_collection_picture]"
-					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) ) ?>" />
-				<p>
-					<?php esc_html_e( 'For example', 'yml-for-yandex-market' ); ?>: <code>https://site.ru/picture-1.jpg</code>.
-					<?php esc_html_e( 'URL of the main picture of the collection', 'yml-for-yandex-market' ); ?>.
-				</p>
-			</td>
-		</tr>
-		<tr class="form-field term-parent-wrap">
-			<th scope="row" valign="top">
-				<label>
-					<?php esc_html_e( 'Add the main photos of products to the collection', 'yml-for-yandex-market' ); ?>
-				</label>
-			</th>
-			<td>
-				<input id="y4ym_collection_num_product_picture" type="number" step="1" min="0" max="20"
-					name="y4ym_cat_meta[yfym_collection_num_product_picture]"
-					value="<?php echo esc_attr( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) ) ?>" />
-				<p class="description">
-					<?php esc_html_e( 'Indicate the number from 0 to 20', 'yml-for-yandex-market' ); ?>.
-				</p>
-			</td>
-		</tr>
-		<?php
-
-	}
-
-	/**
-	 * Сохранение данных в БД. Function for `create_(taxonomy)` and `edited_(taxonomy)` action-hooks.
-	 * 
-	 * @param int $term_id
-	 * 
-	 * @return void
-	 */
-	public function save_meta_product_cat( $term_id ) {
-
-		if ( ! isset( $_POST['y4ym_cat_meta'] ) ) {
-			return;
-		}
-		$y4ym_cat_meta = array_map( 'sanitize_text_field', $_POST['y4ym_cat_meta'] );
-		foreach ( $y4ym_cat_meta as $key => $value ) {
-			if ( empty( $value ) ) {
-				delete_term_meta( $term_id, $key );
-				continue;
-			}
-			update_term_meta( $term_id, $key, $value );
-		}
-		return;
-
-	}
-
-	/**
 	 * Adds a tab to the product editing page WooCommerce. 
 	 * 
 	 * Function for `woocommerce_product_data_tabs` filter-hook.
@@ -1348,7 +903,7 @@ class Y4YM_Admin {
 	 */
 	public static function add_woocommerce_product_data_tab( $tabs ) {
 
-		$tabs['y4ym_individual_settings_tab'] = [ 
+		$tabs['y4ym_individual_settings_tab'] = [
 			'label' => __( 'YML for Yandex Market', 'yml-for-yandex-market' ), // название вкладки
 			'target' => 'y4ym_individual_settings_tab', // идентификатор вкладки
 			'class' => [ 'hide_if_grouped' ], // классы управления видимостью вкладки в зависимости от типа товара
@@ -1410,7 +965,7 @@ class Y4YM_Admin {
 					</p>
 				</div>
 				<?php
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_market_category_id',
 					'label' => sprintf(
 						'%s <i>[market_category_id]</i>',
@@ -1423,7 +978,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_market_sku',
 					'label' => sprintf(
 						'%s <i>[market-sku]</i>',
@@ -1433,7 +988,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_tn_ved_code',
 					'label' => sprintf(
 						'%s ТН ВЭД <i>[tn-ved-codes]</i>',
@@ -1447,7 +1002,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_cargo_types',
 					'label' => sprintf(
 						'%s <i>[cargo-types]</i>',
@@ -1458,14 +1013,14 @@ class Y4YM_Admin {
 						'//yandex.ru/support2/marketplace/ru/assortment/fields/#cz',
 						__( 'Read more on Yandex', 'yml-for-yandex-market' )
 					),
-					'options' => [ 
+					'options' => [
 						'default' => __( 'Default', 'yml-for-yandex-market' ),
 						'disabled' => __( 'Disabled', 'yml-for-yandex-market' ),
 						'yes' => 'CIS_REQUIRED'
 					],
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_video_url',
 					'label' => sprintf( '%s <i>[video]</i>', __( 'Video', 'yml-for-yandex-market' ) ),
 					'description' => sprintf( '%s <strong>video</strong></strong>',
@@ -1474,7 +1029,7 @@ class Y4YM_Admin {
 					'type' => 'text',
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_min_quantity',
 					'label' => sprintf(
 						'%s <i>[min-quantity]</i>',
@@ -1488,7 +1043,7 @@ class Y4YM_Admin {
 					'type' => 'text',
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_step_quantity',
 					'label' => sprintf(
 						'%s <i>[step-quantity]</i>',
@@ -1501,7 +1056,7 @@ class Y4YM_Admin {
 					'type' => 'text',
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_warranty_days',
 					'label' => sprintf(
 						'%s (%s) <i>[warranty-days]</i>',
@@ -1518,10 +1073,21 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true',
 					'type' => 'number',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '1',
 						'min' => '0'
 					]
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_comment_warranty',
+					'label' => sprintf(
+						'%s <i>[comment-warranty]</i>',
+						__( 'Comment on the warranty', 'yml-for-yandex-market' )
+					),
+					'placeholder' => '',
+					'description' => __( 'Comment on the warranty', 'yml-for-yandex-market' ),
+					'desc_tip' => 'true',
+					'type' => 'text'
 				] );
 				?>
 			</div>
@@ -1532,19 +1098,26 @@ class Y4YM_Admin {
 						<?php esc_html_e( 'Сondition', 'yml-for-yandex-market' ); ?>
 					</strong></h2>
 				<?php
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_individual_vat',
 					'label' => sprintf( '%s <i>[vat]</i>', __( 'VAT rate', 'yml-for-yandex-market' ) ),
-					'options' => [ 
+					'options' => [
 						'global' => __( 'Use global settings', 'yml-for-yandex-market' ),
 						'NO_VAT' => __( 'No VAT', 'yml-for-yandex-market' ) . ' (NO_VAT)',
 						'VAT_0' => '0% (VAT_0)',
+						'VAT_5' => '5% (VAT_5)',
+						'VAT_7' => '7% (VAT_7)',
 						'VAT_10' => '10% (VAT_10)',
 						'VAT_10_110' => '10/110 (VAT_10_110)',
 						'VAT_18' => '18% (VAT_18)',
 						'VAT_18_118' => '18/118 (VAT_18_118)',
 						'VAT_20' => '20% (VAT_20)',
-						'VAT_20_120' => '20/120 VAT_20_120)'
+						'VAT_20_120' => '20/120 VAT_20_120)',
+						'VAT_22' => '22% (VAT_22)',
+						'vat22' => sprintf( '22%% (vat22) (%s)',
+							__( 'Use it only if VAT_22 failed', 'yml-for-yandex-market' )
+						),
+						'VAT_22_120' => '22/120 VAT_22_120)'
 					],
 					'description' => sprintf( '%s <strong>vat</strong>. <a target="_blank" href="%s">%s</a>',
 						__( 'Optional element', 'yml-for-yandex-market' ),
@@ -1553,13 +1126,13 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_condition',
 					'label' => sprintf(
 						'%s <i>[condition]</i>',
 						__( 'Сondition', 'yml-for-yandex-market' )
 					),
-					'options' => [ 
+					'options' => [
 						'default' => __( 'Default', 'yml-for-yandex-market' ),
 						'disabled' => __( 'Disabled', 'yml-for-yandex-market' ),
 						'showcasesample' => __( 'Showcase sample', 'yml-for-yandex-market' ) . ' (showcasesample)',
@@ -1571,13 +1144,13 @@ class Y4YM_Admin {
 					'description' => __( 'Optional element', 'yml-for-yandex-market' ) . ' <strong>condition</strong>',
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_quality',
 					'label' => sprintf(
 						'%s <i>[condition quality]</i>',
 						__( 'Quality', 'yml-for-yandex-market' )
 					),
-					'options' => [ 
+					'options' => [
 						'default' => __( 'Default', 'yml-for-yandex-market' ),
 						'perfect' => __( 'Perfect', 'yml-for-yandex-market' ),
 						'excellent' => __( 'Excellent', 'yml-for-yandex-market' ),
@@ -1590,7 +1163,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_reason',
 					'label' => sprintf(
 						'%s <i>[condition reason]</i>',
@@ -1615,10 +1188,10 @@ class Y4YM_Admin {
 					</p>
 				</div>
 				<?php
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_individual_delivery',
 					'label' => sprintf( '%s <i>[delivery]</i>', __( 'Delivery', 'yml-for-yandex-market' ) ),
-					'options' => [ 
+					'options' => [
 						'global' => __( 'Use global settings', 'yml-for-yandex-market' ),
 						'' => __( 'Disabled', 'yml-for-yandex-market' ),
 						'false' => 'False',
@@ -1629,7 +1202,7 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_days',
 					'label' => sprintf(
 						'%s <i>[delivery-option days]</i>',
@@ -1642,7 +1215,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_cost',
 					'label' => sprintf(
 						'%s <i>[delivery-option cost]</i>',
@@ -1654,12 +1227,12 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true',
 					'type' => 'number',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '0.01',
 						'min' => '0'
 					]
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_order_before',
 					'label' => sprintf(
 						'%s <i>[delivery-option order-before]</i>',
@@ -1685,10 +1258,10 @@ class Y4YM_Admin {
 					</p>
 				</div>
 				<?php
-				woocommerce_wp_select( [ 
+				woocommerce_wp_select( [
 					'id' => '_yfym_individual_pickup',
 					'label' => sprintf( '%s <i>[pickup]</i>', __( 'Delivery', 'yml-for-yandex-market' ) ),
-					'options' => [ 
+					'options' => [
 						'global' => __( 'Use global settings', 'yml-for-yandex-market' ),
 						'' => __( 'Disabled', 'yml-for-yandex-market' ),
 						'false' => 'False',
@@ -1699,7 +1272,7 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_pickup_days',
 					'label' => sprintf(
 						'%s <i>[pickup-option days]</i>',
@@ -1712,7 +1285,7 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_pickup_cost',
 					'label' => sprintf(
 						'%s <i>[pickup-option cost]</i>',
@@ -1724,12 +1297,12 @@ class Y4YM_Admin {
 					),
 					'desc_tip' => 'true',
 					'type' => 'number',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '0.01',
 						'min' => '0'
 					]
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_pickup_order_before',
 					'label' => sprintf(
 						'%s <i>[pickup-option order-before]</i>',
@@ -1761,7 +1334,7 @@ class Y4YM_Admin {
 					</p>
 				</div>
 				<?php
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_market_category',
 					'label' => sprintf(
 						'%s <i>[market_category]</i>',
@@ -1774,20 +1347,20 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_custom_score',
 					'label' => sprintf( '%s <i>[custom_score]</i>', __( 'Custom elements', 'yml-for-yandex-market' ) ),
 					'description' => __( 'The value is zero or any positive integer', 'yml-for-yandex-market' ),
 					'desc_tip' => 'true',
 					'type' => 'number',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '1',
 						'min' => '0'
 					]
 				] );
 				for ( $i = 0; $i < 5; $i++ ) {
 					$post_meta_name = '_yfym_custom_label_' . (string) $i;
-					woocommerce_wp_text_input( [ 
+					woocommerce_wp_text_input( [
 						'id' => $post_meta_name,
 						'label' => sprintf(
 							'%s <i>[custom_label_%s]</i>',
@@ -1810,11 +1383,52 @@ class Y4YM_Admin {
 			</div>
 			<div class="options_group">
 				<h2>
+					<strong><?php esc_html_e( 'Individual product settings for Youla', 'yml-for-yandex-market' ); ?></strong>
+				</h2>
+				<div class="y4ym_notice inline notice woocommerce-message">
+					<p>
+						<?php esc_html_e( 'Here you can set up individual settings for Youla', 'yml-for-yandex-market' ); ?>.
+						<a target="_blank" href="//cloud.mail.ru/public/rRMD/V66Ywbmy6?weblink=rRMD/V66Ywbmy6">
+							<?php esc_html_e( 'Read more', 'yml-for-yandex-market' ); ?>
+						</a>.
+					</p>
+				</div>
+				<?php
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_youlacategoryid',
+					'label' => sprintf(
+						'%s (ID) <i>[youlaCategoryId]</i>',
+						__( 'Youla category', 'yml-for-yandex-market' )
+					),
+					'description' => __(
+						'The product category in which it should be placed on Youla',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_youlasubcategoryid',
+					'label' => sprintf(
+						'%s (ID) <i>[youlaSubcategoryId]</i>',
+						__( 'Youla subcategory', 'yml-for-yandex-market' )
+					),
+					'description' => __(
+						'The product category in which it should be placed on Youla',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				?>
+			</div>
+			<div class="options_group">
+				<h2>
 					<strong><?php esc_html_e( 'Other', 'yml-for-yandex-market' ); ?></strong>
 				</h2>
 				<?php
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_okpd2',
 					'label' => sprintf(
 						'%s ОКПД2 <i>[okpd2]</i>',
@@ -1829,7 +1443,7 @@ class Y4YM_Admin {
 					'type' => 'text'
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_credit_template',
 					'label' => sprintf(
 						'%s <i>[credit-template]</i>',
@@ -1844,7 +1458,7 @@ class Y4YM_Admin {
 					'type' => 'text'
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_supplier',
 					'label' => sprintf( '%s <i>[supplier]</i>', 'ОГРН/ОГРНИП' ),
 					'description' => sprintf(
@@ -1855,7 +1469,7 @@ class Y4YM_Admin {
 					'type' => 'text'
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_min_price',
 					'label' => sprintf(
 						'%s <i>[min_price]</i>',
@@ -1865,13 +1479,13 @@ class Y4YM_Admin {
 					'description' => __( 'Minimum price', 'yml-for-yandex-market' ),
 					'type' => 'number',
 					'desc_tip' => 'true',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '0.01',
 						'min' => '0'
 					]
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_additional_expenses',
 					'label' => sprintf(
 						'%s <i>[additional_expenses]</i>',
@@ -1881,13 +1495,13 @@ class Y4YM_Admin {
 					'description' => '',
 					'type' => 'number',
 					'desc_tip' => 'true',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '1',
 						'min' => '0'
 					]
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_cofinance_price',
 					'label' => sprintf(
 						'%s <i>[cofinance_price]</i>',
@@ -1897,13 +1511,13 @@ class Y4YM_Admin {
 					'description' => __( 'Threshold for receiving discounts in Yandex Market', 'yml-for-yandex-market' ),
 					'type' => 'number',
 					'desc_tip' => 'true',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '1',
 						'min' => '0'
 					]
 				] );
 
-				woocommerce_wp_text_input( [ 
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_purchase_price',
 					'label' => sprintf(
 						'%s <i>[purchase_price]</i>',
@@ -1913,12 +1527,91 @@ class Y4YM_Admin {
 					'description' => __( 'Purchase price', 'yml-for-yandex-market' ),
 					'type' => 'number',
 					'desc_tip' => 'true',
-					'custom_attributes' => [ 
+					'custom_attributes' => [
 						'step' => '1',
 						'min' => '0'
 					]
 				] );
 
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_keywords',
+					'label' => sprintf(
+						'%s <i>[keywords]</i>',
+						__( 'Keywords', 'yml-for-yandex-market' )
+					),
+					'placeholder' => sprintf( '%1$s_1, %1$s_2, ... %1$s_N',
+						__( 'Keywords', 'yml-for-yandex-market' )
+					),
+					'description' => sprintf( '%1$s_1, %1$s_2, ... %1$s_N',
+						__( 'Keywords', 'yml-for-yandex-market' )
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_certificate',
+					'label' => sprintf(
+						'%s <i>[certificate]</i>',
+						__( 'Certificate', 'yml-for-yandex-market' )
+					),
+					'placeholder' => '',
+					'description' => __(
+						'The number of the document for the product: certificate, declaration of conformity, etc',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_comment_validity_days',
+					'label' => sprintf(
+						'%s <i>[comment-validity-days]</i>',
+						__( 'Comment on the validity days', 'yml-for-yandex-market' )
+					),
+					'placeholder' => '',
+					'description' => __(
+						'No longer than 250 characters and no special characters',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_service_life_days',
+					'label' => sprintf(
+						'%s (%s) <i>[service-life-days]</i>',
+						__( 'Service life days', 'yml-for-yandex-market' ),
+						__( 'days', 'yml-for-yandex-market' )
+					),
+					'placeholder' => '256',
+					'description' => sprintf( '%s. %s: <strong>P2Y6M10D</strong>',
+						__( 'The number of service life days', 'yml-for-yandex-market' ),
+						__(
+							'The number that you specify here will be converted to a format ISO 8601 like',
+							'yml-for-yandex-market'
+						)
+					),
+					'desc_tip' => 'true',
+					'type' => 'number',
+					'custom_attributes' => [
+						'step' => '1',
+						'min' => '0'
+					]
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_comment_life_days',
+					'label' => sprintf(
+						'%s <i>[comment-life-days]</i>',
+						__( 'Comment on the life days', 'yml-for-yandex-market' )
+					),
+					'placeholder' => '',
+					'description' => __(
+						'No longer than 250 characters and no special characters',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
 				?>
 			</div>
 			<?php do_action( 'y4ym_append_individual_settings_tab', $post ); ?>
@@ -1935,7 +1628,7 @@ class Y4YM_Admin {
 	 */
 	function add_fields_to_inventory_product_data_tab() {
 
-		woocommerce_wp_text_input( [ 
+		woocommerce_wp_text_input( [
 			'id' => '_yfym_barcode',
 			'label' => __( 'Barcode for YML', 'yml-for-yandex-market' ),
 			'placeholder' => sprintf( '%s: 978020137962', __( 'For example', 'yml-for-yandex-market' ) ),
@@ -1976,7 +1669,7 @@ class Y4YM_Admin {
 			return; // если юзер не имеет прав
 		}
 
-		$post_meta_arr = [ 
+		$post_meta_arr = [
 			'_yfym_market_category_id',
 			'_yfym_market_sku',
 			'_yfym_tn_ved_code',
@@ -2002,6 +1695,9 @@ class Y4YM_Admin {
 			'_yfym_custom_label_4',
 			'_yfym_quality',
 			'_yfym_warranty_days',
+			'_yfym_comment_warranty',
+			'_yfym_youlacategoryid',
+			'_yfym_youlasubcategoryid',
 			'_yfym_okpd2',
 			'_yfym_credit_template',
 			'_yfym_supplier',
@@ -2011,14 +1707,19 @@ class Y4YM_Admin {
 			'_yfym_min_price',
 			'_yfym_additional_expenses',
 			'_yfym_cofinance_price',
-			'_yfym_purchase_price'
+			'_yfym_purchase_price',
+			'_yfym_keywords',
+			'_yfym_certificate',
+			'_yfym_comment_validity_days',
+			'_yfym_service_life_days',
+			'_yfym_comment_life_days'
 		];
 		$post_meta_arr = apply_filters(
 			'y4ym_f_post_meta_arr',
 			$post_meta_arr
 		);
 		$this->save_post_meta( $post_meta_arr, $post_id );
-		$this->run_feeds_upd( $post_id );
+		Y4YM_Feed_Updater::run_feeds_upd( $post_id );
 
 	}
 
@@ -2063,7 +1764,7 @@ class Y4YM_Admin {
 	public function add_fields_to_variable_settings( $loop, $variation_data, $variation ) {
 
 		echo '<div>';
-		woocommerce_wp_text_input( [ 
+		woocommerce_wp_text_input( [
 			'id' => '_yfym_barcode[' . $variation->ID . ']',
 			'label' => __( 'Barcode for YML', 'yml-for-yandex-market' ),
 			'placeholder' => sprintf( '%s: 978020137962', __( 'For example', 'yml-for-yandex-market' ) ),
@@ -2109,102 +1810,6 @@ class Y4YM_Admin {
 		} else {
 			update_post_meta( $post_id, '_yfym_barcode', '' );
 		}
-
-	}
-
-	/**
-	 * Проверяет, нужно ли запускать обновление фида при обновлении товара и при необходимости запускает процесс.
-	 * 
-	 * @param int $post_id
-	 * 
-	 * @return void
-	 */
-	public function run_feeds_upd( $post_id ) {
-
-		$settings_arr = univ_option_get( 'y4ym_settings_arr' );
-		$settings_arr_keys_arr = array_keys( $settings_arr );
-		for ( $i = 0; $i < count( $settings_arr_keys_arr ); $i++ ) {
-
-			$feed_id = (string) $settings_arr_keys_arr[ $i ]; // ! для правильности работы важен тип string
-			$run_cron = common_option_get(
-				'y4ym_run_cron',
-				'disabled',
-				$feed_id,
-				'y4ym'
-			);
-			$ufup = common_option_get(
-				'y4ym_ufup',
-				'disabled',
-				$feed_id,
-				'y4ym'
-			);
-			if ( $run_cron === 'disabled' || $ufup === 'disabled' ) {
-				new Y4YM_Error_Log( sprintf(
-					'FEED #%1$s; INFO: %2$s ($run_cron = %3$s; $ufup = %4$s); %5$s: %6$s; %7$s: %8$s',
-					$feed_id,
-					__(
-						'Creating a cache file is not required for this type',
-						'yml-for-yandex-market'
-					),
-					$run_cron,
-					$ufup,
-					__( 'File', 'yml-for-yandex-market' ),
-					'class-y4ym-admin.php',
-					__( 'Line', 'yml-for-yandex-market' ),
-					__LINE__
-				) );
-				continue;
-			}
-
-			$do_cash_file = common_option_get(
-				'y4ym_do_cash_file',
-				'enabled',
-				$feed_id, 'y4ym'
-			);
-			if ( $do_cash_file === 'enabled' || $ufup === 'enabled' ) {
-				// если в настройках включено создание кэш-файлов в момент сохранения товара
-				// или нужно запускать обновление фида при перезаписи файла
-				$result_get_unit_obj = new Y4YM_Get_Unit( $post_id, $feed_id );
-				$result_xml = $result_get_unit_obj->get_result();
-				// Remove hex and control characters from PHP string
-				$result_xml = y4ym_remove_special_characters( $result_xml );
-				new Y4YM_Write_File(
-					$result_xml,
-					sprintf( '%s.tmp', $post_id ),
-					$feed_id
-				);
-			}
-
-			// нужно ли запускать обновление фида при перезаписи файла
-			if ( $ufup === 'enabled' ) {
-				$status_sborki = (int) common_option_get(
-					'y4ym_status_sborki',
-					-1,
-					$feed_id,
-					'y4ym'
-				);
-				if ( $status_sborki === -1 ) {
-					new Y4YM_Error_Log( sprintf(
-						'FEED #%1$s; INFO: %2$s ($i = %3$s; $ufup = %4$s); %5$s: %6$s; %7$s: %8$s',
-						$feed_id,
-						__(
-							'Starting a quick feed build',
-							'yml-for-yandex-market'
-						),
-						$i,
-						$ufup,
-						__( 'File', 'yml-for-yandex-market' ),
-						'class-y4ym-admin.php',
-						__( 'Line', 'yml-for-yandex-market' ),
-						__LINE__
-					) );
-					clearstatcache(); // очищаем кэш дат файлов
-					$generation = new Y4YM_Generation_XML( $feed_id );
-					$generation->quick_generation();
-				}
-			}
-
-		} // end for
 
 	}
 
