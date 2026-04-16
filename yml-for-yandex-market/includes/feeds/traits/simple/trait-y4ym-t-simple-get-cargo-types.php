@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Cargo_Types {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Cargo_Types {
 	 */
 	public function get_cargo_types( $tag_name = 'cargo-types', $result_xml = '' ) {
 
-		$cargo_types = common_option_get(
+		$cargo_types = Y4YM_Options::settings_get(
 			'y4ym_cargo_types',
 			false,
 			$this->get_feed_id(),

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
- *                          univ_option_get
+ *             functions:   Y4YM_Options::get
  */
 trait Y4YM_T_Variable_Get_Name {
 
@@ -45,7 +45,7 @@ trait Y4YM_T_Variable_Get_Name {
 		$result_yml_name = apply_filters(
 			'y4ym_f_simple_tag_value_name',
 			$result_yml_name,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer() // ! не удалять тк полезен в прошке
 			],
@@ -54,7 +54,7 @@ trait Y4YM_T_Variable_Get_Name {
 		$result_yml_name = apply_filters(
 			'y4ym_f_variable_tag_value_name',
 			$result_yml_name,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],
@@ -63,7 +63,7 @@ trait Y4YM_T_Variable_Get_Name {
 
 		// массив категорий для которых запрещен group_id
 		$no_group_id_arr = maybe_unserialize(
-			univ_option_get(
+			Y4YM_Options::get(
 				'y4ym_no_group_id_arr' . $this->get_feed_id(),
 				[]
 			)
@@ -76,7 +76,7 @@ trait Y4YM_T_Variable_Get_Name {
 			// если id текущей категории совпал со списком категорий без group_id			  
 			if ( in_array( $сur_сategory_id, $no_group_id_arr ) ) {
 				$add_in_name_arr = maybe_unserialize(
-					univ_option_get(
+					Y4YM_Options::get(
 						'y4ym_add_in_name_arr' . $this->get_feed_id(),
 						[]
 					)
@@ -84,7 +84,7 @@ trait Y4YM_T_Variable_Get_Name {
 				$attributes = $this->get_product()->get_attributes(); // получили все атрибуты товара
 				$param_at_name = '';
 
-				$separator_type = common_option_get(
+				$separator_type = Y4YM_Options::settings_get(
 					'y4ym_separator_type',
 					'type1',
 					$this->get_feed_id(),
@@ -150,7 +150,7 @@ trait Y4YM_T_Variable_Get_Name {
 				$param_at_name = trim( $param_at_name );
 				if ( $param_at_name == '' ) {
 					$this->add_skip_reason(
-						[ 
+						[
 							'offer_id' => $this->get_offer()->get_id(),
 							'reason' => __(
 								'There are no variable attributes to create a unique product name',
@@ -196,7 +196,7 @@ trait Y4YM_T_Variable_Get_Name {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_name',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],

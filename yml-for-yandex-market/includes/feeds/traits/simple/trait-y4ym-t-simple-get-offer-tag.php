@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Offer_Tag {
 
@@ -42,18 +42,18 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 
 		// type="xx"
 		$offer_type = '';
-		$y4ym_yml_rules = common_option_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
+		$y4ym_yml_rules = Y4YM_Options::settings_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
 		if ( $y4ym_yml_rules === 'yandex_direct_free_from' ) {
 			$offer_type = 'vendor.model';
 		}
-		$y4ym_on_demand = common_option_get( 'y4ym_on_demand', 'disabled', $this->get_feed_id(), 'y4ym' );
+		$y4ym_on_demand = Y4YM_Options::settings_get( 'y4ym_on_demand', 'disabled', $this->get_feed_id(), 'y4ym' );
 		if ( $y4ym_on_demand === 'enabled' && $this->get_product()->get_stock_status() === 'onbackorder' ) {
 			$offer_type = 'on.demand';
 		}
 		$offer_type = apply_filters(
 			'y4ym_f_simple_offer_type',
 			$offer_type,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -65,13 +65,13 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 
 		// id="xx"
 		$offer_id_value = '';
-		$y4ym_source_id = common_option_get( 'y4ym_source_id', 'default', $this->get_feed_id(), 'y4ym' );
+		$y4ym_source_id = Y4YM_Options::settings_get( 'y4ym_source_id', 'default', $this->get_feed_id(), 'y4ym' );
 		switch ( $y4ym_source_id ) {
 			case "sku":
 				$offer_id_value = $this->get_product()->get_sku();
 				break;
 			case "post_meta":
-				$y4ym_source_id_post_meta = common_option_get( 'y4ym_source_id_post_meta', '', $this->get_feed_id(), 'y4ym' );
+				$y4ym_source_id_post_meta = Y4YM_Options::settings_get( 'y4ym_source_id_post_meta', '', $this->get_feed_id(), 'y4ym' );
 				$y4ym_source_id_post_meta = trim( $y4ym_source_id_post_meta );
 				if ( get_post_meta( $this->get_product()->get_id(), $y4ym_source_id_post_meta, true ) !== '' ) {
 					$offer_id_value = get_post_meta( $this->get_product()->get_id(), $y4ym_source_id_post_meta, true );
@@ -90,7 +90,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 		$offer_id_value = apply_filters(
 			'y4ym_f_simple_offer_id_value',
 			$offer_id_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -111,7 +111,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 				if ( $this->get_product()->get_backorders() === 'no' ) { // предзаказ запрещен
 					$available = 'false';
 				} else {
-					$y4ym_behavior_onbackorder = common_option_get( 'y4ym_behavior_onbackorder', 'true', $this->get_feed_id(), 'y4ym' );
+					$y4ym_behavior_onbackorder = Y4YM_Options::settings_get( 'y4ym_behavior_onbackorder', 'true', $this->get_feed_id(), 'y4ym' );
 					if ( $y4ym_behavior_onbackorder === 'false' ) {
 						$available = 'false';
 					} else {
@@ -125,7 +125,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 			} else if ( $this->get_product()->get_stock_status() === 'outofstock' ) {
 				$available = 'false';
 			} else {
-				$y4ym_behavior_onbackorder = common_option_get( 'y4ym_behavior_onbackorder', 'true', $this->get_feed_id(), 'y4ym' );
+				$y4ym_behavior_onbackorder = Y4YM_Options::settings_get( 'y4ym_behavior_onbackorder', 'true', $this->get_feed_id(), 'y4ym' );
 				if ( $y4ym_behavior_onbackorder === 'false' ) {
 					$available = 'false';
 				} else {
@@ -138,7 +138,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 		$offer_tag_attrs_arr = apply_filters(
 			'y4ym_f_simple_offer_tag_attrs_arr',
 			$offer_tag_attrs_arr,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -148,7 +148,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 		$tag_name = apply_filters(
 			'y4ym_f_simple_tag_name_offer',
 			$tag_name,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],
@@ -159,7 +159,7 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 		$result_xml = apply_filters(
 			'y4ym_f_simple_tag_offer',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'feed_category_id' => $this->get_feed_category_id()
 			],

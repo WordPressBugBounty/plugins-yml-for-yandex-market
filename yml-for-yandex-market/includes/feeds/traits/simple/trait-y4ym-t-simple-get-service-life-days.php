@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.23
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
  *                          get_simple_global_attribute_value
  *                          get_simple_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Service_Life_Days {
 
@@ -43,7 +43,7 @@ trait Y4YM_T_Simple_Get_Service_Life_Days {
 
 		$tag_value = '';
 
-		$y4ym_service_life_days = common_option_get(
+		$y4ym_service_life_days = Y4YM_Options::settings_get(
 			'y4ym_service_life_days',
 			'disabled',
 			$this->get_feed_id(),
@@ -53,7 +53,7 @@ trait Y4YM_T_Simple_Get_Service_Life_Days {
 
 			$service_life_days_value = $this->get_simple_product_post_meta( 'service_life_days' );
 			if ( empty( $service_life_days_value ) ) {
-				$service_life_days_value = common_option_get(
+				$service_life_days_value = Y4YM_Options::settings_get(
 					'y4ym_service_life_days_default_value',
 					0,
 					$this->get_feed_id(),

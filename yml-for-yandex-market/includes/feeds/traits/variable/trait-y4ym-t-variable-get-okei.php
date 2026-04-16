@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,12 +21,12 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_product_post_meta
  *                          get_variable_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Okei {
 
@@ -42,7 +42,7 @@ trait Y4YM_T_Variable_Get_Okei {
 	 */
 	public function get_okei( $tag_name = 'okei', $result_xml = '' ) {
 
-		$okei = common_option_get(
+		$okei = Y4YM_Options::settings_get(
 			'y4ym_okei',
 			'disabled',
 			$this->get_feed_id(),
@@ -51,7 +51,7 @@ trait Y4YM_T_Variable_Get_Okei {
 		if ( $okei === 'enabled' ) {
 			$tag_value = $this->get_variable_product_post_meta( 'okei' );
 			if ( empty( $tag_value ) || $tag_value === 'default' ) {
-				$okei_default_value = common_option_get(
+				$okei_default_value = Y4YM_Options::settings_get(
 					'y4ym_okei_default_value',
 					'disabled',
 					$this->get_feed_id(),

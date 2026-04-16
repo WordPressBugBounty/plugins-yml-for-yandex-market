@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -52,6 +52,85 @@ class Y4YM_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
+	}
+
+	/**
+	 * Registers all administrative hooks and actions through the given loader.
+	 *
+	 * This method sets up the plugin's backend functionality by attaching callbacks for:
+	 * - Enqueuing admin styles and scripts.
+	 * - Loading auxiliary classes on `init`.
+	 * - Integrating with WooCommerce product data (tabs, fields, variations, inventory).
+	 * - Saving custom meta data for products and variations.
+	 * - Adding the plugin menu item to the WordPress admin sidebar.
+	 * - Handling form submissions and displaying admin notices.
+	 * - Supporting AJAX requests (e.g. Select2 search).
+	 * - Extending feedback with additional diagnostic information.
+	 *
+	 * The loader ensures proper priority and execution context for each hook.
+	 *
+	 * @since   1.0.0
+	 * @access  public
+	 *
+	 * @param Y4YM_Loader $loader The loader instance responsible for managing WordPress hooks in the admin area.
+	 *
+	 * @return void
+	 */
+	public function init_hooks( Y4YM_Loader $loader ) {
+
+		$loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
+		$loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
+
+		// вызываем служебные классы в админке
+		$loader->add_action( 'init', $this, 'enqueue_classes' );
+
+		// добавляем вкладку на страницу товара вукомерц
+		$loader->add_action( 'woocommerce_product_data_tabs', $this, 'add_woocommerce_product_data_tab' );
+		$loader->add_action( 'admin_footer', $this, 'set_product_data_tab_icon' );
+		$loader->add_action( 'woocommerce_product_data_panels', $this, 'add_fields_to_product_data_tab' );
+		$loader->add_action( 'woocommerce_product_options_sku', $this, 'add_fields_to_inventory_product_data_tab' );
+		$loader->add_action( 'save_post', $this, 'save_product_post_meta', 50, 3 );
+		$loader->add_action( 'woocommerce_product_after_variable_attributes', $this, 'add_fields_to_variable_settings', 10, 3 );
+		$loader->add_action( 'woocommerce_save_product_variation', $this, 'save_variation_product_post_meta', 10, 2 );
+
+		// печатаем скрипты в футере админки
+		$loader->add_action(
+			'admin_footer',
+			$this,
+			'print_admin_footer_script',
+			99
+		);
+
+		// Add menu item
+		$loader->add_action( 'admin_menu', $this, 'add_plugin_admin_menu' );
+
+		// слушаем кнопку сабмита
+		$loader->add_action( 'admin_init', $this, 'listen_submits' );
+
+		// выводим различные оповещения
+		$loader->add_action( 'admin_init', $this, 'notices' );
+
+		// Фильтр в перую очередь для того, чтобы работало сохранение настроек если мультиселект пуст.
+		$loader->add_filter(
+			'y4ym_f_flag_save_if_empty',
+			$this,
+			'flag_save_if_empty',
+			10,
+			2
+		);
+
+		// select2 - place 1 from 5
+		// https://github.com/woocommerce/selectWoo
+		// https://rudrastyh.com/wordpress/select2-for-metaboxes-with-ajax.html	
+		$loader->add_action(
+			'wp_ajax_y4ym_select2', // wp_ajax_{action}
+			$this,
+			'select2_get_posts_ajax_callback'
+		);
+
+		// дополнительная информация для фидбэка
+		$loader->add_action( 'y4ym_f_feedback_additional_info', $this, 'feedback_additional_info', 11 );
 
 	}
 
@@ -431,7 +510,7 @@ class Y4YM_Admin {
 								);
 								break;
 							case '2':
-								$last_element_feed = (int) univ_option_get(
+								$last_element_feed = (int) Y4YM_Options::get(
 									'y4ym_last_element_feed_' . $feed_id_str,
 									0
 								);
@@ -482,7 +561,7 @@ class Y4YM_Admin {
 	private function save_plugin_option() {
 
 		$feed_id = sanitize_text_field( $_POST['y4ym_feed_id_for_save'] );
-		common_option_upd(
+		Y4YM_Options::settings_update(
 			'y4ym_date_save_set',
 			current_time( 'timestamp', 1 ),
 			'no',
@@ -534,14 +613,14 @@ class Y4YM_Admin {
 		if ( isset( $_POST[ $option_name ] ) ) {
 			if ( is_array( $_POST[ $option_name ] ) ) {
 				// массивы храним отдельно от других параметров
-				univ_option_upd( $option_name . $feed_id, $_POST[ $option_name ] );
+				Y4YM_Options::update( $option_name . $feed_id, $_POST[ $option_name ] );
 			} else {
 				$option_value = preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $_POST[ $option_name ] );
-				common_option_upd( $option_name, $option_value, 'no', $feed_id, 'y4ym' );
+				Y4YM_Options::settings_update( $option_name, $option_value, 'no', $feed_id, 'y4ym' );
 			}
 		} else {
 			if ( 'empty_str' === $save_if_empty ) {
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					$option_name,
 					'',
 					'no',
@@ -551,7 +630,7 @@ class Y4YM_Admin {
 			}
 			if ( 'empty_arr' === $save_if_empty ) {
 				// массивы храним отдельно от других параметров
-				univ_option_upd( sprintf( '%s%s', $option_name, $feed_id ), [] );
+				Y4YM_Options::update( sprintf( '%s%s', $option_name, $feed_id ), [] );
 			}
 		}
 
@@ -889,8 +968,14 @@ class Y4YM_Admin {
 					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_feed_url'] ) ) {
 						$feed_url = $settings_arr[ $feed_id_str ]['y4ym_feed_url'];
 						$feed_rules = $settings_arr[ $feed_id_str ]['y4ym_yml_rules'];
+						$сount_products_in_feed = $settings_arr[ $feed_id_str ]['y4ym_count_products_in_feed'];
+						$date_sborki_start = $settings_arr[ $feed_id_str ]['y4ym_date_sborki_start'];
+						$date_sborki_end = $settings_arr[ $feed_id_str ]['y4ym_date_sborki_end'];
 						$additional_info .= sprintf( '<p>URL: %s</p>', urldecode( $feed_url ) );
 						$additional_info .= sprintf( '<p>Придерживаться правил: %s</p>', $feed_rules );
+						$additional_info .= sprintf( '<p>Количество тегов offer: %s</p>', $сount_products_in_feed );
+						$additional_info .= sprintf( '<p>Начало последней генерации: %s</p>', $date_sborki_start );
+						$additional_info .= sprintf( '<p>Конец последней генерации: %s</p>', $date_sborki_end );
 					} else {
 						$additional_info .= sprintf( '<p>URL: %s</p>', '-' );
 					}

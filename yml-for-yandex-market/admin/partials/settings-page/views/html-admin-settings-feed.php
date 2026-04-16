@@ -2,7 +2,7 @@
 /**
  * Settings page.
  * 
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit; ?>
 		esc_html__( 'Feed', 'yml-for-yandex-market' ),
 		esc_html( $view_arr['feed_id'] )
 	);
-	$feed_assignment = common_option_get(
+	$feed_assignment = Y4YM_Options::settings_get(
 		'y4ym_feed_assignment',
 		false,
 		$view_arr['feed_id'],
@@ -60,7 +60,7 @@ defined( 'ABSPATH' ) || exit; ?>
 								$html_template = __DIR__ . '/html-admin-settings-feed-tab-standart.php';
 								$html_template = apply_filters( 'y4ym_f_html_template_tab',
 									$html_template,
-									[ 
+									[
 										'tab_name' => $view_arr['tab_name'],
 										'view_arr' => $view_arr
 									]

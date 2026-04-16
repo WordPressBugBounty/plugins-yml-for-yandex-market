@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_product_post_meta
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Model {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Variable_Get_Model {
 	 */
 	public function get_model( $tag_name = 'model', $result_xml = '' ) {
 
-		$model = common_option_get(
+		$model = Y4YM_Options::settings_get(
 			'y4ym_model',
 			'disabled',
 			$this->get_feed_id(),
@@ -61,7 +61,7 @@ trait Y4YM_T_Variable_Get_Model {
 				$tag_value = apply_filters(
 					'y4ym_f_variable_tag_value_switch_model',
 					'',
-					[ 
+					[
 						'product' => $this->get_product(),
 						'offer' => $this->get_offer(),
 						'switch_value' => $model

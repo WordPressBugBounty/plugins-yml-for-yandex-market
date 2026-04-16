@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Oksm {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Oksm {
 	 */
 	public function get_oksm( $tag_name = 'oksm', $result_xml = '' ) {
 
-		$oksm = common_option_get(
+		$oksm = Y4YM_Options::settings_get(
 			'y4ym_oksm',
 			'enabled',
 			$this->get_feed_id(),
@@ -48,7 +48,7 @@ trait Y4YM_T_Variable_Get_Oksm {
 		);
 		if ( $oksm === 'disabled' ) {
 			return $result_xml;
-		} else { 
+		} else {
 			$tag_value = $this->get_variable_global_attribute_value( $oksm );
 			$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		}

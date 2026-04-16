@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Description {
 
@@ -41,25 +41,25 @@ trait Y4YM_T_Simple_Get_Description {
 
 		$tag_value = '';
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		$desc_source = common_option_get(
+		$desc_source = Y4YM_Options::settings_get(
 			'y4ym_desc',
 			'fullexcerpt',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		$y4ym_the_content = common_option_get(
+		$y4ym_the_content = Y4YM_Options::settings_get(
 			'y4ym_the_content',
 			'enabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		$enable_tags_behavior = common_option_get(
+		$enable_tags_behavior = Y4YM_Options::settings_get(
 			'y4ym_enable_tags_behavior',
 			'default',
 			$this->get_feed_id(),
@@ -112,7 +112,7 @@ trait Y4YM_T_Simple_Get_Description {
 				break;
 			case 'post_meta':
 
-				$post_meta = common_option_get(
+				$post_meta = Y4YM_Options::settings_get(
 					'y4ym_source_description_post_meta',
 					'',
 					$this->get_feed_id(),
@@ -199,7 +199,7 @@ trait Y4YM_T_Simple_Get_Description {
 		);
 		if ( empty( $result_xml ) ) {
 			// пропускаем товары без описания
-			$skip_products_without_desc = common_option_get(
+			$skip_products_without_desc = Y4YM_Options::settings_get(
 				'y4ym_skip_products_without_desc',
 				'disabled',
 				$this->get_feed_id(),
@@ -220,12 +220,17 @@ trait Y4YM_T_Simple_Get_Description {
 	}
 
 	/**
-	 * Summary of replace_tags.
-	 * 
-	 * @param string $description_yml
-	 * @param string $enable_tags_behavior
-	 * 
-	 * @return string
+	 * Processes and sanitizes a string by replacing or removing specific HTML tags and shortcodes.
+	 *
+	 * Depending on the $enable_tags_behavior value, the function either applies a default set of allowed tags
+	 * or uses a custom list of allowed tags retrieved from settings. It also handles specific tag replacements,
+	 * such as converting list items to line breaks, and removes all shortcodes from the string.
+	 *
+	 * @param string $tag_value The input string containing HTML tags and/or shortcodes to be processed.
+	 * @param string $enable_tags_behavior The behavior mode for allowed tags. Use `default` for standard processing,
+	 *                                     or another value to use custom allowed tags from settings.
+	 *
+	 * @return string The sanitized string with processed tags and removed shortcodes.
 	 */
 	private function replace_tags( $tag_value, $enable_tags_behavior ) {
 
@@ -235,7 +240,7 @@ trait Y4YM_T_Simple_Get_Description {
 			$tag_value = str_replace( '</li>', '<br/>', $tag_value );
 		}
 
-		$enable_tags_custom = common_option_get(
+		$enable_tags_custom = Y4YM_Options::settings_get(
 			'y4ym_enable_tags_custom',
 			'',
 			$this->get_feed_id(),

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.2
- * @version    5.0.2 (02-04-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Discount_Price {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Discount_Price {
 	 */
 	public function get_discount_price( $tag_name = 'discount_price', $result_xml = '' ) {
 
-		$discount_price = common_option_get(
+		$discount_price = Y4YM_Options::settings_get(
 			'y4ym_discount_price',
 			'enabled',
 			$this->get_feed_id(),
@@ -55,7 +55,7 @@ trait Y4YM_T_Variable_Get_Discount_Price {
 			$old_price_value = apply_filters(
 				'y4ym_f_variable_price',
 				$old_price_value,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'offer' => $this->get_offer(),
 					'product_category_id' => $this->get_feed_category_id()

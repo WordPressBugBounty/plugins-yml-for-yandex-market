@@ -2,7 +2,7 @@
 /**
  * The Another page tab
  * 
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -41,7 +41,7 @@ $html_th = '';
 $html_td = '';
 
 // придерживаться правил. 2 из 2
-$yml_rules = common_option_get(
+$yml_rules = Y4YM_Options::settings_get(
 	'y4ym_yml_rules',
 	'yandex_market_assortment',
 	$view_arr['feed_id'],

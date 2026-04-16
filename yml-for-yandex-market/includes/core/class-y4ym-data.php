@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
@@ -404,7 +404,9 @@ class Y4YM_Data {
 								'value' => 'aliexpress',
 								'text' => 'AliExpress'
 							],
-						// TODO: [ 'value' => 'zakupki_mos', 'text' => 'Портал поставщиков Москвы' ],
+							[
+								'value' => 'zakupki_mos', 'text' => 'Портал поставщиков Москвы'
+							],
 							[
 								'value' => 'all_elements',
 								'text' => sprintf( '%s (%s)',
@@ -1761,7 +1763,7 @@ class Y4YM_Data {
 						'tag_name' => 'okei',
 						'tag_name_for_desc' => 'okei id="XXX">Упаковка</okei'
 					]
-				], 
+				],
 				[
 					'opt_name' => 'y4ym_okei_default_value',
 					'def_val' => 'disabled',
@@ -1779,7 +1781,7 @@ class Y4YM_Data {
 							[
 								[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
 							],
-							Y4YM_Registry::get_okei_list() 
+							Y4YM_Registry::get_okei_list()
 						),
 						'tag_name' => 'okei',
 						'tag_name_for_desc' => 'okei id="XXX">Упаковка</okei'

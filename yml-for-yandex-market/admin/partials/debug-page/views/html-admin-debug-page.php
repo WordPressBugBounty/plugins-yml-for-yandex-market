@@ -2,7 +2,7 @@
 /**
  * Debug page.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  * 
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit; ?>
 	<h1><?php printf( '%s - %s (v. %s)',
 		'YML for Yandex Market',
 		esc_html__( 'Debug page', 'yml-for-yandex-market' ),
-		esc_html( univ_option_get( 'y4ym_version' ) )
+		esc_html( Y4YM_Options::get( 'y4ym_version' ) )
 	); ?></h1>
 
 	<div id="poststuff">

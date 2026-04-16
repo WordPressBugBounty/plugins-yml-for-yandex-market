@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Picture {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Picture {
 	 */
 	public function get_picture( $tag_name = 'picture', $result_xml = '' ) {
 
-		$picture = common_option_get(
+		$picture = Y4YM_Options::settings_get(
 			'y4ym_picture',
 			'full',
 			$this->get_feed_id(),
@@ -64,7 +64,7 @@ trait Y4YM_T_Simple_Get_Picture {
 			$result_xml = $this->skip_gif( $tag_name, $thumb_yml );
 		}
 
-		$no_default_png_products = common_option_get(
+		$no_default_png_products = Y4YM_Options::settings_get(
 			'y4ym_no_default_png_products',
 			'disabled',
 			$this->get_feed_id(), 'y4ym'
@@ -87,7 +87,7 @@ trait Y4YM_T_Simple_Get_Picture {
 		);
 
 		// пропускаем вариации без картинок
-		$skip_products_without_pic = common_option_get(
+		$skip_products_without_pic = Y4YM_Options::settings_get(
 			'y4ym_skip_products_without_pic',
 			'disabled',
 			$this->get_feed_id(),

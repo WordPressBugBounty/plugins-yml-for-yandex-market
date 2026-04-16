@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Warranty_Days {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Simple_Get_Warranty_Days {
 
 		$tag_value = '';
 
-		$y4ym_warranty_days = common_option_get(
+		$y4ym_warranty_days = Y4YM_Options::settings_get(
 			'y4ym_warranty_days',
 			'disabled',
 			$this->get_feed_id(),
@@ -51,7 +51,7 @@ trait Y4YM_T_Simple_Get_Warranty_Days {
 
 			$warranty_days_value = $this->get_simple_product_post_meta( 'warranty_days' );
 			if ( empty( $warranty_days_value ) ) {
-				$warranty_days_value = common_option_get(
+				$warranty_days_value = Y4YM_Options::settings_get(
 					'y4ym_warranty_days_default_value',
 					0,
 					$this->get_feed_id(),

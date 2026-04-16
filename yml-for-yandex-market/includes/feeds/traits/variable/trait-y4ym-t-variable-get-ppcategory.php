@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,12 +21,12 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_product_post_meta
  *                          get_variable_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Ppcategory {
 
@@ -42,7 +42,7 @@ trait Y4YM_T_Variable_Get_Ppcategory {
 	 */
 	public function get_ppcategory( $tag_name = 'ppCategory', $result_xml = '' ) {
 
-		$ppcategory = common_option_get(
+		$ppcategory = Y4YM_Options::settings_get(
 			'y4ym_ppcategory',
 			'disabled',
 			$this->get_feed_id(),

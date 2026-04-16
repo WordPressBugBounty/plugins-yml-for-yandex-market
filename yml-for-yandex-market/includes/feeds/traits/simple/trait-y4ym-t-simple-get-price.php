@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.26 (24-12-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Price {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Price {
 	 */
 	public function get_price( $tag_name = 'price', $result_xml = '' ) {
 
-		$price = common_option_get(
+		$price = Y4YM_Options::settings_get(
 			'y4ym_price',
 			'enabled',
 			$this->get_feed_id(),
@@ -64,7 +64,7 @@ trait Y4YM_T_Simple_Get_Price {
 			$this->get_feed_id()
 		);
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),
@@ -96,7 +96,7 @@ trait Y4YM_T_Simple_Get_Price {
 		);
 		if ( false === $skip_price_reason ) {
 			$tag_value = number_format( (float) $tag_value, wc_get_price_decimals(), '.', '' );
-			$price_from = common_option_get(
+			$price_from = Y4YM_Options::settings_get(
 				'y4ym_price_from',
 				false,
 				$this->get_feed_id(),

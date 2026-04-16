@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Dimensions {
 
@@ -45,7 +45,7 @@ trait Y4YM_T_Variable_Get_Dimensions {
 		$length_yml = 0;
 		$width_yml = 0;
 		$height_yml = 0;
-		$length = common_option_get( 'y4ym_length', false, $this->get_feed_id(), 'y4ym' );
+		$length = Y4YM_Options::settings_get( 'y4ym_length', false, $this->get_feed_id(), 'y4ym' );
 		if ( empty( $length ) || $length === 'woo_shippings' ) {
 			if ( $this->get_product()->has_dimensions() ) {
 				$length_yml = $this->get_offer()->get_length();
@@ -63,7 +63,7 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			$length_yml = round( wc_get_dimension( (float) $tag_value, 'cm' ), 3 );
 		}
 
-		$width = common_option_get( 'y4ym_width', false, $this->get_feed_id(), 'y4ym' );
+		$width = Y4YM_Options::settings_get( 'y4ym_width', false, $this->get_feed_id(), 'y4ym' );
 		if ( empty( $width ) || $width === 'woo_shippings' ) {
 			if ( $this->get_product()->has_dimensions() ) {
 				$width_yml = $this->get_offer()->get_width();
@@ -80,7 +80,7 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			$width_yml = round( wc_get_dimension( (float) $tag_value, 'cm' ), 3 );
 		}
 
-		$height = common_option_get( 'y4ym_height', false, $this->get_feed_id(), 'y4ym' );
+		$height = Y4YM_Options::settings_get( 'y4ym_height', false, $this->get_feed_id(), 'y4ym' );
 		if ( empty( $height ) || $height === 'woo_shippings' ) {
 			if ( $this->get_product()->has_dimensions() ) {
 				$height_yml = $this->get_offer()->get_height();
@@ -97,7 +97,7 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			$height_yml = round( wc_get_dimension( (float) $tag_value, 'cm' ), 3 );
 		}
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),

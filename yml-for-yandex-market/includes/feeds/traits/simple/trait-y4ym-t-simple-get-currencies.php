@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.17 (30-07-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
  *                          get_simple_product_post_meta
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Currencies {
 
@@ -40,17 +40,20 @@ trait Y4YM_T_Simple_Get_Currencies {
 	 */
 	public function get_currencies( $tag_name = 'currencies', $result_xml = '' ) {
 
-		$currencies = common_option_get(
+		$currencies = Y4YM_Options::settings_get(
 			'y4ym_currencies',
 			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
 		if ( $currencies === 'enabled' ) {
-			$res = get_woocommerce_currency();
-			$allow_currencies_arr = [];
-			$tag_value = $this->get_simple_product_post_meta( 'currencies' );
-			$attr_arr = [ 'id' => 'RUB' ];
+			$ru_currency = Y4YM_Options::settings_get(
+				'y4ym_ru_currency',
+				'RUB',
+				$this->get_feed_id(),
+				'y4ym'
+			);
+			$attr_arr = [ 'id' => $ru_currency ];
 			$result_xml = new Y4YM_Get_Open_Tag( 'currencies', $attr_arr );
 			$result_xml = new Y4YM_Get_Open_Tag( 'currency', $attr_arr );
 			$result_xml .= new Y4YM_Get_Closed_Tag( 'currencies' );

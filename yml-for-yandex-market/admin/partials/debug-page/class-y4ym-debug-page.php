@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -120,8 +120,8 @@ class Y4YM_Debug_Page {
 		];
 
 		if ( $this->get_current_tab_name() === 'debug_options' ) {
-			$view_arr['keeplogs'] = univ_option_get( 'y4ym_keeplogs', 'disabled' );
-			$view_arr['plugin_notifications'] = univ_option_get( 'y4ym_plugin_notifications', 'disabled' );
+			$view_arr['keeplogs'] = Y4YM_Options::get( 'y4ym_keeplogs', 'disabled' );
+			$view_arr['plugin_notifications'] = Y4YM_Options::get( 'y4ym_plugin_notifications', 'disabled' );
 		}
 
 		include_once __DIR__ . '/views/html-admin-debug-page.php';
@@ -138,8 +138,6 @@ class Y4YM_Debug_Page {
 
 	/**
 	 * Get tabs array.
-	 * 
-	 * @param string $current
 	 * 
 	 * @return array `['debug_options' => 'Admin settings', TAB_NAME => TAB_LABEL...]`
 	 */

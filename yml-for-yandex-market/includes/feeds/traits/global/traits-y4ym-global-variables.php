@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/global
@@ -34,7 +34,7 @@ trait Y4YM_T_Get_Product {
 	/**
 	 * Get WooCommerce product object.
 	 * 
-	 * @return WC_Product
+	 * @return WC_Product|WC_Product_Simple|WC_Product_Variable
 	 */
 	protected function get_product() {
 		return $this->product;

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.2
- * @version    5.0.2 (02-04-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Cus_Skucolor {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Cus_Skucolor {
 	 */
 	public function get_cus_skucolor( $tag_name = 'cus_skucolor', $result_xml = '' ) {
 
-		$cus_skucolor = common_option_get(
+		$cus_skucolor = Y4YM_Options::settings_get(
 			'y4ym_cus_skucolor',
 			'enabled',
 			$this->get_feed_id(),

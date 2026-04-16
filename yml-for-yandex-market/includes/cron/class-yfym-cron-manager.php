@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin/cron
@@ -24,6 +24,36 @@
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
 class Y4YM_Cron_Manager {
+
+	/**
+	 * Registers all hooks related to this component through the given loader.
+	 *
+	 * This method sets up the functionality of the current module by attaching callbacks for:
+	 * - Adding custom cron schedules (e.g. every minute, every three hours).
+	 * - Starting the full feed creation process via CRON.
+	 * - Executing incremental feed generation every minute until complete.
+	 * 
+	 * Each hook is registered with proper priority and context via the loader, ensuring
+	 * reliable and organized integration with the WordPress hook system.
+	 *
+	 * @access  public
+	 *
+	 * @param Y4YM_Loader $loader The loader instance responsible for managing WordPress actions and filters.
+	 *
+	 * @return void
+	 */
+	public function init_hooks( Y4YM_Loader $loader ) {
+
+		// Add cron intervals to WordPress
+		$loader->add_action( 'cron_schedules', $this, 'add_cron_intervals' );
+
+		// этот крон срабатывает в момент запуска генерации фида с нуля
+		$loader->add_action( 'y4ym_cron_start_feed_creation', $this, 'do_start_feed_creation' );
+
+		// этот крон срабатывает в процессе генерации фида. вызывает кроном y4ym_cron_start_feed_creation
+		$loader->add_action( 'y4ym_cron_sborki', $this, 'do_it_every_minute' );
+
+	}
 
 	/**
 	 * Add cron intervals to WordPress. Function for `cron_schedules` action-hook.
@@ -74,7 +104,7 @@ class Y4YM_Cron_Manager {
 		) );
 
 		// счётчик завершенных товаров в положение 0.
-		univ_option_upd(
+		Y4YM_Options::update(
 			'y4ym_last_element_feed_' . $feed_id,
 			'0',
 			'no'
@@ -104,7 +134,7 @@ class Y4YM_Cron_Manager {
 				__LINE__
 			) );
 			// сборку начали
-			common_option_upd(
+			Y4YM_Options::settings_update(
 				'y4ym_status_sborki',
 				'1',
 				'no',
@@ -112,7 +142,7 @@ class Y4YM_Cron_Manager {
 				'y4ym'
 			);
 			// сразу планируем крон-задачу на начало сброки фида в следующий раз в нужный час
-			$run_cron = common_option_get(
+			$run_cron = Y4YM_Options::settings_get(
 				'y4ym_run_cron',
 				'disabled',
 				$feed_id,
@@ -161,7 +191,7 @@ class Y4YM_Cron_Manager {
 				$e->getLine()
 			) );
 			// ? Можно даже поставить флаг остановки
-			// common_option_upd( 'y4ym_status_sborki', '-1', 'no', $feed_id, 'y4ym' );
+			// Y4YM_Options::settings_update( 'y4ym_status_sborki', '-1', 'no', $feed_id, 'y4ym' );
 		}
 
 		$execution_time = microtime( true ) - $start_time;
@@ -190,7 +220,7 @@ class Y4YM_Cron_Manager {
 	public static function cron_starting_feed_creation_task_planning( $feed_id, $delay_second = 0 ) {
 
 		$planning_result = false;
-		$run_cron = common_option_get(
+		$run_cron = Y4YM_Options::settings_get(
 			'y4ym_run_cron',
 			'disabled',
 			$feed_id,
@@ -201,11 +231,11 @@ class Y4YM_Cron_Manager {
 			// останавливаем сборку досрочно, если это выбрано в настройках плагина при сохранении
 			wp_clear_scheduled_hook( 'y4ym_cron_start_feed_creation', [ $feed_id ] );
 			wp_clear_scheduled_hook( 'y4ym_cron_sborki', [ $feed_id ] );
-			univ_option_upd(
+			Y4YM_Options::update(
 				'y4ym_last_element_feed_' . $feed_id,
 				0
 			);
-			common_option_upd(
+			Y4YM_Options::settings_update(
 				'y4ym_status_sborki',
 				'-1',
 				'no',
@@ -215,7 +245,7 @@ class Y4YM_Cron_Manager {
 		} else {
 			wp_clear_scheduled_hook( 'y4ym_cron_start_feed_creation', [ $feed_id ] );
 			if ( ! wp_next_scheduled( 'y4ym_cron_start_feed_creation', [ $feed_id ] ) ) {
-				$cron_start_time = common_option_get(
+				$cron_start_time = Y4YM_Options::settings_get(
 					'y4ym_cron_start_time',
 					'disabled',
 					$feed_id,

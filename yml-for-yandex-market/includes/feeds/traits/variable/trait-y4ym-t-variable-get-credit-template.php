@@ -1,11 +1,11 @@
-<?php // ? актуален ли
+<?php // TODO: актуален ли
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Credit_Template {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Credit_Template {
 	 */
 	public function get_credit_template( $tag_name = 'credit-template', $result_xml = '' ) {
 
-		$credit_template = common_option_get(
+		$credit_template = Y4YM_Options::settings_get(
 			'y4ym_credit_template',
 			'disabled',
 			$this->get_feed_id(),
@@ -58,7 +58,7 @@ trait Y4YM_T_Variable_Get_Credit_Template {
 
 			$result_xml = apply_filters(
 				'y4ym_f_variable_tag_credit_template', $result_xml,
-				[ 
+				[
 					'product' => $this->get_product(),
 					'offer' => $this->get_offer()
 				],

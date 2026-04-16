@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Packagetype {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Packagetype {
 	 */
 	public function get_packagetype( $tag_name = 'packageType', $result_xml = '' ) {
 
-		$packagetype = common_option_get(
+		$packagetype = Y4YM_Options::settings_get(
 			'y4ym_packagetype',
 			'disabled',
 			$this->get_feed_id(),
@@ -57,7 +57,7 @@ trait Y4YM_T_Simple_Get_Packagetype {
 
 			$result_xml = apply_filters(
 				'y4ym_f_simple_tag_packagetype', $result_xml,
-				[ 
+				[
 					'product' => $this->get_product()
 				],
 				$this->get_feed_id()

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Region {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Region {
 	 */
 	public function get_region( $tag_name = 'region', $result_xml = '' ) {
 
-		$region = common_option_get(
+		$region = Y4YM_Options::settings_get(
 			'y4ym_region',
 			'disabled',
 			$this->get_feed_id(),
@@ -48,7 +48,7 @@ trait Y4YM_T_Simple_Get_Region {
 		if ( $region === 'enabled' ) {
 			$tag_value = $this->get_simple_product_post_meta( 'region' );
 			if ( empty( $tag_value ) || $tag_value === 'default' ) {
-				$region_default_value = common_option_get(
+				$region_default_value = Y4YM_Options::settings_get(
 					'y4ym_region_default_value',
 					'disabled',
 					$this->get_feed_id(),
@@ -60,7 +60,7 @@ trait Y4YM_T_Simple_Get_Region {
 					$tag_value = $region_default_value;
 				}
 			}
- 
+
 			$regions_arr = Y4YM_Registry::to_key_value_pairs( Y4YM_Registry::get_regions_list() );
 			if ( ! empty( $tag_value ) ) {
 				if ( isset( $regions_arr[ $tag_value ] ) ) {

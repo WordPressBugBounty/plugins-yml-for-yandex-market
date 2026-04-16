@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.17
- * @version    5.0.20 (10-09-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/common
@@ -24,11 +24,12 @@
  * @subpackage Y4YM/includes/feeds/traits/common
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Get_Paired_Tag
+ *                          Y4YM_Options
  *             traits:     
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
+ *             functions:   
  *             constants:   
  *             variable:    feed_category_id (set it)
  */
@@ -53,7 +54,7 @@ trait Y4YM_T_Common_Currency_Switcher {
 			y4ym_global_rest_woocommerce_currency();
 		}
 
-		$ru_currency = common_option_get(
+		$ru_currency = Y4YM_Options::settings_get(
 			'y4ym_ru_currency',
 			'RUB',
 			$this->get_feed_id(),

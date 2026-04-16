@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -127,7 +127,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 		$this->set_category_id();
 		$this->get_skips();
 
-		$feed_yml_rules = common_option_get(
+		$feed_yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			false,
 			$this->get_feed_id(),

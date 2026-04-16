@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.26 (24-12-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -21,7 +21,7 @@
  * @depends    classes:    
  *             traits:     Y4YM_T_Get_Feed_Id
  *             methods:    
- *             functions:  common_option_get
+ *             functions:  Y4YM_Options::settings_get
  *             constants:  
  *             options:  
  */
@@ -57,7 +57,7 @@ class Y4YM_Feed_File_Meta {
 			$blog_index = '0';
 		}
 
-		$feed_name = common_option_get(
+		$feed_name = Y4YM_Options::settings_get(
 			'y4ym_feed_name',
 			'',
 			$this->get_feed_id(),
@@ -80,7 +80,7 @@ class Y4YM_Feed_File_Meta {
 	 */
 	public function get_feed_extension() {
 
-		$file_extension = common_option_get(
+		$file_extension = Y4YM_Options::settings_get(
 			'y4ym_file_extension',
 			'xml',
 			$this->get_feed_id(),
@@ -102,7 +102,7 @@ class Y4YM_Feed_File_Meta {
 	 */
 	public function get_feed_full_filename( $without_zip = false ) {
 
-		$archive_to_zip = common_option_get(
+		$archive_to_zip = Y4YM_Options::settings_get(
 			'y4ym_archive_to_zip',
 			'disabled',
 			$this->get_feed_id(),

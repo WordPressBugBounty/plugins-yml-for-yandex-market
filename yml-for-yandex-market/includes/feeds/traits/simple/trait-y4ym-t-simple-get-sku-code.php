@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.2
- * @version    5.0.2 (02-04-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Sku_Code {
 
@@ -39,7 +39,7 @@ trait Y4YM_T_Simple_Get_Sku_Code {
 	 */
 	public function get_sku_code( $tag_name = 'sku_code', $result_xml = '' ) {
 
-		$sku_code = common_option_get(
+		$sku_code = Y4YM_Options::settings_get(
 			'y4ym_sku_code',
 			'disabled',
 			$this->get_feed_id(),
@@ -59,7 +59,7 @@ trait Y4YM_T_Simple_Get_Sku_Code {
 				$tag_value = $this->get_product()->get_id();
 				break;
 			case "post_meta":
-				$sku_code_post_meta = common_option_get(
+				$sku_code_post_meta = Y4YM_Options::settings_get(
 					'y4ym_sku_code_post_meta',
 					'',
 					$this->get_feed_id(),
@@ -75,15 +75,15 @@ trait Y4YM_T_Simple_Get_Sku_Code {
 				$tag_value = apply_filters(
 					'y4ym_f_simple_tag_value_switch_sku_code',
 					'',
-					[ 
+					[
 						'product' => $this->get_product(),
 						'switch_value' => $sku_code
 					],
 					$this->get_feed_id()
 				);
-				// if ( $tag_value == '' ) {
-				// 	$tag_value = $this->get_simple_global_attribute_value( $sku_code );
-				// }
+			// if ( $tag_value == '' ) {
+			// 	$tag_value = $this->get_simple_global_attribute_value( $sku_code );
+			// }
 		}
 		// ! обернул $tag_value в htmlspecialchars т.к у нас могут быть амперсанды
 		$result_xml = $this->get_simple_tag( $tag_name, htmlspecialchars( $tag_value ) );

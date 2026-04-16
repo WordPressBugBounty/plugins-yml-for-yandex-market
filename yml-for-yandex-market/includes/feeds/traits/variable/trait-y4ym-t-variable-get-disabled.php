@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Disabled {
 
@@ -36,13 +36,12 @@ trait Y4YM_T_Variable_Get_Disabled {
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml
-	 * @param string $depricated
 	 * 
 	 * @return string Example: `<disabled>true</disabled>`.
 	 */
 	public function get_disabled( $tag_name = 'disabled', $result_xml = '' ) {
 
-		$disabled = common_option_get(
+		$disabled = Y4YM_Options::settings_get(
 			'y4ym_auto_disabled',
 			'disabled',
 			$this->get_feed_id(),

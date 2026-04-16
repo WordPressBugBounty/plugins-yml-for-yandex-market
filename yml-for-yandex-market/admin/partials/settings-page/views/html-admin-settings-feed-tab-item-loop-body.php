@@ -2,7 +2,7 @@
 /**
  * The tab items loop body.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -11,7 +11,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $tag_label = $attr_arr[ $i ]['data']['label'];
-$opt_value = common_option_get(
+$opt_value = Y4YM_Options::settings_get(
 	$attr_arr[ $i ]['opt_name'],
 	'',
 	$view_arr['feed_id'],
@@ -43,7 +43,7 @@ if ( isset( $attr_arr[ $i ]['data']['desc'] ) && ! empty( $attr_arr[ $i ]['data'
 if ( $attr_arr[ $i ]['type'] === 'select' ) {
 
 	$multiple = false;
-	$tag_attributes_arr = [ 
+	$tag_attributes_arr = [
 		'id' => $attr_arr[ $i ]['opt_name'],
 		'class' => 'y4ym_select'
 	];
@@ -51,21 +51,21 @@ if ( $attr_arr[ $i ]['type'] === 'select' ) {
 		$multiple = true;
 		$tag_attributes_arr = array_merge(
 			$tag_attributes_arr,
-			[ 
+			[
 				'name' => $attr_arr[ $i ]['opt_name'] . '[]',
 				'size' => $attr_arr[ $i ]['data']['size'],
 				'multiple' => 'multiple'
 			]
 		);
 		// массивы хранятся в отдельных опциях
-		$opt_value = maybe_unserialize( univ_option_get(
+		$opt_value = maybe_unserialize( Y4YM_Options::get(
 			$attr_arr[ $i ]['opt_name'] . $view_arr['feed_id'],
 			[]
 		) );
 	} else {
 		$tag_attributes_arr = array_merge(
 			$tag_attributes_arr,
-			[ 
+			[
 				'name' => $attr_arr[ $i ]['opt_name']
 			]
 		);
@@ -107,7 +107,7 @@ if ( $attr_arr[ $i ]['type'] === 'select' ) {
 // select2 - place 3 from 5 (with woocommerce serch)
 if ( $attr_arr[ $i ]['type'] === 'select2' ) {
 
-	$tag_attributes_arr = [ 
+	$tag_attributes_arr = [
 		'id' => $attr_arr[ $i ]['opt_name'],
 		'name' => $attr_arr[ $i ]['opt_name'] . '[]',
 		'class' => 'y4ym_select2',
@@ -115,7 +115,7 @@ if ( $attr_arr[ $i ]['type'] === 'select2' ) {
 		'style' => 'width:99%;max-width:25em;'
 	];
 	// массивы хранятся в отдельных опциях, а select2 точно массив
-	$opt_value = maybe_unserialize( univ_option_get(
+	$opt_value = maybe_unserialize( Y4YM_Options::get(
 		$attr_arr[ $i ]['opt_name'] . $view_arr['feed_id'],
 		[]
 	) );
@@ -156,7 +156,7 @@ if ( $attr_arr[ $i ]['type'] === 'select2' ) {
 // text 
 if ( $attr_arr[ $i ]['type'] === 'text' || $attr_arr[ $i ]['type'] === 'number' ) {
 
-	$tag_attributes_arr = [ 
+	$tag_attributes_arr = [
 		'id' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'name' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'class' => esc_attr( 'y4ym_input' ),
@@ -198,7 +198,7 @@ if ( $attr_arr[ $i ]['type'] === 'text' || $attr_arr[ $i ]['type'] === 'number' 
 // Color Picker - place 4 from 4
 if ( $attr_arr[ $i ]['type'] === 'color_picker' ) {
 
-	$tag_attributes_arr = [ 
+	$tag_attributes_arr = [
 		'id' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'name' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'class' => esc_attr( 'iris_color' ),
@@ -240,7 +240,7 @@ if ( $attr_arr[ $i ]['type'] === 'color_picker' ) {
 // textarea 
 if ( $attr_arr[ $i ]['type'] === 'textarea' ) {
 
-	$tag_attributes_arr = [ 
+	$tag_attributes_arr = [
 		'id' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'name' => esc_attr( $attr_arr[ $i ]['opt_name'] ),
 		'class' => esc_attr( 'y4ym_textarea' ),

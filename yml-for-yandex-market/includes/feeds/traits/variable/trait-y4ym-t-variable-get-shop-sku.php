@@ -1,11 +1,11 @@
-<?php // ! Яндекс считает тег устаревшим
+<?php // TODO: Яндекс считает тег устаревшим
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Shop_Sku {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Shop_Sku {
 	 */
 	public function get_shop_sku( $tag_name = 'shop-sku', $result_xml = '' ) {
 
-		$shop_sku = common_option_get(
+		$shop_sku = Y4YM_Options::settings_get(
 			'y4ym_shop_sku',
 			'disabled',
 			$this->get_feed_id(),
@@ -63,7 +63,7 @@ trait Y4YM_T_Variable_Get_Shop_Sku {
 				$tag_value = apply_filters(
 					'y4ym_f_variable_tag_value_switch_shop_sku',
 					'',
-					[ 
+					[
 						'product' => $this->get_product(),
 						'offer' => $this->get_offer(),
 						'switch_value' => $shop_sku

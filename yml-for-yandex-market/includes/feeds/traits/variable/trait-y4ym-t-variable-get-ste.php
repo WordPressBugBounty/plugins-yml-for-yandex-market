@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,12 +21,12 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_product_post_meta
  *                          get_variable_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Ste {
 
@@ -42,7 +42,7 @@ trait Y4YM_T_Variable_Get_Ste {
 	 */
 	public function get_ste( $tag_name = 'ste', $result_xml = '' ) {
 
-		$ste = common_option_get(
+		$ste = Y4YM_Options::settings_get(
 			'y4ym_ste',
 			'disabled',
 			$this->get_feed_id(),

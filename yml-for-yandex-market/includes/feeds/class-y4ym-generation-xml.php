@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -58,13 +58,13 @@ class Y4YM_Generation_XML {
 	public function __construct( $feed_id ) {
 
 		$this->feed_id = (string) $feed_id;
-		$this->status_sborki = (int) common_option_get(
+		$this->status_sborki = (int) Y4YM_Options::settings_get(
 			'y4ym_status_sborki',
 			-1,
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		$this->step_export = (int) common_option_get(
+		$this->step_export = (int) Y4YM_Options::settings_get(
 			'y4ym_step_export',
 			25,
 			$this->get_feed_id(),
@@ -81,7 +81,7 @@ class Y4YM_Generation_XML {
 	public function quick_generation() {
 
 		$date_sborki_start = current_time( 'Y-m-d H:i' );
-		common_option_upd(
+		Y4YM_Options::settings_update(
 			'y4ym_date_sborki_start',
 			$date_sborki_start,
 			'no',
@@ -118,14 +118,14 @@ class Y4YM_Generation_XML {
 			$res_rename = $this->rename_feed_file();
 			if ( true === $res_rename ) {
 				$this->archiving();
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					'y4ym_date_sborki_end',
 					current_time( 'Y-m-d H:i' ),
 					'no',
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					'y4ym_date_successful_feed_update',
 					current_time( 'timestamp', 1 ),
 					'no',
@@ -173,7 +173,7 @@ class Y4YM_Generation_XML {
 				 */
 
 				$date_sborki_start = current_time( 'Y-m-d H:i' );
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					'y4ym_date_sborki_start',
 					$date_sborki_start,
 					'no',
@@ -191,7 +191,7 @@ class Y4YM_Generation_XML {
 				) );
 
 				// обнуляем счётчик обработанных элементов фида
-				univ_option_upd(
+				Y4YM_Options::update(
 					'y4ym_last_element_feed_' . $this->get_feed_id(),
 					0,
 					'no'
@@ -287,7 +287,7 @@ class Y4YM_Generation_XML {
 			case 2:
 
 				// создание временных файлов товаров, входящих в фид
-				$last_element_feed = (int) univ_option_get(
+				$last_element_feed = (int) Y4YM_Options::get(
 					'y4ym_last_element_feed_' . $this->get_feed_id(),
 					0
 				);
@@ -320,7 +320,7 @@ class Y4YM_Generation_XML {
 				}
 
 				$time_start = time();
-				$step_export = (int) common_option_get(
+				$step_export = (int) Y4YM_Options::settings_get(
 					'y4ym_step_export',
 					500,
 					$this->get_feed_id(),
@@ -358,14 +358,14 @@ class Y4YM_Generation_XML {
 					__( 'Line', 'yml-for-yandex-market' ),
 					__LINE__
 				) );
-				$script_execution_time = (int) common_option_get(
+				$script_execution_time = (int) Y4YM_Options::settings_get(
 					'y4ym_script_execution_time',
 					'26',
 					$this->get_feed_id(),
 					'y4ym'
 				);
 				if ( $script_execution_time == 0 ) {
-					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро в которых есть common_option_get эту проверку можно будет удалить
+					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро в которых есть Y4YM_Options::settings_get эту проверку можно будет удалить
 					$script_execution_time = 26;
 				}
 				if ( $query_time > $script_execution_time ) {
@@ -400,13 +400,13 @@ class Y4YM_Generation_XML {
 						__( 'Line', 'yml-for-yandex-market' ),
 						__LINE__
 					) );
-					$date_successful_feed_update = common_option_get(
+					$date_successful_feed_update = Y4YM_Options::settings_get(
 						'y4ym_date_successful_feed_update',
 						50,
 						$this->get_feed_id(),
 						'y4ym'
 					);
-					$date_save_set = common_option_get(
+					$date_save_set = Y4YM_Options::settings_get(
 						'y4ym_date_save_set',
 						50,
 						$this->get_feed_id(),
@@ -459,7 +459,7 @@ class Y4YM_Generation_XML {
 						//);
 						// usleep( 200000 ); // притормозим на 0,2 секунды
 					}
-					univ_option_upd(
+					Y4YM_Options::update(
 						'y4ym_last_element_feed_' . $this->get_feed_id(),
 						$last_element_feed,
 						'no'
@@ -484,7 +484,7 @@ class Y4YM_Generation_XML {
 				$planning_result = Y4YM_Cron_Manager::cron_sborki_task_planning( $this->get_feed_id(), 32 );
 
 				// постов нет, пишем концовку файла
-				$last_element_feed = (int) univ_option_get(
+				$last_element_feed = (int) Y4YM_Options::get(
 					'y4ym_last_element_feed_' . $this->get_feed_id(),
 					0
 				);
@@ -549,14 +549,14 @@ class Y4YM_Generation_XML {
 					)
 				);
 				$this->archiving();
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					'y4ym_date_sborki_end',
 					current_time( 'Y-m-d H:i' ),
 					'no',
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				common_option_upd(
+				Y4YM_Options::settings_update(
 					'y4ym_date_successful_feed_update',
 					current_time( 'timestamp', 1 ),
 					'no',
@@ -581,14 +581,14 @@ class Y4YM_Generation_XML {
 	 */
 	public function get_feed_header() {
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),
 			'y4ym'
 		);
 		$result_xml = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
-		$format_date = common_option_get(
+		$format_date = Y4YM_Options::settings_get(
 			'y4ym_format_date',
 			'rfc_short',
 			$this->get_feed_id(),
@@ -620,14 +620,14 @@ class Y4YM_Generation_XML {
 		$result_xml .= new Y4YM_Get_Open_Tag( 'yml_catalog', $tag_attributes_arr );
 		$result_xml .= new Y4YM_Get_Open_Tag( 'shop' );
 		$shop_name = stripslashes(
-			common_option_get( 'y4ym_shop_name',
+			Y4YM_Options::settings_get( 'y4ym_shop_name',
 				get_bloginfo( 'name' ),
 				$this->get_feed_id(),
 				'y4ym' )
 		);
 		$result_xml .= new Y4YM_Get_Paired_Tag( 'name', esc_html( $shop_name ) );
 		$company_name = stripslashes(
-			common_option_get(
+			Y4YM_Options::settings_get(
 				'y4ym_company_name',
 				'',
 				$this->get_feed_id(),
@@ -672,7 +672,7 @@ class Y4YM_Generation_XML {
 	 */
 	public function get_currencies( $tag_name = 'currencies', $result_xml = '' ) {
 
-		$currencies = common_option_get(
+		$currencies = Y4YM_Options::settings_get(
 			'y4ym_currencies',
 			'enabled',
 			$this->get_feed_id(),
@@ -699,7 +699,7 @@ class Y4YM_Generation_XML {
 	 */
 	protected function get_categories( $result_xml = '' ) {
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),
@@ -813,7 +813,7 @@ class Y4YM_Generation_XML {
 	protected function get_delivery_pickup( $result_xml = '' ) {
 
 		$flag = false;
-		$rules_name = common_option_get(
+		$rules_name = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			false,
 			$this->get_feed_id(),
@@ -836,26 +836,26 @@ class Y4YM_Generation_XML {
 		$postfix_arr = [ '', '2' ];
 		for ( $i = 0; $i < count( $postfix_arr ); $i++ ) {
 			$postfix = $postfix_arr[ $i ];
-			$delivery_options = common_option_get(
+			$delivery_options = Y4YM_Options::settings_get(
 				'y4ym_delivery_options' . $postfix,
 				'disabled',
 				$this->get_feed_id(),
 				'y4ym'
 			);
 			if ( $delivery_options === 'enabled' ) {
-				$cost = common_option_get(
+				$cost = Y4YM_Options::settings_get(
 					'y4ym_delivery_cost' . $postfix,
 					'0',
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				$days = common_option_get(
+				$days = Y4YM_Options::settings_get(
 					'y4ym_delivery_days' . $postfix,
 					'1',
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				$order_before = common_option_get(
+				$order_before = Y4YM_Options::settings_get(
 					'y4ym_order_before' . $postfix,
 					'',
 					$this->get_feed_id(),
@@ -872,26 +872,26 @@ class Y4YM_Generation_XML {
 			}
 		}
 
-		$pickup_options = common_option_get(
+		$pickup_options = Y4YM_Options::settings_get(
 			'y4ym_pickup_options',
 			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
 		if ( $pickup_options === 'enabled' ) {
-			$cost = common_option_get(
+			$cost = Y4YM_Options::settings_get(
 				'y4ym_pickup_cost',
 				'0',
 				$this->get_feed_id(),
 				'y4ym'
 			);
-			$days = common_option_get(
+			$days = Y4YM_Options::settings_get(
 				'y4ym_pickup_days',
 				'1',
 				$this->get_feed_id(),
 				'y4ym'
 			);
-			$order_before = common_option_get(
+			$order_before = Y4YM_Options::settings_get(
 				'y4ym_pickup_order_before',
 				'',
 				$this->get_feed_id(),
@@ -981,7 +981,7 @@ class Y4YM_Generation_XML {
 
 		}
 
-		common_option_upd(
+		Y4YM_Options::settings_update(
 			'y4ym_count_products_in_feed',
 			$products_count,
 			'no',
@@ -996,7 +996,7 @@ class Y4YM_Generation_XML {
 	/**
 	 * Checking XML fragment.
 	 * 
-	 * @param string $xml_string
+	 * @param string $offer_xml
 	 * @param string $filename
 	 * 
 	 * @return string Maybe `valid` or `not_valid`.
@@ -1084,7 +1084,7 @@ class Y4YM_Generation_XML {
 		}
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'offers' );
 
-		$yml_rules = common_option_get(
+		$yml_rules = Y4YM_Options::settings_get(
 			'y4ym_yml_rules',
 			'yandex_market_assortment',
 			$this->get_feed_id(),
@@ -1094,7 +1094,7 @@ class Y4YM_Generation_XML {
 			$yml_rules == 'yandex_direct_free_from' ||
 			$yml_rules == 'yandex_direct_combined' ||
 			$yml_rules == 'all_elements' ) {
-			$collection_id = common_option_get(
+			$collection_id = Y4YM_Options::settings_get(
 				'y4ym_collection_id',
 				'disabled',
 				$this->get_feed_id(),
@@ -1245,14 +1245,14 @@ class Y4YM_Generation_XML {
 	 */
 	public function stop( $reason_stop = 'success' ) {
 
-		if ( 'once' === common_option_get(
+		if ( 'once' === Y4YM_Options::settings_get(
 			'y4ym_run_cron',
 			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		) ) {
 			// если была одноразовая сборка - переводим переключатель в `отключено`
-			common_option_upd(
+			Y4YM_Options::settings_update(
 				'y4ym_run_cron',
 				'disabled',
 				'no',
@@ -1298,7 +1298,7 @@ class Y4YM_Generation_XML {
 	 */
 	private function set_status_sborki( $status_sborki ) {
 
-		common_option_upd(
+		Y4YM_Options::settings_update(
 			'y4ym_status_sborki',
 			(string) $status_sborki,
 			'no',
@@ -1392,7 +1392,7 @@ class Y4YM_Generation_XML {
 		);
 
 		// старый адрес фида /home/site.ru/public_html/wp-content/uploads/feed-yml-0.xml
-		$feed_old_path = common_option_get(
+		$feed_old_path = Y4YM_Options::settings_get(
 			'y4ym_feed_path',
 			'',
 			$this->get_feed_id(),
@@ -1430,14 +1430,14 @@ class Y4YM_Generation_XML {
 			) );
 			return false;
 		} else {
-			common_option_upd(
+			Y4YM_Options::settings_update(
 				'y4ym_feed_path',
 				$feed_new_path,
 				'no',
 				$this->get_feed_id(),
 				'y4ym'
 			);
-			common_option_upd(
+			Y4YM_Options::settings_update(
 				'y4ym_feed_url',
 				$feed_new_url,
 				'no',
@@ -1466,7 +1466,7 @@ class Y4YM_Generation_XML {
 	 */
 	private function archiving() {
 
-		$archive_to_zip = common_option_get(
+		$archive_to_zip = Y4YM_Options::settings_get(
 			'y4ym_archive_to_zip',
 			'disabled',
 			$this->get_feed_id(),

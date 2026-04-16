@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -255,7 +255,7 @@ class Y4YM_Get_Unit {
 	 */
 	protected function get_result_from_tmp() {
 
-		$ignore_cache = common_option_get(
+		$ignore_cache = Y4YM_Options::settings_get(
 			'y4ym_ignore_cache',
 			'disabled',
 			$this->get_feed_id(),

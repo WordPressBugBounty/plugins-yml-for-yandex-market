@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.3.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Begindate {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Begindate {
 	 */
 	public function get_begindate( $tag_name = 'beginDate', $result_xml = '' ) {
 
-		$begindate = common_option_get(
+		$begindate = Y4YM_Options::settings_get(
 			'y4ym_begindate',
 			'disabled',
 			$this->get_feed_id(),
@@ -50,7 +50,7 @@ trait Y4YM_T_Variable_Get_Begindate {
 			return $result_xml;
 		}
 
-		$format_date = common_option_get(
+		$format_date = Y4YM_Options::settings_get(
 			'y4ym_format_date',
 			'rfc_short',
 			$this->get_feed_id(),

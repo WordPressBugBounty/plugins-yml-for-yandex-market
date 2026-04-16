@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,9 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Barcode {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Simple_Get_Barcode {
 
 		$tag_value = '';
 
-		$y4ym_barcode = common_option_get(
+		$y4ym_barcode = Y4YM_Options::settings_get(
 			'y4ym_barcode',
 			'disabled',
 			$this->get_feed_id(),
@@ -55,7 +55,7 @@ trait Y4YM_T_Simple_Get_Barcode {
 				$tag_value = $this->get_product()->get_sku();
 				break;
 			case "post_meta":
-				$barcode_post_meta_id = common_option_get(
+				$barcode_post_meta_id = Y4YM_Options::settings_get(
 					'y4ym_barcode_post_meta',
 					false,
 					$this->get_feed_id(),
@@ -91,7 +91,7 @@ trait Y4YM_T_Simple_Get_Barcode {
 				$tag_value = apply_filters(
 					'y4ym_f_simple_tag_value_switch_barcode',
 					$tag_value,
-					[ 
+					[
 						'product' => $this->get_product(),
 						'switch_value' => $y4ym_barcode
 					],

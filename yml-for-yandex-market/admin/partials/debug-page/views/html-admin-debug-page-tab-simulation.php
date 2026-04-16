@@ -2,7 +2,7 @@
 /**
  * Display the Simulation tab.
  * 
- * @version    5.3.0 (22-03-2026)
+ * @version    5.4.0 (16-04-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  * 
@@ -37,7 +37,7 @@ defined( 'ABSPATH' ) || exit; ?>
 						} else {
 							$cur_feed_id = '1';
 						}
-						$y4ym_settings_arr = univ_option_get( 'y4ym_settings_arr' );
+						$y4ym_settings_arr = Y4YM_Options::get( 'y4ym_settings_arr' );
 						$y4ym_settings_arr_keys_arr = array_keys( $y4ym_settings_arr );
 						for ( $i = 0; $i < count( $y4ym_settings_arr_keys_arr ); $i++ ) {
 							$feed_id = (string) $y4ym_settings_arr_keys_arr[ $i ];
@@ -62,26 +62,26 @@ defined( 'ABSPATH' ) || exit; ?>
 				</td>
 			</tr>
 			<tr>
-			<th scope="row"><label
-					for="y4ym_add_headers_footer"><?php esc_html_e( 'Create a feed from a single product', 'yml-for-yandex-market' ); ?></label>
-			</th>
-			<td class="overalldesc">
-				<select style="width: 100%" name="y4ym_add_headers_footer" id="y4ym_add_headers_footer">
-					<?php
-					if ( isset( $_POST['y4ym_add_headers_footer'] ) ) {
-						$cur_add_headers = sanitize_text_field( $_POST['y4ym_add_headers_footer'] );
-					} else {
-						$cur_add_headers = 'disabled';
-					}
-					?>
-					<option value="disabled" <?php selected( $cur_add_headers, $cur_add_headers, true ); ?>>
-						<?php esc_html_e( 'Disabled', 'yml-for-yandex-market' ); ?>
-					</option>
-					<option value="enabled" <?php selected( 'enabled', $cur_add_headers, true ); ?>>
-						<?php esc_html_e( 'Enabled', 'yml-for-yandex-market' ); ?>
-					</option>
-				</select>
-			</td>
+				<th scope="row"><label
+						for="y4ym_add_headers_footer"><?php esc_html_e( 'Create a feed from a single product', 'yml-for-yandex-market' ); ?></label>
+				</th>
+				<td class="overalldesc">
+					<select style="width: 100%" name="y4ym_add_headers_footer" id="y4ym_add_headers_footer">
+						<?php
+						if ( isset( $_POST['y4ym_add_headers_footer'] ) ) {
+							$cur_add_headers = sanitize_text_field( $_POST['y4ym_add_headers_footer'] );
+						} else {
+							$cur_add_headers = 'disabled';
+						}
+						?>
+						<option value="disabled" <?php selected( $cur_add_headers, $cur_add_headers, true ); ?>>
+							<?php esc_html_e( 'Disabled', 'yml-for-yandex-market' ); ?>
+						</option>
+						<option value="enabled" <?php selected( 'enabled', $cur_add_headers, true ); ?>>
+							<?php esc_html_e( 'Enabled', 'yml-for-yandex-market' ); ?>
+						</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<th scope="row" colspan="2">

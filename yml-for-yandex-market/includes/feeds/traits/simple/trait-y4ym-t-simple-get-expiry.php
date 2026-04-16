@@ -1,11 +1,11 @@
-<?php // ? устарел или нет
+<?php // TODO: устарел или нет
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
  *                          get_simple_global_attribute_value
  *                          get_simple_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Simple_Get_Expiry {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Simple_Get_Expiry {
 	 */
 	public function get_expiry( $tag_name = 'expiry', $result_xml = '' ) {
 
-		$expiry = common_option_get(
+		$expiry = Y4YM_Options::settings_get(
 			'y4ym_expiry',
 			'disabled',
 			$this->get_feed_id(),

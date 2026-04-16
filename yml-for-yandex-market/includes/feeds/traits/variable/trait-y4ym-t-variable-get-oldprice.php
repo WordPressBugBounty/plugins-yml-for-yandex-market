@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.26 (24-12-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Oldprice {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Oldprice {
 	 */
 	public function get_oldprice( $tag_name = 'oldprice', $result_xml = '' ) {
 
-		$oldprice = common_option_get(
+		$oldprice = Y4YM_Options::settings_get(
 			'y4ym_oldprice',
 			'enabled',
 			$this->get_feed_id(),

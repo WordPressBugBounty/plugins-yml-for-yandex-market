@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.9 (20-05-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Group_Id {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Group_Id {
 	 */
 	public function get_group_id( $tag_name = 'group_id', $result_xml = '' ) {
 
-		$group_id = common_option_get(
+		$group_id = Y4YM_Options::settings_get(
 			'y4ym_group_id',
 			'disabled',
 			$this->get_feed_id(),
@@ -67,7 +67,7 @@ trait Y4YM_T_Variable_Get_Group_Id {
 		$tag_value = apply_filters(
 			'y4ym_f_group_id_value',
 			$tag_value,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer(),
 				'feed_category_id' => $this->get_feed_category_id()

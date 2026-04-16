@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -33,18 +33,18 @@ class Y4YM_Feed_Updater {
 	 */
 	public static function run_feeds_upd( $post_id ) {
 
-		$settings_arr = univ_option_get( 'y4ym_settings_arr' );
+		$settings_arr = Y4YM_Options::get( 'y4ym_settings_arr' );
 		$settings_arr_keys_arr = array_keys( $settings_arr );
 		for ( $i = 0; $i < count( $settings_arr_keys_arr ); $i++ ) {
 
 			$feed_id = (string) $settings_arr_keys_arr[ $i ]; // ! для правильности работы важен тип string
-			$run_cron = common_option_get(
+			$run_cron = Y4YM_Options::settings_get(
 				'y4ym_run_cron',
 				'disabled',
 				$feed_id,
 				'y4ym'
 			);
-			$ufup = common_option_get(
+			$ufup = Y4YM_Options::settings_get(
 				'y4ym_ufup',
 				'disabled',
 				$feed_id,
@@ -68,7 +68,7 @@ class Y4YM_Feed_Updater {
 				continue;
 			}
 
-			$do_cash_file = common_option_get(
+			$do_cash_file = Y4YM_Options::settings_get(
 				'y4ym_do_cash_file',
 				'enabled',
 				$feed_id, 'y4ym'
@@ -89,7 +89,7 @@ class Y4YM_Feed_Updater {
 
 			// нужно ли запускать обновление фида при перезаписи файла
 			if ( $ufup === 'enabled' ) {
-				$status_sborki = (int) common_option_get(
+				$status_sborki = (int) Y4YM_Options::settings_get(
 					'y4ym_status_sborki',
 					-1,
 					$feed_id,
@@ -133,18 +133,18 @@ class Y4YM_Feed_Updater {
 	 */
 	public function check_update_feed_stock_change( $item, $change, $order ) {
 
-		$settings_arr = univ_option_get( 'y4ym_settings_arr' );
+		$settings_arr = Y4YM_Options::get( 'y4ym_settings_arr' );
 		$settings_arr_keys_arr = array_keys( $settings_arr );
 		for ( $i = 0; $i < count( $settings_arr_keys_arr ); $i++ ) {
 
 			$feed_id = (string) $settings_arr_keys_arr[ $i ]; // ! для правильности работы важен тип string
-			$run_cron = common_option_get(
+			$run_cron = Y4YM_Options::settings_get(
 				'y4ym_run_cron',
 				'disabled',
 				$feed_id,
 				'y4ym'
 			);
-			$upd_feed_after_stock_change = common_option_get(
+			$upd_feed_after_stock_change = Y4YM_Options::settings_get(
 				'y4ym_upd_feed_after_stock_change',
 				'disabled',
 				$feed_id,
@@ -154,7 +154,7 @@ class Y4YM_Feed_Updater {
 				continue;
 			}
 			if ( $upd_feed_after_stock_change === 'enabled' ) {
-				$status_sborki = (int) common_option_get(
+				$status_sborki = (int) Y4YM_Options::settings_get(
 					'y4ym_status_sborki',
 					-1,
 					$feed_id,

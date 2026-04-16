@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Weight {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Variable_Get_Weight {
 	public function get_weight( $tag_name = 'weight', $result_xml = '' ) {
 		$tag_value = '';
 
-		$weight = common_option_get(
+		$weight = Y4YM_Options::settings_get(
 			'y4ym_weight',
 			'disabled',
 			$this->get_feed_id(),
@@ -83,7 +83,7 @@ trait Y4YM_T_Variable_Get_Weight {
 				$this->get_feed_id()
 			);
 			$result_xml = new Y4YM_Get_Paired_Tag( $tag_name, $tag_value );
-			$yml_rules = common_option_get(
+			$yml_rules = Y4YM_Options::settings_get(
 				'y4ym_yml_rules',
 				'yandex_market_assortment',
 				$this->get_feed_id(),

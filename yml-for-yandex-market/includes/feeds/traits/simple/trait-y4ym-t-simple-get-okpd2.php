@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.18
- * @version    5.0.18 (31-07-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -21,9 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/simple
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
- *             functions:   common_option_get
+ *             functions:   
  *                          get_nested_tag
  */
 trait Y4YM_T_Simple_Get_Okpd2 {
@@ -34,14 +35,14 @@ trait Y4YM_T_Simple_Get_Okpd2 {
 	 * @see https://help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu
 	 * @see https://st.aestatic.net/sc-knowledge-base/files/aliexpress_example.xml
 	 * 
-	 * @param string $tag_name
+	 * @param string $wrapper_tag_name
 	 * @param string $result_xml
 	 * 
 	 * @return string Example: `<okpd2>1234</okpd2><okpd2>1235</okpd2>...`.
 	 */
 	public function get_okpd2( $wrapper_tag_name = 'okpd2', $result_xml = '' ) {
 
-		$okpd2 = common_option_get(
+		$okpd2 = Y4YM_Options::settings_get(
 			'y4ym_okpd2',
 			'disabled',
 			$this->get_feed_id(),
@@ -56,7 +57,7 @@ trait Y4YM_T_Simple_Get_Okpd2 {
 		$result_xml = apply_filters(
 			'y4ym_f_simple_tag_okpd2',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product()
 			],
 			$this->get_feed_id()

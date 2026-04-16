@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.0.2
- * @version    5.0.2 (02-04-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Cus_Skucolor {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Cus_Skucolor {
 	 */
 	public function get_cus_skucolor( $tag_name = 'cus_skucolor', $result_xml = '' ) {
 
-		$cus_skucolor = common_option_get(
+		$cus_skucolor = Y4YM_Options::settings_get(
 			'y4ym_cus_skucolor',
 			'enabled',
 			$this->get_feed_id(),
@@ -48,7 +48,7 @@ trait Y4YM_T_Variable_Get_Cus_Skucolor {
 		);
 		if ( $cus_skucolor === 'disabled' ) {
 			return $result_xml;
-		} else { 
+		} else {
 			$tag_value = $this->get_variable_global_attribute_value( $cus_skucolor );
 			$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		}

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,11 +21,11 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
  *                          get_variable_tag
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Id {
 
@@ -41,7 +41,7 @@ trait Y4YM_T_Variable_Get_Id {
 	 */
 	public function get_id( $tag_name = 'id', $result_xml = '' ) {
 
-		$source_id = common_option_get(
+		$source_id = Y4YM_Options::settings_get(
 			'y4ym_source_id',
 			'default',
 			$this->get_feed_id(),
@@ -61,7 +61,7 @@ trait Y4YM_T_Variable_Get_Id {
 				break;
 			case 'post_meta':
 
-				$post_meta = common_option_get(
+				$post_meta = Y4YM_Options::settings_get(
 					'y4ym_source_id_post_meta',
 					'',
 					$this->get_feed_id(),

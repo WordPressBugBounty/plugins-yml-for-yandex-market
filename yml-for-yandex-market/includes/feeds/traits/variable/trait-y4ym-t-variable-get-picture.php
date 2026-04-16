@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.23 (15-11-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Picture {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Picture {
 	 */
 	public function get_picture( $tag_name = 'picture', $result_xml = '' ) {
 
-		$picture = common_option_get(
+		$picture = Y4YM_Options::settings_get(
 			'y4ym_picture',
 			'full',
 			$this->get_feed_id(),
@@ -64,7 +64,7 @@ trait Y4YM_T_Variable_Get_Picture {
 		} else {
 			$result_xml = $this->skip_gif( $tag_name, $thumb_yml );
 		}
-		$no_default_png_products = common_option_get(
+		$no_default_png_products = Y4YM_Options::settings_get(
 			'y4ym_no_default_png_products',
 			'disabled',
 			$this->get_feed_id(), 'y4ym'
@@ -79,7 +79,7 @@ trait Y4YM_T_Variable_Get_Picture {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_picture',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer(),
 				'size_pic' => $size_pic
@@ -88,14 +88,14 @@ trait Y4YM_T_Variable_Get_Picture {
 		);
 
 		// пропускаем вариации без картинок
-		$skip_products_without_pic = common_option_get(
+		$skip_products_without_pic = Y4YM_Options::settings_get(
 			'y4ym_skip_products_without_pic',
 			'disabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
 		if ( ( $skip_products_without_pic === 'enabled' ) && ( empty( $result_xml ) ) ) {
-			$this->add_skip_reason( [ 
+			$this->add_skip_reason( [
 				'offer_id' => $this->get_offer()->get_id(),
 				'reason' => __( 'Product has no images', 'yml-for-yandex-market' ),
 				'post_id' => $this->get_offer()->get_id(),

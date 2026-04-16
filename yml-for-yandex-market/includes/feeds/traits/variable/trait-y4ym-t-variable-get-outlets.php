@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.7 (15-04-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Outlets {
 
@@ -40,7 +40,7 @@ trait Y4YM_T_Variable_Get_Outlets {
 	 */
 	public function get_outlets( $tag_name = 'outlets', $result_xml = '', $rules = '' ) {
 
-		$warehouse = common_option_get(
+		$warehouse = Y4YM_Options::settings_get(
 			'y4ym_warehouse',
 			'',
 			$this->get_feed_id(),
@@ -70,7 +70,7 @@ trait Y4YM_T_Variable_Get_Outlets {
 			if ( $tag_value > -1 ) {
 				$result_xml = new Y4YM_Get_Open_Tag( $tag_name );
 				$args_arr = [ 'instock' => $tag_value ];
-				$rules = common_option_get(
+				$rules = Y4YM_Options::settings_get(
 					'y4ym_yml_rules',
 					'sbermegamarket',
 					$this->get_feed_id(),

@@ -266,7 +266,7 @@ if ( ! function_exists( 'y4ym_replace_domain' ) ) {
 	 */
 	function y4ym_replace_domain( $url, $feed_id ) {
 
-		$new_url = common_option_get(
+		$new_url = Y4YM_Options::settings_get(
 			'y4ym_replace_domain',
 			'',
 			$feed_id,
@@ -319,7 +319,7 @@ if ( ! function_exists( 'y4ym_global_set_woocommerce_currency' ) ) {
 
 		// FOX - Currency Switcher Professional for WooCommerce
 		if ( class_exists( 'WOOCS' ) ) {
-			$wooc_currencies = common_option_get(
+			$wooc_currencies = Y4YM_Options::settings_get(
 				'y4ym_wooc_currencies',
 				'RUB',
 				$feed_id,
@@ -396,6 +396,35 @@ if ( ! function_exists( 'y4ym_remove_directory' ) ) {
 				__( 'Error when deleting a folder', 'yml-for-yandex-market' ) . $e->getMessage()
 			);
 			return false;
+		}
+
+	}
+}
+
+if ( ! function_exists( 'get_from_url' ) ) {
+	/**
+	 * Return URL without GET parameters or just GET parameters without URL.
+	 * 
+	 * @since 1.0.0 (23-05-2023)
+	 *
+	 * @param string $url
+	 * @param string $whot Maybe: `url`, `get_params`
+	 *
+	 * @return string|false
+	 */
+	function get_from_url( $url, $whot = 'url' ) {
+
+		$url = str_replace( "&amp;", "&", $url ); // Заменяем сущности на амперсанд, если требуется
+		// Разбиваем URL на 2 части: до знака ? и после
+		list( $url_part, $get_part ) = array_pad( explode( "?", $url ), 2, "" );
+		switch ( $whot ) {
+			case "url":
+				$url_part = str_replace( " ", "%20", $url_part ); // заменим пробел на сущность
+				return $url_part; // Возвращаем URL без get-параметров (до знака вопроса)
+			case "get_params":
+				return $get_part; // Возвращаем get-параметры (без знака вопроса)
+			default:
+				return false;
 		}
 
 	}

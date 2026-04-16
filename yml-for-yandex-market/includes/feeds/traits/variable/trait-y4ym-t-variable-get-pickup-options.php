@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,6 +21,7 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
@@ -41,7 +42,7 @@ trait Y4YM_T_Variable_Get_pickup_Options {
 	 */
 	public function get_pickup_options( $tag_name = 'pickup-options', $result_xml = '', $depricated = '' ) {
 
-		$pickup_options = common_option_get(
+		$pickup_options = Y4YM_Options::settings_get(
 			'y4ym_pickup_options',
 			'disabled',
 			$this->get_feed_id(),
@@ -68,7 +69,7 @@ trait Y4YM_T_Variable_Get_pickup_Options {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_pickup_options',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],

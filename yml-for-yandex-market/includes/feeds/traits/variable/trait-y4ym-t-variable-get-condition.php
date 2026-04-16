@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.15 (09-07-2025)
+ * @version    5.4.0 (16-04-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -21,10 +21,10 @@
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  * @depends    classes:     Y4YM_Get_Paired_Tag
+ *                          Y4YM_Options
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
- *             functions:   common_option_get
  */
 trait Y4YM_T_Variable_Get_Condition {
 
@@ -42,7 +42,7 @@ trait Y4YM_T_Variable_Get_Condition {
 
 		$condition = $this->get_variable_product_post_meta( 'condition' );
 		if ( empty( $condition ) || $condition === 'default' ) {
-			$condition = common_option_get(
+			$condition = Y4YM_Options::settings_get(
 				'y4ym_condition',
 				'disabled',
 				$this->get_feed_id(),
@@ -51,7 +51,7 @@ trait Y4YM_T_Variable_Get_Condition {
 		}
 		$reason = $this->get_variable_product_post_meta( 'reason' );
 		if ( empty( $reason ) ) {
-			$reason = common_option_get(
+			$reason = Y4YM_Options::settings_get(
 				'y4ym_reason',
 				'',
 				$this->get_feed_id(),
@@ -60,7 +60,7 @@ trait Y4YM_T_Variable_Get_Condition {
 		}
 		$quality = $this->get_variable_product_post_meta( 'quality' );
 		if ( empty( $quality ) || $quality === 'default' ) {
-			$quality = common_option_get(
+			$quality = Y4YM_Options::settings_get(
 				'y4ym_quality',
 				'perfect',
 				$this->get_feed_id(),
@@ -80,7 +80,7 @@ trait Y4YM_T_Variable_Get_Condition {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_condition',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],
