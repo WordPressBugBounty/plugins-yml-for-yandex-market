@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.0 (19-05-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -128,6 +128,7 @@ trait Y4YM_T_Simple_Get_Dimensions {
 			if ( $height_yml > 0 ) {
 				$result_xml .= new Y4YM_Get_Paired_Tag( 'height', $height_yml );
 			}
+			$result_xml .= '<dimensions>' . $length_yml . '/' . $width_yml . '/' . $height_yml . '</dimensions>' . PHP_EOL;
 		} else if ( ( $length_yml > 0 ) && ( $width_yml > 0 ) && ( $height_yml > 0 ) ) {
 			$result_xml = '<dimensions>' . $length_yml . '/' . $width_yml . '/' . $height_yml . '</dimensions>' . PHP_EOL;
 		}

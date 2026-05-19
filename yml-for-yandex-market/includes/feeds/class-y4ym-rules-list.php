@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.5.0 (19-05-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -95,7 +95,7 @@ class Y4YM_Rules_List {
 				'yandex_business' => [
 					// https://yandex.ru/sprav/templates/price-list-template.xml
 					'offer_tag', 'currencyid', 'name', 'vendor', 'price', 'oldprice',
-					'categoryid', 'picture', 'description', // TODO: 'shortdescription',
+					'categoryid', 'picture', 'description', 'shortdescription',
 					'url', 'type_prefix', 'model'
 				],
 				'yandex_webmaster' => [
@@ -135,9 +135,9 @@ class Y4YM_Rules_List {
 				],
 				'aliexpress' => [
 					// https://help.aliexpress-cis.com/help/article/upload-yml-file#heading-trebovaniya-k-faylu
-					'offer_tag', 'price', 'discount_price', 'categoryid', 'picture', 'name', 'description', 'url',
-					'weight', 'dimensions', 'quantity', 'params', 'cus_skucolor', 'size', 'sku_code',
-					'tn_ved_codes', 'okpd2'
+					'offer_tag', 'currencyid', 'price', 'discount_price', 'categoryid', 'picture', 'name', 'description', 'url',
+					'brand', 'vendor', 'weight', 'dimensions', 'quantity', 'params', 'cus_skucolor', 'size', 'sku_code',
+					'tn_ved_codes', 'okpd2', 'barcode'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup',
@@ -167,7 +167,7 @@ class Y4YM_Rules_List {
 					'min_quantity', 'max_quantity', 'model', 'name', 'outlets', 'params',
 					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
 					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
-					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
+					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'type_prefix', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'consists',
 					'ste', 'isvisibletostatecustomers', 'isavailabletoindividuals', 'ppcategory',

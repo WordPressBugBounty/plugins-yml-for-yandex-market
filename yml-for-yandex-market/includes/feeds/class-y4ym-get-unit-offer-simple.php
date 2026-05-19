@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.0 (19-05-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -34,6 +34,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Archived;
 	use Y4YM_T_Simple_Get_Barcode;
 	use Y4YM_T_Simple_Get_Begindate;
+	use Y4YM_T_Simple_Get_Brand;
 	use Y4YM_T_Simple_Get_Cargo_Types;
 	use Y4YM_T_Simple_Get_CategoryId;
 	use Y4YM_T_Simple_Get_Certificate;
@@ -96,6 +97,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Service_Life_Days;
 	use Y4YM_T_Simple_Get_Shipment_Options;
 	use Y4YM_T_Simple_Get_Shop_Sku;
+	use Y4YM_T_Simple_Get_Shortdescription;
 	use Y4YM_T_Simple_Get_Size;
 	use Y4YM_T_Simple_Get_Sku_Code;
 	use Y4YM_T_Simple_Get_Ste;

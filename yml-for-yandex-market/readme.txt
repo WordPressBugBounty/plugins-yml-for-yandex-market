@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 6.9.4
-Stable tag: 5.4.0
+Stable tag: 5.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,13 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.5.0 =
+*Release Date 19-05-2026*
+
+* Added following tags: `brand`, `shortDescription`.
+* Fixed interface bugs.
+* Code refactoring.
 
 = 5.4.0 =
 *Release Date 16-04-2026*
@@ -266,9 +273,9 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.4.0 =
-*Release Date 16-04-2026*
+= 5.5.0 =
+*Release Date 19-05-2026*
 
+* Added following tags: `brand`, `shortDescription`.
 * Fixed interface bugs.
 * Code refactoring.
-* Added the new rule 'Портал поставщиков Москвы'.
