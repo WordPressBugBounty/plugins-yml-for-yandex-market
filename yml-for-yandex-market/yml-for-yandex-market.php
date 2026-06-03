@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.5.0
+ * Version:                 5.5.1
  * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         10.7.0
+ * WC tested up to:         10.8.1
  */
 
 // If this file is called directly, abort.
@@ -471,7 +471,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.5.0' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.5.1' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -502,7 +502,7 @@ if ( false === $not_run ) {
 	 * 
 	 * @return void
 	 */
-	function activate_y4ym() {
+	function y4ym_activate() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-y4ym-activator.php';
 		Y4YM_Activator::activate();
 	}
@@ -513,13 +513,13 @@ if ( false === $not_run ) {
 	 * 
 	 * @return void
 	 */
-	function deactivate_y4ym() {
+	function y4ym_deactivate() {
 		require_once plugin_dir_path( __FILE__ ) . 'includes/class-y4ym-deactivator.php';
 		Y4YM_Deactivator::deactivate();
 	}
 
-	register_activation_hook( __FILE__, 'activate_y4ym' );
-	register_deactivation_hook( __FILE__, 'deactivate_y4ym' );
+	register_activation_hook( __FILE__, 'y4ym_activate' );
+	register_deactivation_hook( __FILE__, 'y4ym_deactivate' );
 
 	/**
 	 * The core plugin class that is used to define internationalization,
@@ -548,21 +548,21 @@ if ( false === $not_run ) {
 	 * 
 	 * @return void
 	 */
-	function run_y4ym() {
+	function y4ym_run() {
 
 		$plugin = new Y4YM();
 		$plugin->run();
 
 	}
 
-	run_y4ym();
+	y4ym_run();
 
 	if ( is_multisite() ) {
 		$y4ym_v = get_blog_option( get_current_blog_id(), 'y4ym_version', '0.1.0' );
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.5.0', '<' ) ) {
+	if ( version_compare( $y4ym_v, '5.5.1', '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 

@@ -2,7 +2,7 @@
 /**
  * Debug page.
  * 
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.1 (03-06-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  * 
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit; ?>
 					<?php
 					switch ( $view_arr['tab_name'] ) {
 						case 'debug_options': ?>
-							<form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post"
+							<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
 								enctype="multipart/form-data">
 								<?php
 								include_once __DIR__ . '/html-admin-debug-page-tab-settings.php';
@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit; ?>
 							</form><?php
 							break;
 						case 'simulation': ?>
-							<form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post"
+							<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
 								enctype="multipart/form-data">
 								<?php
 								include_once __DIR__ . '/html-admin-debug-page-tab-simulation.php';

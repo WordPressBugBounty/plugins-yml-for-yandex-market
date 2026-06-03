@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    0.2.0 (22-10-2024)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    iCopyDoc Plugins (ICPD)
  * @subpackage 
@@ -126,12 +126,13 @@ final class Y4YM_Feedback {
 					'Using this form, you can send statistics about the work of the plugin, as well as ask a question to the plugin support service',
 					'yml-for-yandex-market'
 				); ?>:</p>
-				<form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post" enctype="multipart/form-data">
+				<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
+					enctype="multipart/form-data">
 					<?php
 					printf( '<p><strong>%s %s %s?</strong></p>',
 						esc_html__( 'The plugin', 'yml-for-yandex-market' ),
 						esc_html__( $this->get_plugin_name() ),
-						esc_html__( 'help you', 'yml-for-yandex-market' ),
+						esc_html__( 'help you', 'yml-for-yandex-market' )
 					);
 					?>
 
@@ -207,11 +208,12 @@ final class Y4YM_Feedback {
 					esc_html( get_woo_version_number() )
 				);
 
-				$argsp = [ 
+				$argsp = [
 					'post_type' => 'product',
 					'post_status' => 'publish',
 					'posts_per_page' => -1,
-					'fields' => 'ids'
+					'fields' => 'ids',
+					'suppress_filters' => true // отключаем лишние фильтры для скорости
 				];
 				$products = new \WP_Query( $argsp );
 				$vsegotovarov = $products->found_posts;

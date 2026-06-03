@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -443,11 +443,12 @@ class Y4YM_Admin {
 
 		// дублировать фид
 		if ( isset( $_GET['feed_id'] )
+			&& isset( $_GET['_wpnonce'] )
 			&& isset( $_GET['action'] )
 			&& sanitize_text_field( $_GET['action'] ) === 'duplicate'
 		) {
 			$feed_id = (string) sanitize_text_field( $_GET['feed_id'] );
-			if ( wp_verify_nonce( $_GET['_wpnonce'], 'nonce_duplicate' . $feed_id ) ) {
+			if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'nonce_duplicate' . $feed_id ) ) {
 				$this->duplicate_feed( $feed_id );
 			}
 		}
@@ -613,6 +614,7 @@ class Y4YM_Admin {
 		if ( isset( $_POST[ $option_name ] ) ) {
 			if ( is_array( $_POST[ $option_name ] ) ) {
 				// массивы храним отдельно от других параметров
+				// ? может стоит очищать через wp_kses_post_deep()
 				Y4YM_Options::update( $option_name . $feed_id, $_POST[ $option_name ] );
 			} else {
 				$option_value = preg_replace( '#<script(.*?)>(.*?)</script>#is', '', $_POST[ $option_name ] );

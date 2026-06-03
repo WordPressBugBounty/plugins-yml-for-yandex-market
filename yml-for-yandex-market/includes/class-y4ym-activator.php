@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Fired during plugin activation.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -54,8 +54,10 @@ class Y4YM_Activator {
 		if ( is_multisite() ) {
 			add_blog_option( get_current_blog_id(), 'y4ym_version', Y4YM_PLUGIN_VERSION );
 			add_blog_option( get_current_blog_id(), 'y4ym_keeplogs', 'disabled' );
+			add_blog_option( get_current_blog_id(), 'y4ym_autoloader_classmap', [] );
 			add_blog_option( get_current_blog_id(), 'y4ym_plugin_notifications', 'enabled' );
 			add_blog_option( get_current_blog_id(), 'y4ym_feed_content', '' ); // kejo
+
 
 			add_blog_option( get_current_blog_id(), 'y4ym_settings_arr', [] );
 			add_blog_option( get_current_blog_id(), 'y4ym_last_feed_id', '0' );
@@ -63,6 +65,7 @@ class Y4YM_Activator {
 		} else {
 			add_option( 'y4ym_version', Y4YM_PLUGIN_VERSION, '', true ); // без автозагрузки
 			add_option( 'y4ym_keeplogs', 'disabled' );
+			add_option( 'y4ym_autoloader_classmap', [] );
 			add_option( 'y4ym_plugin_notifications', 'enabled' );
 			add_option( 'y4ym_feed_content', '' ); // kejo
 

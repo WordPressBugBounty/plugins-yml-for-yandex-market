@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
@@ -156,7 +156,8 @@ final class Y4YM_Error_Log {
 
 		// Return cached result if already determined
 		if ( self::$logs_enabled !== null ) {
-			return self::$logs_enabled;
+			// HACK: отключил работу с кэшем тк не работает очистка кэша
+			// return self::$logs_enabled;
 		}
 
 		// Get the option value depending on network mode

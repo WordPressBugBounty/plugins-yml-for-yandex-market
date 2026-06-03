@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -27,12 +27,12 @@
  *                          get_feed_id
  *             functions:   
  */
-trait Y4YM_T_Variable_Get_pickup_Options {
+trait Y4YM_T_Variable_Get_Pickup_Options {
 
 	/**
 	 * Get `pickup-options` tag.
 	 * 
-	 * @see https://yandex.ru/support/marketplace/assortment/fields/index.html
+	 * @see https://yandex.ru/support/merchants/ru/elements/pickup-options
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml

@@ -21,6 +21,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  */
@@ -45,6 +46,7 @@ if ( is_multisite() ) {
 
 	delete_blog_option( get_current_blog_id(), 'y4ym_version' );
 	delete_blog_option( get_current_blog_id(), 'y4ym_keeplogs' );
+	delete_blog_option( get_current_blog_id(), 'y4ym_autoloader_classmap' );
 	delete_blog_option( get_current_blog_id(), 'y4ym_plugin_notifications' );
 	delete_blog_option( get_current_blog_id(), 'y4ym_feed_content' );
 
@@ -65,6 +67,7 @@ if ( is_multisite() ) {
 
 	delete_option( 'y4ym_version' );
 	delete_option( 'y4ym_keeplogs' );
+	delete_option( 'y4ym_autoloader_classmap' );
 	delete_option( 'y4ym_plugin_notifications' );
 	delete_option( 'y4ym_feed_content' );
 

@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Autoloader classes for WordPress.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.19 (26-08-2025)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -32,18 +32,9 @@
 class Y4YM_Autoloader {
 
 	/**
-	 * The path to the classmap file.
-	 *  
-	 * Example: `/home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/classmap.php`.
-	 * 
-	 * @var      string
-	 */
-	private $map_file;
-
-	/**
 	 * Classmap.
 	 * 
-	 * @var
+	 * @var array
 	 */
 	private $map;
 
@@ -52,7 +43,7 @@ class Y4YM_Autoloader {
 	 * 
 	 * Example: `/home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/`.
 	 * 
-	 * @var      string
+	 * @var string
 	 */
 	private $plugin_dir_path = Y4YM_PLUGIN_DIR_PATH;
 
@@ -61,7 +52,7 @@ class Y4YM_Autoloader {
 	 * 
 	 * Example: `Y4YM`.
 	 * 
-	 * @var      string
+	 * @var string
 	 */
 	private $prefix = 'Y4YM';
 
@@ -73,10 +64,17 @@ class Y4YM_Autoloader {
 	private $has_been_update = false;
 
 	/**
+	 * Option name for storing classmap in database
+	 * 
+	 * @var string
+	 */
+	const OPTION_NAME = 'y4ym_autoloader_classmap';
+
+	/**
 	 * Constructor.
 	 * 
-	 * @param    string    $plugin_dir_path
-	 * @param    string    $prefix
+	 * @param string $plugin_dir_path
+	 * @param string $prefix
 	 */
 	public function __construct( $plugin_dir_path = '', $prefix = '' ) {
 
@@ -86,48 +84,60 @@ class Y4YM_Autoloader {
 		if ( ! empty( $prefix ) ) {
 			$this->prefix = $prefix;
 		}
-		$this->map_file = __DIR__ . '/classmap.php';
-		if ( ! file_exists( __DIR__ . '/classmap.php' ) ) {
-			file_put_contents( $this->map_file, '<?php return [];' );
-		}
-		$this->map = @include $this->map_file;
+
+		$this->map = get_option( self::OPTION_NAME, [] );
 		$this->map = is_array( $this->map ) ? $this->map : [];
+
 		spl_autoload_register( [ $this, 'autoload' ] );
 		add_action( 'shutdown', [ $this, 'update_cache' ] );
 
 	}
 
 	/**
-	 * Создаёт/обновляет файл `classmap.php `если он был изменен с последней загрузки.
+	 * Создаёт/обновляет запись в БД `y4ym_autoloader_classmap`, если он был изменен с последней загрузки.
 	 *                                                        
-	 * @return   void
+	 * @return void
 	 */
 	public function update_cache(): void {
 
 		if ( ! $this->has_been_update ) {
 			return;
 		}
-		$map = implode(
-			"\n",
-			array_map(
-				function ($k, $v) {
-					return "'$k' => '$v',";
-				},
-				array_keys( $this->map ),
-				array_values( $this->map )
-			)
-		);
 
-		file_put_contents( $this->map_file, '<?php return [' . $map . '];' );
+		// Перед сохранением удаляем записи с несуществующими файлами
+		$clean_map = [];
+		foreach ( $this->map as $class => $path ) {
+			if ( file_exists( $path ) ) {
+				$clean_map[ $class ] = $path;
+			}
+		}
+
+		// Очищаем только ключи (имена классов), а пути проверяем на валидность
+		$sanitized_map = [];
+		foreach ( $clean_map as $class => $path ) {
+			// Проверяем, что имя класса содержит только разрешённые символы
+			if ( preg_match( '/^[A-Za-z0-9_\\\\]+$/', $class ) ) {
+				// Убеждаемся, что путь существует и находится внутри папки плагина
+				if ( file_exists( $path ) && strpos( $path, $this->plugin_dir_path ) === 0 ) {
+					// Формально очищаем путь как "путь к файлу" — через realpath()
+					$real_path = realpath( $path );
+					if ( $real_path ) {
+						$sanitized_map[ $class ] = $real_path;
+					}
+				}
+			}
+		}
+		// Используем update_option с явной сериализацией (она и так есть) + без autoload
+		update_option( self::OPTION_NAME, $sanitized_map, false );
 
 	}
 
 	/**
-	 * Пытается найти класс или трейт и загрзуить его через `require_once`.
+	 * Пытается найти класс или трейт и загрузить его через `require_once`.
 	 * 
-	 * @param    string    $class
+	 * @param string $class
 	 *                                                        
-	 * @return   void
+	 * @return void
 	 */
 	private function autoload( string $class ): void {
 
@@ -148,13 +158,9 @@ class Y4YM_Autoloader {
 					$file_name = 'class-' . $name . '.php';
 				}
 				$file_name = strtolower( str_replace( [ '\\', '_' ], [ '/', '-' ], $file_name ) );
-				// $path = implode( '/', $plugin_parts ) . '/' . $file_name;
-				// $path = strtolower( str_replace( [ '\\', '_' ], [ '/', '-' ], $path ) );
 				$found_flag = false;
 				$all_php_files_arr = $this->get_dir_files( $this->get_plugin_dir_path() );
-				// ! var_dump( $this->get_plugin_dir_path() );
 				for ( $i = 0; $i < count( $all_php_files_arr ); $i++ ) {
-					// ! echo '<br/>поиск ' . $file_name . ' в строке' . $all_php_files_arr[ $i ];
 					if ( strpos( $all_php_files_arr[ $i ], $file_name ) !== false ) {
 						$path = $all_php_files_arr[ $i ];
 						$found_flag = true;
@@ -173,11 +179,11 @@ class Y4YM_Autoloader {
 	/**
 	 * Получает пути всех файлов и папок в указанной папке.
 	 *
-	 * @param    string    $dir                Путь до папки (на конце со слэшем или без).
-	 * @param    bool      $recursive          Включить вложенные папки или нет?
-	 * @param    bool      $include_folders    Включить ли в список пути на папки?
+	 * @param string $dir                Путь до папки (на конце со слэшем или без).
+	 * @param bool   $recursive          Включить вложенные папки или нет?
+	 * @param bool   $include_folders    Включить ли в список пути на папки?
 	 * 
-	 * @return   array     Вернет массив путей до файлов/папок.
+	 * @return array Вернет массив путей до файлов/папок.
 	 */
 	private function get_dir_files( $dir, $recursive = true, $include_folders = false ): array {
 
@@ -222,7 +228,7 @@ class Y4YM_Autoloader {
 	/**
 	 * Get the plugin dir path.
 	 * 
-	 * @return   string    Example: `/home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/`.
+	 * @return string Example: `/home/p135/www/site.ru/wp-content/plugins/yml-for-yandex-market/`.
 	 */
 	private function get_plugin_dir_path() {
 		return $this->plugin_dir_path;
@@ -231,7 +237,7 @@ class Y4YM_Autoloader {
 	/**
 	 * Get the plugin prefix.
 	 * 
-	 * @return   string    Example: `Y4YM`.
+	 * @return string Example: `Y4YM`.
 	 */
 	private function get_prefix() {
 		return $this->prefix;

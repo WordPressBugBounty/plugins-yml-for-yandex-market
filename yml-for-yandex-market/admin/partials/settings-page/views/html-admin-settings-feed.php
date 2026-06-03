@@ -2,7 +2,7 @@
 /**
  * Settings page.
  * 
- * @version    5.4.0 (16-04-2026)
+ * @version    5.5.1 (03-06-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -42,7 +42,7 @@ defined( 'ABSPATH' ) || exit; ?>
 
 				<div class="meta-box-sortables ui-sortable">
 
-					<form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post"
+					<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
 						enctype="multipart/form-data">
 						<input type="hidden" name="y4ym_feed_id_for_save"
 							value="<?php echo esc_attr( $view_arr['feed_id'] ); ?>">

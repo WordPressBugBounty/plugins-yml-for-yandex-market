@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.24 (27-11-2025)
+ * @version    5.5.1 (03-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -37,7 +37,7 @@ final class Y4YM_Plugin_Form_Activate {
 	 * @access private
 	 * @var array
 	 */
-	private $list_plugin_names = [ 
+	private $list_plugin_names = [
 		'y4ymp' => [ 'name' => 'PRO', 'code' => 'renewlicense20yp' ],
 		'y4ymae' => [ 'name' => 'Aliexpress Export', 'code' => 'renewlicense20ali' ],
 		'y4yms' => [ 'name' => 'SETS', 'code' => 'renewlicense23sets' ]
@@ -129,7 +129,8 @@ final class Y4YM_Plugin_Form_Activate {
 			$order_email = get_option( $this->get_opt_name_order_email() );
 		}
 		?>
-		<form action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post" enctype="multipart/form-data">
+		<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
+			enctype="multipart/form-data">
 			<div class="y4ym-postbox postbox">
 				<h2 class="hndle">
 					<?php
