@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Plugin Updates.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -17,6 +17,7 @@
  * Depends on the class `ICPD_Set_Admin_Notices` and the constant `Y4YM_PLUGIN_VERSION`.
  *
  * @see        [ 202, 402, 412, 418, 520 ]
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
  * @author     Maxim Glazunov <icopydoc@gmail.com>

@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Get unit for Variable Products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -129,12 +129,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 		$this->set_category_id();
 		$this->get_skips();
 
-		$feed_yml_rules = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			false,
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$feed_yml_rules = $this->get_feed_rules();
 		switch ( $feed_yml_rules ) {
 			case "yandex_market": // Яндекс Маркет (Для управления товарами, Упрощённый тип FBS/DBS)
 				$result_xml = $this->yandex_market_assortment();
@@ -186,6 +181,8 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 				break;
 			case "zakupki_mos":
 				$result_xml = $this->zakupki_mos();
+			case "tochka_bank":
+				$result_xml = $this->tochka_bank();
 				break;
 			default: // Нет правил (Для опытных пользователей)
 				$result_xml = $this->get_tags( $feed_yml_rules, $result_xml );
@@ -412,6 +409,23 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	private function zakupki_mos( $result_xml = '' ) {
 
 		$result_xml .= $this->get_tags( 'zakupki_mos', $result_xml );
+		return $result_xml;
+
+	}
+
+	/**
+	 * Точка банк.
+	 * 
+	 * @see https://tochkamp.com/docs/v-kakom-formate-importirovat-dannye-v-yml/
+	 * 
+	 * @param string $result_xml
+	 * 
+	 * @return string
+	 */
+	private function tochka_bank( $result_xml = '' ) {
+
+		$result_xml .= $this->get_tags( 'tochka_bank', $result_xml );
+		$result_xml .= $this->get_group_id();
 		return $result_xml;
 
 	}

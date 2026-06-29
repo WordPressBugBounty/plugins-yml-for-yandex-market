@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -25,6 +25,7 @@
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
+ *                          get_feed_rules
  */
 trait Y4YM_T_Variable_Get_Barcode {
 
@@ -53,12 +54,15 @@ trait Y4YM_T_Variable_Get_Barcode {
 			case "disabled": // выгружать штрихкод нет нужды		
 				break;
 			case "sku": // выгружать из артикула
+
 				$tag_value = $this->get_offer()->get_sku();
 				if ( empty( $tag_value ) ) {
 					$tag_value = $this->get_product()->get_sku();
 				}
+
 				break;
 			case "post_meta":
+
 				$barcode_post_meta_id = Y4YM_Options::settings_get(
 					'y4ym_barcode_post_meta',
 					false,
@@ -75,8 +79,10 @@ trait Y4YM_T_Variable_Get_Barcode {
 				} else {
 					$tag_value = get_post_meta( $this->get_offer()->get_id(), $barcode_post_meta_id, true );
 				}
+
 				break;
 			case "germanized":
+
 				if ( class_exists( 'WooCommerce_Germanized' ) ) {
 					$var_id = $this->get_offer()->get_id();
 					if ( get_post_meta( $var_id, '_ts_gtin', true ) !== '' ) {
@@ -87,8 +93,10 @@ trait Y4YM_T_Variable_Get_Barcode {
 						}
 					}
 				}
+
 				break;
 			case "upc-ean-generator":
+
 				$var_id = $this->get_offer()->get_id();
 				if ( get_post_meta( $var_id, 'usbs_barcode_field', true ) !== '' ) {
 					$tag_value = get_post_meta( $var_id, 'usbs_barcode_field', true );
@@ -97,8 +105,10 @@ trait Y4YM_T_Variable_Get_Barcode {
 						$tag_value = get_post_meta( $this->get_product()->get_id(), 'usbs_barcode_field', true );
 					}
 				}
+
 				break;
 			case "ean-for-woocommerce":
+
 				if ( class_exists( 'Alg_WC_EAN' ) ) {
 					$var_id = $this->get_offer()->get_id();
 					if ( get_post_meta( $var_id, '_alg_ean', true ) !== '' ) {
@@ -109,8 +119,10 @@ trait Y4YM_T_Variable_Get_Barcode {
 						}
 					}
 				}
+
 				break;
 			default:
+
 				$tag_value = apply_filters(
 					'y4ym_f_variable_tag_value_switch_barcode',
 					$tag_value,
@@ -127,6 +139,9 @@ trait Y4YM_T_Variable_Get_Barcode {
 		}
 
 		$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
+		if ( $this->get_feed_rules() === 'tochka_bank' && ! empty( $result_xml ) ) {
+			$result_xml = sprintf( '<barcodes>%s</barcodes>', $result_xml );
+		}
 		return $result_xml;
 
 	}

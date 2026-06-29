@@ -18,7 +18,6 @@
  * which is used to group products for YML feed generation. It includes functionality for
  * adding, editing, and saving custom metadata fields associated with taxonomy terms.
  * The taxonomy provides a way to organize products into specific collections for export.
-
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/woocommerce

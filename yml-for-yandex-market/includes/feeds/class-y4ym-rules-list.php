@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Sets the list of tags depending on the selected feed rules.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -156,6 +156,12 @@ class Y4YM_Rules_List {
 					'packagetype', 'region', 'params', 'price', 'oldprice', 'delivery_options', 'model', 'vendor',
 					'oksm', 'vendorcode', 'vat', 'delivery', 'manufacturer_warranty',
 					'barcode', 'expiry', 'weight', 'dimensions', 'age'
+				],
+				'tochka_bank' => [  // https://tochkamp.com/docs/v-kakom-formate-importirovat-dannye-v-yml/
+					'offer_tag', 'shop_sku', /* 'type',  'available', */ 'adult', 'url', 'price', 'oldprice',
+					'name', 'currencyid', 'categoryid', 'type_prefix', 'vendor', 'model', 'description', 'country_of_origin', 'barcode',
+					'weight',  'vendorcode',  'params', 'dimensions', 'count', 'quantity', /*'stock',*/ 'picture', 'downloadable',
+					'outlets'
 				],
 				'all_elements' => [
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'age',

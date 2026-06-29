@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -25,6 +25,7 @@
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
+ *                          get_feed_rules
  *             functions:   get_nested_tag
  */
 trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
@@ -50,12 +51,7 @@ trait Y4YM_T_Variable_Get_Tn_Ved_Codes {
 		if ( $tn_ved_code === 'enabled' ) {
 			$tag_value = $this->get_variable_product_post_meta( 'tn_ved_code' );
 			if ( ! empty( $tag_value ) ) {
-				$yml_rules = Y4YM_Options::settings_get(
-					'y4ym_yml_rules',
-					'yandex_market_assortment',
-					$this->get_feed_id(),
-					'y4ym'
-				);
+				$yml_rules = $this->get_feed_rules();
 				if ( $yml_rules === 'aliexpress' ) {
 					$result_xml = $this->get_variable_tag( 'tnved', $tag_value );
 				} else {

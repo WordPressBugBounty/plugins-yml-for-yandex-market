@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Writes plugin logs.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core

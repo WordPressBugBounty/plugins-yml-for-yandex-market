@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * This class is responsible for creating the feed.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -25,6 +25,7 @@
 class Y4YM_Generation_XML {
 
 	use Y4YM_T_Common_Currency_Switcher;
+	use Y4YM_T_Common_Feed_Rules;
 
 	/**
 	 * Feed ID.
@@ -581,12 +582,7 @@ class Y4YM_Generation_XML {
 	 */
 	public function get_feed_header() {
 
-		$yml_rules = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			'yandex_market_assortment',
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$yml_rules = $this->get_feed_rules();
 		$result_xml = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
 		$format_date = Y4YM_Options::settings_get(
 			'y4ym_format_date',
@@ -699,12 +695,7 @@ class Y4YM_Generation_XML {
 	 */
 	protected function get_categories( $result_xml = '' ) {
 
-		$yml_rules = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			'yandex_market_assortment',
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$yml_rules = $this->get_feed_rules();
 		if ( $yml_rules === 'sales_terms' || $yml_rules === 'sets' ) {
 			return $result_xml;
 		}
@@ -813,12 +804,7 @@ class Y4YM_Generation_XML {
 	protected function get_delivery_pickup( $result_xml = '' ) {
 
 		$flag = false;
-		$rules_name = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			false,
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$rules_name = $this->get_feed_rules();
 		$rules_obj = new Y4YM_Rules_List();
 		$rules_arr = $rules_obj->get_rules_arr();
 		if ( isset( $rules_arr[ $rules_name ] ) ) {
@@ -1084,12 +1070,7 @@ class Y4YM_Generation_XML {
 		}
 		$result_xml .= new Y4YM_Get_Closed_Tag( 'offers' );
 
-		$yml_rules = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			'yandex_market_assortment',
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$yml_rules = $this->get_feed_rules();
 		if ( $yml_rules == 'yandex_direct' ||
 			$yml_rules == 'yandex_direct_free_from' ||
 			$yml_rules == 'yandex_direct_combined' ||

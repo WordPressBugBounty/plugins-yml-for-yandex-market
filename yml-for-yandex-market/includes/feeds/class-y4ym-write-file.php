@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Writes files (`tmp`, `xml` and etc).
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds

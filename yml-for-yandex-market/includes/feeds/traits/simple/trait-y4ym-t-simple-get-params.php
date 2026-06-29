@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -24,6 +24,7 @@
  *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
+ *                          get_feed_rules
  */
 trait Y4YM_T_Simple_Get_Params {
 
@@ -100,7 +101,9 @@ trait Y4YM_T_Simple_Get_Params {
 				],
 				$this->get_feed_id()
 			);
-
+			if ( $this->get_feed_rules() === 'tochka_bank' && ! empty( $result_xml ) ) {
+				$result_xml = sprintf( '<params>%1$s%2$s</params>%1$s', PHP_EOL, $result_xml );
+			}
 			return $result_xml;
 
 		}

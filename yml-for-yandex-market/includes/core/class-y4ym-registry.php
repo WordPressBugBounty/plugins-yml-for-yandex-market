@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Y4YM Registry — Centralized storage for shared data.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core

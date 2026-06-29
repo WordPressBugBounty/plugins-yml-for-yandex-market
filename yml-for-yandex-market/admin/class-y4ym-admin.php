@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The admin-specific functionality of the plugin.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -16,7 +16,8 @@
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
- *
+ * 
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/admin
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -93,6 +94,7 @@ class Y4YM_Admin {
 		$loader->add_action( 'save_post', $this, 'save_product_post_meta', 50, 3 );
 		$loader->add_action( 'woocommerce_product_after_variable_attributes', $this, 'add_fields_to_variable_settings', 10, 3 );
 		$loader->add_action( 'woocommerce_save_product_variation', $this, 'save_variation_product_post_meta', 10, 2 );
+		$loader->add_action( 'plugin_action_links', $this, 'add_plugin_action_links', 10, 4 );
 
 		// печатаем скрипты в футере админки
 		$loader->add_action(
@@ -2006,6 +2008,43 @@ class Y4YM_Admin {
 		} else {
 			update_post_meta( $post_id, '_yfym_barcode', '' );
 		}
+
+	}
+
+	/**
+	 * Function for `plugin_action_links` filter-hook.
+	 * 
+	 * @param string[] $actions     An array of plugin action links. By default this can include `activate`, `deactivate`, and `delete`. With Multisite active this can also include `network_active` and `network_only` items.
+	 * @param string   $plugin_file Path to the plugin file relative to the plugins directory.
+	 * @param array    $plugin_data An array of plugin data. See get_plugin_data() and the {@see 'plugin_row_meta'} filter for the list of possible values.
+	 * @param string   $context     The plugin context. By default this can include `all`,
+	 * `active`, `inactive`, `recently_activated`, `upgrade`, `mustuse`, `dropins`, and `search`.
+	 *
+	 * @return string[]
+	 */
+	public function add_plugin_action_links( $actions, $plugin_file, $plugin_data, $context ) {
+
+		if ( false === strpos( $plugin_file, 'yml-for-yandex-market/yml-for-yandex-market.php' ) ) {
+			// проверка, что у нас текущий плагин
+			return $actions;
+		}
+
+		$settings_link = sprintf( '<a style="%s" href="%sadmin.php?page=%s">%s</a>',
+			'color: green; font-weight: 700;',
+			admin_url(),
+			'yml-for-yandex-market-extensions',
+			__( 'More features', 'yml-for-yandex-market' )
+		);
+		array_unshift( $actions, $settings_link );
+
+		$settings_link = sprintf( '<a href="%sadmin.php?page=%s">%s</a>',
+			admin_url(),
+			'yml-for-yandex-market',
+			__( 'Settings', 'yml-for-yandex-market' )
+		);
+		array_unshift( $actions, $settings_link );
+
+		return $actions;
 
 	}
 

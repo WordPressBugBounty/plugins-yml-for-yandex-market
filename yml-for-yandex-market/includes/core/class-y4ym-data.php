@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Set and Get the Plugin Data.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core

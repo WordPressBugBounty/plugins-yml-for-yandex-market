@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.0
 Tested up to: 7.0
-Stable tag: 5.5.1
+Stable tag: 5.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,7 @@ Creates a YML-feed to upload to Yandex Market and not only. In addition to Yande
 * AliExpress.com
 * Маркетплейс Маркета (BERU)
 * Портал поставщиков Москвы
+* Точка банк
 * CDEK (partial support)
 * OZON (partial support)
 * ВКонтакте (vk.com) (partial support)
@@ -78,6 +79,11 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.6.0 =
+*Release Date 29-06-2026*
+
+* Added the new rule `Точка банк`.
 
 = 5.5.1 =
 *Release Date 03-06-2026*
@@ -279,8 +285,7 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.5.1 =
-*Release Date 03-06-2026*
+= 5.6.0 =
+*Release Date 29-06-2026*
 
-* Fixed bugs.
-* Code refactoring.
+* Added the new rule `Точка банк`.

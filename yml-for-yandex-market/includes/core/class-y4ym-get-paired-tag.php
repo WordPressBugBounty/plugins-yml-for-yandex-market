@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Creates a paired tag.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
@@ -21,7 +21,6 @@
  * @subpackage Y4YM/includes/core
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
-
 class Y4YM_Get_Paired_Tag extends Y4YM_Get_Closed_Tag {
 
 	/**

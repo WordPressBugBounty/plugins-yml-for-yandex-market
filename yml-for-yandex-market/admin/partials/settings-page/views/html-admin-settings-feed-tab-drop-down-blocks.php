@@ -1,8 +1,8 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 /**
  * The Another page tab
  * 
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 

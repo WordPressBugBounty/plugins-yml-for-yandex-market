@@ -1,4 +1,4 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Default Plugin Settings Structure.
@@ -13,13 +13,12 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.6.0 (29-06-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
  * @param $registered_image_sizes  Get registered image sizes.
  */
-defined( 'ABSPATH' ) || exit;
 
 $vendor_souce_arr = [
 	[
@@ -393,6 +392,9 @@ $data_arr = [
 				],
 				[
 					'value' => 'zakupki_mos', 'text' => 'Портал поставщиков Москвы'
+				],
+				[
+					'value' => 'tochka_bank', 'text' => 'Точка банк'
 				],
 				[
 					'value' => 'all_elements',
@@ -1168,9 +1170,21 @@ $data_arr = [
 		'tab' => 'offer_data_tab',
 		'data' => [
 			'label' => __( 'Quantity of products', 'yml-for-yandex-market' ),
-			'desc' => __(
-				'To make it work you must enable "Manage stock" and indicate "Stock quantity"',
-				'yml-for-yandex-market'
+			'desc' => sprintf( '%s<br/><span style="color: red;"><strong>%s:</strong></span> %s. %s: <a href="%s">Import Products to Yandex</a>',
+				__(
+					'To make it work you must enable "Manage stock" and indicate "Stock quantity"',
+					'yml-for-yandex-market'
+				),
+				__( 'Please note', 'yml-for-yandex-market' ),
+				__(
+					'Yandex Market has stopped supporting the tag and switched to transferring stock via the API',
+					'yml-for-yandex-market'
+				),
+				__(
+					'If you need to transfer leftovers to Yandex Market, you can use this plugin',
+					'yml-for-yandex-market'
+				),
+				'https://wordpress.org/plugins/wc-import-yandex/'
 			),
 			'woo_attr' => false,
 			'default_value' => false,

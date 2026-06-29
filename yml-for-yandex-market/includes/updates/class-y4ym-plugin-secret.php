@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Plugin secrets.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.16 (23-07-2025)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -19,7 +19,7 @@
  * @subpackage Y4YM/includes/updates
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
-class Y4YM_Plugin_Secrets {
+final class Y4YM_Plugin_Secrets {
 
 	// Константа, хранящая название опции для хранения секретов в базе данных WordPress.
 	private const SECRETS_OPTION = 'y4ym_ps';

@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The abstract class for getting the XML-code or skip reasons.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -29,6 +29,7 @@ abstract class Y4YM_Get_Unit_Offer {
 
 	use Y4YM_T_Get_Feed_Id;
 	use Y4YM_T_Get_Product;
+	use Y4YM_T_Common_Feed_Rules;
 	use Y4YM_T_Get_Skip_Reasons_Arr;
 
 	/**

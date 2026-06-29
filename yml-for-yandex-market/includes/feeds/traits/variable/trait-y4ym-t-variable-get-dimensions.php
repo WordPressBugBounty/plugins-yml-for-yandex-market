@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -25,6 +25,7 @@
  *             methods:     get_product
  *                          get_offer
  *                          get_feed_id
+ *                          get_feed_rules
  */
 trait Y4YM_T_Variable_Get_Dimensions {
 
@@ -97,12 +98,7 @@ trait Y4YM_T_Variable_Get_Dimensions {
 			$height_yml = round( wc_get_dimension( (float) $tag_value, 'cm' ), 3 );
 		}
 
-		$yml_rules = Y4YM_Options::settings_get(
-			'y4ym_yml_rules',
-			'yandex_market_assortment',
-			$this->get_feed_id(),
-			'y4ym'
-		);
+		$yml_rules = $this->get_feed_rules();
 		if ( $yml_rules === 'flowwow' ) {
 			if ( $length_yml > 0 ) {
 				$result_xml .= new Y4YM_Get_Paired_Tag( 'param', $length_yml, [ 'name' => 'Длина, см' ] );

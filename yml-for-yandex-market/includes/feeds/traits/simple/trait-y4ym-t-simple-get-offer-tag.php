@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -24,6 +24,7 @@
  *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
+ *                          get_feed_rules
  */
 trait Y4YM_T_Simple_Get_Offer_Tag {
 
@@ -38,11 +39,12 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 	 * @return string Example: `<offer id="524">`.
 	 */
 	public function get_offer_tag( $tag_name = 'offer', $result_xml = '' ) {
+
 		$offer_tag_attrs_arr = []; // массив с атрибутами тега offer
 
 		// type="xx"
 		$offer_type = '';
-		$y4ym_yml_rules = Y4YM_Options::settings_get( 'y4ym_yml_rules', 'yandex_market_assortment', $this->get_feed_id(), 'y4ym' );
+		$y4ym_yml_rules = $this->get_feed_rules();
 		if ( $y4ym_yml_rules === 'yandex_direct_free_from' ) {
 			$offer_type = 'vendor.model';
 		}
@@ -68,23 +70,30 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 		$y4ym_source_id = Y4YM_Options::settings_get( 'y4ym_source_id', 'default', $this->get_feed_id(), 'y4ym' );
 		switch ( $y4ym_source_id ) {
 			case "sku":
+
 				$offer_id_value = $this->get_product()->get_sku();
+
 				break;
 			case "post_meta":
+
 				$y4ym_source_id_post_meta = Y4YM_Options::settings_get( 'y4ym_source_id_post_meta', '', $this->get_feed_id(), 'y4ym' );
 				$y4ym_source_id_post_meta = trim( $y4ym_source_id_post_meta );
 				if ( get_post_meta( $this->get_product()->get_id(), $y4ym_source_id_post_meta, true ) !== '' ) {
 					$offer_id_value = get_post_meta( $this->get_product()->get_id(), $y4ym_source_id_post_meta, true );
 				}
+
 				break;
 			case "germanized":
+
 				if ( class_exists( 'WooCommerce_Germanized' ) ) {
 					if ( get_post_meta( $this->get_product()->get_id(), '_ts_gtin', true ) !== '' ) {
 						$offer_id_value = get_post_meta( $this->get_product()->get_id(), '_ts_gtin', true );
 					}
 				}
+
 				break;
 			default:
+
 				$offer_id_value = $this->get_product()->get_id();
 		}
 		$offer_id_value = apply_filters(
@@ -165,6 +174,11 @@ trait Y4YM_T_Simple_Get_Offer_Tag {
 			],
 			$this->get_feed_id()
 		);
+
+		if ( $y4ym_yml_rules === 'tochka_bank' ) {
+			$result_xml .= new Y4YM_Get_Paired_Tag( 'type', 'normal' );
+			$result_xml .= new Y4YM_Get_Paired_Tag( 'available', $available );
+		}
 		return $result_xml;
 
 	}

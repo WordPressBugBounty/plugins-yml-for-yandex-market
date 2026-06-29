@@ -1,14 +1,14 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * This class is responsible for the feedback form inside the plugin.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    iCopyDoc Plugins (ICPD)
- * @subpackage 
+ * @subpackage Y4YM/includes/feedback
  */
 
 /**

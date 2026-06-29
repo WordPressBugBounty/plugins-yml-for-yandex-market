@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Plugin Form Activate.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.0 (29-06-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -17,6 +17,7 @@
  * Depends on the class `ICPD_Set_Admin_Notices`.
  *
  * @see        [ 202, 402, 412, 418, 520 ]
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
  * @author     Maxim Glazunov <icopydoc@gmail.com>
