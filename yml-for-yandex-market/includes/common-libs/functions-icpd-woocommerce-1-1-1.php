@@ -1,4 +1,4 @@
-<?php defined( 'ABSPATH' ) || exit;
+<?php defined( 'WPINC' ) || exit;
 // 1.1.1 (29-07-2025)
 // Maxim Glazunov (https://icopydoc.ru)
 // This code adds several useful functions to the WooCommerce.

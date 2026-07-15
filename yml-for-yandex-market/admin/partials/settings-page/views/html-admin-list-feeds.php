@@ -1,12 +1,12 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * Display a list of feeds and the "Add new feed" button.
  * 
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  */
-defined( 'ABSPATH' ) || exit;
 
 $feeds_list_table = new Y4YM_Feeds_List_Table();
 ?>
@@ -25,9 +25,9 @@ $feeds_list_table = new Y4YM_Feeds_List_Table();
 
 	<?php printf( '<p style="text-align: right;"><strong>%s:</strong> %s, <strong>%s:</strong> %s</p>',
 		esc_html__( 'Current site time', 'yml-for-yandex-market' ),
-		current_time( 'mysql', 0 ),
+		esc_html( current_time( 'mysql', 0 ) ),
 		esc_html__( 'Current server time', 'yml-for-yandex-market' ),
-		current_time( 'mysql', 1 )
+		esc_html( current_time( 'mysql', 1 ) )
 	); ?>
 
 	<?php do_action( 'y4ym_print_view_html_icpd_my_plugins_list' ); ?>

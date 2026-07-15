@@ -1,14 +1,14 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
- * Print the Save button
+ * Print the Save button.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
  * @param $view_arr['tab_name']
  */
-defined( 'ABSPATH' ) || exit;
 
 if ( $view_arr['tab_name'] === 'no_submit_tab' ) {
 	return;

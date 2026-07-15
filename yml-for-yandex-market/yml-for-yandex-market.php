@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.6.0
+ * Version:                 5.6.1
  * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         10.9.1
+ * WC tested up to:         10.9.4
  */
 
 // If this file is called directly, abort.
@@ -413,6 +413,13 @@ if ( false === $not_run ) {
 
 	// for wp_kses
 	define( 'Y4YM_ALLOWED_HTML_ARR', [
+		'h1' => [ 'class' => true, 'style' => true ],
+		'h2' => [ 'class' => true, 'style' => true ],
+		'h3' => [ 'class' => true, 'style' => true ],
+		'h4' => [ 'class' => true, 'style' => true ],
+		'h5' => [ 'class' => true, 'style' => true ],
+		'h6' => [ 'class' => true, 'style' => true ],
+		'div' => [ 'class' => true, 'style' => true ],
 		'a' => [
 			'href' => true,
 			'title' => true,
@@ -472,7 +479,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.6.0' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.6.1' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -563,7 +570,7 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.6.0', '<' ) ) {
+	if ( version_compare( $y4ym_v, '5.6.1', '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 

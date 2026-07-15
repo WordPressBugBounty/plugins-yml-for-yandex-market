@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The class return the Settings page of the plugin YML for Yandex Market.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings-page
@@ -14,6 +14,7 @@
 /**
  * The class return the Settings page of the plugin YML for Yandex Market.
  *
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings-page
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -129,8 +130,6 @@ class Y4YM_Settings_Page {
 
 	/**
 	 * Get tabs array.
-	 * 
-	 * @param string $current
 	 * 
 	 * @return array `['main_tab' => 'Main settings', TAB_NAME => TAB_LABEL...]`
 	 */

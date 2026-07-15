@@ -2,9 +2,9 @@
 Contributors: icopydoc
 Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
-Requires at least: 5.0
+Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 5.6.0
+Stable tag: 5.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,13 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.6.1 =
+*Release Date 15-07-2026*
+
+* Fixed interface bugs.
+* Fixed a security bug.
+* Code refactoring.
 
 = 5.6.0 =
 *Release Date 29-06-2026*
@@ -285,7 +292,9 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.6.0 =
-*Release Date 29-06-2026*
+= 5.6.1 =
+*Release Date 15-07-2026*
 
-* Added the new rule `Точка банк`.
+* Fixed interface bugs.
+* Fixed a security bug.
+* Code refactoring.

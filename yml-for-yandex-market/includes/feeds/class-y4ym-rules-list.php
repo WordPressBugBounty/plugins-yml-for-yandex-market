@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -160,13 +160,13 @@ class Y4YM_Rules_List {
 				'tochka_bank' => [  // https://tochkamp.com/docs/v-kakom-formate-importirovat-dannye-v-yml/
 					'offer_tag', 'shop_sku', /* 'type',  'available', */ 'adult', 'url', 'price', 'oldprice',
 					'name', 'currencyid', 'categoryid', 'type_prefix', 'vendor', 'model', 'description', 'country_of_origin', 'barcode',
-					'weight',  'vendorcode',  'params', 'dimensions', 'count', 'quantity', /*'stock',*/ 'picture', 'downloadable',
+					'weight', 'vendorcode', 'params', 'dimensions', 'count', 'quantity', /*'stock',*/ 'picture', 'downloadable',
 					'outlets'
 				],
 				'all_elements' => [
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'age',
 					'amount', 'barcode', 'categoryid', 'condition', 'count',
-					'country_of_origin', 'credit_template', 'delivery_options', 'delivery', 'description', 'dimensions',
+					'country_of_origin', 'credit_template', 'delivery_options', 'delivery', 'description', 'shortdescription', 'dimensions',
 					'downloadable', 'expiry', /* 'instock', */ 'keywords',
 					'certificate', 'comment_validity_days', 'service_life_days', 'comment_life_days',
 					'manufacturer', 'manufacturer_warranty', 'warranty_days', 'comment_warranty', 'market_sku',

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -50,6 +50,12 @@ class Y4YM_Generation_XML {
 	 * @var string
 	 */
 	protected $result_xml = '';
+
+	/**
+	 * Is WP_Filesystem already initialized?
+	 * @var bool
+	 */
+	private $filesystem_initialized = false;
 
 	/**
 	 * Starts feed generation.
@@ -1333,7 +1339,7 @@ class Y4YM_Generation_XML {
 	/**
 	 * Перименовывает временный файл фида `/y4ym/feed{1}/{1}-feed-yml-0-tmp.xml` в основной.
 	 * 
-	 * @return array|false
+	 * @return bool
 	 */
 	private function rename_feed_file() {
 
@@ -1342,6 +1348,8 @@ class Y4YM_Generation_XML {
 		} else {
 			$folder_index = $this->get_prefix_feed();
 		}
+
+		// Путь к временному файлу
 		if ( is_multisite() ) {
 			$feed_tmp_full_file_name = sprintf( '%1$s/feed%2$s/%3$s-feed-yml-%4$s-tmp.xml',
 				Y4YM_PLUGIN_UPLOADS_DIR_PATH,
@@ -1372,19 +1380,36 @@ class Y4YM_Generation_XML {
 			$feed_file_meta_obj->get_feed_full_filename()
 		);
 
-		// старый адрес фида /home/site.ru/public_html/wp-content/uploads/feed-yml-0.xml
+		// Инициализация WP_Filesystem
+		if ( ! $this->init_filesystem() ) {
+			Y4YM_Error_Log::record(
+				sprintf( 'FEED #%1$s; ERROR: %2$s %3$s (WP_Filesystem initialization failed); %4$s: %5$s; %6$s: %7$s',
+					$this->get_feed_id(),
+					__( "I can't initialize WP_Filesystem for renaming", "yml-for-yandex-market" ),
+					$feed_tmp_full_file_name,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
+			return false;
+		}
+
+		global $wp_filesystem;
+
+		// Удаляем старый файл, если он существует
 		$feed_old_path = Y4YM_Options::settings_get(
 			'y4ym_feed_path',
 			'',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		if ( ! empty( $feed_old_path ) ) {
+		if ( ! empty( $feed_old_path ) && $wp_filesystem->exists( $feed_old_path ) ) {
 			// Удаляем старый файл фида $feed_old_path
-			if ( file_exists( $feed_old_path ) ) {
-				$res = unlink( $feed_old_path );
-				if ( true !== $res ) {
-					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`; %4$s: %5$s; %6$s: %7$s',
+			if ( ! $wp_filesystem->delete( $feed_old_path ) ) {
+				Y4YM_Error_Log::record(
+					sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`; %4$s: %5$s; %6$s: %7$s',
 						$this->get_feed_id(),
 						__( "Couldn't delete the old feed file", "yml-for-yandex-market" ),
 						$feed_old_path,
@@ -1392,51 +1417,89 @@ class Y4YM_Generation_XML {
 						'class-y4ym-generation-xml.php',
 						__( 'Line', 'yml-for-yandex-market' ),
 						__LINE__
-					) );
-				}
+					)
+				);
 			}
 		}
 
-		if ( false === rename( $feed_tmp_full_file_name, $feed_new_path ) ) {
-			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s %3$s %4$s %5$s; %6$s: %7$s; %8$s: %9$s',
-				$this->get_feed_id(),
-				__( "I can't rename the feed file from", "yml-for-yandex-market" ),
-				$feed_tmp_full_file_name,
-				__( "to", "yml-for-yandex-market" ),
-				$feed_new_path,
-				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-generation-xml.php',
-				__( 'Line', 'yml-for-yandex-market' ),
-				__LINE__
-			) );
+		// Переименовываем файл
+		// $wp_filesystem->move( $from, $to ) — безопасная альтернатива rename()
+		if ( ! $wp_filesystem->move( $feed_tmp_full_file_name, $feed_new_path ) ) {
+			Y4YM_Error_Log::record(
+				sprintf( 'FEED #%1$s; ERROR: %2$s %3$s %4$s %5$s; %6$s: %7$s; %8$s: %9$s',
+					$this->get_feed_id(),
+					__( "I can't rename the feed file from", "yml-for-yandex-market" ),
+					$feed_tmp_full_file_name,
+					__( 'to', 'yml-for-yandex-market' ),
+					$feed_new_path,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
 			return false;
-		} else {
-			Y4YM_Options::settings_update(
-				'y4ym_feed_path',
-				$feed_new_path,
-				'no',
+		}
+
+		// Обновляем пути и URL в настройках
+		Y4YM_Options::settings_update(
+			'y4ym_feed_path',
+			$feed_new_path,
+			'no',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		Y4YM_Options::settings_update(
+			'y4ym_feed_url',
+			$feed_new_url,
+			'no',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+
+		Y4YM_Error_Log::record(
+			sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s); %5$s: %6$s; %7$s: %8$s',
 				$this->get_feed_id(),
-				'y4ym'
-			);
-			Y4YM_Options::settings_update(
-				'y4ym_feed_url',
-				$feed_new_url,
-				'no',
-				$this->get_feed_id(),
-				'y4ym'
-			);
-			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s); %5$s: %6$s; %7$s: %8$s',
-				$this->get_feed_id(),
-				__( "The temporary feed file has been successfully renamed to the main one", "yml-for-yandex-market" ),
+				__( 'The temporary feed file has been successfully renamed to the main one', 'yml-for-yandex-market' ),
 				$feed_tmp_full_file_name,
 				$feed_new_url,
 				__( 'File', 'yml-for-yandex-market' ),
 				'class-y4ym-generation-xml.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
-			) );
+			)
+		);
+
+		return true;
+
+	}
+
+	/**
+	 * Инициализирует WP_Filesystem. Обязательно использовать перед любыми операциями с файлами.
+	 *
+	 * @return bool
+	 */
+	private function init_filesystem() {
+
+		if ( $this->filesystem_initialized ) {
 			return true;
 		}
+
+		// Загружаем функции WordPress для работы с файловой системой
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+
+		// Инициализируем
+		$creds = request_filesystem_credentials( '', '', false, false, null );
+		if ( false === $creds ) {
+			return false;
+		}
+
+		if ( ! WP_Filesystem( $creds ) ) {
+			return false;
+		}
+
+		$this->filesystem_initialized = true;
+		return true;
 
 	}
 

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -71,7 +71,7 @@ trait Y4YM_T_Simple_Get_Price {
 			// если цены нет - пропускаем вариацию. Работает для всех правил кроме правил для Директа и "Без правил"
 			if ( $tag_value == 0 || empty( $tag_value ) ) {
 				$this->add_skip_reason( [
-					'reason' => __( 'The product has no price', 'y4ym' ),
+					'reason' => __( 'The product has no price', 'yml-for-yandex-market' ),
 					'post_id' => $this->get_product()->get_id(),
 					'file' => 'trait-y4ym-t-simple-get-price.php',
 					'line' => __LINE__

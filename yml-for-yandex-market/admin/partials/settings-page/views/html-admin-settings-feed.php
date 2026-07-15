@@ -1,15 +1,16 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * Settings page.
  * 
- * @version    5.5.1 (03-06-2026)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
  * @param $view_arr['feed_id']
  * @param $view_arr['tab_name']
  */
-defined( 'ABSPATH' ) || exit; ?>
+?>
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div id="y4ym_wrap" class="wrap">
 
@@ -28,7 +29,7 @@ defined( 'ABSPATH' ) || exit; ?>
 	if ( ! empty( $feed_assignment ) ) {
 		printf( ' (%s)',
 			'YML for Yandex Market',
-			esc_html__( $feed_assignment )
+			esc_html( $feed_assignment )
 		);
 	} ?></h1>
 
@@ -42,8 +43,8 @@ defined( 'ABSPATH' ) || exit; ?>
 
 				<div class="meta-box-sortables ui-sortable">
 
-					<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
-						enctype="multipart/form-data">
+					<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>"
+						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="y4ym_feed_id_for_save"
 							value="<?php echo esc_attr( $view_arr['feed_id'] ); ?>">
 						<?php

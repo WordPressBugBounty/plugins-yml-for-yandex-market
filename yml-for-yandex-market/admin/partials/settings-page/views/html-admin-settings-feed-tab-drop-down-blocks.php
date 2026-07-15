@@ -1,15 +1,15 @@
 <?php defined( 'WPINC' ) || exit;
+
 /**
- * The Another page tab
+ * The Another page tab.
  * 
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
  * @param $view_arr['feed_id']
  * @param $view_arr['tab_name']
  */
-defined( 'ABSPATH' ) || exit;
 
 // придерживаться правил. 1 из 2
 $plugin_date = new Y4YM_Data();

@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The public-facing functionality of the plugin.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/public
@@ -16,7 +16,8 @@
  *
  * Defines the plugin name, version, and two examples hooks for how to enqueue the public-facing 
  * stylesheet and JavaScript.
- *
+ * 
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/public
  * @author     Maxim Glazunov <icopydoc@gmail.com>

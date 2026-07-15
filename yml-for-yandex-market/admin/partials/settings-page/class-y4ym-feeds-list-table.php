@@ -1,21 +1,22 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The this class manages the list of feeds.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.3.0 (22-03-2026)
+ * @version    5.6.1 (15-07-2026)
  * @see        https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
  *             https://wp-kama.ru/function/wp_list_table
  *
  * @package    Y4YM
- * @subpackage Y4YM/admin
+ * @subpackage Y4YM/admin/partials/settings-page
  */
 
 /**
  * The this class manages the list of feeds.
  *
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings-page
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -251,8 +252,8 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 						$date_sborki_start = $settings_arr[ $feed_id_str ]['y4ym_date_sborki_start'];
 						$text_column_feed_summary .= sprintf(
 							'<strong>%s:</strong> %s<br/>',
-							esc_html__( 'Start of last generation', 'yml-for-yandex-market' ),
-							esc_html__( $date_sborki_start )
+							__( 'Start of last generation', 'yml-for-yandex-market' ),
+							$date_sborki_start
 						);
 					} else {
 						$date_sborki_start = current_time( 'Y-m-d H:i' );

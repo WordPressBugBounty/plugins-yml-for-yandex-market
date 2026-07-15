@@ -1,5 +1,4 @@
-<?php
-
+<?php defined( 'WPINC' ) || exit;
 /**
  * This class registers and outputs plugin notifications.
  *

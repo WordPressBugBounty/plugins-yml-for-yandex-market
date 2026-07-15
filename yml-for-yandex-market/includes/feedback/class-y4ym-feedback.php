@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    iCopyDoc Plugins (ICPD)
  * @subpackage Y4YM/includes/feedback
@@ -16,8 +16,9 @@
  *
  * Usage example: `new Y4YM_Feedback( ['plugin_version' => '', 'logs_url' => '', 'logs_path' => '', 'additional_info' => '']);`
  *
+ * @since      0.1.0
  * @package    Y4YM
- * @subpackage Y4YM/includes
+ * @subpackage Y4YM/includes/feedback
  * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
 final class Y4YM_Feedback {
@@ -131,7 +132,7 @@ final class Y4YM_Feedback {
 					<?php
 					printf( '<p><strong>%s %s %s?</strong></p>',
 						esc_html__( 'The plugin', 'yml-for-yandex-market' ),
-						esc_html__( $this->get_plugin_name() ),
+						esc_html( $this->get_plugin_name() ),
 						esc_html__( 'help you', 'yml-for-yandex-market' )
 					);
 					?>

@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -3397,7 +3397,7 @@ $data_arr = [
 	],
 	[
 		'opt_name' => 'y4ym_shortdescription',
-		'def_val' => 'fullexcerpt',
+		'def_val' => 'excerpt',
 		'mark' => 'public',
 		'type' => 'select',
 		'tab' => 'offer_data_tab',
@@ -3411,6 +3411,10 @@ $data_arr = [
 			'woo_attr' => false,
 			'key_value_arr' => [
 				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[
+					'value' => 'excerpt',
+					'text' => __( 'Only Excerpt description', 'yml-for-yandex-market' )
+				],
 				[
 					'value' => 'full',
 					'text' => __( 'Only Full description', 'yml-for-yandex-market' )

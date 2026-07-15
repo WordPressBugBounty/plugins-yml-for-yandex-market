@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -17,9 +17,11 @@
  * Responsible for:
  * - Running feed update on product save
  * - Running feed update on stock change
- *
- * @package Y4YM
+ * 
+ * @since      0.1.0
+ * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
+ * @author     Maxim Glazunov <icopydoc@gmail.com>
  */
 class Y4YM_Feed_Updater {
 

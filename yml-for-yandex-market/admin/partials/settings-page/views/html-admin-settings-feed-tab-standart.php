@@ -1,15 +1,15 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * View of the standard tab.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
  * @param $view_arr['feed_id']
  * @param $view_arr['tab_name']
  */
-defined( 'ABSPATH' ) || exit;
 
 $plugin_date = new Y4YM_Data();
 $attr_arr = $plugin_date->get_data_for_tabs( $view_arr['tab_name'] );

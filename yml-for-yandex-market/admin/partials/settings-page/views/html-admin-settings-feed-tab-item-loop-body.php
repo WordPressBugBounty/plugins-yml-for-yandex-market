@@ -1,14 +1,14 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * The tab items loop body.
  * 
- * @version    5.4.0 (16-04-2026)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
  * @param $view_arr['feed_id']
  */
-defined( 'ABSPATH' ) || exit;
 
 $tag_label = $attr_arr[ $i ]['data']['label'];
 $opt_value = Y4YM_Options::settings_get(

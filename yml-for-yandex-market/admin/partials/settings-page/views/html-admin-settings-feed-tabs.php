@@ -1,8 +1,9 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * Display tabs.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.6.1 (15-07-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -10,7 +11,7 @@
  * @param $view_arr['tab_name']
  * @param $view_arr['feed_id']
  */
-defined( 'ABSPATH' ) || exit; ?>
+?>
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="nav-tab-wrapper" style="border-bottom: none; margin: 0; padding: 0;">
 	<?php

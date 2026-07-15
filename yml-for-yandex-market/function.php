@@ -1,4 +1,5 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 if ( ! function_exists( 'y4ym_get_html_options' ) ) {
 	/**
 	 * Get `option` tags for HTML form.

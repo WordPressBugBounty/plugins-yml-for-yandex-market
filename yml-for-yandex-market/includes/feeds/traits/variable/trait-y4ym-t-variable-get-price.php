@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -74,7 +74,7 @@ trait Y4YM_T_Variable_Get_Price {
 			if ( $tag_value == 0 || empty( $tag_value ) ) {
 				$this->add_skip_reason( [
 					'offer_id' => $this->get_offer()->get_id(),
-					'reason' => __( 'The product has no price', 'y4ym' ),
+					'reason' => __( 'The product has no price', 'yml-for-yandex-market' ),
 					'post_id' => $this->get_offer()->get_id(),
 					'file' => 'trait-y4ym-t-variable-get-price.php',
 					'line' => __LINE__

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -208,17 +208,25 @@ class Y4YM_Admin {
 		// select2 - place 2 from 5
 		wp_enqueue_style(
 			'select2',
-			plugin_dir_url( __FILE__ ) . 'css/select2.min.css'
+			plugin_dir_url( __FILE__ ) . 'css/select2.min.css',
+			[],
+			$this->version,
+			true // $in_footer = true
 		);
 		wp_enqueue_script(
 			'select2',
 			plugin_dir_url( __FILE__ ) . 'js/select2.min.js',
-			[ 'jquery' ]
+			[ 'jquery' ],
+			$this->version,
+			true
 		);
+		// Select2 integration script (наш custom)
 		wp_enqueue_script(
 			'wplspms_orders',
 			plugin_dir_url( __FILE__ ) . 'js/select2.js',
-			[ 'jquery', 'select2' ]
+			[ 'jquery', 'select2' ],
+			$this->version,
+			true
 		);
 		// end select2 - place 2 from 5
 
@@ -900,7 +908,7 @@ class Y4YM_Admin {
 
 		$logs_file_name = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/yml-for-yandex-market.log';
 		if ( file_exists( $logs_file_name ) ) {
-			$res = unlink( $logs_file_name );
+			$res = wp_delete_file( $logs_file_name );
 		} else {
 			$res = false;
 		}
@@ -1027,7 +1035,7 @@ class Y4YM_Admin {
 		printf(
 			'<style>#woocommerce-product-data ul.wc-tabs li.%s_options a::before {content: url("%s");}</style>',
 			'y4ym_individual_settings_tab',
-			plugin_dir_url( __FILE__ ) . 'icons/yml-13x13.svg'
+			esc_html( plugin_dir_url( __FILE__ ) ) . 'icons/yml-13x13.svg'
 		);
 
 	}

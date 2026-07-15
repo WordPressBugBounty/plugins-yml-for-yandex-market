@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.6.1 (15-07-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -13,7 +13,8 @@
 
 /**
  * Get the feed file meta.
- *
+ * 
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
  * @author     Maxim Glazunov <icopydoc@gmail.com>
