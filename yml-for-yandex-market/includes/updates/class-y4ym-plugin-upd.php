@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -294,7 +294,7 @@ final class Y4YM_Plugin_Upd {
 
 		if ( ! empty( $message ) ) {
 			$class = 'error';
-			new ICPD_Set_Admin_Notices( $message, $class );
+			new Y4YM_Set_Admin_Notices( $message, $class );
 		}
 
 		if ( $c !== '0' ) {
@@ -323,7 +323,7 @@ final class Y4YM_Plugin_Upd {
 				);
 				if ( ! empty( $message ) ) {
 					$class = 'error';
-					new ICPD_Set_Admin_Notices( $message, $class );
+					new Y4YM_Set_Admin_Notices( $message, $class );
 				}
 			}
 		}

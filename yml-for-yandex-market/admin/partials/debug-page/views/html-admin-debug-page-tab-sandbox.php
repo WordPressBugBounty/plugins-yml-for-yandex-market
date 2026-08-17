@@ -1,19 +1,20 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
  * Display the Sandbox tab.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.7.0 (17-08-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  */
-defined( 'ABSPATH' ) || exit; ?>
+?>
 <div class="postbox">
 	<div class="inside">
 		<?php
 		try {
 			y4ym_run_sandbox();
 		} catch (Exception $e) {
-			echo 'Exception: ', $e->getMessage(), "\n";
+			echo 'Exception: ', esc_html( $e->getMessage() ), "\n";
 		}
 		?>
 	</div>

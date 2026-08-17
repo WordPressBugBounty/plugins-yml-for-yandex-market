@@ -1,8 +1,9 @@
-<?php
+<?php defined( 'ABSPATH' ) || exit;
+
 /**
  * Display the Simulation tab.
  * 
- * @version    5.4.0 (16-04-2026)
+ * @version    5.7.0 (17-08-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  * 
@@ -11,7 +12,7 @@
  * @param $view_arr['simulation_result_report']
  * @param $view_arr['simulation_result']
  */
-defined( 'ABSPATH' ) || exit; ?>
+?>
 <div class="postbox">
 	<table class="form-table">
 		<tbody>
@@ -86,14 +87,14 @@ defined( 'ABSPATH' ) || exit; ?>
 			<tr>
 				<th scope="row" colspan="2">
 					<textarea style="width: 100%;" rows="4"><?php
-					echo htmlspecialchars( $view_arr['simulation_result_report'] );
+					echo esc_textarea( $view_arr['simulation_result_report'] );
 					?></textarea>
 				</th>
 			</tr>
 			<tr>
 				<th scope="row" colspan="2">
 					<textarea rows="16" style="width: 100%;"><?php
-					echo htmlspecialchars( $view_arr['simulation_result'] );
+					echo esc_textarea( $view_arr['simulation_result'] );
 					?></textarea>
 				</th>
 			</tr>

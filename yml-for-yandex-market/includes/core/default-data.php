@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.7.0 (17-08-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -2588,6 +2588,28 @@ $data_arr = [
 		]
 	],
 	[
+		'opt_name' => 'y4ym_minorder',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'label' => __( 'Minimum order', 'yml-for-yandex-market' ),
+			'desc' => __(
+				'The value of this option is set on the product edit page',
+				'yml-for-yandex-market'
+			),
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'minorder',
+			'tag_name_for_desc' => 'minorder'
+		]
+	],
+	[
 		'opt_name' => 'y4ym_min_quantity',
 		'def_val' => 'disabled',
 		'mark' => 'public',
@@ -3130,6 +3152,25 @@ $data_arr = [
 			],
 			'tag_name' => 'market_category_id',
 			'tag_name_for_desc' => 'market_category_id'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_param_composition',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => false,
+			'label' => __( 'Composition', 'yml-for-yandex-market' ),
+			'desc' => '',
+			'woo_attr' => true,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'param_composition',
+			'tag_name_for_desc' => 'param name="composition">ATTR_VAL</param'
 		]
 	],
 	[

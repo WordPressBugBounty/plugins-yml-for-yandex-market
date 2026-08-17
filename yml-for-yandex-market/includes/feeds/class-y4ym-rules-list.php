@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -140,9 +140,9 @@ class Y4YM_Rules_List {
 					'tn_ved_codes', 'okpd2', 'barcode'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
-					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup',
+					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'minorder', 'picture', 'store', 'pickup',
 					'delivery', 'name', 'vendor', 'vendorcode', 'description', 'sales_notes', 'delivery_options',
-					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'consists'
+					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'param_composition', 'consists'
 				],
 				'youla' => [  // https://cloud.mail.ru/public/rRMD/V66Ywbmy6?weblink=rRMD/V66Ywbmy6
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'youlacategoryid', 'youlasubcategoryid',
@@ -175,7 +175,7 @@ class Y4YM_Rules_List {
 					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
 					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'type_prefix', 'adult',
-					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'consists',
+					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'param_composition', 'consists',
 					'ste', 'isvisibletostatecustomers', 'isavailabletoindividuals', 'ppcategory',
 					'okei', 'begindate', 'enddate', 'packagetype', 'oksm'
 				]

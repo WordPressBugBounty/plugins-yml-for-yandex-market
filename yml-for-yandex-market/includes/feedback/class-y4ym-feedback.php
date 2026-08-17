@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    iCopyDoc Plugins (ICPD)
  * @subpackage Y4YM/includes/feedback
@@ -89,7 +89,7 @@ final class Y4YM_Feedback {
 			// ! Очень важно пускать через фильтр в этом месте, а иначе фильтр _f_feedback_additional_info
 			// ! внутри фукцнии send_data не будет работать
 			add_action( 'admin_init', [ $this, 'send_data' ], 10 );
-			new ICPD_Set_Admin_Notices(
+			new Y4YM_Set_Admin_Notices(
 				__( 'The data has been sent. Thank you', 'yml-for-yandex-market' ),
 				'success',
 				true

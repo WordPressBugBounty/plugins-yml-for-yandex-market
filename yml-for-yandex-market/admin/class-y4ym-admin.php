@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -512,7 +512,7 @@ class Y4YM_Admin {
 
 						switch ( $status_sboki ) {
 							case '1':
-								new ICPD_Set_Admin_Notices(
+								new Y4YM_Set_Admin_Notices(
 									sprintf( '<span class="y4ym_bold">Y4YM:</span> Feed #%s. %s.',
 										$feed_id_str,
 										__( 'Creating feed headers', 'yml-for-yandex-market' )
@@ -525,7 +525,7 @@ class Y4YM_Admin {
 									'y4ym_last_element_feed_' . $feed_id_str,
 									0
 								);
-								new ICPD_Set_Admin_Notices(
+								new Y4YM_Set_Admin_Notices(
 									sprintf( '<span class="y4ym_bold">Y4YM:</span> Feed #%s. %s. %s: %s',
 										$feed_id_str,
 										__( 'Creating temporary feed files', 'yml-for-yandex-market' ),
@@ -536,7 +536,7 @@ class Y4YM_Admin {
 								);
 								break;
 							case '3':
-								new ICPD_Set_Admin_Notices(
+								new Y4YM_Set_Admin_Notices(
 									sprintf( '<span class="y4ym_bold">Y4YM:</span> Feed #%s. %s.',
 										$feed_id_str,
 										__( 'Gluing the feed', 'yml-for-yandex-market' )
@@ -545,7 +545,7 @@ class Y4YM_Admin {
 								);
 								break;
 							case '4':
-								new ICPD_Set_Admin_Notices(
+								new Y4YM_Set_Admin_Notices(
 									sprintf( '<span class="y4ym_bold">Y4YM:</span> Feed #%s. %s...',
 										$feed_id_str,
 										__( 'Completing the assembly', 'yml-for-yandex-market' )
@@ -591,11 +591,11 @@ class Y4YM_Admin {
 			);
 			$this->save_plugin_set( $option_name, $feed_id, $save_if_empty );
 		}
-		new ICPD_Set_Admin_Notices( __( 'Updated', 'yml-for-yandex-market' ), 'success' );
+		new Y4YM_Set_Admin_Notices( __( 'Updated', 'yml-for-yandex-market' ), 'success' );
 
 		$planning_result = Y4YM_Cron_Manager::cron_starting_feed_creation_task_planning( $feed_id );
 		if ( true === $planning_result ) {
-			new ICPD_Set_Admin_Notices(
+			new Y4YM_Set_Admin_Notices(
 				sprintf( '%s. %s: %s',
 					__(
 						'The task of creating the feed has been queued for completion',
@@ -705,7 +705,7 @@ class Y4YM_Admin {
 			);
 			wp_safe_redirect( $url );
 		} else {
-			new ICPD_Set_Admin_Notices(
+			new Y4YM_Set_Admin_Notices(
 				sprintf( '%s. ID = %s',
 					__(
 						'Feed creation error. Failed to create a folder for temporary files',
@@ -766,7 +766,7 @@ class Y4YM_Admin {
 			wp_clear_scheduled_hook( 'y4ym_cron_start_feed_creation', [ $feed_id_str ] );
 			wp_clear_scheduled_hook( 'y4ym_cron_sborki', [ $feed_id_str ] );
 
-			new ICPD_Set_Admin_Notices(
+			new Y4YM_Set_Admin_Notices(
 				sprintf( '%s ID = %s %s',
 					__( 'Feed with', 'yml-for-yandex-market' ),
 					esc_html( $feed_id_str ),
@@ -851,7 +851,7 @@ class Y4YM_Admin {
 			);
 			wp_safe_redirect( $url );
 		} else {
-			new ICPD_Set_Admin_Notices(
+			new Y4YM_Set_Admin_Notices(
 				sprintf( '%s. ID = %s',
 					__(
 						'Feed duplicate error. Failed to create a folder for temporary files',
@@ -893,7 +893,7 @@ class Y4YM_Admin {
 			update_option( 'y4ym_keeplogs', $keeplogs );
 			update_option( 'y4ym_plugin_notifications', $plugin_notifications );
 		}
-		new ICPD_Set_Admin_Notices( __( 'Updated', 'yml-for-yandex-market' ), 'success' );
+		new Y4YM_Set_Admin_Notices( __( 'Updated', 'yml-for-yandex-market' ), 'success' );
 
 	}
 
@@ -922,7 +922,7 @@ class Y4YM_Admin {
 			);
 			$class = 'warning';
 		}
-		new ICPD_Set_Admin_Notices( $message, $class );
+		new Y4YM_Set_Admin_Notices( $message, $class );
 
 	}
 
@@ -1592,6 +1592,17 @@ class Y4YM_Admin {
 				] );
 
 				woocommerce_wp_text_input( [
+					'id' => '_yfym_minorder',
+					'label' => sprintf(
+						'%s <i>[minorder]</i>',
+						__( 'Minimum order', 'yml-for-yandex-market' )
+					),
+					'description' => '',
+					'type' => 'text',
+					'desc_tip' => 'true'
+				] );
+
+				woocommerce_wp_text_input( [
 					'id' => '_yfym_additional_expenses',
 					'label' => sprintf(
 						'%s <i>[additional_expenses]</i>',
@@ -1905,6 +1916,7 @@ class Y4YM_Admin {
 			'_yfym_step_quantity',
 			'_yfym_barcode',
 			'_yfym_min_price',
+			'_yfym_minorder',
 			'_yfym_additional_expenses',
 			'_yfym_cofinance_price',
 			'_yfym_purchase_price',

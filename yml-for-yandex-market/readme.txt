@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 5.6.1
+Stable tag: 5.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,12 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.7.0 =
+*Release Date 17-08-2026*
+
+* Added following tags: `minorder`, `param name="composition"`.
+* Code refactoring.
 
 = 5.6.1 =
 *Release Date 15-07-2026*
@@ -292,9 +298,8 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.6.1 =
-*Release Date 15-07-2026*
+= 5.7.0 =
+*Release Date 17-08-2026*
 
-* Fixed interface bugs.
-* Fixed a security bug.
+* Added following tags: `minorder`, `param name="composition"`.
 * Code refactoring.

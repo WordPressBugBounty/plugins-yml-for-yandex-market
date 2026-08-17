@@ -1,4 +1,4 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * WP CLI Command for YML for Yandex Market.
@@ -8,15 +8,11 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/wp-cli
  */
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 /**
  * CLI command to generate and manage YML feed.

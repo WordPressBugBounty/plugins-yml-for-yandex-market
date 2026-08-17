@@ -1,4 +1,4 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The file that defines the core plugin class.
@@ -8,7 +8,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -148,8 +148,7 @@ class Y4YM {
 		/**
 		 * Adding third-party libraries.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/functions-icpd-woocommerce-1-1-1.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/class-icpd-set-admin-notices.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/functions-icpd-woocommerce-1-1-2.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/class-icpd-promo.php';
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/common-libs/backward-compatibility.php';
 
@@ -187,6 +186,8 @@ class Y4YM {
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-cli/class-y4ym-wp-cli-command.php';
 		}
+
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-y4ym-set-admin-notices.php';
 
 		/** ----------------------------------- */
 

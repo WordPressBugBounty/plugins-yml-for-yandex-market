@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.7.0 (17-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -43,6 +43,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Comment_Life_Days;
 	use Y4YM_T_Simple_Get_Comment_Validity_Days;
 	use Y4YM_T_Simple_Get_Comment_Warranty;
+	use Y4YM_T_Simple_Get_Param_Composition;
 	use Y4YM_T_Simple_Get_Condition;
 	use Y4YM_T_Simple_Get_Consists;
 	use Y4YM_T_Simple_Get_Count;
@@ -73,6 +74,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Max_Quantity;
 	use Y4YM_T_Simple_Get_Min_Price;
 	use Y4YM_T_Simple_Get_Min_Quantity;
+	use Y4YM_T_Simple_Get_Minorder;
 	use Y4YM_T_Simple_Get_Model;
 	use Y4YM_T_Simple_Get_Name;
 	use Y4YM_T_Simple_Get_Offer_Tag;

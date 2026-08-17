@@ -1,4 +1,4 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Provide a admin area view for the plugin
@@ -7,7 +7,8 @@
  *
  * @link       https://https://icopydoc.ru
  * @since      0.1.0
- *
+ * @version    5.7.0 (17-08-2026)
+ * 
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials
  */
