@@ -81,6 +81,9 @@ class Y4YM_Debug_Page {
 				$simulated_feed_id = sanitize_text_field( $_POST['y4ym_feed_id'] );
 				$add_headers_footer = sanitize_text_field( $_POST['y4ym_add_headers_footer'] );
 				$simulated_unit_obj = new Y4YM_Get_Unit( $simulated_post_id, $simulated_feed_id );
+				echo '<pre>';
+				var_dump( $simulated_unit_obj->get_result_api_products_stocks() );
+				echo '</pre>';
 				$this->simulation_post_id = $simulated_post_id;
 				$this->simulation_feed_id = $simulated_feed_id;
 				if ( $add_headers_footer === 'enabled' ) {

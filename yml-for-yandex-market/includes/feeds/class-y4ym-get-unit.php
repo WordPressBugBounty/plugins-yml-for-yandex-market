@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -39,6 +39,18 @@ class Y4YM_Get_Unit {
 	 * @var string
 	 */
 	protected $result_xml;
+
+	/**
+	 * Result products prices array for Yandex Market API.
+	 * @var array
+	 */
+	protected $result_api_products_prices = [];
+
+	/**
+	 * Result products stocks array for Yandex Market API.
+	 * @var array
+	 */
+	protected $result_api_products_stocks = [];
 
 	/**
 	 * Product IDs in YML feed.
@@ -141,6 +153,24 @@ class Y4YM_Get_Unit {
 	 */
 	public function get_result() {
 		return $this->result_xml;
+	}
+
+	/**
+	 * Get result products prices array for Yandex Market API.
+	 * 
+	 * @return array
+	 */
+	public function get_result_api_products_prices() {
+		return $this->result_api_products_prices;
+	}
+
+	/**
+	 * Get result products prices array for Yandex Market API.
+	 * 
+	 * @return array
+	 */
+	public function get_result_api_products_stocks() {
+		return $this->result_api_products_stocks;
 	}
 
 	/**
@@ -329,6 +359,8 @@ class Y4YM_Get_Unit {
 			return false;
 		} else { // если нет причин пропускать товар
 			$this->result_xml .= $offer_obj->get_product_xml();
+			$this->result_api_products_prices[] = $offer_obj->result_api_products_prices;
+			$this->result_api_products_stocks[] = $offer_obj->result_api_products_stocks;
 			return true;
 		}
 

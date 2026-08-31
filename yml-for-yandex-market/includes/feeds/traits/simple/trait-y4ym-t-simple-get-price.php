@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -25,6 +25,7 @@
  *             methods:     get_product
  *                          get_feed_id
  *                          get_feed_rules
+ *                          get_price_for_api
  */
 trait Y4YM_T_Simple_Get_Price {
 
@@ -110,6 +111,9 @@ trait Y4YM_T_Simple_Get_Price {
 					$tag_value
 				);
 			}
+
+			$this->get_price_for_api( $tag_value );
+
 		} else {
 			$this->add_skip_reason( [
 				'reason' => $skip_price_reason,

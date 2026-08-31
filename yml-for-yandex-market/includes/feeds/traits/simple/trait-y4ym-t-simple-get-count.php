@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -57,6 +57,7 @@ trait Y4YM_T_Simple_Get_Count {
 				}
 			}
 			$result_xml = $this->get_simple_tag( $tag_name, $tag_value );
+			$this->get_stocks_for_api( $tag_value );
 		}
 
 		return $result_xml;

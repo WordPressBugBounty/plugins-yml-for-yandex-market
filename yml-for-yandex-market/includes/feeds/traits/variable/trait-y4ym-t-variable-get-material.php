@@ -1,10 +1,10 @@
-<?php defined( 'WPINC' ) || exit;
+<?php
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
- * @since      0.1.0
+ * @since      5.8.0
  * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
@@ -12,11 +12,11 @@
  */
 
 /**
- * The trait adds `get_archived` methods.
+ * The trait adds `get_material` methods.
  * 
- * This method allows you to return the `archived` tag.
+ * This method allows you to return the `material` tag.
  *
- * @since      0.1.0
+ * @since      5.8.0
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -26,36 +26,32 @@
  *                          get_offer
  *                          get_feed_id
  */
-trait Y4YM_T_Variable_Get_Archived {
+trait Y4YM_T_Variable_Get_Material {
 
 	/**
-	 * Get `archived` tag.
+	 * Get `material` tag.
 	 * 
-	 * @see https://yandex.ru/support/marketplace/ru/assortment/auto/yml-file#archived
+	 * @see https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgxs
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml
 	 * 
-	 * @return string Example: `<archived>true</archived>`.
+	 * @return string Example: `<material>Полиэстер</material>`.
 	 */
-	public function get_archived( $tag_name = 'archived', $result_xml = '' ) {
+	public function get_material( $tag_name = 'material', $result_xml = '' ) {
 
-		$archived = Y4YM_Options::settings_get(
-			'y4ym_auto_archived',
-			'disabled',
+		$material = Y4YM_Options::settings_get(
+			'y4ym_material',
+			'enabled',
 			$this->get_feed_id(),
 			'y4ym'
 		);
-		if ( $archived === 'enabled' ) {
-			// если товар не доступен к покупке
-			if ( false === $this->get_offer()->is_in_stock() ) {
-				$tag_value = 'true';
-			} else {
-				$tag_value = 'false';
-			}
+		if ( $material === 'disabled' ) {
+			return $result_xml;
+		} else {
+			$tag_value = $this->get_variable_global_attribute_value( $material );
 			$result_xml = $this->get_variable_tag( $tag_name, $tag_value );
 		}
-
 		return $result_xml;
 
 	}

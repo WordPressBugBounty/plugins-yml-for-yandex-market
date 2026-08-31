@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -26,6 +26,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Common_Currency_Switcher;
 	use Y4YM_T_Common_Get_CatId;
 	use Y4YM_T_Common_Skips;
+	use Y4YM_T_Common_Yandex_Market_API;
 
 	use Y4YM_T_Variable_Get_Additional_Expenses;
 	use Y4YM_T_Variable_Get_Adult;
@@ -72,6 +73,7 @@ class Y4YM_Get_Unit_Offer_Variable extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Variable_Get_Market_Category;
 	use Y4YM_T_Variable_Get_Market_Category_Id;
 	use Y4YM_T_Variable_Get_Market_Sku;
+	use Y4YM_T_Variable_Get_Material;
 	use Y4YM_T_Variable_Get_Max_Quantity;
 	use Y4YM_T_Variable_Get_Min_Price;
 	use Y4YM_T_Variable_Get_Min_Quantity;

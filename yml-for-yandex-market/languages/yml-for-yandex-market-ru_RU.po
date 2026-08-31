@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-08-17 17:53+0300\n"
-"PO-Revision-Date: 2026-08-17 17:55+0300\n"
+"POT-Creation-Date: 2026-08-31 13:00+0300\n"
+"PO-Revision-Date: 2026-08-31 13:16+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -37,57 +37,69 @@ msgstr "Страница отладки"
 msgid "Extensions"
 msgstr "Расширения"
 
-#: admin/class-y4ym-admin.php:360 admin/class-y4ym-admin.php:2056
+#: admin/class-y4ym-admin.php:360 admin/class-y4ym-admin.php:2080
 msgid "More features"
 msgstr "Больше функций"
 
-#: admin/class-y4ym-admin.php:518
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:340
+#: admin/class-y4ym-admin.php:473
+#, fuzzy
+#| msgid "The archiving was successful"
+msgid "API connection was successful"
+msgstr "Архивация прошла успешно"
+
+#: admin/class-y4ym-admin.php:481
+#, fuzzy
+#| msgid "Folder creation error"
+msgid "API connection error"
+msgstr "Ошибка создания папки"
+
+#: admin/class-y4ym-admin.php:542
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:336
 msgid "Creating feed headers"
 msgstr "Создание заголовков фида"
 
-#: admin/class-y4ym-admin.php:531
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:353
+#: admin/class-y4ym-admin.php:555
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:349
 msgid "Creating temporary feed files"
 msgstr "Создание временных файлов фида"
 
-#: admin/class-y4ym-admin.php:532
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:354
+#: admin/class-y4ym-admin.php:556
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:350
 msgid "The number of processed products"
 msgstr "Количество обработанных товаров"
 
-#: admin/class-y4ym-admin.php:542
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:365
+#: admin/class-y4ym-admin.php:566
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:361
 msgid "Gluing the feed"
 msgstr "Склейка фида"
 
-#: admin/class-y4ym-admin.php:551
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:373
+#: admin/class-y4ym-admin.php:575
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:369
 msgid "Completing the assembly"
 msgstr "Завершение сборки"
 
-#: admin/class-y4ym-admin.php:594 admin/class-y4ym-admin.php:896
+#: admin/class-y4ym-admin.php:618 admin/class-y4ym-admin.php:920
 msgid "Updated"
 msgstr "Обновлено"
 
-#: admin/class-y4ym-admin.php:601
+#: admin/class-y4ym-admin.php:625
 msgid "The task of creating the feed has been queued for completion"
 msgstr "Задача по созданию фида была поставлена в очередь на выполнение"
 
-#: admin/class-y4ym-admin.php:604
+#: admin/class-y4ym-admin.php:628
 msgid "Feed ID"
 msgstr "Фид ID"
 
-#: admin/class-y4ym-admin.php:677 admin/class-y4ym-admin.php:815
+#: admin/class-y4ym-admin.php:701 admin/class-y4ym-admin.php:839
 #: includes/class-y4ym-activator.php:43
 msgid "Folder creation error"
 msgstr "Ошибка создания папки"
 
-#: admin/class-y4ym-admin.php:679
+#: admin/class-y4ym-admin.php:703
 msgid "during the creation of a new feed"
 msgstr "во время создания нового фида"
 
-#: admin/class-y4ym-admin.php:680 admin/class-y4ym-admin.php:818
+#: admin/class-y4ym-admin.php:704 admin/class-y4ym-admin.php:842
 #: includes/class-y4ym-activator.php:46
 #: includes/cron/class-yfym-cron-manager.php:102
 #: includes/cron/class-yfym-cron-manager.php:123
@@ -105,27 +117,27 @@ msgstr "во время создания нового фида"
 #: includes/feeds/class-y4ym-generation-xml.php:365
 #: includes/feeds/class-y4ym-generation-xml.php:395
 #: includes/feeds/class-y4ym-generation-xml.php:407
-#: includes/feeds/class-y4ym-generation-xml.php:431
-#: includes/feeds/class-y4ym-generation-xml.php:481
-#: includes/feeds/class-y4ym-generation-xml.php:506
-#: includes/feeds/class-y4ym-generation-xml.php:531
-#: includes/feeds/class-y4ym-generation-xml.php:554
-#: includes/feeds/class-y4ym-generation-xml.php:928
-#: includes/feeds/class-y4ym-generation-xml.php:951
-#: includes/feeds/class-y4ym-generation-xml.php:1026
-#: includes/feeds/class-y4ym-generation-xml.php:1040
+#: includes/feeds/class-y4ym-generation-xml.php:433
+#: includes/feeds/class-y4ym-generation-xml.php:512
+#: includes/feeds/class-y4ym-generation-xml.php:537
+#: includes/feeds/class-y4ym-generation-xml.php:562
+#: includes/feeds/class-y4ym-generation-xml.php:585
+#: includes/feeds/class-y4ym-generation-xml.php:959
+#: includes/feeds/class-y4ym-generation-xml.php:982
+#: includes/feeds/class-y4ym-generation-xml.php:1057
 #: includes/feeds/class-y4ym-generation-xml.php:1071
-#: includes/feeds/class-y4ym-generation-xml.php:1392
-#: includes/feeds/class-y4ym-generation-xml.php:1418
-#: includes/feeds/class-y4ym-generation-xml.php:1437
-#: includes/feeds/class-y4ym-generation-xml.php:1468
-#: includes/feeds/class-y4ym-generation-xml.php:1525
-#: includes/feeds/class-y4ym-generation-xml.php:1549
-#: includes/feeds/class-y4ym-get-unit.php:112
-#: includes/feeds/class-y4ym-get-unit.php:130
-#: includes/feeds/class-y4ym-get-unit.php:182
-#: includes/feeds/class-y4ym-get-unit.php:271
-#: includes/feeds/class-y4ym-get-unit.php:295
+#: includes/feeds/class-y4ym-generation-xml.php:1102
+#: includes/feeds/class-y4ym-generation-xml.php:1456
+#: includes/feeds/class-y4ym-generation-xml.php:1482
+#: includes/feeds/class-y4ym-generation-xml.php:1501
+#: includes/feeds/class-y4ym-generation-xml.php:1532
+#: includes/feeds/class-y4ym-generation-xml.php:1589
+#: includes/feeds/class-y4ym-generation-xml.php:1613
+#: includes/feeds/class-y4ym-get-unit.php:124
+#: includes/feeds/class-y4ym-get-unit.php:142
+#: includes/feeds/class-y4ym-get-unit.php:212
+#: includes/feeds/class-y4ym-get-unit.php:301
+#: includes/feeds/class-y4ym-get-unit.php:325
 #: includes/feeds/class-yfym-feed-updater.php:67
 #: includes/feeds/class-yfym-feed-updater.php:112
 #: includes/feeds/class-yfym-feed-updater.php:176
@@ -135,7 +147,7 @@ msgstr "во время создания нового фида"
 msgid "Line"
 msgstr "Строка"
 
-#: admin/class-y4ym-admin.php:681 admin/class-y4ym-admin.php:819
+#: admin/class-y4ym-admin.php:705 admin/class-y4ym-admin.php:843
 #: includes/class-y4ym-activator.php:47
 #: includes/cron/class-yfym-cron-manager.php:100
 #: includes/cron/class-yfym-cron-manager.php:121
@@ -154,29 +166,39 @@ msgstr "Строка"
 #: includes/feeds/class-y4ym-generation-xml.php:363
 #: includes/feeds/class-y4ym-generation-xml.php:393
 #: includes/feeds/class-y4ym-generation-xml.php:405
-#: includes/feeds/class-y4ym-generation-xml.php:429
-#: includes/feeds/class-y4ym-generation-xml.php:479
-#: includes/feeds/class-y4ym-generation-xml.php:504
-#: includes/feeds/class-y4ym-generation-xml.php:529
-#: includes/feeds/class-y4ym-generation-xml.php:552
-#: includes/feeds/class-y4ym-generation-xml.php:926
-#: includes/feeds/class-y4ym-generation-xml.php:949
-#: includes/feeds/class-y4ym-generation-xml.php:1038
+#: includes/feeds/class-y4ym-generation-xml.php:431
+#: includes/feeds/class-y4ym-generation-xml.php:510
+#: includes/feeds/class-y4ym-generation-xml.php:535
+#: includes/feeds/class-y4ym-generation-xml.php:560
+#: includes/feeds/class-y4ym-generation-xml.php:583
+#: includes/feeds/class-y4ym-generation-xml.php:957
+#: includes/feeds/class-y4ym-generation-xml.php:980
 #: includes/feeds/class-y4ym-generation-xml.php:1069
-#: includes/feeds/class-y4ym-generation-xml.php:1390
-#: includes/feeds/class-y4ym-generation-xml.php:1416
-#: includes/feeds/class-y4ym-generation-xml.php:1435
-#: includes/feeds/class-y4ym-generation-xml.php:1466
-#: includes/feeds/class-y4ym-generation-xml.php:1523
-#: includes/feeds/class-y4ym-generation-xml.php:1547
-#: includes/feeds/class-y4ym-get-unit.php:110
-#: includes/feeds/class-y4ym-get-unit.php:128
-#: includes/feeds/class-y4ym-get-unit.php:180
-#: includes/feeds/class-y4ym-get-unit.php:269
-#: includes/feeds/class-y4ym-get-unit.php:293
+#: includes/feeds/class-y4ym-generation-xml.php:1100
+#: includes/feeds/class-y4ym-generation-xml.php:1454
+#: includes/feeds/class-y4ym-generation-xml.php:1480
+#: includes/feeds/class-y4ym-generation-xml.php:1499
+#: includes/feeds/class-y4ym-generation-xml.php:1530
+#: includes/feeds/class-y4ym-generation-xml.php:1587
+#: includes/feeds/class-y4ym-generation-xml.php:1611
+#: includes/feeds/class-y4ym-get-unit.php:122
+#: includes/feeds/class-y4ym-get-unit.php:140
+#: includes/feeds/class-y4ym-get-unit.php:210
+#: includes/feeds/class-y4ym-get-unit.php:299
+#: includes/feeds/class-y4ym-get-unit.php:323
 #: includes/feeds/class-yfym-feed-updater.php:65
 #: includes/feeds/class-yfym-feed-updater.php:110
 #: includes/feeds/class-yfym-feed-updater.php:174
+#: includes/feeds/import/class-y4ym-api.php:229
+#: includes/feeds/import/class-y4ym-api.php:231
+#: includes/feeds/import/class-y4ym-api.php:321
+#: includes/feeds/import/class-y4ym-api.php:323
+#: includes/feeds/import/class-y4ym-api.php:397
+#: includes/feeds/import/class-y4ym-api.php:399
+#: includes/feeds/import/class-y4ym-api.php:503
+#: includes/feeds/import/class-y4ym-api.php:505
+#: includes/feeds/import/class-y4ym-api.php:560
+#: includes/feeds/import/class-y4ym-api.php:562
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:200
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:218
 #: includes/updates/class-y4ym-plugin-upd.php:589
@@ -184,366 +206,367 @@ msgstr "Строка"
 msgid "File"
 msgstr "Файл"
 
-#: admin/class-y4ym-admin.php:711
+#: admin/class-y4ym-admin.php:735
 msgid "Feed creation error. Failed to create a folder for temporary files"
 msgstr "Ошибка создания фида. Не удалось создать папку для временных файлов"
 
-#: admin/class-y4ym-admin.php:771
+#: admin/class-y4ym-admin.php:795
 msgid "Feed with"
 msgstr "Фид с"
 
-#: admin/class-y4ym-admin.php:773
+#: admin/class-y4ym-admin.php:797
 msgid "has been successfully deleted"
 msgstr "был успешно удалён"
 
-#: admin/class-y4ym-admin.php:817
+#: admin/class-y4ym-admin.php:841
 msgid "during the duplicate of a new feed"
 msgstr "во время дублирования фида"
 
-#: admin/class-y4ym-admin.php:857
+#: admin/class-y4ym-admin.php:881
 msgid "Feed duplicate error. Failed to create a folder for temporary files"
 msgstr ""
 "Ошибка дублирования фида. Не удалось создать папку для временных файлов"
 
-#: admin/class-y4ym-admin.php:916
+#: admin/class-y4ym-admin.php:940
 msgid "Logs were cleared"
 msgstr "Логи были очищены"
 
-#: admin/class-y4ym-admin.php:920
+#: admin/class-y4ym-admin.php:944
 msgid "Error accessing log file. The log file may have been deleted previously"
 msgstr "Ошибка доступа к log-файлу. Возможно log-файл был удален ранее"
 
-#: admin/class-y4ym-admin.php:1013
+#: admin/class-y4ym-admin.php:1037
 msgid "YML for Yandex Market"
 msgstr "YML for Yandex Market"
 
-#: admin/class-y4ym-admin.php:1054
+#: admin/class-y4ym-admin.php:1078
 msgid "Individual product settings for YML-feed"
 msgstr "Индивидуальные настройки товара для YML-фида"
 
-#: admin/class-y4ym-admin.php:1062
+#: admin/class-y4ym-admin.php:1086
 msgid "Individual product settings for Yandex for sellers"
 msgstr "Индивидуальные настройки товара в Яндексе для продавцов"
 
-#: admin/class-y4ym-admin.php:1067
+#: admin/class-y4ym-admin.php:1091
 msgid "Here you can set up individual settings for Yandex for sellers"
 msgstr ""
 "Здесь вы можете настроить индивидуальные настройки Яндекса для продавцов"
 
-#: admin/class-y4ym-admin.php:1069 admin/class-y4ym-admin.php:1106
-#: admin/class-y4ym-admin.php:1120 admin/class-y4ym-admin.php:1231
-#: admin/class-y4ym-admin.php:1292 admin/class-y4ym-admin.php:1362
-#: admin/class-y4ym-admin.php:1438 admin/class-y4ym-admin.php:1572
-#: includes/core/default-data.php:729 includes/core/default-data.php:821
-#: includes/core/default-data.php:910 includes/core/default-data.php:2189
+#: admin/class-y4ym-admin.php:1093 admin/class-y4ym-admin.php:1130
+#: admin/class-y4ym-admin.php:1144 admin/class-y4ym-admin.php:1255
+#: admin/class-y4ym-admin.php:1316 admin/class-y4ym-admin.php:1386
+#: admin/class-y4ym-admin.php:1462 admin/class-y4ym-admin.php:1596
+#: includes/core/default-data.php:736 includes/core/default-data.php:828
+#: includes/core/default-data.php:917 includes/core/default-data.php:2213
 msgid "Read more on Yandex"
 msgstr "Прочитать подробности на Яндексе"
 
-#: admin/class-y4ym-admin.php:1078 includes/core/default-data.php:3139
+#: admin/class-y4ym-admin.php:1102 includes/core/default-data.php:3163
 msgid "Market category ID"
 msgstr "ID категории на Маркете"
 
-#: admin/class-y4ym-admin.php:1081
+#: admin/class-y4ym-admin.php:1105
 msgid "Do not confuse it with the \"market_category\" parameter"
 msgstr "Не путайте его с параметром \"market_category\""
 
-#: admin/class-y4ym-admin.php:1091
+#: admin/class-y4ym-admin.php:1115
 msgid "Product ID on Yandex"
 msgstr "Идентификатор товара на Яндексе"
 
-#: admin/class-y4ym-admin.php:1093
+#: admin/class-y4ym-admin.php:1117
 msgid "Product ID on Yandex or other marketplace"
 msgstr "ID товара на Яндексе или другом маркетплейсе"
 
-#: admin/class-y4ym-admin.php:1101 admin/class-y4ym-admin.php:1541
+#: admin/class-y4ym-admin.php:1125 admin/class-y4ym-admin.php:1565
 msgid "Code"
 msgstr "Код"
 
-#: admin/class-y4ym-admin.php:1104 admin/class-y4ym-admin.php:1544
+#: admin/class-y4ym-admin.php:1128 admin/class-y4ym-admin.php:1568
 msgid "If you need to specify multiple values, separate them with a"
 msgstr "Если вам нужно указать несколько значений, разделите их символом"
 
-#: admin/class-y4ym-admin.php:1115
+#: admin/class-y4ym-admin.php:1139
 msgid "I'll product marking"
 msgstr "Я буду маркировать товары"
 
-#: admin/class-y4ym-admin.php:1118 admin/class-y4ym-admin.php:1229
-#: admin/class-y4ym-admin.php:1250 admin/class-y4ym-admin.php:1307
-#: admin/class-y4ym-admin.php:1331 admin/class-y4ym-admin.php:1348
-#: admin/class-y4ym-admin.php:1377 admin/class-y4ym-admin.php:1401
-#: admin/class-y4ym-admin.php:1418 includes/core/default-data.php:728
-#: includes/core/default-data.php:796 includes/core/default-data.php:820
-#: includes/core/default-data.php:888 includes/core/default-data.php:909
-#: includes/core/default-data.php:974 includes/core/default-data.php:995
-#: includes/core/default-data.php:1041
+#: admin/class-y4ym-admin.php:1142 admin/class-y4ym-admin.php:1253
+#: admin/class-y4ym-admin.php:1274 admin/class-y4ym-admin.php:1331
+#: admin/class-y4ym-admin.php:1355 admin/class-y4ym-admin.php:1372
+#: admin/class-y4ym-admin.php:1401 admin/class-y4ym-admin.php:1425
+#: admin/class-y4ym-admin.php:1442 includes/core/default-data.php:735
+#: includes/core/default-data.php:803 includes/core/default-data.php:827
+#: includes/core/default-data.php:895 includes/core/default-data.php:916
+#: includes/core/default-data.php:981 includes/core/default-data.php:1002
+#: includes/core/default-data.php:1048
 msgid "Optional element"
 msgstr "Необязательный элемент"
 
-#: admin/class-y4ym-admin.php:1123 admin/class-y4ym-admin.php:1242
-#: admin/class-y4ym-admin.php:1260 admin/class-y4ym-admin.php:1756
-#: admin/class-y4ym-admin.php:1787 includes/core/default-data.php:459
-#: includes/core/default-data.php:477 includes/core/default-data.php:621
-#: includes/core/default-data.php:3219 includes/core/default-data.php:3275
-#: includes/core/default-data.php:3365 includes/core/default-data.php:3403
-#: includes/core/default-data.php:3426 includes/core/default-data.php:3517
+#: admin/class-y4ym-admin.php:1147 admin/class-y4ym-admin.php:1266
+#: admin/class-y4ym-admin.php:1284 admin/class-y4ym-admin.php:1780
+#: admin/class-y4ym-admin.php:1811 includes/core/default-data.php:466
+#: includes/core/default-data.php:484 includes/core/default-data.php:628
+#: includes/core/default-data.php:3243 includes/core/default-data.php:3299
+#: includes/core/default-data.php:3389 includes/core/default-data.php:3427
+#: includes/core/default-data.php:3450 includes/core/default-data.php:3541
 msgid "Default"
 msgstr "По умолчанию"
 
-#: admin/class-y4ym-admin.php:1124 admin/class-y4ym-admin.php:1243
-#: admin/class-y4ym-admin.php:1302 admin/class-y4ym-admin.php:1372
+#: admin/class-y4ym-admin.php:1148 admin/class-y4ym-admin.php:1267
+#: admin/class-y4ym-admin.php:1326 admin/class-y4ym-admin.php:1396
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:22
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:57
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-simulation.php:79
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:164
 #: includes/core/class-y4ym-data.php:287 includes/core/default-data.php:26
 #: includes/core/default-data.php:268 includes/core/default-data.php:289
-#: includes/core/default-data.php:478 includes/core/default-data.php:482
-#: includes/core/default-data.php:574 includes/core/default-data.php:603
-#: includes/core/default-data.php:687 includes/core/default-data.php:734
-#: includes/core/default-data.php:826 includes/core/default-data.php:915
-#: includes/core/default-data.php:1002 includes/core/default-data.php:1081
-#: includes/core/default-data.php:1103 includes/core/default-data.php:1137
-#: includes/core/default-data.php:1159 includes/core/default-data.php:1192
-#: includes/core/default-data.php:1213 includes/core/default-data.php:1234
-#: includes/core/default-data.php:1255 includes/core/default-data.php:1278
-#: includes/core/default-data.php:1394 includes/core/default-data.php:1412
-#: includes/core/default-data.php:1430 includes/core/default-data.php:1449
-#: includes/core/default-data.php:1470 includes/core/default-data.php:1493
-#: includes/core/default-data.php:1535 includes/core/default-data.php:1555
-#: includes/core/default-data.php:1677 includes/core/default-data.php:1697
-#: includes/core/default-data.php:1717 includes/core/default-data.php:1736
-#: includes/core/default-data.php:1800 includes/core/default-data.php:1822
-#: includes/core/default-data.php:1846 includes/core/default-data.php:1869
-#: includes/core/default-data.php:1891 includes/core/default-data.php:1917
-#: includes/core/default-data.php:1936 includes/core/default-data.php:1957
-#: includes/core/default-data.php:1974 includes/core/default-data.php:2034
-#: includes/core/default-data.php:2051 includes/core/default-data.php:2069
-#: includes/core/default-data.php:2089 includes/core/default-data.php:2112
-#: includes/core/default-data.php:2135 includes/core/default-data.php:2156
-#: includes/core/default-data.php:2173 includes/core/default-data.php:2194
-#: includes/core/default-data.php:2212 includes/core/default-data.php:2230
-#: includes/core/default-data.php:2251 includes/core/default-data.php:2293
-#: includes/core/default-data.php:2335 includes/core/default-data.php:2355
-#: includes/core/default-data.php:2407 includes/core/default-data.php:2426
-#: includes/core/default-data.php:2443 includes/core/default-data.php:2464
-#: includes/core/default-data.php:2486 includes/core/default-data.php:2509
-#: includes/core/default-data.php:2547 includes/core/default-data.php:2566
-#: includes/core/default-data.php:2585 includes/core/default-data.php:2605
-#: includes/core/default-data.php:2627 includes/core/default-data.php:2649
-#: includes/core/default-data.php:2671 includes/core/default-data.php:2693
-#: includes/core/default-data.php:2712 includes/core/default-data.php:2729
-#: includes/core/default-data.php:2748 includes/core/default-data.php:2766
-#: includes/core/default-data.php:2791 includes/core/default-data.php:2814
-#: includes/core/default-data.php:2835 includes/core/default-data.php:2873
-#: includes/core/default-data.php:2894 includes/core/default-data.php:2941
-#: includes/core/default-data.php:2966 includes/core/default-data.php:3073
-#: includes/core/default-data.php:3097 includes/core/default-data.php:3125
-#: includes/core/default-data.php:3150 includes/core/default-data.php:3170
-#: includes/core/default-data.php:3409 includes/core/default-data.php:3433
-#: includes/core/default-data.php:3454 includes/core/default-data.php:3523
-#: includes/core/default-data.php:3591 includes/core/default-data.php:3720
-#: includes/core/default-data.php:3748 includes/core/default-data.php:3766
-#: includes/core/default-data.php:3784 includes/core/default-data.php:3804
-#: includes/core/default-data.php:3821
+#: includes/core/default-data.php:485 includes/core/default-data.php:489
+#: includes/core/default-data.php:581 includes/core/default-data.php:610
+#: includes/core/default-data.php:694 includes/core/default-data.php:741
+#: includes/core/default-data.php:833 includes/core/default-data.php:922
+#: includes/core/default-data.php:1009 includes/core/default-data.php:1088
+#: includes/core/default-data.php:1110 includes/core/default-data.php:1144
+#: includes/core/default-data.php:1166 includes/core/default-data.php:1199
+#: includes/core/default-data.php:1220 includes/core/default-data.php:1241
+#: includes/core/default-data.php:1262 includes/core/default-data.php:1285
+#: includes/core/default-data.php:1401 includes/core/default-data.php:1419
+#: includes/core/default-data.php:1437 includes/core/default-data.php:1456
+#: includes/core/default-data.php:1477 includes/core/default-data.php:1500
+#: includes/core/default-data.php:1542 includes/core/default-data.php:1562
+#: includes/core/default-data.php:1684 includes/core/default-data.php:1701
+#: includes/core/default-data.php:1721 includes/core/default-data.php:1741
+#: includes/core/default-data.php:1760 includes/core/default-data.php:1824
+#: includes/core/default-data.php:1846 includes/core/default-data.php:1870
+#: includes/core/default-data.php:1893 includes/core/default-data.php:1915
+#: includes/core/default-data.php:1941 includes/core/default-data.php:1960
+#: includes/core/default-data.php:1981 includes/core/default-data.php:1998
+#: includes/core/default-data.php:2058 includes/core/default-data.php:2075
+#: includes/core/default-data.php:2093 includes/core/default-data.php:2113
+#: includes/core/default-data.php:2136 includes/core/default-data.php:2159
+#: includes/core/default-data.php:2180 includes/core/default-data.php:2197
+#: includes/core/default-data.php:2218 includes/core/default-data.php:2236
+#: includes/core/default-data.php:2254 includes/core/default-data.php:2275
+#: includes/core/default-data.php:2317 includes/core/default-data.php:2359
+#: includes/core/default-data.php:2379 includes/core/default-data.php:2431
+#: includes/core/default-data.php:2450 includes/core/default-data.php:2467
+#: includes/core/default-data.php:2488 includes/core/default-data.php:2510
+#: includes/core/default-data.php:2533 includes/core/default-data.php:2571
+#: includes/core/default-data.php:2590 includes/core/default-data.php:2609
+#: includes/core/default-data.php:2629 includes/core/default-data.php:2651
+#: includes/core/default-data.php:2673 includes/core/default-data.php:2695
+#: includes/core/default-data.php:2717 includes/core/default-data.php:2736
+#: includes/core/default-data.php:2753 includes/core/default-data.php:2772
+#: includes/core/default-data.php:2790 includes/core/default-data.php:2815
+#: includes/core/default-data.php:2838 includes/core/default-data.php:2859
+#: includes/core/default-data.php:2897 includes/core/default-data.php:2918
+#: includes/core/default-data.php:2965 includes/core/default-data.php:2990
+#: includes/core/default-data.php:3097 includes/core/default-data.php:3121
+#: includes/core/default-data.php:3149 includes/core/default-data.php:3174
+#: includes/core/default-data.php:3194 includes/core/default-data.php:3433
+#: includes/core/default-data.php:3457 includes/core/default-data.php:3478
+#: includes/core/default-data.php:3547 includes/core/default-data.php:3566
+#: includes/core/default-data.php:3694 includes/core/default-data.php:3823
+#: includes/core/default-data.php:3851 includes/core/default-data.php:3869
+#: includes/core/default-data.php:3887 includes/core/default-data.php:3907
+#: includes/core/default-data.php:3924
 msgid "Disabled"
 msgstr "Отключено"
 
-#: admin/class-y4ym-admin.php:1131 includes/core/default-data.php:2327
+#: admin/class-y4ym-admin.php:1155 includes/core/default-data.php:2351
 msgid "Video"
 msgstr "Видео"
 
-#: admin/class-y4ym-admin.php:1133
+#: admin/class-y4ym-admin.php:1157
 msgid "Video URL"
 msgstr "Ссылка на видео"
 
-#: admin/class-y4ym-admin.php:1142
+#: admin/class-y4ym-admin.php:1166
 msgid "Minimum number of products"
 msgstr "Минимальное количество товаров"
 
-#: admin/class-y4ym-admin.php:1145 includes/core/default-data.php:2619
+#: admin/class-y4ym-admin.php:1169 includes/core/default-data.php:2643
 msgid "Minimum number of products per order"
 msgstr "Минимальное количество товаров в заказе"
 
-#: admin/class-y4ym-admin.php:1146 admin/class-y4ym-admin.php:1159
+#: admin/class-y4ym-admin.php:1170 admin/class-y4ym-admin.php:1183
 msgid "For these categories only"
 msgstr "Только для этих категорий"
 
-#: admin/class-y4ym-admin.php:1156
+#: admin/class-y4ym-admin.php:1180
 msgid "Quantum of sale"
 msgstr "Квант продажи"
 
-#: admin/class-y4ym-admin.php:1169 includes/core/default-data.php:2830
+#: admin/class-y4ym-admin.php:1193 includes/core/default-data.php:2854
 msgid "The warranty period"
 msgstr "Гарантийный срок"
 
-#: admin/class-y4ym-admin.php:1170 admin/class-y4ym-admin.php:1701
+#: admin/class-y4ym-admin.php:1194 admin/class-y4ym-admin.php:1725
 msgid "days"
 msgstr "дней"
 
-#: admin/class-y4ym-admin.php:1174
+#: admin/class-y4ym-admin.php:1198
 msgid "The number of days of the warranty period"
 msgstr "Количество дней гарантийного срока"
 
-#: admin/class-y4ym-admin.php:1176 admin/class-y4ym-admin.php:1707
+#: admin/class-y4ym-admin.php:1200 admin/class-y4ym-admin.php:1731
 msgid ""
 "The number that you specify here will be converted to a format ISO 8601 like"
 msgstr ""
 "Число, указанное здесь, будет преобразовано в формат ISO 8601, например"
 
-#: admin/class-y4ym-admin.php:1191 admin/class-y4ym-admin.php:1194
-#: includes/core/default-data.php:2865
+#: admin/class-y4ym-admin.php:1215 admin/class-y4ym-admin.php:1218
+#: includes/core/default-data.php:2889
 msgid "Comment on the warranty"
 msgstr "Комментарий к дате истечения срока службы"
 
-#: admin/class-y4ym-admin.php:1203 admin/class-y4ym-admin.php:1209
-#: includes/core/default-data.php:2285
+#: admin/class-y4ym-admin.php:1227 admin/class-y4ym-admin.php:1233
+#: includes/core/default-data.php:2309
 msgid "VAT rate"
 msgstr "НДС"
 
-#: admin/class-y4ym-admin.php:1204 admin/class-y4ym-admin.php:1239
+#: admin/class-y4ym-admin.php:1228 admin/class-y4ym-admin.php:1263
 msgid "Сondition"
 msgstr "Состояние товара"
 
-#: admin/class-y4ym-admin.php:1211 admin/class-y4ym-admin.php:1301
-#: admin/class-y4ym-admin.php:1371
+#: admin/class-y4ym-admin.php:1235 admin/class-y4ym-admin.php:1325
+#: admin/class-y4ym-admin.php:1395
 msgid "Use global settings"
 msgstr "Использовать глобальные настройки"
 
-#: admin/class-y4ym-admin.php:1212 includes/core/default-data.php:2295
+#: admin/class-y4ym-admin.php:1236 includes/core/default-data.php:2319
 msgid "No VAT"
 msgstr "Без НДС"
 
-#: admin/class-y4ym-admin.php:1224 includes/core/default-data.php:2310
+#: admin/class-y4ym-admin.php:1248 includes/core/default-data.php:2334
 msgid "Use it only if VAT_22 failed"
 msgstr "Используйте только если VAT_22 не сработал"
 
-#: admin/class-y4ym-admin.php:1244 includes/core/default-data.php:2969
+#: admin/class-y4ym-admin.php:1268 includes/core/default-data.php:2993
 msgid "Showcase sample"
 msgstr "Витринный образец"
 
-#: admin/class-y4ym-admin.php:1245 includes/core/default-data.php:2973
+#: admin/class-y4ym-admin.php:1269 includes/core/default-data.php:2997
 msgid "Reduction"
 msgstr "Уцененный товар"
 
-#: admin/class-y4ym-admin.php:1246 admin/class-y4ym-admin.php:1247
-#: includes/core/default-data.php:2977 includes/core/default-data.php:2981
+#: admin/class-y4ym-admin.php:1270 admin/class-y4ym-admin.php:1271
+#: includes/core/default-data.php:3001 includes/core/default-data.php:3005
 msgid "Fashionpreowned"
 msgstr "Повторная продажа"
 
-#: admin/class-y4ym-admin.php:1248 includes/core/default-data.php:2985
+#: admin/class-y4ym-admin.php:1272 includes/core/default-data.php:3009
 msgid "Like New"
 msgstr "Как новый"
 
-#: admin/class-y4ym-admin.php:1257 includes/core/default-data.php:3025
+#: admin/class-y4ym-admin.php:1281 includes/core/default-data.php:3049
 msgid "Quality"
 msgstr "Качество"
 
-#: admin/class-y4ym-admin.php:1261 includes/core/default-data.php:3030
+#: admin/class-y4ym-admin.php:1285 includes/core/default-data.php:3054
 msgid "Perfect"
 msgstr "Как новый"
 
-#: admin/class-y4ym-admin.php:1262 includes/core/default-data.php:3031
+#: admin/class-y4ym-admin.php:1286 includes/core/default-data.php:3055
 msgid "Excellent"
 msgstr "Отличное"
 
-#: admin/class-y4ym-admin.php:1263 includes/core/default-data.php:3032
+#: admin/class-y4ym-admin.php:1287 includes/core/default-data.php:3056
 msgid "Good"
 msgstr "Хорошее"
 
-#: admin/class-y4ym-admin.php:1266 admin/class-y4ym-admin.php:1279
-#: admin/class-y4ym-admin.php:1318 admin/class-y4ym-admin.php:1388
-#: includes/core/default-data.php:753 includes/core/default-data.php:773
-#: includes/core/default-data.php:845 includes/core/default-data.php:865
-#: includes/core/default-data.php:934 includes/core/default-data.php:954
-#: includes/core/default-data.php:1021
+#: admin/class-y4ym-admin.php:1290 admin/class-y4ym-admin.php:1303
+#: admin/class-y4ym-admin.php:1342 admin/class-y4ym-admin.php:1412
+#: includes/core/default-data.php:760 includes/core/default-data.php:780
+#: includes/core/default-data.php:852 includes/core/default-data.php:872
+#: includes/core/default-data.php:941 includes/core/default-data.php:961
+#: includes/core/default-data.php:1028
 msgid "Required element"
 msgstr "Обязательный элемент"
 
-#: admin/class-y4ym-admin.php:1267 admin/class-y4ym-admin.php:1280
-#: admin/class-y4ym-admin.php:1319 admin/class-y4ym-admin.php:1332
-#: admin/class-y4ym-admin.php:1349 admin/class-y4ym-admin.php:1389
-#: admin/class-y4ym-admin.php:1402 admin/class-y4ym-admin.php:1419
-#: includes/core/default-data.php:754 includes/core/default-data.php:774
-#: includes/core/default-data.php:797 includes/core/default-data.php:846
-#: includes/core/default-data.php:866 includes/core/default-data.php:889
-#: includes/core/default-data.php:935 includes/core/default-data.php:955
-#: includes/core/default-data.php:975 includes/core/default-data.php:1022
-#: includes/core/default-data.php:1042
+#: admin/class-y4ym-admin.php:1291 admin/class-y4ym-admin.php:1304
+#: admin/class-y4ym-admin.php:1343 admin/class-y4ym-admin.php:1356
+#: admin/class-y4ym-admin.php:1373 admin/class-y4ym-admin.php:1413
+#: admin/class-y4ym-admin.php:1426 admin/class-y4ym-admin.php:1443
+#: includes/core/default-data.php:761 includes/core/default-data.php:781
+#: includes/core/default-data.php:804 includes/core/default-data.php:853
+#: includes/core/default-data.php:873 includes/core/default-data.php:896
+#: includes/core/default-data.php:942 includes/core/default-data.php:962
+#: includes/core/default-data.php:982 includes/core/default-data.php:1029
+#: includes/core/default-data.php:1049
 msgid "of attribute"
 msgstr "атрибута"
 
-#: admin/class-y4ym-admin.php:1276 includes/core/default-data.php:3005
+#: admin/class-y4ym-admin.php:1300 includes/core/default-data.php:3029
 msgid "Reason"
 msgstr "Причина"
 
-#: admin/class-y4ym-admin.php:1290
+#: admin/class-y4ym-admin.php:1314
 msgid "Here you can set up individual options terms for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия доставки для данного товара"
 
-#: admin/class-y4ym-admin.php:1299 admin/class-y4ym-admin.php:1369
-#: includes/core/default-data.php:2264
+#: admin/class-y4ym-admin.php:1323 admin/class-y4ym-admin.php:1393
+#: includes/core/default-data.php:2288
 msgid "Delivery"
 msgstr "Доставка"
 
-#: admin/class-y4ym-admin.php:1315 admin/class-y4ym-admin.php:1385
-#: includes/core/default-data.php:771 includes/core/default-data.php:863
-#: includes/core/default-data.php:1019
+#: admin/class-y4ym-admin.php:1339 admin/class-y4ym-admin.php:1409
+#: includes/core/default-data.php:778 includes/core/default-data.php:870
+#: includes/core/default-data.php:1026
 msgid "Delivery days"
 msgstr "Срок доставки"
 
-#: admin/class-y4ym-admin.php:1328 admin/class-y4ym-admin.php:1398
-#: includes/core/default-data.php:751 includes/core/default-data.php:843
+#: admin/class-y4ym-admin.php:1352 admin/class-y4ym-admin.php:1422
+#: includes/core/default-data.php:758 includes/core/default-data.php:850
 msgid "Delivery cost"
 msgstr "Стоимость доставки"
 
-#: admin/class-y4ym-admin.php:1345 admin/class-y4ym-admin.php:1415
+#: admin/class-y4ym-admin.php:1369 admin/class-y4ym-admin.php:1439
 msgid "The time"
 msgstr "Время"
 
-#: admin/class-y4ym-admin.php:1350 admin/class-y4ym-admin.php:1421
-#: includes/core/default-data.php:792 includes/core/default-data.php:884
-#: includes/core/default-data.php:972 includes/core/default-data.php:1039
+#: admin/class-y4ym-admin.php:1374 admin/class-y4ym-admin.php:1445
+#: includes/core/default-data.php:799 includes/core/default-data.php:891
+#: includes/core/default-data.php:979 includes/core/default-data.php:1046
 msgid "The time in which you need to place an order to get it at this time"
 msgstr "Время, до которого нужно сделать заказ, чтобы получить его в этот срок"
 
-#: admin/class-y4ym-admin.php:1360
+#: admin/class-y4ym-admin.php:1384
 msgid "Here you can configure the pickup conditions for this product"
 msgstr ""
 "Здесь вы можете настроить индивидуальные условия самовывоза для данного "
 "товара"
 
-#: admin/class-y4ym-admin.php:1432
+#: admin/class-y4ym-admin.php:1456
 msgid "Individual product settings for Yandex Direct"
 msgstr "Индивидуальные настройки товара для Яндекс Директ"
 
-#: admin/class-y4ym-admin.php:1436
+#: admin/class-y4ym-admin.php:1460
 msgid "Here you can set up individual settings for Yandex Direct"
 msgstr "Здесь вы можете задать индивидуальные настройки для Яндекс Директа"
 
-#: admin/class-y4ym-admin.php:1447 includes/core/default-data.php:3111
+#: admin/class-y4ym-admin.php:1471 includes/core/default-data.php:3135
 msgid "Market category"
 msgstr "Категория на Маркете"
 
-#: admin/class-y4ym-admin.php:1450 includes/core/default-data.php:3115
+#: admin/class-y4ym-admin.php:1474 includes/core/default-data.php:3139
 msgid "The product category in which it should be placed on Yandex Market"
 msgstr "Категория товара, в которой он должен быть размещен на Яндекс Маркете"
 
-#: admin/class-y4ym-admin.php:1458 admin/class-y4ym-admin.php:1473
-#: admin/class-y4ym-admin.php:1477 includes/core/default-data.php:3063
-#: includes/core/default-data.php:3087
+#: admin/class-y4ym-admin.php:1482 admin/class-y4ym-admin.php:1497
+#: admin/class-y4ym-admin.php:1501 includes/core/default-data.php:3087
+#: includes/core/default-data.php:3111
 msgid "Custom elements"
 msgstr "Кастомные элементы"
 
-#: admin/class-y4ym-admin.php:1459
+#: admin/class-y4ym-admin.php:1483
 msgid "The value is zero or any positive integer"
 msgstr "Значение — ноль или любое целое положительное число"
 
-#: admin/class-y4ym-admin.php:1478
+#: admin/class-y4ym-admin.php:1502
 msgid "An arbitrary description"
 msgstr "Произвольное описание"
 
-#: admin/class-y4ym-admin.php:1480
+#: admin/class-y4ym-admin.php:1504
 msgid ""
 "Latin and Cyrillic letters, numbers. The length of one element is up to 175 "
 "characters"
@@ -551,195 +574,196 @@ msgstr ""
 "Латинские и кириллические буквы, цифры. Длина одного элемента — до 175 "
 "символов"
 
-#: admin/class-y4ym-admin.php:1492
+#: admin/class-y4ym-admin.php:1516
 msgid "Individual product settings for Youla"
 msgstr "Индивидуальные настройки товара для Юлы"
 
-#: admin/class-y4ym-admin.php:1496
+#: admin/class-y4ym-admin.php:1520
 msgid "Here you can set up individual settings for Youla"
 msgstr "Здесь вы можете задать индивидуальные настройки для Юлы"
 
-#: admin/class-y4ym-admin.php:1498
+#: admin/class-y4ym-admin.php:1522
 #: includes/common-libs/class-icpd-promo.php:200
 msgid "Read more"
 msgstr "Подробнее"
 
-#: admin/class-y4ym-admin.php:1507
+#: admin/class-y4ym-admin.php:1531
 msgid "Youla category"
 msgstr "Категория на Юле"
 
-#: admin/class-y4ym-admin.php:1510 admin/class-y4ym-admin.php:1523
+#: admin/class-y4ym-admin.php:1534 admin/class-y4ym-admin.php:1547
 msgid "The product category in which it should be placed on Youla"
 msgstr "Категория товара, в которой он должен быть размещен на Юле"
 
-#: admin/class-y4ym-admin.php:1520
+#: admin/class-y4ym-admin.php:1544
 msgid "Youla subcategory"
 msgstr "Подкатегория на Юле"
 
-#: admin/class-y4ym-admin.php:1533
+#: admin/class-y4ym-admin.php:1557
 msgid "Other"
 msgstr "Прочее"
 
-#: admin/class-y4ym-admin.php:1546
+#: admin/class-y4ym-admin.php:1570
 msgid "Read more on AliExpress"
 msgstr "Прочитать подробности на AliExpress"
 
-#: admin/class-y4ym-admin.php:1556 admin/class-y4ym-admin.php:1561
-#: includes/core/default-data.php:2685
+#: admin/class-y4ym-admin.php:1580 admin/class-y4ym-admin.php:1585
+#: includes/core/default-data.php:2709
 msgid "Credit program identifier"
 msgstr "ID кредитной программы"
 
-#: admin/class-y4ym-admin.php:1582 admin/class-y4ym-admin.php:1585
+#: admin/class-y4ym-admin.php:1606 admin/class-y4ym-admin.php:1609
 msgid "Minimum price"
 msgstr "Минимальная цена"
 
-#: admin/class-y4ym-admin.php:1598 includes/core/default-data.php:2597
+#: admin/class-y4ym-admin.php:1622 includes/core/default-data.php:2621
 msgid "Minimum order"
 msgstr "Минимальный заказ"
 
-#: admin/class-y4ym-admin.php:1609 includes/core/default-data.php:2243
-#: includes/core/default-data.php:2245
+#: admin/class-y4ym-admin.php:1633 includes/core/default-data.php:2267
+#: includes/core/default-data.php:2269
 msgid "Additional costs for the product"
 msgstr "Дополнительные затраты на товар"
 
-#: admin/class-y4ym-admin.php:1625
+#: admin/class-y4ym-admin.php:1649
 msgid "Threshold for discounts"
 msgstr "Порог для получения скидок"
 
-#: admin/class-y4ym-admin.php:1628 includes/core/default-data.php:2186
+#: admin/class-y4ym-admin.php:1652 includes/core/default-data.php:2210
 msgid "Threshold for receiving discounts in Yandex Market"
 msgstr "Порог получения скидок в Яндекс Маркете"
 
-#: admin/class-y4ym-admin.php:1641 admin/class-y4ym-admin.php:1644
-#: includes/core/default-data.php:2207
+#: admin/class-y4ym-admin.php:1665 admin/class-y4ym-admin.php:1668
+#: includes/core/default-data.php:2231
 msgid "Purchase price"
 msgstr "Себестоимость"
 
-#: admin/class-y4ym-admin.php:1657 admin/class-y4ym-admin.php:1660
-#: admin/class-y4ym-admin.php:1663 includes/core/default-data.php:1530
+#: admin/class-y4ym-admin.php:1681 admin/class-y4ym-admin.php:1684
+#: admin/class-y4ym-admin.php:1687 includes/core/default-data.php:1537
 msgid "Keywords"
 msgstr "Ключевые слова"
 
-#: admin/class-y4ym-admin.php:1672 includes/core/default-data.php:2478
+#: admin/class-y4ym-admin.php:1696 includes/core/default-data.php:2502
 msgid "Certificate"
 msgstr "Сертификат"
 
-#: admin/class-y4ym-admin.php:1676
+#: admin/class-y4ym-admin.php:1700
 msgid ""
 "The number of the document for the product: certificate, declaration of "
 "conformity, etc"
 msgstr "Номер документа на товар: сертификата, декларации соответствия и т. п"
 
-#: admin/class-y4ym-admin.php:1686
+#: admin/class-y4ym-admin.php:1710
 msgid "Comment on the validity days"
 msgstr "Комментарий к сроку годности"
 
-#: admin/class-y4ym-admin.php:1690 admin/class-y4ym-admin.php:1726
+#: admin/class-y4ym-admin.php:1714 admin/class-y4ym-admin.php:1750
 msgid "No longer than 250 characters and no special characters"
 msgstr "Не более 250 символов и без спецсимволов"
 
-#: admin/class-y4ym-admin.php:1700
+#: admin/class-y4ym-admin.php:1724
 msgid "Service life days"
 msgstr "Срок службы"
 
-#: admin/class-y4ym-admin.php:1705
+#: admin/class-y4ym-admin.php:1729
 msgid "The number of service life days"
 msgstr "Количество дней срока службы"
 
-#: admin/class-y4ym-admin.php:1722 includes/core/default-data.php:2539
+#: admin/class-y4ym-admin.php:1746 includes/core/default-data.php:2563
 msgid "Comment on the life days"
 msgstr "Комментарий к сроку службы"
 
-#: admin/class-y4ym-admin.php:1737
+#: admin/class-y4ym-admin.php:1761
 msgid "Maximum number of products"
 msgstr "Максимальное количество товаров"
 
-#: admin/class-y4ym-admin.php:1740 includes/core/default-data.php:2641
+#: admin/class-y4ym-admin.php:1764 includes/core/default-data.php:2665
 msgid "Maximum number of products per order"
 msgstr "Максимальное количество товаров в заказе"
 
-#: admin/class-y4ym-admin.php:1751 includes/core/default-data.php:1793
+#: admin/class-y4ym-admin.php:1775 includes/core/default-data.php:1817
 msgid "Identifier of the unit type"
 msgstr "Идентификатор типа единицы"
 
-#: admin/class-y4ym-admin.php:1759 includes/core/default-data.php:1795
+#: admin/class-y4ym-admin.php:1783 includes/core/default-data.php:1819
 msgid "Identifier of the unit type according to"
 msgstr "Идентификатор типа единицы измерения согласно"
 
-#: admin/class-y4ym-admin.php:1768 includes/core/default-data.php:1837
+#: admin/class-y4ym-admin.php:1792 includes/core/default-data.php:1861
 msgid "The type of packaging"
 msgstr "Тип упаковки"
 
-#: admin/class-y4ym-admin.php:1772 includes/core/default-data.php:1840
+#: admin/class-y4ym-admin.php:1796 includes/core/default-data.php:1864
 msgid "The type of packaging according to the directory on the Supplier Portal"
 msgstr "Тип упаковки согласно справочнику на Портале поставщиков"
 
-#: admin/class-y4ym-admin.php:1784
+#: admin/class-y4ym-admin.php:1808
 msgid "Region"
 msgstr "Регион"
 
-#: admin/class-y4ym-admin.php:1791 includes/core/default-data.php:1862
-#: includes/core/default-data.php:1864
+#: admin/class-y4ym-admin.php:1815 includes/core/default-data.php:1886
+#: includes/core/default-data.php:1888
 msgid "Identifier of the region"
 msgstr "Идентификатор региона"
 
-#: admin/class-y4ym-admin.php:1802 admin/class-y4ym-admin.php:1805
-#: includes/core/default-data.php:1907 includes/core/default-data.php:1911
+#: admin/class-y4ym-admin.php:1826 admin/class-y4ym-admin.php:1829
+#: includes/core/default-data.php:1931 includes/core/default-data.php:1935
 msgid "The product category from the directory on the Supplier Portal"
 msgstr "Категория товара из справочника на Портале поставщиков"
 
-#: admin/class-y4ym-admin.php:1815 includes/core/default-data.php:1931
+#: admin/class-y4ym-admin.php:1839 includes/core/default-data.php:1955
 msgid "The CTE ID"
 msgstr "Идентификатор СТЕ"
 
-#: admin/class-y4ym-admin.php:1819 includes/core/default-data.php:1932
+#: admin/class-y4ym-admin.php:1843 includes/core/default-data.php:1956
 msgid "The CTE ID on the Supplier Portal"
 msgstr "Идентификатор СТЕ на Портале поставщиков"
 
-#: admin/class-y4ym-admin.php:1844 admin/class-y4ym-admin.php:1987
+#: admin/class-y4ym-admin.php:1868 admin/class-y4ym-admin.php:2011
 msgid "Barcode for YML"
 msgstr "Штрихкод для YML"
 
-#: admin/class-y4ym-admin.php:1845 admin/class-y4ym-admin.php:1988
-#: includes/core/default-data.php:3383
+#: admin/class-y4ym-admin.php:1869 admin/class-y4ym-admin.php:2012
+#: includes/core/default-data.php:3407 includes/core/default-data.php:3581
+#: includes/core/default-data.php:3604 includes/core/default-data.php:3627
 #: includes/woocommerce/class-y4ym-taxonomy.php:95
 #: includes/woocommerce/class-y4ym-taxonomy.php:149
 msgid "For example"
 msgstr "Например"
 
-#: admin/class-y4ym-admin.php:1847 admin/class-y4ym-admin.php:1990
+#: admin/class-y4ym-admin.php:1871 admin/class-y4ym-admin.php:2014
 msgid "The data of this field is stored in the"
 msgstr "Данные этого поля хранятся в"
 
-#: admin/class-y4ym-admin.php:1848 admin/class-y4ym-admin.php:1991
+#: admin/class-y4ym-admin.php:1872 admin/class-y4ym-admin.php:2015
 msgid "meta field"
 msgstr "мета поле"
 
-#: admin/class-y4ym-admin.php:1849 admin/class-y4ym-admin.php:1992
+#: admin/class-y4ym-admin.php:1873 admin/class-y4ym-admin.php:2016
 msgid "You can always display them in your website template using"
 msgstr "Вы всегда можете отобразить их в шаблоне своего сайта с помощью"
 
-#: admin/class-y4ym-admin.php:2063
+#: admin/class-y4ym-admin.php:2087
 msgid "Settings"
 msgstr "Настройки"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:95
+#: admin/partials/debug-page/class-y4ym-debug-page.php:98
 msgid "Everything is normal"
 msgstr "Всё в норме"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:148
+#: admin/partials/debug-page/class-y4ym-debug-page.php:151
 msgid "Debug settings"
 msgstr "Параметры отладки"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:151
+#: admin/partials/debug-page/class-y4ym-debug-page.php:154
 msgid "Request simulation"
 msgstr "Симуляция запроса"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:154
+#: admin/partials/debug-page/class-y4ym-debug-page.php:157
 msgid "Sandbox"
 msgstr "Песочница"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:157
+#: admin/partials/debug-page/class-y4ym-debug-page.php:160
 msgid "Premium"
 msgstr "Премиум"
 
@@ -765,40 +789,41 @@ msgstr "Вести логи"
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-settings.php:54
 #: admin/partials/debug-page/views/html-admin-debug-page-tab-simulation.php:82
 #: includes/core/default-data.php:269 includes/core/default-data.php:290
-#: includes/core/default-data.php:483 includes/core/default-data.php:575
-#: includes/core/default-data.php:604 includes/core/default-data.php:686
-#: includes/core/default-data.php:735 includes/core/default-data.php:827
-#: includes/core/default-data.php:916 includes/core/default-data.php:1003
-#: includes/core/default-data.php:1160 includes/core/default-data.php:1193
-#: includes/core/default-data.php:1214 includes/core/default-data.php:1235
-#: includes/core/default-data.php:1395 includes/core/default-data.php:1413
-#: includes/core/default-data.php:1431 includes/core/default-data.php:1450
-#: includes/core/default-data.php:1471 includes/core/default-data.php:1536
-#: includes/core/default-data.php:1718 includes/core/default-data.php:1801
-#: includes/core/default-data.php:1847 includes/core/default-data.php:1870
-#: includes/core/default-data.php:1918 includes/core/default-data.php:1937
-#: includes/core/default-data.php:2033 includes/core/default-data.php:2052
-#: includes/core/default-data.php:2088 includes/core/default-data.php:2113
-#: includes/core/default-data.php:2134 includes/core/default-data.php:2155
-#: includes/core/default-data.php:2174 includes/core/default-data.php:2195
-#: includes/core/default-data.php:2213 includes/core/default-data.php:2231
-#: includes/core/default-data.php:2252 includes/core/default-data.php:2336
-#: includes/core/default-data.php:2408 includes/core/default-data.php:2465
-#: includes/core/default-data.php:2487 includes/core/default-data.php:2510
-#: includes/core/default-data.php:2548 includes/core/default-data.php:2567
-#: includes/core/default-data.php:2584 includes/core/default-data.php:2606
-#: includes/core/default-data.php:2628 includes/core/default-data.php:2650
-#: includes/core/default-data.php:2672 includes/core/default-data.php:2694
-#: includes/core/default-data.php:2815 includes/core/default-data.php:2836
-#: includes/core/default-data.php:2874 includes/core/default-data.php:3074
-#: includes/core/default-data.php:3098 includes/core/default-data.php:3126
-#: includes/core/default-data.php:3151 includes/core/default-data.php:3404
-#: includes/core/default-data.php:3410 includes/core/default-data.php:3427
-#: includes/core/default-data.php:3434 includes/core/default-data.php:3518
-#: includes/core/default-data.php:3524 includes/core/default-data.php:3592
-#: includes/core/default-data.php:3721 includes/core/default-data.php:3749
-#: includes/core/default-data.php:3767 includes/core/default-data.php:3785
-#: includes/core/default-data.php:3805 includes/core/default-data.php:3822
+#: includes/core/default-data.php:490 includes/core/default-data.php:582
+#: includes/core/default-data.php:611 includes/core/default-data.php:693
+#: includes/core/default-data.php:742 includes/core/default-data.php:834
+#: includes/core/default-data.php:923 includes/core/default-data.php:1010
+#: includes/core/default-data.php:1167 includes/core/default-data.php:1200
+#: includes/core/default-data.php:1221 includes/core/default-data.php:1242
+#: includes/core/default-data.php:1402 includes/core/default-data.php:1420
+#: includes/core/default-data.php:1438 includes/core/default-data.php:1457
+#: includes/core/default-data.php:1478 includes/core/default-data.php:1543
+#: includes/core/default-data.php:1742 includes/core/default-data.php:1825
+#: includes/core/default-data.php:1871 includes/core/default-data.php:1894
+#: includes/core/default-data.php:1942 includes/core/default-data.php:1961
+#: includes/core/default-data.php:2057 includes/core/default-data.php:2076
+#: includes/core/default-data.php:2112 includes/core/default-data.php:2137
+#: includes/core/default-data.php:2158 includes/core/default-data.php:2179
+#: includes/core/default-data.php:2198 includes/core/default-data.php:2219
+#: includes/core/default-data.php:2237 includes/core/default-data.php:2255
+#: includes/core/default-data.php:2276 includes/core/default-data.php:2360
+#: includes/core/default-data.php:2432 includes/core/default-data.php:2489
+#: includes/core/default-data.php:2511 includes/core/default-data.php:2534
+#: includes/core/default-data.php:2572 includes/core/default-data.php:2591
+#: includes/core/default-data.php:2608 includes/core/default-data.php:2630
+#: includes/core/default-data.php:2652 includes/core/default-data.php:2674
+#: includes/core/default-data.php:2696 includes/core/default-data.php:2718
+#: includes/core/default-data.php:2839 includes/core/default-data.php:2860
+#: includes/core/default-data.php:2898 includes/core/default-data.php:3098
+#: includes/core/default-data.php:3122 includes/core/default-data.php:3150
+#: includes/core/default-data.php:3175 includes/core/default-data.php:3428
+#: includes/core/default-data.php:3434 includes/core/default-data.php:3451
+#: includes/core/default-data.php:3458 includes/core/default-data.php:3542
+#: includes/core/default-data.php:3548 includes/core/default-data.php:3567
+#: includes/core/default-data.php:3695 includes/core/default-data.php:3824
+#: includes/core/default-data.php:3852 includes/core/default-data.php:3870
+#: includes/core/default-data.php:3888 includes/core/default-data.php:3908
+#: includes/core/default-data.php:3925
 msgid "Enabled"
 msgstr "Включено"
 
@@ -944,8 +969,8 @@ msgid "Both versions can work together with each other"
 msgstr "Обе версии могут работать вместе друг с другом"
 
 #: admin/partials/settings-page/class-y4ym-feeds-list-table.php:81
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:328
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:442
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:324
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:438
 msgid "Feed URL"
 msgstr "Фид URL"
 
@@ -1098,6 +1123,12 @@ msgid "elements between"
 msgstr "элементы между"
 
 #: admin/partials/settings-page/class-y4ym-settigs-page.php:149
+#, fuzzy
+#| msgid "Yandex Market"
+msgid "Yandex Market API"
+msgstr "Яндекс Маркет"
+
+#: admin/partials/settings-page/class-y4ym-settigs-page.php:152
 msgid "Filtration"
 msgstr "Фильтрация"
 
@@ -1116,6 +1147,86 @@ msgstr "Текущее время на сервере"
 #: admin/partials/settings-page/views/html-admin-settings-feed-save-btn.php:23
 msgid "Create feed"
 msgstr "Создать фид"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:24
+#, fuzzy
+#| msgid "For more information about creating a feed, see"
+msgid "Important information about integration with Yandex Market"
+msgstr "Дополнительные сведения о создании фида смотрите"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:27
+msgid ""
+"Since July 2026, Yandex Market has stopped supporting the updating of prices "
+"and product stocks via YML feeds. If you continue to use this method, the "
+"data will stop synchronizingt"
+msgstr ""
+"С июля 2026 года Яндекс Маркет перестал поддерживать обновление цен и "
+"товарных остатков через YML-фиды. Если вы продолжите использовать этот "
+"метод, данные перестанут синхронизироваться."
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:33
+msgid ""
+"To keep the information up to date, set up integration via the API — a "
+"detailed instruction is available via the link"
+msgstr ""
+"Чтобы информация всегда была актуальной, настройте интеграцию через API — "
+"подробная инструкция доступна по ссылке"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:38
+#: includes/core/default-data.php:311
+msgid "Learn more about how it works"
+msgstr "Узнайте больше о том, как это работает"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:41
+msgid ""
+"An alternative option is to use the Import Products to Yandex plugin: it "
+"allows you to integrate with the Market entirely via API, without working "
+"with feeds"
+msgstr ""
+"Альтернативный вариант — использовать плагин Import Products to Yandex: он "
+"позволяет полностью интегрироваться с Маркетом через API, без работы с фидами"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:44
+#: includes/core/default-data.php:445
+msgid "Important"
+msgstr "Важно"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:45
+msgid ""
+"for the data about products and prices to be transmitted correctly, the SKUs "
+"in the feed and in your account on Yandex Market must match"
+msgstr ""
+"чтобы данные о товарах и ценах передавались корректно, артикулы в фиде и в "
+"вашем аккаунте на Яндекс Маркете должны совпадать"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:48
+#: includes/core/default-data.php:1185 includes/core/default-data.php:3957
+msgid "Please note"
+msgstr "Обратите внимание"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:49
+msgid ""
+"feeds for Yandex Direct, AliExpress, and other platforms continue to operate "
+"as usual"
+msgstr ""
+"фиды для Яндекс Директа, AliExpress и других платформ продолжают работать в "
+"обычном режиме"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:64
+msgid "You will need to enter the Api-Key"
+msgstr "Вам нужно будет ввести API-ключ"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:79
+msgid "Check API"
+msgstr "Проверить API"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:81
+msgid "The data for connecting to the API has been entered"
+msgstr "Введены данные для подключения к API"
+
+#: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:83
+msgid "Now you can check its operation by clicking on this button"
+msgstr ""
 
 #: function.php:91
 msgid "Categories"
@@ -1210,16 +1321,14 @@ msgid "Parent category"
 msgstr "Родительская категория"
 
 #: includes/common-libs/functions-icpd-woocommerce-1-1-2.php:192
-#, fuzzy, php-format
-#| msgid "No %s is associated with #%d"
+#, php-format
 msgid "No %1$s is associated with #%2$d"
-msgstr "Нет %s с таким #%d"
+msgstr "Нет %1$s с таким #%2$d"
 
 #: includes/common-libs/functions-icpd-woocommerce-1-1-2.php:218
-#, fuzzy, php-format
-#| msgid "This %s cannot be deleted"
+#, php-format
 msgid "This %1$s cannot be deleted"
-msgstr "%s не может быть удалён"
+msgstr "%1$s не может быть удалён"
 
 #: includes/core/class-y4ym-data.php:288
 msgid "Full size (default)"
@@ -1233,36 +1342,36 @@ msgstr "обрезать миниатюру точно по размерам"
 msgid "WooCommerce brands"
 msgstr "Бренды WooCommerce"
 
-#: includes/core/default-data.php:34 includes/core/default-data.php:1105
-#: includes/core/default-data.php:1496 includes/core/default-data.php:1556
-#: includes/core/default-data.php:1995 includes/core/default-data.php:2357
-#: includes/core/default-data.php:3329 includes/core/default-data.php:3481
+#: includes/core/default-data.php:34 includes/core/default-data.php:1112
+#: includes/core/default-data.php:1503 includes/core/default-data.php:1563
+#: includes/core/default-data.php:2019 includes/core/default-data.php:2381
+#: includes/core/default-data.php:3353 includes/core/default-data.php:3505
 msgid "Substitute from post meta"
 msgstr "Подставлять из метаполя"
 
-#: includes/core/default-data.php:39 includes/core/default-data.php:1560
-#: includes/core/default-data.php:2898
+#: includes/core/default-data.php:39 includes/core/default-data.php:1567
+#: includes/core/default-data.php:2922
 msgid "Default value from field"
 msgstr "Значение из поля"
 
-#: includes/core/default-data.php:40 includes/core/default-data.php:514
-#: includes/core/default-data.php:544 includes/core/default-data.php:1561
-#: includes/core/default-data.php:1577 includes/core/default-data.php:1580
-#: includes/core/default-data.php:1613 includes/core/default-data.php:1618
-#: includes/core/default-data.php:1651 includes/core/default-data.php:1656
-#: includes/core/default-data.php:1816 includes/core/default-data.php:1885
-#: includes/core/default-data.php:2899 includes/core/default-data.php:2915
-#: includes/core/default-data.php:2920 includes/core/default-data.php:2959
-#: includes/core/default-data.php:3001 includes/core/default-data.php:3003
-#: includes/core/default-data.php:3007 includes/core/default-data.php:3021
-#: includes/core/default-data.php:3023
+#: includes/core/default-data.php:40 includes/core/default-data.php:521
+#: includes/core/default-data.php:551 includes/core/default-data.php:1568
+#: includes/core/default-data.php:1584 includes/core/default-data.php:1587
+#: includes/core/default-data.php:1620 includes/core/default-data.php:1625
+#: includes/core/default-data.php:1658 includes/core/default-data.php:1663
+#: includes/core/default-data.php:1840 includes/core/default-data.php:1909
+#: includes/core/default-data.php:2923 includes/core/default-data.php:2939
+#: includes/core/default-data.php:2944 includes/core/default-data.php:2983
+#: includes/core/default-data.php:3025 includes/core/default-data.php:3027
+#: includes/core/default-data.php:3031 includes/core/default-data.php:3045
+#: includes/core/default-data.php:3047
 msgid "Default value"
 msgstr "Значение по умолчанию"
 
 #: includes/core/default-data.php:50 includes/core/default-data.php:58
 #: includes/core/default-data.php:66 includes/core/default-data.php:74
 #: includes/core/default-data.php:82 includes/core/default-data.php:90
-#: includes/core/default-data.php:1998
+#: includes/core/default-data.php:2022
 msgid "Substitute from"
 msgstr "Подставлять из"
 
@@ -1371,11 +1480,8 @@ msgstr ""
 msgid "Also, this item affects the structure of the file"
 msgstr "Также этот пункт влияет на структуру файла"
 
-#: includes/core/default-data.php:311
-msgid "Learn more about how it works"
-msgstr "Узнайте больше о том, как это работает"
-
 #: includes/core/default-data.php:318 includes/core/default-data.php:326
+#: includes/core/default-data.php:333
 msgid "Yandex Market"
 msgstr "Яндекс Маркет"
 
@@ -1383,8 +1489,8 @@ msgstr "Яндекс Маркет"
 msgid "To manage products"
 msgstr "Для управления товарами"
 
-#: includes/core/default-data.php:320 includes/core/default-data.php:334
-#: includes/core/default-data.php:361
+#: includes/core/default-data.php:320 includes/core/default-data.php:341
+#: includes/core/default-data.php:368
 msgid "Simplified type"
 msgstr "Упрощенный тип"
 
@@ -1392,109 +1498,105 @@ msgstr "Упрощенный тип"
 msgid "To manage the placement"
 msgstr "Для управления размещением"
 
-#: includes/core/default-data.php:333 includes/core/default-data.php:340
-#: includes/core/default-data.php:347
-msgid "Yandex Direct"
-msgstr "Яндекс Директ"
-
-#: includes/core/default-data.php:341
-msgid "Free-from type"
-msgstr "Произвольный тип"
-
-#: includes/core/default-data.php:348
-msgid "Combined type"
-msgstr "Комбинированный тип"
-
-#: includes/core/default-data.php:354
-msgid "in a single catalog"
-msgstr "в едином каталоге"
-
-#: includes/core/default-data.php:360
-msgid "Yandex products"
-msgstr "Яндекс товары"
-
-#: includes/core/default-data.php:366
-msgid "Yandex Business"
-msgstr "Яндекс Бизнес"
-
-#: includes/core/default-data.php:371
-msgid "Yandex Webmaster"
-msgstr "Яндекс Вебмастер"
-
-#: includes/core/default-data.php:372
-msgid "Product feed"
-msgstr "Товарный фид"
-
-#: includes/core/default-data.php:373
-msgid "Products and offers"
-msgstr "Товары и предложения"
-
-#: includes/core/default-data.php:381
-msgid "MegaMarket"
-msgstr "МегаМаркет"
-
-#: includes/core/default-data.php:386
+#: includes/core/default-data.php:334 includes/core/default-data.php:393
 msgid "only updating prices and stock balances"
 msgstr "только обновление цен и остатков на складе"
 
-#: includes/core/default-data.php:402
+#: includes/core/default-data.php:340 includes/core/default-data.php:347
+#: includes/core/default-data.php:354
+msgid "Yandex Direct"
+msgstr "Яндекс Директ"
+
+#: includes/core/default-data.php:348
+msgid "Free-from type"
+msgstr "Произвольный тип"
+
+#: includes/core/default-data.php:355
+msgid "Combined type"
+msgstr "Комбинированный тип"
+
+#: includes/core/default-data.php:361
+msgid "in a single catalog"
+msgstr "в едином каталоге"
+
+#: includes/core/default-data.php:367
+msgid "Yandex products"
+msgstr "Яндекс товары"
+
+#: includes/core/default-data.php:373
+msgid "Yandex Business"
+msgstr "Яндекс Бизнес"
+
+#: includes/core/default-data.php:378
+msgid "Yandex Webmaster"
+msgstr "Яндекс Вебмастер"
+
+#: includes/core/default-data.php:379
+msgid "Product feed"
+msgstr "Товарный фид"
+
+#: includes/core/default-data.php:380
+msgid "Products and offers"
+msgstr "Товары и предложения"
+
+#: includes/core/default-data.php:388
+msgid "MegaMarket"
+msgstr "МегаМаркет"
+
+#: includes/core/default-data.php:409
 msgid "No rules"
 msgstr "Нет правил"
 
-#: includes/core/default-data.php:403
+#: includes/core/default-data.php:410
 msgid "For experienced users"
 msgstr "Для опытных пользователей"
 
-#: includes/core/default-data.php:417
+#: includes/core/default-data.php:424
 msgid "Feed assignment"
 msgstr "Назначение фида"
 
-#: includes/core/default-data.php:418
+#: includes/core/default-data.php:425
 msgid "Not used in feed. Inner note for your convenience"
 msgstr "Не используется в фиде. Внутренняя заметка для вашего удобства"
 
-#: includes/core/default-data.php:419
+#: includes/core/default-data.php:426
 msgid "For Yandex Market"
 msgstr "Для Яндекс Маркет"
 
-#: includes/core/default-data.php:432
+#: includes/core/default-data.php:439
 msgid "Name of the feed file"
 msgstr "Имя файла фида"
 
-#: includes/core/default-data.php:435
+#: includes/core/default-data.php:442
 msgid "If you leave the field empty, the default value will be used"
 msgstr ""
 "Если оставить поле пустым, то будет использоваться значение по умолчанию"
 
-#: includes/core/default-data.php:438
-msgid "Important"
-msgstr "Важно"
-
-#: includes/core/default-data.php:440
+#: includes/core/default-data.php:447
 msgid "Spaces cannot be used"
 msgstr "Пробелы использовать нельзя"
 
-#: includes/core/default-data.php:457
+#: includes/core/default-data.php:464
 msgid "Feed file extension"
 msgstr "Расширение фида"
 
-#: includes/core/default-data.php:463 includes/core/default-data.php:631
+#: includes/core/default-data.php:470 includes/core/default-data.php:638
 msgid "recommend"
 msgstr "рекомендуется"
 
-#: includes/core/default-data.php:475
+#: includes/core/default-data.php:482
 msgid "Archive to ZIP"
 msgstr "Архивировать в ZIP"
 
-#: includes/core/default-data.php:494
+#: includes/core/default-data.php:501
 msgid "Step export"
 msgstr "Шаг экспорта"
 
-#: includes/core/default-data.php:497
+#: includes/core/default-data.php:504
 msgid "The value affects the speed of file creation"
 msgstr "Значение влияет на скорость создания YML фида"
 
-#: includes/core/default-data.php:499
+#: includes/core/default-data.php:506
 msgid ""
 "If you have any problems with the generation of the file - try to reduce the "
 "value in this field"
@@ -1502,20 +1604,20 @@ msgstr ""
 "Если у вас возникли проблемы с генерацией файла - попробуйте уменьшить "
 "значение в данном поле"
 
-#: includes/core/default-data.php:502
+#: includes/core/default-data.php:509
 msgid "More than 500 can only be installed on powerful servers"
 msgstr "Более 500 можно устанавливать только на мощных серверах"
 
-#: includes/core/default-data.php:538
+#: includes/core/default-data.php:545
 #: includes/feeds/class-y4ym-generation-xml.php:389
 msgid "The maximum script execution time"
 msgstr "Максимальное время выполнения скрипта"
 
-#: includes/core/default-data.php:541
+#: includes/core/default-data.php:548
 msgid "The maximum script execution time in seconds"
 msgstr "Максимальное время выполнения скрипта в секундах"
 
-#: includes/core/default-data.php:546
+#: includes/core/default-data.php:553
 msgid ""
 "If you experience freezes when creating the feed, try increasing this "
 "parameter by"
@@ -1523,16 +1625,16 @@ msgstr ""
 "Если при создании фида у вас возникают зависания, попробуйте увеличить "
 "параметр на"
 
-#: includes/core/default-data.php:549
+#: includes/core/default-data.php:556
 #: includes/feeds/class-y4ym-generation-xml.php:392
 msgid "points"
 msgstr "пунктов"
 
-#: includes/core/default-data.php:562
+#: includes/core/default-data.php:569
 msgid "Ignore plugin cache"
 msgstr "Игнорировать кэш плагина"
 
-#: includes/core/default-data.php:566
+#: includes/core/default-data.php:573
 msgid ""
 "Changing this option can be useful if your feed prices don't change after "
 "syncing"
@@ -1540,15 +1642,15 @@ msgstr ""
 "Изменение этой опции может быть полезно, если цены в фиде не меняются после "
 "синхронизации"
 
-#: includes/core/default-data.php:570 includes/core/default-data.php:3428
+#: includes/core/default-data.php:577 includes/core/default-data.php:3452
 msgid "Learn More"
 msgstr "Подробнее"
 
-#: includes/core/default-data.php:588
+#: includes/core/default-data.php:595
 msgid "Сreate cache files when saving products"
 msgstr "Создавать файлы кэша при сохранении товаров"
 
-#: includes/core/default-data.php:593
+#: includes/core/default-data.php:600
 msgid ""
 "This option allows you to reduce the load on the site at the time of saving "
 "the product card"
@@ -1556,7 +1658,7 @@ msgstr ""
 "Данная опция позволяет снизить нагрузку на сайт в момент сохранения карточки "
 "товара"
 
-#: includes/core/default-data.php:597
+#: includes/core/default-data.php:604
 msgid ""
 "However, disabling this option leads to a significant increase in the feed "
 "creation time"
@@ -1564,35 +1666,35 @@ msgstr ""
 "Однако отключение этой опции приводит к значительному увеличению времени "
 "создания фида"
 
-#: includes/core/default-data.php:619
+#: includes/core/default-data.php:626
 msgid "Date format in the feed header"
 msgstr "Формат даты в заголовке фида"
 
-#: includes/core/default-data.php:648
+#: includes/core/default-data.php:655
 msgid "Shop name"
 msgstr "Название магазина"
 
-#: includes/core/default-data.php:650
+#: includes/core/default-data.php:657
 msgid "The short name of the store should not exceed 20 characters"
 msgstr "Краткое название магазина, должно содержать не более 20 символов"
 
-#: includes/core/default-data.php:666
+#: includes/core/default-data.php:673
 msgid "Company name"
 msgstr "Наименование компании"
 
-#: includes/core/default-data.php:667
+#: includes/core/default-data.php:674
 msgid "Full name of the company that owns the store"
 msgstr "Полное наименование компании, владеющей магазином"
 
-#: includes/core/default-data.php:681
+#: includes/core/default-data.php:688
 msgid "Shop currencies"
 msgstr "Валюты магазина"
 
-#: includes/core/default-data.php:700
+#: includes/core/default-data.php:707
 msgid "Russian ruble format"
 msgstr "Формат российского рубля"
 
-#: includes/core/default-data.php:702
+#: includes/core/default-data.php:709
 msgid ""
 "If the shop currency is the Russian ruble, this value will be used as the "
 "currency identifier"
@@ -1600,98 +1702,98 @@ msgstr ""
 "Если валютой магазина является российский рубль, то это значение будет "
 "использоваться в качестве идентификатора валюты"
 
-#: includes/core/default-data.php:724 includes/core/default-data.php:814
+#: includes/core/default-data.php:731 includes/core/default-data.php:821
 msgid "Delivery time and cost"
 msgstr "Сроки и стоимость доставки"
 
-#: includes/core/default-data.php:815
+#: includes/core/default-data.php:822
 msgid "Add a second delivery methods"
 msgstr "Добавить второй метод доставки"
 
-#: includes/core/default-data.php:905
+#: includes/core/default-data.php:912
 msgid "Pickup of products"
 msgstr "Самовывоз товаров"
 
-#: includes/core/default-data.php:932
+#: includes/core/default-data.php:939
 msgid "Pickup cost"
 msgstr "Стоимость самовывоза"
 
-#: includes/core/default-data.php:952
+#: includes/core/default-data.php:959
 msgid "Pickup days"
 msgstr "Срок самовывоза"
 
-#: includes/core/default-data.php:991
+#: includes/core/default-data.php:998
 msgid "Use shipment-options"
 msgstr "Использовать shipment-options"
 
-#: includes/core/default-data.php:997
+#: includes/core/default-data.php:1004
 msgid "Read more on Megamarket"
 msgstr "Прочитать подробности на Мегамаркете"
 
-#: includes/core/default-data.php:1056 includes/core/default-data.php:1063
+#: includes/core/default-data.php:1063 includes/core/default-data.php:1070
 msgid "Warehouse"
 msgstr "Склад"
 
-#: includes/core/default-data.php:1058
+#: includes/core/default-data.php:1065
 msgid "Warehouse name"
 msgstr "Название склада"
 
-#: includes/core/default-data.php:1059
+#: includes/core/default-data.php:1066
 msgid "or ID"
 msgstr "или ID"
 
-#: includes/core/default-data.php:1060
+#: includes/core/default-data.php:1067
 msgid "SberMegaMarket"
 msgstr "СберМегаМаркет"
 
-#: includes/core/default-data.php:1076 includes/core/default-data.php:1077
+#: includes/core/default-data.php:1083 includes/core/default-data.php:1084
 msgid "Shop SKU"
 msgstr "Артикул магазина"
 
-#: includes/core/default-data.php:1082 includes/core/default-data.php:1495
+#: includes/core/default-data.php:1089 includes/core/default-data.php:1502
 msgid "Add from products ID"
 msgstr "Добавить из ID товаров"
 
-#: includes/core/default-data.php:1083 includes/core/default-data.php:1104
-#: includes/core/default-data.php:1494 includes/core/default-data.php:1994
-#: includes/core/default-data.php:2356 includes/core/default-data.php:2767
+#: includes/core/default-data.php:1090 includes/core/default-data.php:1111
+#: includes/core/default-data.php:1501 includes/core/default-data.php:2018
+#: includes/core/default-data.php:2380 includes/core/default-data.php:2791
 msgid "Substitute from SKU"
 msgstr "Подставлять из Артикул"
 
-#: includes/core/default-data.php:1098 includes/core/default-data.php:1099
+#: includes/core/default-data.php:1105 includes/core/default-data.php:1106
 msgid "Vendor Code"
 msgstr "Артикул"
 
-#: includes/core/default-data.php:1119 includes/core/default-data.php:1121
-#: includes/core/default-data.php:1515 includes/core/default-data.php:1517
-#: includes/core/default-data.php:1581 includes/core/default-data.php:1614
-#: includes/core/default-data.php:1619 includes/core/default-data.php:1652
-#: includes/core/default-data.php:1657 includes/core/default-data.php:2014
-#: includes/core/default-data.php:2016 includes/core/default-data.php:2389
-#: includes/core/default-data.php:2391 includes/core/default-data.php:3345
-#: includes/core/default-data.php:3347 includes/core/default-data.php:3497
-#: includes/core/default-data.php:3499
+#: includes/core/default-data.php:1126 includes/core/default-data.php:1128
+#: includes/core/default-data.php:1522 includes/core/default-data.php:1524
+#: includes/core/default-data.php:1588 includes/core/default-data.php:1621
+#: includes/core/default-data.php:1626 includes/core/default-data.php:1659
+#: includes/core/default-data.php:1664 includes/core/default-data.php:2038
+#: includes/core/default-data.php:2040 includes/core/default-data.php:2413
+#: includes/core/default-data.php:2415 includes/core/default-data.php:3369
+#: includes/core/default-data.php:3371 includes/core/default-data.php:3521
+#: includes/core/default-data.php:3523
 msgid "Name post_meta"
 msgstr "Имя метаполя"
 
-#: includes/core/default-data.php:1132
+#: includes/core/default-data.php:1139
 msgid "Adult Market"
 msgstr "Магазин для взрослых"
 
-#: includes/core/default-data.php:1138 includes/core/default-data.php:1139
-#: includes/core/default-data.php:1256 includes/core/default-data.php:1257
-#: includes/core/default-data.php:1279 includes/core/default-data.php:1280
-#: includes/core/default-data.php:2792 includes/core/default-data.php:2793
+#: includes/core/default-data.php:1145 includes/core/default-data.php:1146
+#: includes/core/default-data.php:1263 includes/core/default-data.php:1264
+#: includes/core/default-data.php:1286 includes/core/default-data.php:1287
+#: includes/core/default-data.php:2816 includes/core/default-data.php:2817
 msgid "Add to all"
 msgstr "Добавить всем"
 
-#: includes/core/default-data.php:1151 includes/core/default-data.php:1172
-#: includes/core/default-data.php:1205 includes/core/default-data.php:1226
+#: includes/core/default-data.php:1158 includes/core/default-data.php:1179
+#: includes/core/default-data.php:1212 includes/core/default-data.php:1233
 msgid "Quantity of products"
 msgstr "Количество товаров"
 
-#: includes/core/default-data.php:1153 includes/core/default-data.php:1175
-#: includes/core/default-data.php:1207 includes/core/default-data.php:1228
+#: includes/core/default-data.php:1160 includes/core/default-data.php:1182
+#: includes/core/default-data.php:1214 includes/core/default-data.php:1235
 msgid ""
 "To make it work you must enable \"Manage stock\" and indicate \"Stock "
 "quantity\""
@@ -1699,11 +1801,7 @@ msgstr ""
 "Чтобы это работало, вы должны включить \"Управлять запасами\" и указать "
 "\"Количество в запасе\""
 
-#: includes/core/default-data.php:1178 includes/core/default-data.php:3854
-msgid "Please note"
-msgstr "Обратите внимание"
-
-#: includes/core/default-data.php:1180
+#: includes/core/default-data.php:1187
 msgid ""
 "Yandex Market has stopped supporting the tag and switched to transferring "
 "stock via the API"
@@ -1711,85 +1809,85 @@ msgstr ""
 "Яндекс Маркет перестал поддерживать тег и перешел на передачу остатков через "
 "API"
 
-#: includes/core/default-data.php:1184
+#: includes/core/default-data.php:1191
 msgid ""
 "If you need to transfer leftovers to Yandex Market, you can use this plugin"
 msgstr ""
 "Если вам нужно передавать остатки на Яндекс Маркет, то вы можете "
 "воспользоваться плагином"
 
-#: includes/core/default-data.php:1247 includes/core/default-data.php:1250
+#: includes/core/default-data.php:1254 includes/core/default-data.php:1257
 msgid "Availability for government customers"
 msgstr "Доступность для государственных заказчиков"
 
-#: includes/core/default-data.php:1249 includes/core/default-data.php:1272
+#: includes/core/default-data.php:1256 includes/core/default-data.php:1279
 msgid "Product status"
 msgstr "Статус товара"
 
-#: includes/core/default-data.php:1270 includes/core/default-data.php:1273
+#: includes/core/default-data.php:1277 includes/core/default-data.php:1280
 msgid "Availability for non-government customers"
 msgstr "Доступность для негосударственных заказчиков"
 
-#: includes/core/default-data.php:1293
+#: includes/core/default-data.php:1300
 msgid "Length"
 msgstr "Длина"
 
-#: includes/core/default-data.php:1296
+#: includes/core/default-data.php:1303
 msgid "The first number in the tag"
 msgstr "Первое число в теге"
 
-#: includes/core/default-data.php:1304 includes/core/default-data.php:1330
-#: includes/core/default-data.php:1355 includes/core/default-data.php:1376
+#: includes/core/default-data.php:1311 includes/core/default-data.php:1337
+#: includes/core/default-data.php:1362 includes/core/default-data.php:1383
 msgid "Substitute from WooCommerce Shippings tab"
 msgstr "Подставлять из WooCommerce вкладки Доставка"
 
-#: includes/core/default-data.php:1309
+#: includes/core/default-data.php:1316
 msgid "Dimensions"
 msgstr "Размеры"
 
-#: includes/core/default-data.php:1319
+#: includes/core/default-data.php:1326
 msgid "Width"
 msgstr "Ширина"
 
-#: includes/core/default-data.php:1322
+#: includes/core/default-data.php:1329
 msgid "The second number in the tag"
 msgstr "Второе число в теге"
 
-#: includes/core/default-data.php:1344
+#: includes/core/default-data.php:1351
 msgid "Height"
 msgstr "Высота"
 
-#: includes/core/default-data.php:1347
+#: includes/core/default-data.php:1354
 msgid "The third number in the tag"
 msgstr "Третье число в теге"
 
-#: includes/core/default-data.php:1369
+#: includes/core/default-data.php:1376
 msgid "Weight"
 msgstr "Вес"
 
-#: includes/core/default-data.php:1389
+#: includes/core/default-data.php:1396
 msgid "Automatically remove products from sale"
 msgstr "Автоматическое удаление товаров из продажи"
 
-#: includes/core/default-data.php:1407
+#: includes/core/default-data.php:1414
 msgid "Automatically transfer products to the archive"
 msgstr "Автоматически переносить товары в архив"
 
-#: includes/core/default-data.php:1462
+#: includes/core/default-data.php:1469
 msgid "Add market-sku to feed"
 msgstr "Добавить market-sku в фид"
 
-#: includes/core/default-data.php:1464
+#: includes/core/default-data.php:1471
 msgid "Optional when creating a catalog. A must for price recommendations"
 msgstr ""
 "Необязательно при формировании каталога. Обязательно для получения "
 "рекомендаций по ценам"
 
-#: includes/core/default-data.php:1485
+#: includes/core/default-data.php:1492
 msgid "SKU"
 msgstr "Артикул"
 
-#: includes/core/default-data.php:1487
+#: includes/core/default-data.php:1494
 msgid ""
 "Source ID of the code for a product variation. You should specify it if "
 "product ID contains numbers and symbols"
@@ -1797,143 +1895,147 @@ msgstr ""
 "Источник ID для вариаций товара. Его следует указывать, если идентификатор "
 "продукта содержит цифры и символы"
 
-#: includes/core/default-data.php:1531
+#: includes/core/default-data.php:1538
 msgid "Keywords can be set on the product editing page"
 msgstr "Ключевые слова можно задать на странице редактирования товара"
 
-#: includes/core/default-data.php:1550
+#: includes/core/default-data.php:1557
 msgid "Manufacturer company"
 msgstr "Компания-производитель"
 
-#: includes/core/default-data.php:1595 includes/core/default-data.php:1596
+#: includes/core/default-data.php:1602 includes/core/default-data.php:1603
 msgid "Vendor"
 msgstr "Производитель"
 
-#: includes/core/default-data.php:1633 includes/core/default-data.php:1634
+#: includes/core/default-data.php:1640 includes/core/default-data.php:1641
 msgid "Brand"
 msgstr "Брэнд"
 
-#: includes/core/default-data.php:1669 includes/core/default-data.php:1689
+#: includes/core/default-data.php:1676 includes/core/default-data.php:1713
 msgid "Country of origin"
 msgstr "Страна производитель"
 
-#: includes/core/default-data.php:1671 includes/core/default-data.php:1691
+#: includes/core/default-data.php:1678 includes/core/default-data.php:1715
 msgid "This element indicates the country where the product was manufactured"
 msgstr "Элемент предназначен для указания страны производства товара"
 
-#: includes/core/default-data.php:1709
+#: includes/core/default-data.php:1696
+msgid "Material"
+msgstr "Материал"
+
+#: includes/core/default-data.php:1733
 msgid "The begin date of the offer"
 msgstr "Дата начала предложения"
 
-#: includes/core/default-data.php:1711
+#: includes/core/default-data.php:1735
 msgid "The start date of the offer will be the date when the feed was created"
 msgstr "Датой начала действия предложения будет дата создания фида"
 
-#: includes/core/default-data.php:1731
+#: includes/core/default-data.php:1755
 msgid "The end date of the offer"
 msgstr "Дата окончания предложения"
 
-#: includes/core/default-data.php:1740 includes/core/default-data.php:1747
-#: includes/core/default-data.php:1754 includes/core/default-data.php:1761
-#: includes/core/default-data.php:1768 includes/core/default-data.php:1775
+#: includes/core/default-data.php:1764 includes/core/default-data.php:1771
+#: includes/core/default-data.php:1778 includes/core/default-data.php:1785
+#: includes/core/default-data.php:1792 includes/core/default-data.php:1799
 msgid "Today"
 msgstr "Сегодня"
 
-#: includes/core/default-data.php:1741
+#: includes/core/default-data.php:1765
 #: includes/updates/class-y4ym-plugin-upd.php:309
 msgid "day"
 msgstr "день"
 
-#: includes/core/default-data.php:1748
+#: includes/core/default-data.php:1772
 msgid "month"
 msgstr "месяц"
 
-#: includes/core/default-data.php:1755 includes/core/default-data.php:1762
-#: includes/core/default-data.php:1769
+#: includes/core/default-data.php:1779 includes/core/default-data.php:1786
+#: includes/core/default-data.php:1793
 msgid "months"
 msgstr "месяцев"
 
-#: includes/core/default-data.php:1776 includes/core/default-data.php:2731
+#: includes/core/default-data.php:1800 includes/core/default-data.php:2755
 msgid "Year"
 msgstr "Год"
 
-#: includes/core/default-data.php:1949
+#: includes/core/default-data.php:1973
 msgid "Color"
 msgstr "Цвет"
 
-#: includes/core/default-data.php:1951
+#: includes/core/default-data.php:1975
 msgid "Color of product variation, specified by seller"
 msgstr "Цвет вариации в системе продавца"
 
-#: includes/core/default-data.php:1969
+#: includes/core/default-data.php:1993
 msgid "Size"
 msgstr "Размер"
 
-#: includes/core/default-data.php:1970
+#: includes/core/default-data.php:1994
 msgid "Size in your system"
 msgstr "Размер в вашей системе"
 
-#: includes/core/default-data.php:1988
+#: includes/core/default-data.php:2012
 msgid "Source ID of the product"
 msgstr "Источник ID товара"
 
-#: includes/core/default-data.php:1993
+#: includes/core/default-data.php:2017
 msgid "Product ID / Variation ID"
 msgstr "ID товара / ID вариации"
 
-#: includes/core/default-data.php:2028
+#: includes/core/default-data.php:2052
 msgid "The ID of the product model"
 msgstr "ID модели товара"
 
-#: includes/core/default-data.php:2046 includes/core/default-data.php:2168
+#: includes/core/default-data.php:2070 includes/core/default-data.php:2192
 msgid "Mark products under the order"
 msgstr "Отметить товары под заказ"
 
-#: includes/core/default-data.php:2047 includes/core/default-data.php:2169
+#: includes/core/default-data.php:2071 includes/core/default-data.php:2193
 msgid "Product under the order"
 msgstr "Товар под заказ"
 
-#: includes/core/default-data.php:2064
+#: includes/core/default-data.php:2088
 msgid "Pickup"
 msgstr "Самовывоз"
 
-#: includes/core/default-data.php:2065
+#: includes/core/default-data.php:2089
 msgid "Option to get order from pickup point"
 msgstr "Возможность самовывоза из пунктов выдачи"
 
-#: includes/core/default-data.php:2070 includes/core/default-data.php:2272
+#: includes/core/default-data.php:2094 includes/core/default-data.php:2296
 msgid "True"
 msgstr "Да"
 
-#: includes/core/default-data.php:2071 includes/core/default-data.php:2273
+#: includes/core/default-data.php:2095 includes/core/default-data.php:2297
 msgid "False"
 msgstr "Нет"
 
-#: includes/core/default-data.php:2083
+#: includes/core/default-data.php:2107
 msgid "Product price"
 msgstr "Цена товара"
 
-#: includes/core/default-data.php:2101 includes/core/default-data.php:2105
+#: includes/core/default-data.php:2125 includes/core/default-data.php:2129
 msgid "Price from"
 msgstr "Цена от"
 
-#: includes/core/default-data.php:2104
+#: includes/core/default-data.php:2128
 msgid "Apply the setting"
 msgstr "Применить настройки"
 
-#: includes/core/default-data.php:2106
+#: includes/core/default-data.php:2130
 msgid "attribute of"
 msgstr "атрибута"
 
-#: includes/core/default-data.php:2107
+#: includes/core/default-data.php:2131
 msgid "Example"
 msgstr "Пример"
 
-#: includes/core/default-data.php:2126 includes/core/default-data.php:2147
+#: includes/core/default-data.php:2150 includes/core/default-data.php:2171
 msgid "Old price"
 msgstr "Старая цена"
 
-#: includes/core/default-data.php:2128
+#: includes/core/default-data.php:2152
 msgid ""
 "In oldprice indicates the old price of the goods, which must necessarily be "
 "higher than the new price (price)"
@@ -1941,7 +2043,7 @@ msgstr ""
 "В oldprice указывается старая цена товара, которая обязательно должна быть "
 "выше новой цены (price)"
 
-#: includes/core/default-data.php:2149
+#: includes/core/default-data.php:2173
 msgid ""
 "This price will be up-to-date. Discount price should be less than 90 "
 "percentage of initial price"
@@ -1949,15 +2051,15 @@ msgstr ""
 "По этой цене будет продаваться товар. Не может быть больше, чем 90 процентов "
 "от исходной цены"
 
-#: includes/core/default-data.php:2225
+#: includes/core/default-data.php:2249
 msgid "Supplier"
 msgstr "Поставщик"
 
-#: includes/core/default-data.php:2246
+#: includes/core/default-data.php:2270
 msgid "For example, for delivery or packaging"
 msgstr "Например, на доставку или упаковку"
 
-#: includes/core/default-data.php:2266
+#: includes/core/default-data.php:2290
 msgid ""
 "The delivery item must be set to false if the item is prohibited to sell "
 "remotely (jewelry, medicines)"
@@ -1965,104 +2067,104 @@ msgstr ""
 "Элемент delivery должен обязательно иметь значение false, если товар "
 "запрещено продавать дистанционно (ювелирные изделия, лекарственные средства)"
 
-#: includes/core/default-data.php:2287
+#: includes/core/default-data.php:2311
 msgid "This element is used when creating an YML feed for Yandex.Delivery"
 msgstr "Этот элемент используется при создании YML-фида для Яндекс Доставки"
 
-#: includes/core/default-data.php:2294
+#: includes/core/default-data.php:2318
 msgid "Enable. No default value"
 msgstr "Включить. Без значений по умолчанию"
 
-#: includes/core/default-data.php:2329
+#: includes/core/default-data.php:2353
 msgid "This element is used when creating an YML feed for Yandex Direct"
 msgstr "Этот элемент используется при создании YML-фида для Яндекс Директ"
 
-#: includes/core/default-data.php:2350
+#: includes/core/default-data.php:2374
 msgid "Barcode"
 msgstr "Штрихкод"
 
-#: includes/core/default-data.php:2361 includes/core/default-data.php:2367
-#: includes/core/default-data.php:2373
+#: includes/core/default-data.php:2385 includes/core/default-data.php:2391
+#: includes/core/default-data.php:2397
 msgid "Substitute from the plugin"
 msgstr "Подставлять из плагина"
 
-#: includes/core/default-data.php:2421
+#: includes/core/default-data.php:2445
 msgid "Shelf life / service life"
 msgstr "Срок годности / срок службы"
 
-#: includes/core/default-data.php:2422
+#: includes/core/default-data.php:2446
 msgid "Shelf life / service life. expiry date / service life"
 msgstr ""
 "Срок годности / срок службы либо дата истечения срока годности / срока службы"
 
-#: includes/core/default-data.php:2438
+#: includes/core/default-data.php:2462
 msgid "Shelf life"
 msgstr "Срок годности"
 
-#: includes/core/default-data.php:2456
+#: includes/core/default-data.php:2480
 msgid "Comment on the expiration date"
 msgstr "Комментарий к дате истечения срока службы"
 
-#: includes/core/default-data.php:2458 includes/core/default-data.php:2480
-#: includes/core/default-data.php:2503 includes/core/default-data.php:2541
-#: includes/core/default-data.php:2599 includes/core/default-data.php:2621
-#: includes/core/default-data.php:2643 includes/core/default-data.php:2665
-#: includes/core/default-data.php:2687 includes/core/default-data.php:2867
-#: includes/core/default-data.php:3065 includes/core/default-data.php:3089
-#: includes/core/default-data.php:3113
+#: includes/core/default-data.php:2482 includes/core/default-data.php:2504
+#: includes/core/default-data.php:2527 includes/core/default-data.php:2565
+#: includes/core/default-data.php:2623 includes/core/default-data.php:2645
+#: includes/core/default-data.php:2667 includes/core/default-data.php:2689
+#: includes/core/default-data.php:2711 includes/core/default-data.php:2891
+#: includes/core/default-data.php:3089 includes/core/default-data.php:3113
+#: includes/core/default-data.php:3137
 msgid "The value of this option is set on the product edit page"
 msgstr "Значение этой опции устанавливается на странице редактирования товара"
 
-#: includes/core/default-data.php:2501
+#: includes/core/default-data.php:2525
 msgid "The service life days"
 msgstr "Срок службы в днях"
 
-#: includes/core/default-data.php:2525 includes/core/default-data.php:2527
-#: includes/core/default-data.php:2851 includes/core/default-data.php:2853
+#: includes/core/default-data.php:2549 includes/core/default-data.php:2551
+#: includes/core/default-data.php:2875 includes/core/default-data.php:2877
 msgid "Default value in days"
 msgstr "Значение по умолчанию в днях"
 
-#: includes/core/default-data.php:2561
+#: includes/core/default-data.php:2585
 msgid "Mark downloadable products"
 msgstr "Помечать скачиваемые товары"
 
-#: includes/core/default-data.php:2579
+#: includes/core/default-data.php:2603
 msgid "Product name"
 msgstr "Название товара"
 
-#: includes/core/default-data.php:2663
+#: includes/core/default-data.php:2687
 msgid "Step quantity"
 msgstr "Квант продажи"
 
-#: includes/core/default-data.php:2707
+#: includes/core/default-data.php:2731
 msgid "Age"
 msgstr "Возраст"
 
-#: includes/core/default-data.php:2724
+#: includes/core/default-data.php:2748
 msgid "Attribute"
 msgstr "Атрибут"
 
-#: includes/core/default-data.php:2730
+#: includes/core/default-data.php:2754
 msgid "Month"
 msgstr "Месяц"
 
-#: includes/core/default-data.php:2743
+#: includes/core/default-data.php:2767
 msgid "Product type or category"
 msgstr "Тип или категория товара"
 
-#: includes/core/default-data.php:2744
+#: includes/core/default-data.php:2768
 msgid "This tag is only used in the free-from feed format"
 msgstr "Этот тег используется только в произвольном формате фида"
 
-#: includes/core/default-data.php:2761
+#: includes/core/default-data.php:2785
 msgid "Model"
 msgstr "Модель"
 
-#: includes/core/default-data.php:2779
+#: includes/core/default-data.php:2803
 msgid "Manufacturer warranty"
 msgstr "Гарантия производителя"
 
-#: includes/core/default-data.php:2782
+#: includes/core/default-data.php:2806
 msgid ""
 "This element is used for products that have an official manufacturer's "
 "warranty"
@@ -2070,27 +2172,27 @@ msgstr ""
 "Элемент предназначен для отметки товаров, имеющих официальную гарантию "
 "производителя"
 
-#: includes/core/default-data.php:2785
+#: includes/core/default-data.php:2809
 msgid "Product does not have an official warranty"
 msgstr "Товар не имеет официальной гарантии"
 
-#: includes/core/default-data.php:2786
+#: includes/core/default-data.php:2810
 msgid "Product has an official warranty"
 msgstr "Товар имеет официальную гарантию"
 
-#: includes/core/default-data.php:2805
+#: includes/core/default-data.php:2829
 msgid "Collection ID"
 msgstr "ID коллекции"
 
-#: includes/core/default-data.php:2809
+#: includes/core/default-data.php:2833
 msgid "How it works"
 msgstr "Как это работает"
 
-#: includes/core/default-data.php:2889
+#: includes/core/default-data.php:2913
 msgid "Sales notes"
 msgstr "Примечание"
 
-#: includes/core/default-data.php:2917
+#: includes/core/default-data.php:2941
 msgid ""
 "The text may be up to 50 characters in length. Also in the item is forbidden "
 "to specify the terms of delivery and price reduction (discount on "
@@ -2099,66 +2201,66 @@ msgstr ""
 "Не более 50 символов. Также в элементе запрещено указывать условия доставки "
 "и снижение цены (скидку на товар)"
 
-#: includes/core/default-data.php:2931
+#: includes/core/default-data.php:2955
 msgid "Store"
 msgstr "Запас"
 
-#: includes/core/default-data.php:2934
+#: includes/core/default-data.php:2958
 msgid "The product can be purchased in retail stores"
 msgstr "Товар можно купить без предварительного заказа"
 
-#: includes/core/default-data.php:2936
+#: includes/core/default-data.php:2960
 msgid "the product cannot be purchased in retail stores"
 msgstr "товар нельзя купить без предварительного заказа"
 
-#: includes/core/default-data.php:2957
+#: includes/core/default-data.php:2981
 msgid "Condition"
 msgstr "Состояние товара"
 
-#: includes/core/default-data.php:2960 includes/core/default-data.php:3004
-#: includes/core/default-data.php:3024
+#: includes/core/default-data.php:2984 includes/core/default-data.php:3028
+#: includes/core/default-data.php:3048
 msgid "for"
 msgstr "для"
 
-#: includes/core/default-data.php:3045
+#: includes/core/default-data.php:3069
 msgid "Picture"
 msgstr "Изображение"
 
-#: includes/core/default-data.php:3047
+#: includes/core/default-data.php:3071
 msgid "Specify the size of the image to be used in the feed"
 msgstr "Укажите размер изображения, которое будет использоваться в фиде"
 
-#: includes/core/default-data.php:3066 includes/core/default-data.php:3090
-#: includes/core/default-data.php:3118 includes/core/default-data.php:3143
+#: includes/core/default-data.php:3090 includes/core/default-data.php:3114
+#: includes/core/default-data.php:3142 includes/core/default-data.php:3167
 msgid "About this tag"
 msgstr "Об этом теге"
 
-#: includes/core/default-data.php:3068 includes/core/default-data.php:3092
-#: includes/core/default-data.php:3120 includes/core/default-data.php:3145
+#: includes/core/default-data.php:3092 includes/core/default-data.php:3116
+#: includes/core/default-data.php:3144 includes/core/default-data.php:3169
 msgid "see the Yandex help"
 msgstr "см. справку Яндекса"
 
-#: includes/core/default-data.php:3141
+#: includes/core/default-data.php:3165
 msgid "To set a value, edit your products"
 msgstr "Чтобы задать значение, отредактируйте свои товары"
 
-#: includes/core/default-data.php:3142
+#: includes/core/default-data.php:3166
 msgid "or edit your categories"
 msgstr "или отредактируйте свои категории"
 
-#: includes/core/default-data.php:3165
+#: includes/core/default-data.php:3189
 msgid "Composition"
 msgstr "Состав"
 
-#: includes/core/default-data.php:3185 includes/core/default-data.php:3241
+#: includes/core/default-data.php:3209 includes/core/default-data.php:3265
 msgid "Include these attributes in the values"
 msgstr "Включите эти атрибуты в значения"
 
-#: includes/core/default-data.php:3187 includes/core/default-data.php:3243
+#: includes/core/default-data.php:3211 includes/core/default-data.php:3267
 msgid "Hint"
 msgstr "Совет"
 
-#: includes/core/default-data.php:3189 includes/core/default-data.php:3245
+#: includes/core/default-data.php:3213 includes/core/default-data.php:3269
 msgid ""
 "To select multiple values, hold down the (ctrl) button on Windows or (cmd) "
 "on a Mac. To deselect, press and hold (ctrl) or (cmd), click on the marked "
@@ -2168,121 +2270,159 @@ msgstr ""
 "Windows или (cmd) на Mac. Чтобы отменить выбор, нажмите и удерживайте (ctrl) "
 "или (cmd), нажмите на отмеченные элементы"
 
-#: includes/core/default-data.php:3211 includes/core/default-data.php:3267
+#: includes/core/default-data.php:3235 includes/core/default-data.php:3291
 msgid "If the attribute has multiple values"
 msgstr "Если атрибут имеет несколько значений"
 
-#: includes/core/default-data.php:3220 includes/core/default-data.php:3276
+#: includes/core/default-data.php:3244 includes/core/default-data.php:3300
 msgid "No split"
 msgstr "Не разделять"
 
-#: includes/core/default-data.php:3225 includes/core/default-data.php:3281
+#: includes/core/default-data.php:3249 includes/core/default-data.php:3305
 msgid "Split"
 msgstr "Разделить"
 
-#: includes/core/default-data.php:3297
+#: includes/core/default-data.php:3321
 msgid "Description of the product"
 msgstr "Описание товара"
 
-#: includes/core/default-data.php:3299
+#: includes/core/default-data.php:3323
 msgid "The source of the description"
 msgstr "Источник описания товара"
 
-#: includes/core/default-data.php:3305 includes/core/default-data.php:3457
+#: includes/core/default-data.php:3329 includes/core/default-data.php:3481
 msgid "Only Excerpt description"
 msgstr "Только Краткое описание"
 
-#: includes/core/default-data.php:3309 includes/core/default-data.php:3461
+#: includes/core/default-data.php:3333 includes/core/default-data.php:3485
 msgid "Only Full description"
 msgstr "Только Полное описание"
 
-#: includes/core/default-data.php:3313 includes/core/default-data.php:3465
+#: includes/core/default-data.php:3337 includes/core/default-data.php:3489
 msgid "Excerpt or Full description"
 msgstr "Краткое или Полное описание"
 
-#: includes/core/default-data.php:3317 includes/core/default-data.php:3469
+#: includes/core/default-data.php:3341 includes/core/default-data.php:3493
 msgid "Full or Excerpt description"
 msgstr "Полное или Краткое описание"
 
-#: includes/core/default-data.php:3321 includes/core/default-data.php:3473
+#: includes/core/default-data.php:3345 includes/core/default-data.php:3497
 msgid "Excerpt plus Full description"
 msgstr "Краткое плюс Полное описание"
 
-#: includes/core/default-data.php:3325 includes/core/default-data.php:3477
+#: includes/core/default-data.php:3349 includes/core/default-data.php:3501
 msgid "Full plus Excerpt description"
 msgstr "Полное плюс Краткое описание"
 
-#: includes/core/default-data.php:3360
+#: includes/core/default-data.php:3384
 msgid "List of allowed tags"
 msgstr "Список разрешенных тегов"
 
-#: includes/core/default-data.php:3366
+#: includes/core/default-data.php:3390
 msgid "From the field below"
 msgstr "Из поля ниже"
 
-#: includes/core/default-data.php:3381
+#: includes/core/default-data.php:3405
 msgid "Allowed tags"
 msgstr "Разрешенные теги"
 
-#: includes/core/default-data.php:3399 includes/core/default-data.php:3513
+#: includes/core/default-data.php:3423 includes/core/default-data.php:3537
 msgid "The varition description takes precedence over others"
 msgstr "Описание вариации имеет приоритет над другими"
 
-#: includes/core/default-data.php:3424
+#: includes/core/default-data.php:3448
 msgid "Use the filter"
 msgstr "Задействовать фильтр"
 
-#: includes/core/default-data.php:3448
+#: includes/core/default-data.php:3472
 msgid "Short description of the product"
 msgstr "Краткое описание товара"
 
-#: includes/core/default-data.php:3450
+#: includes/core/default-data.php:3474
 msgid "The source of the short description"
 msgstr "Источник краткого описания товара"
 
-#: includes/core/default-data.php:3537
+#: includes/core/default-data.php:3561
+msgid "Use Yandex Market API"
+msgstr "Использовать API Яндекс Маркета"
+
+#: includes/core/default-data.php:3578
+msgid "Api-Key"
+msgstr "Api-Key"
+
+#: includes/core/default-data.php:3579
+msgid "from the site Yandex Market"
+msgstr "с сайта Яндекс Маркет"
+
+#: includes/core/default-data.php:3593
+msgid "Campaign ID"
+msgstr "Номер кампании"
+
+#: includes/core/default-data.php:3596
+msgid "use for transfer data for a specific shop"
+msgstr "используется для передачи данных для конкретного магазина"
+
+#: includes/core/default-data.php:3598 includes/core/default-data.php:3621
+msgid ""
+"From the settings of the Yandex Market account to which we export products"
+msgstr ""
+"Из настроек учетной записи Яндекс Маркета, в которую мы экспортируем товары"
+
+#: includes/core/default-data.php:3601 includes/core/default-data.php:3624
+msgid "only numbers"
+msgstr "только цифры"
+
+#: includes/core/default-data.php:3616
+msgid "Businesses ID"
+msgstr "ID кабинета"
+
+#: includes/core/default-data.php:3619
+msgid "use for transfer data across all shop"
+msgstr "используется для передачи данных по всему магазину"
+
+#: includes/core/default-data.php:3640
 msgid "Whot export"
 msgstr "Что экспортировать"
 
-#: includes/core/default-data.php:3543
+#: includes/core/default-data.php:3646
 msgid "Simple & Variable products"
 msgstr "Вариативные и обычные товары"
 
-#: includes/core/default-data.php:3547
+#: includes/core/default-data.php:3650
 msgid "Only simple products"
 msgstr "Только обычные товары"
 
-#: includes/core/default-data.php:3551
+#: includes/core/default-data.php:3654
 msgid "Only variable products"
 msgstr "Только вариативные товары"
 
-#: includes/core/default-data.php:3564
+#: includes/core/default-data.php:3667
 msgid "Change the domain to"
 msgstr "Изменить домен на"
 
-#: includes/core/default-data.php:3566
+#: includes/core/default-data.php:3669
 msgid ""
 "The option allows you to change the domain of your site in the feed to any "
 "other"
 msgstr "Опция позволяет изменить домен вашего сайта в фиде на любой другой"
 
-#: includes/core/default-data.php:3581
+#: includes/core/default-data.php:3684
 msgid "Clear URL from GET-paramrs"
 msgstr "Очистить URL от GET-параметров"
 
-#: includes/core/default-data.php:3585
+#: includes/core/default-data.php:3688
 msgid "This option may be useful when setting up Turbo pages"
 msgstr "Эта опция может быть полезна при настройке Турбо-страниц"
 
-#: includes/core/default-data.php:3586
+#: includes/core/default-data.php:3689
 msgid "Tips for configuring Turbo pages"
 msgstr "Советы по настройке Турбо-страниц"
 
-#: includes/core/default-data.php:3604
+#: includes/core/default-data.php:3707
 msgid "Categories of variable products for which group_id is not allowed"
 msgstr "Категории вариативных товаров для которых запрещен group_id"
 
-#: includes/core/default-data.php:3608
+#: includes/core/default-data.php:3711
 msgid ""
 "According to Yandex Market rules in this field you need to mark ALL "
 "categories of products not related to \"Clothes, Shoes and Accessories\", "
@@ -2296,11 +2436,11 @@ msgstr ""
 "\"Аксессуары для портативной электроники\". Т.е категории, для которых "
 "запрещено использовать атрибут group_id"
 
-#: includes/core/default-data.php:3628
+#: includes/core/default-data.php:3731
 msgid "Add attributes to the variable products name"
 msgstr "Добавлять атрибуты в название вариативных товаров"
 
-#: includes/core/default-data.php:3630
+#: includes/core/default-data.php:3733
 msgid ""
 "You can only add attributes that are used for variations and that cannot be "
 "grouped using"
@@ -2308,7 +2448,7 @@ msgstr ""
 "Можно добавлять только атрибуты, которые используются для вариаций и которые "
 "не могут быть объединены с помощью"
 
-#: includes/core/default-data.php:3632
+#: includes/core/default-data.php:3735
 msgid ""
 "It works only for variable products that are not in the category \"Clothes, "
 "Shoes and Accessories\", \"Furniture\", \"Cosmetics, perfumes and care\", "
@@ -2318,40 +2458,40 @@ msgstr ""
 "к \"Одежда, обувь и аксессуары\", \"Мебель\", \"Косметика, парфюмерия и "
 "уход\", \"Детские товары\", \"Аксессуары для портативной электроники\""
 
-#: includes/core/default-data.php:3650 includes/core/default-data.php:3651
+#: includes/core/default-data.php:3753 includes/core/default-data.php:3754
 msgid "Separator options"
 msgstr "Варианты разделителя"
 
-#: includes/core/default-data.php:3657 includes/core/default-data.php:3663
-#: includes/core/default-data.php:3669 includes/core/default-data.php:3675
+#: includes/core/default-data.php:3760 includes/core/default-data.php:3766
+#: includes/core/default-data.php:3772 includes/core/default-data.php:3778
 msgid "Type"
 msgstr "Тип"
 
-#: includes/core/default-data.php:3689
+#: includes/core/default-data.php:3792
 msgid "For pre-order products, establish availability equal to"
 msgstr "Для товаров на предзаказ установить доступность, равную"
 
-#: includes/core/default-data.php:3698
+#: includes/core/default-data.php:3801
 msgid "in stock"
 msgstr "в наличии"
 
-#: includes/core/default-data.php:3702
+#: includes/core/default-data.php:3805
 msgid "out of stock"
 msgstr "нет в наличии"
 
-#: includes/core/default-data.php:3715
+#: includes/core/default-data.php:3818
 msgid "Remove default.png from YML"
 msgstr "Удалить default.png из YML"
 
-#: includes/core/default-data.php:3733
+#: includes/core/default-data.php:3836
 msgid "Take steps to remove products with the same ID from the feed"
 msgstr "Примите меры по удалению товаров с одинаковым ID из фида"
 
-#: includes/core/default-data.php:3738
+#: includes/core/default-data.php:3841
 msgid "This is an experimental feature"
 msgstr "Это экспериментальная функция"
 
-#: includes/core/default-data.php:3742
+#: includes/core/default-data.php:3845
 msgid ""
 "It should only be used if you have an error related to the presence of "
 "products with the same identifier in the product feed"
@@ -2359,48 +2499,48 @@ msgstr ""
 "Её следует использовать только в том случае, если у вас возникла ошибка, "
 "связанная с наличием товаров с одинаковым ID в фиде"
 
-#: includes/core/default-data.php:3761
+#: includes/core/default-data.php:3864
 msgid "Skip products without pictures"
 msgstr "Пропустить товары без картинок"
 
-#: includes/core/default-data.php:3779
+#: includes/core/default-data.php:3882
 msgid "Skip products without description"
 msgstr "Пропустить товары без описания"
 
-#: includes/core/default-data.php:3797
+#: includes/core/default-data.php:3900
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:147
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:195
 msgid "Skip missing products"
 msgstr "Исключать товары которых нет в наличии"
 
-#: includes/core/default-data.php:3798
+#: includes/core/default-data.php:3901
 msgid "except for products for which a pre-order is permitted"
 msgstr "за исключением товаров, для которых разрешен предварительный заказ"
 
-#: includes/core/default-data.php:3816
+#: includes/core/default-data.php:3919
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:169
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:179
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:212
 msgid "Skip backorders products"
 msgstr "Исключать из фида товары для предзаказа"
 
-#: includes/core/default-data.php:3849
+#: includes/core/default-data.php:3952
 msgid "Feed currency"
 msgstr "Валюта фида"
 
-#: includes/core/default-data.php:3851
+#: includes/core/default-data.php:3954
 msgid "You have plugin installed"
 msgstr "У вас установлен плагин"
 
-#: includes/core/default-data.php:3853
+#: includes/core/default-data.php:3956
 msgid "Indicate in what currency the prices should be"
 msgstr "Укажите, в какой валюте должны быть цены"
 
-#: includes/core/default-data.php:3855
+#: includes/core/default-data.php:3958
 msgid "Yandex Market only supports the following currencies"
 msgstr "Яндекс Маркет поддерживает только следующие валюты"
 
-#: includes/core/default-data.php:3857
+#: includes/core/default-data.php:3960
 msgid "Choosing a different currency can lead to errors"
 msgstr "Выбор другой валюты может привести к ошибкам"
 
@@ -2499,7 +2639,7 @@ msgstr "Произошла ошибка при создании пустого �
 #: includes/feeds/class-y4ym-generation-xml.php:225
 #: includes/feeds/class-y4ym-generation-xml.php:243
 #: includes/feeds/class-y4ym-generation-xml.php:267
-#: includes/feeds/class-y4ym-generation-xml.php:528
+#: includes/feeds/class-y4ym-generation-xml.php:559
 msgid "The creation of the feed has been stopped"
 msgstr "Создание фида было остановлено"
 
@@ -2513,7 +2653,7 @@ msgid "on step"
 msgstr "на шаге"
 
 #: includes/feeds/class-y4ym-generation-xml.php:304
-#: includes/feeds/class-y4ym-generation-xml.php:501
+#: includes/feeds/class-y4ym-generation-xml.php:532
 msgid "We continue to create the feed"
 msgstr "Мы продолжаем создание фида"
 
@@ -2535,107 +2675,107 @@ msgid "parameter to"
 msgstr "параметр до"
 
 #: includes/feeds/class-y4ym-generation-xml.php:403
-#: includes/feeds/class-y4ym-generation-xml.php:478
+#: includes/feeds/class-y4ym-generation-xml.php:509
 msgid "The number of records returned by the server"
 msgstr "Количество записей, возвращенных сервером"
 
-#: includes/feeds/class-y4ym-generation-xml.php:427
+#: includes/feeds/class-y4ym-generation-xml.php:429
 msgid "Getting started with the product"
 msgstr "Начало работы с товаром"
 
-#: includes/feeds/class-y4ym-generation-xml.php:527
+#: includes/feeds/class-y4ym-generation-xml.php:558
 msgid "In this step, an error occurred while creating a temporary feed file"
 msgstr "На этом шаге произошла ошибка при создании временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:550
+#: includes/feeds/class-y4ym-generation-xml.php:581
 msgid "Checking whether the feed needs to be archived"
 msgstr "Проверка необходимости архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:924
+#: includes/feeds/class-y4ym-generation-xml.php:955
 msgid ""
 "The list of product IDs in the feed is empty or the temporary file has been "
 "deleted"
 msgstr "Список ID товаров в фиде пуст или временный файл был удален"
 
-#: includes/feeds/class-y4ym-generation-xml.php:947
-#: includes/feeds/class-y4ym-generation-xml.php:1035
+#: includes/feeds/class-y4ym-generation-xml.php:978
+#: includes/feeds/class-y4ym-generation-xml.php:1066
 msgid "Error reading the file"
 msgstr "Ошибка при чтении файла"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1014
+#: includes/feeds/class-y4ym-generation-xml.php:1045
 msgid "Error checking the XML fragment"
 msgstr "Ошибка при проверке XML-фрагмента"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1028
+#: includes/feeds/class-y4ym-generation-xml.php:1059
 msgid "Column"
 msgstr "Колонка"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1067
+#: includes/feeds/class-y4ym-generation-xml.php:1098
 msgid "Data loss when writing a feed file"
 msgstr "Потеря данных при записи файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1388
+#: includes/feeds/class-y4ym-generation-xml.php:1452
 msgid "I can't initialize WP_Filesystem for renaming"
 msgstr "Я не могу инициализировать WP_Filesystem для переименования"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1414
+#: includes/feeds/class-y4ym-generation-xml.php:1478
 msgid "Couldn't delete the old feed file"
 msgstr "Я не могу удалить старый файл фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1431
+#: includes/feeds/class-y4ym-generation-xml.php:1495
 msgid "I can't rename the feed file from"
 msgstr "Я не могу переименовать файл фида из"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1433
+#: includes/feeds/class-y4ym-generation-xml.php:1497
 msgid "to"
 msgstr "в"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1463
+#: includes/feeds/class-y4ym-generation-xml.php:1527
 msgid "The temporary feed file has been successfully renamed to the main one"
 msgstr "Временный файл фида был успешно переименован в основной"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1522
+#: includes/feeds/class-y4ym-generation-xml.php:1586
 msgid "Starting archiving the feed"
 msgstr "Начинаю архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1546
+#: includes/feeds/class-y4ym-generation-xml.php:1610
 msgid "The archiving was successful"
 msgstr "Архивация прошла успешно"
 
-#: includes/feeds/class-y4ym-get-unit.php:69
+#: includes/feeds/class-y4ym-get-unit.php:81
 #: includes/feeds/traits/common/trait-y4ym-t-common-skips.php:47
 msgid "There is no product with this ID"
 msgstr "Нет товара с таким ID"
 
-#: includes/feeds/class-y4ym-get-unit.php:78
+#: includes/feeds/class-y4ym-get-unit.php:90
 msgid "This is the ID of a product variation, not the product itself"
 msgstr "Это ID вариации, а не самого товара"
 
-#: includes/feeds/class-y4ym-get-unit.php:104
+#: includes/feeds/class-y4ym-get-unit.php:116
 msgid "The product was updated earlier than the YML feed"
 msgstr "Товар был обновлен раньше, чем YML-фид"
 
-#: includes/feeds/class-y4ym-get-unit.php:109
+#: includes/feeds/class-y4ym-get-unit.php:121
 msgid "Requesting data from the cache"
 msgstr "Запрос данных из кэша"
 
-#: includes/feeds/class-y4ym-get-unit.php:125
+#: includes/feeds/class-y4ym-get-unit.php:137
 msgid "For the product with"
 msgstr "Для товара с"
 
-#: includes/feeds/class-y4ym-get-unit.php:127
+#: includes/feeds/class-y4ym-get-unit.php:139
 msgid "the data is taken from the file"
 msgstr "данные взяты из файла"
 
-#: includes/feeds/class-y4ym-get-unit.php:177
+#: includes/feeds/class-y4ym-get-unit.php:207
 msgid "A variation product has more than 256 variations"
 msgstr "Вариативный товар имеет более 256 вариаций"
 
-#: includes/feeds/class-y4ym-get-unit.php:268
+#: includes/feeds/class-y4ym-get-unit.php:298
 msgid "The data could not be received. The cache usage ban is enabled"
 msgstr "Данные не удалось получить. Запрет на использование кэша включен"
 
-#: includes/feeds/class-y4ym-get-unit.php:291
+#: includes/feeds/class-y4ym-get-unit.php:321
 msgid "Error when receiving data from the CACHE file"
 msgstr "Ошибка при получении данных из КЭШ файла"
 
@@ -2713,8 +2853,8 @@ msgstr "У товара нет описания"
 msgid "Product has no images"
 msgstr "Товар не имеет изображений"
 
-#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:74
-#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-price.php:77
+#: includes/feeds/traits/simple/trait-y4ym-t-simple-get-price.php:75
+#: includes/feeds/traits/variable/trait-y4ym-t-variable-get-price.php:78
 msgid "The product has no price"
 msgstr "Товар не имеет цены"
 
@@ -2893,35 +3033,35 @@ msgstr "Добавить главные фото товаров в коллек�
 msgid "Indicate the number from 0 to 20"
 msgstr "Укажите число от 0 до 20"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:236
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:232
 msgid "This feed is currently being created"
 msgstr "В настоящее время этот фид создается"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:238
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:234
 msgid ""
 "Are you sure you want to interrupt the current process and start generating "
 "from scratch"
 msgstr ""
 "Вы уверены, что хотите прервать текущий процесс и начать генерацию с нуля"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:246
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:242
 msgid "The action was canceled by the user"
 msgstr "Действие было отменено пользователем"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:294
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:290
 msgid "The maximum step execution according to the settings is"
 msgstr ""
 "Максимальное время выполнения шага в соответствии с настройками составляет"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:296 sandbox.php:30
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:292 sandbox.php:30
 msgid "seconds"
 msgstr "секунд"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:324
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:320
 msgid "The creation of the feed has been completed successfully"
 msgstr "Создание фида успешно завершено"
 
-#: includes/wp-cli/class-y4ym-wp-cli-command.php:438
+#: includes/wp-cli/class-y4ym-wp-cli-command.php:434
 msgid "Quick feed generation has been completed successfully"
 msgstr "Быстрая сборка фида успешно завершена"
 
@@ -3784,9 +3924,6 @@ msgstr ""
 #~| msgid "How to create a YML-feed"
 #~ msgid "How to create a XML-feed"
 #~ msgstr "Как создать YML-фид"
-
-#~ msgid "Exporter Yandex Market"
-#~ msgstr "Экспортер Yandex Market"
 
 #~ msgid ""
 #~ "For the plugin to function correctly, you need a version of WooCommerce "

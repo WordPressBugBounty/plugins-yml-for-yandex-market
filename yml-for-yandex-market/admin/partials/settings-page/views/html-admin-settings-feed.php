@@ -3,7 +3,7 @@
 /**
  * Settings page.
  * 
- * @version    5.6.1 (15-07-2026)
+ * @version    5.8.0 (31-08-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/
  * 
@@ -54,6 +54,11 @@
 
 								// выпадающие блоки настроек с тегами
 								include_once __DIR__ . '/html-admin-settings-feed-tab-drop-down-blocks.php';
+
+								break;
+							case 'api_tab':
+
+								include_once __DIR__ . '/html-admin-settings-feed-tab-api.php';
 
 								break;
 							default:

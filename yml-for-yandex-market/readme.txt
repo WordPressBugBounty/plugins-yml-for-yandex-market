@@ -3,8 +3,8 @@ Contributors: icopydoc
 Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.9
-Tested up to: 7.0
-Stable tag: 5.7.0
+Tested up to: 7.1
+Stable tag: 5.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,6 +79,13 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.8.0 =
+*Release Date 31-08-2026*
+
+* Now the plugin can synchronize prices and stocks of products via the Yandex Market API.
+* Added the `material` tag to the `Flowwow (flowwow.com)` rules.
+* Code refactoring.
 
 = 5.7.0 =
 *Release Date 17-08-2026*
@@ -298,8 +305,9 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.7.0 =
-*Release Date 17-08-2026*
+= 5.8.0 =
+*Release Date 31-08-2026*
 
-* Added following tags: `minorder`, `param name="composition"`.
+* Now the plugin can synchronize prices and stocks of products via the Yandex Market API.
+* Added the `material` tag to the `Flowwow (flowwow.com)` rules.
 * Code refactoring.

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -101,31 +101,66 @@ final class Y4YM_Write_File {
 		}
 		$fp = fopen( $this->get_file_path(), "wb" );
 		if ( false === $fp ) {
-			error_log(
-				'ERROR: Y4YM_Write_File : File opening return (bool) false "' . $this->get_file_path() . '"; Line: ' . __LINE__,
-				0
+			// Получаем конкретную причину ошибки открытия файла
+			$error = error_get_last();
+			$error_msg = $error ? $error['message'] : 'Unknown error';
+			$msg_for_log = sprintf(
+				'ERROR: Y4YM_Write_File : File opening failed (return (bool) false) for "%s". Reason: %s; Line: %s',
+				$this->get_file_path(),
+				$error_msg,
+				__LINE__
 			);
-		} else {
-
-			// Применяем эксклюзивную блокировку
-			if ( ! flock( $fp, LOCK_EX ) ) { // Ждем получения блокировки
-				error_log(
-					'ERROR: Failed to acquire lock on file: ' . $this->get_file_path()
-				);
-			} else {
-				// Записываем данные в файл
-				fwrite( $fp, $xml_string );
-
-				// Освобождаем блокировку
-				flock( $fp, LOCK_UN );
-			}
-
-			// Закрываем файл
-			fclose( $fp );
-
-			$this->result = true;
-
+			error_log( $msg_for_log, 0 );
+			Y4YM_Error_Log::record( $msg_for_log );
+			return;
 		}
+
+		// Применяем эксклюзивную блокировку
+		$locked = flock( $fp, LOCK_EX );
+		if ( ! $locked ) {
+			// Если блокировка не удалась, получаем причину
+			$error = error_get_last();
+			$error_msg = $error ? $error['message'] : 'Unknown locking error';
+			$msg_for_log = sprintf(
+				'ERROR: Y4YM_Write_File : Failed to acquire lock on file "%s". Reason: %s; Line: %s',
+				$this->get_file_path(),
+				$error_msg,
+				__LINE__
+			);
+			error_log( $msg_for_log, 0 );
+			Y4YM_Error_Log::record( $msg_for_log );
+			fclose( $fp );
+			$this->result = false;
+			return;
+		}
+
+		// Записываем данные в файл
+		$written = fwrite( $fp, $xml_string );
+
+		// Проверка на ошибку записи (fwrite возвращает false при ошибке)
+		if ( false === $written ) {
+			$error = error_get_last();
+			$error_msg = $error ? $error['message'] : 'Unknown write error';
+			$msg_for_log = sprintf(
+				'ERROR: Y4YM_Write_File : Failed to write to file "%s". Reason: %s; Line: %s',
+				$this->get_file_path(),
+				$error_msg,
+				__LINE__
+			);
+			error_log( $msg_for_log, 0 );
+			flock( $fp, LOCK_UN ); // Освобождаем блокировку
+			fclose( $fp );
+			$this->result = false;
+			return;
+		}
+
+		// Освобождаем блокировку
+		flock( $fp, LOCK_UN );
+
+		// Закрываем файл
+		fclose( $fp );
+
+		$this->result = true;
 
 	}
 
@@ -143,6 +178,20 @@ final class Y4YM_Write_File {
 		);
 
 		if ( false == $fa ) { // ! важно именно двойное равенство из за особенностей file_put_contents
+			// Получаем последнюю ошибку
+			$error = error_get_last();
+
+			// Формируем понятное сообщение об ошибке
+			$error_message = sprintf(
+				'ERROR: Y4YM_Write_File : Failed to append to file "%s". Reason: %s; Line: %s',
+				$this->get_file_path(),
+				$error ? $error['message'] : 'Unknown error',
+				__LINE__
+			);
+
+			// Логируем ошибку в системный лог WordPress или PHP
+			error_log( $error_message );
+
 			$this->result = false;
 		} else {
 			$this->result = true;

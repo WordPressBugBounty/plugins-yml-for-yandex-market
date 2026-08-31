@@ -5,14 +5,14 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
  */
 
 /**
- * The trait adds `get_offer` method.
+ * The trait adds `get_offer` and `get_offer_id_value` methods.
  * 
  * This method allows you to return the `offer` tag.
  *
@@ -68,45 +68,7 @@ trait Y4YM_T_Variable_Get_Offer_Tag {
 		}
 
 		// id="xx"
-		$offer_id_value = '';
-		$y4ym_source_id = Y4YM_Options::settings_get( 'y4ym_source_id', 'default', $this->get_feed_id(), 'y4ym' );
-		switch ( $y4ym_source_id ) {
-			case "sku":
-
-				$offer_id_value = $this->get_offer()->get_sku();
-
-				break;
-			case "post_meta":
-
-				$y4ym_source_id_post_meta = Y4YM_Options::settings_get( 'y4ym_source_id_post_meta', '', $this->get_feed_id(), 'y4ym' );
-				$y4ym_source_id_post_meta = trim( $y4ym_source_id_post_meta );
-				if ( get_post_meta( $this->get_offer()->get_id(), $y4ym_source_id_post_meta, true ) !== '' ) {
-					$offer_id_value = get_post_meta( $this->get_offer()->get_id(), $y4ym_source_id_post_meta, true );
-				}
-
-				break;
-			case "germanized":
-
-				if ( class_exists( 'WooCommerce_Germanized' ) ) {
-					if ( get_post_meta( $this->get_offer()->get_id(), '_ts_gtin', true ) !== '' ) {
-						$offer_id_value = get_post_meta( $this->get_offer()->get_id(), '_ts_gtin', true );
-					}
-				}
-
-				break;
-			default:
-
-				$offer_id_value = $this->get_offer()->get_id();
-		}
-		$offer_id_value = apply_filters(
-			'y4ym_f_variable_offer_id_value',
-			$offer_id_value,
-			[
-				'product' => $this->get_product(),
-				'feed_category_id' => $this->get_feed_category_id()
-			],
-			$this->get_feed_id()
-		);
+		$offer_id_value = $this->get_offer_id_value();
 		if ( empty( $offer_id_value ) ) {
 			// если данных нет, то ID-шником офера будет ID товара
 			$offer_tag_attrs_arr['id'] = $this->get_product()->get_id();
@@ -206,6 +168,56 @@ trait Y4YM_T_Variable_Get_Offer_Tag {
 			$result_xml .= new Y4YM_Get_Paired_Tag( 'available', $available );
 		}
 		return $result_xml;
+
+	}
+
+	/**
+	 * Get offer ID value.
+	 * 
+	 * @return string Example: `p00017`
+	 */
+	public function get_offer_id_value() {
+
+		$offer_id_value = '';
+		$y4ym_source_id = Y4YM_Options::settings_get( 'y4ym_source_id', 'default', $this->get_feed_id(), 'y4ym' );
+		switch ( $y4ym_source_id ) {
+			case "sku":
+
+				$offer_id_value = $this->get_offer()->get_sku();
+
+				break;
+			case "post_meta":
+
+				$y4ym_source_id_post_meta = Y4YM_Options::settings_get( 'y4ym_source_id_post_meta', '', $this->get_feed_id(), 'y4ym' );
+				$y4ym_source_id_post_meta = trim( $y4ym_source_id_post_meta );
+				if ( get_post_meta( $this->get_offer()->get_id(), $y4ym_source_id_post_meta, true ) !== '' ) {
+					$offer_id_value = get_post_meta( $this->get_offer()->get_id(), $y4ym_source_id_post_meta, true );
+				}
+
+				break;
+			case "germanized":
+
+				if ( class_exists( 'WooCommerce_Germanized' ) ) {
+					if ( get_post_meta( $this->get_offer()->get_id(), '_ts_gtin', true ) !== '' ) {
+						$offer_id_value = get_post_meta( $this->get_offer()->get_id(), '_ts_gtin', true );
+					}
+				}
+
+				break;
+			default:
+
+				$offer_id_value = $this->get_offer()->get_id();
+		}
+		$offer_id_value = apply_filters(
+			'y4ym_f_variable_offer_id_value',
+			$offer_id_value,
+			[
+				'product' => $this->get_product(),
+				'feed_category_id' => $this->get_feed_category_id()
+			],
+			$this->get_feed_id()
+		);
+		return $offer_id_value;
 
 	}
 

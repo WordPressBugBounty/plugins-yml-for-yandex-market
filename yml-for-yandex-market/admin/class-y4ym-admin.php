@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -461,6 +461,30 @@ class Y4YM_Admin {
 			if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'nonce_duplicate' . $feed_id ) ) {
 				$this->duplicate_feed( $feed_id );
 			}
+		}
+
+		// проверка API
+		if ( isset( $_REQUEST['y4ym_check_action'] ) ) {
+			$obj = new Y4YM_Api();
+			$result = $obj->get_campaigns();
+			if ( true === $result['status'] ) {
+				$class = 'success';
+				$message = sprintf( '<strong style="font-weight: 700;">%1$s!</strong>',
+					__( 'API connection was successful', 'yml-for-yandex-market' )
+				);
+			} else {
+				$class = 'error';
+				$message = sprintf(
+					'<strong style="%1$s">%2$s!</strong><br/>
+					<strong style="%1$s">error_code:</strong> %3$s. <strong style="%1$s">error_msg:</strong> %4$s',
+					'font-weight: 700;',
+					__( 'API connection error', 'yml-for-yandex-market' ),
+					esc_html( $result['errors'][0]->code ),
+					esc_html( $result['errors'][0]->message )
+				);
+				Y4YM_Error_Log::record( $result );
+			}
+			new Y4YM_Set_Admin_Notices( $message, $class );
 		}
 
 		// сохранение опций на странице отладки

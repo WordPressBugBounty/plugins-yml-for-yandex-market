@@ -109,6 +109,10 @@ class Y4YM_Rules_List {
 					'picture', /*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'tn_ved_codes',
 					'url', 'cargo_types', 'vendor', 'vendorcode', 'weight'
 				],
+				'yandex_market_api' => [
+					// https://yandex.ru/sprav/templates/price-list-template.xml
+					'offer_tag', 'shop_sku', 'currencyid', 'price', 'oldprice', 'count'
+				],
 				'vk' => [
 					/**
 					 * - Размер YML-файла — до 8 Мбайт.
@@ -141,7 +145,7 @@ class Y4YM_Rules_List {
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'minorder', 'picture', 'store', 'pickup',
-					'delivery', 'name', 'vendor', 'vendorcode', 'description', 'sales_notes', 'delivery_options',
+					'delivery', 'name', 'vendor', 'vendorcode', 'material', 'description', 'sales_notes', 'delivery_options',
 					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'param_composition', 'consists'
 				],
 				'youla' => [  // https://cloud.mail.ru/public/rRMD/V66Ywbmy6?weblink=rRMD/V66Ywbmy6
@@ -173,7 +177,7 @@ class Y4YM_Rules_List {
 					'min_quantity', 'max_quantity', 'model', 'name', 'outlets', 'params',
 					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
 					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
-					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'video', 'weight', // 'price_rrp',
+					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'material', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'type_prefix', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'param_composition', 'consists',
 					'ste', 'isvisibletostatecustomers', 'isavailabletoindividuals', 'ppcategory',

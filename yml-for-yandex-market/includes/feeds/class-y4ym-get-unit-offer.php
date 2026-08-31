@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -31,6 +31,18 @@ abstract class Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Get_Product;
 	use Y4YM_T_Common_Feed_Rules;
 	use Y4YM_T_Get_Skip_Reasons_Arr;
+
+	/**
+	 * Result products prices array for Yandex Market API.
+	 * @var array
+	 */
+	public $result_api_products_prices = [];
+
+	/**
+	 * Result products stocks array for Yandex Market API.
+	 * @var array
+	 */
+	public $result_api_products_stocks = [];
 
 	/**
 	 * The price of the product in the feed.
@@ -84,7 +96,7 @@ abstract class Y4YM_Get_Unit_Offer {
 	 *	`variation_count` 	- int - Optional
 	 * ]
 	 */
-	public function __construct( $args_arr ) {
+	public function __construct( array $args_arr ) {
 
 		// без этого не будет работать вне адмники is_plugin_active
 		include_once ABSPATH . 'wp-admin/includes/plugin.php';

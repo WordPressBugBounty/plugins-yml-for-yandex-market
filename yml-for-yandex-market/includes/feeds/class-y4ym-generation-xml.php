@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -371,10 +371,6 @@ class Y4YM_Generation_XML {
 					$this->get_feed_id(),
 					'y4ym'
 				);
-				if ( $script_execution_time == 0 ) {
-					// TODO: 18-09-2025 по мере перехода других плагинов на новое ядро в которых есть Y4YM_Options::settings_get эту проверку можно будет удалить
-					$script_execution_time = 26;
-				}
 				if ( $query_time > $script_execution_time ) {
 					Y4YM_Error_Log::record( sprintf(
 						'FEED #%1$s; WARNING: %2$s: %3$s > %4$s. %5$s "%6$s" %7$s %8$s %9$s; %10$s: %11$s; %12$s: %13$s',
@@ -419,6 +415,8 @@ class Y4YM_Generation_XML {
 						$this->get_feed_id(),
 						'y4ym'
 					);
+					$result_api_products_prices = [];
+					$result_api_products_stocks = [];
 					for ( $i = 0; $i < count( $products_query->posts ); $i++ ) {
 						$product_id = $products_query->posts[ $i ];
 						Y4YM_Error_Log::record( sprintf(
@@ -438,6 +436,17 @@ class Y4YM_Generation_XML {
 							$date_save_set // ! позволяет нам в случае чего вернуть кэш-данные товара
 						);
 						$result_xml = $result_get_unit_obj->get_result();
+
+						// $result_api_products_prices = array_merge( $result_api_products_prices, $result_get_unit_obj->get_result_api_products_prices() );
+						// $result_api_products_stocks = array_merge( $result_api_products_stocks, $result_get_unit_obj->get_result_api_products_stocks() );
+						// вместо array_merge в цикле:
+						foreach ( $result_get_unit_obj->get_result_api_products_prices() as $item ) {
+							$result_api_products_prices[] = $item;
+						}
+						foreach ( $result_get_unit_obj->get_result_api_products_stocks() as $item ) {
+							$result_api_products_stocks[] = $item;
+						}
+
 						// Remove hex and control characters from PHP string
 						$result_xml = y4ym_remove_special_characters( $result_xml );
 						new Y4YM_Write_File(
@@ -457,14 +466,32 @@ class Y4YM_Generation_XML {
 						$time_end = time();
 						$time = $time_end - $time_start;
 						if ( $time > $script_execution_time ) {
+							$this->send_batch_to_yandex_api( $result_api_products_prices, $result_api_products_stocks );
+							// Очищаем только если отправили
+							$result_api_products_prices = [];
+							$result_api_products_stocks = [];
 							break;
 						} else {
 							$last_element_feed++;
+						}
+
+						if (
+							count( $result_api_products_prices ) >= 30
+							|| count( $result_api_products_stocks ) >= 30
+						) {
+							$this->send_batch_to_yandex_api( $result_api_products_prices, $result_api_products_stocks );
+
+							// Очищаем только если отправили
+							$result_api_products_prices = [];
+							$result_api_products_stocks = [];
 						}
 						//Y4YM_Error_Log::record(
 						//	'$product_id = ' . $product_id
 						//);
 						// usleep( 200000 ); // притормозим на 0,2 секунды
+					}
+					if ( ! empty( $result_api_products_prices ) || ! empty( $result_api_products_stocks ) ) {
+						$this->send_batch_to_yandex_api( $result_api_products_prices, $result_api_products_stocks );
 					}
 					Y4YM_Options::update(
 						'y4ym_last_element_feed_' . $this->get_feed_id(),
@@ -1293,6 +1320,39 @@ class Y4YM_Generation_XML {
 			'y4ym'
 		);
 		$this->status_sborki = (int) $status_sborki;
+
+	}
+
+	/**
+	 * Set batch to Yandex Market API.
+	 * 
+	 * @param array $prices
+	 * @param array $stocks
+	 * 
+	 * @return void
+	 */
+	private function send_batch_to_yandex_api( array $prices, array $stocks ): void {
+
+		if ( empty( $prices ) && empty( $stocks ) ) {
+			return;
+		}
+		$api_mode = Y4YM_Options::settings_get(
+			'y4ym_api_mode',
+			'disabled',
+			$this->get_feed_id(),
+			'y4ym'
+		);
+		if ( $this->get_feed_rules() === 'yandex_market_api' ) {
+			// если у нас API правило - игнорируем опцию 'y4ym_api_mode'
+			$api_mode = 'enabled';
+		}
+		if ( $api_mode === 'disabled' ) {
+			return;
+		}
+
+		$yandex_api = new Y4YM_Api( [ 'feed_id' => $this->get_feed_id() ] );
+		$yandex_api->update_products_prices( $prices );
+		$yandex_api->update_products_stocks( $stocks );
 
 	}
 

@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.8.0 (31-08-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -328,6 +328,13 @@ $data_arr = [
 					)
 				],
 				[
+					'value' => 'yandex_market_api',
+					'text' => sprintf( '%s API (%s)',
+						__( 'Yandex Market', 'yml-for-yandex-market' ),
+						__( 'only updating prices and stock balances', 'yml-for-yandex-market' )
+					)
+				],
+				[
 					'value' => 'yandex_direct',
 					'text' => sprintf( '%s (%s)',
 						__( 'Yandex Direct', 'yml-for-yandex-market' ),
@@ -374,7 +381,7 @@ $data_arr = [
 					)
 				],
 				[ 'value' => 'vk', 'text' => 'ВКонтакте (vk.com)' ],
-				[ 'value' => 'flowwow', 'text' => 'Flowwow  (flowwow.com)' ],
+				[ 'value' => 'flowwow', 'text' => 'Flowwow (flowwow.com)' ],
 				[ 'value' => 'youla', 'text' => 'Youla  (youla.ru)' ],
 				[
 					'value' => 'sbermegamarket',
@@ -1677,6 +1684,23 @@ $data_arr = [
 				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
 			],
 			'tag_name' => 'country_of_origin'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_material',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'label' => __( 'Material', 'yml-for-yandex-market' ),
+			'desc' => '',
+			'woo_attr' => true,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'material'
 		]
 	],
 	[
@@ -3524,6 +3548,85 @@ $data_arr = [
 				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
 			],
 			'tag_name' => 'shortdescription'
+		]
+	],
+	// --------------- ВКЛАДКА "НАСТРОЙКИ API" ---------------
+	[
+		'opt_name' => 'y4ym_api_mode',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'api_tab',
+		'data' => [
+			'label' => __( 'Use Yandex Market API', 'yml-for-yandex-market' ),
+			'desc' => '',
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+			]
+		]
+	],
+	[
+		'opt_name' => 'y4ym_api_key',
+		'def_val' => '',
+		'mark' => 'public',
+		'type' => 'text',
+		'tab' => 'api_tab',
+		'data' => [
+			'label' => __( 'Api-Key', 'yml-for-yandex-market' ),
+			'desc' => 'Api-Key - ' . __( 'from the site Yandex Market', 'yml-for-yandex-market' ),
+			'placeholder' => sprintf( '%s: %s',
+				__( 'For example', 'yml-for-yandex-market' ),
+				'ACMA:I4c*******************664'
+			)
+		]
+	],
+	[
+		'opt_name' => 'y4ym_campaign_id',
+		'def_val' => '',
+		'mark' => 'public',
+		'type' => 'text',
+		'tab' => 'api_tab',
+		'data' => [
+			'label' => __( 'Campaign ID', 'yml-for-yandex-market' ),
+			'desc' => sprintf(
+				'Campaign ID - %s.<br/>%s (%s)',
+				__( 'use for transfer data for a specific shop', 'yml-for-yandex-market' ),
+				__(
+					'From the settings of the Yandex Market account to which we export products',
+					'yml-for-yandex-market'
+				),
+				__( 'only numbers', 'yml-for-yandex-market' )
+			),
+			'placeholder' => sprintf( '%s: %s',
+				__( 'For example', 'yml-for-yandex-market' ),
+				'87654321'
+			)
+		]
+	],
+	[
+		'opt_name' => 'y4ym_businesses_id',
+		'def_val' => '',
+		'mark' => 'public',
+		'type' => 'text',
+		'tab' => 'api_tab',
+		'data' => [
+			'label' => __( 'Businesses ID', 'yml-for-yandex-market' ),
+			'desc' => sprintf(
+				'Business ID - %s.<br/>%s (%s)',
+				__( 'use for transfer data across all shop', 'yml-for-yandex-market' ),
+				__(
+					'From the settings of the Yandex Market account to which we export products',
+					'yml-for-yandex-market'
+				),
+				__( 'only numbers', 'yml-for-yandex-market' )
+			),
+			'placeholder' => sprintf( '%s: %s',
+				__( 'For example', 'yml-for-yandex-market' ),
+				'7192155'
+			)
 		]
 	],
 	// ------------------- ФИЛЬТРАЦИЯ -------------------

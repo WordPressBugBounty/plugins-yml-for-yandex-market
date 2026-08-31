@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -31,7 +31,7 @@ trait Y4YM_T_Variable_Get_Age {
 	/**
 	 * Get `age` tag.
 	 * 
-	 * @see https://yandex.ru/support/marketplace/assortment/fields/index.html
+	 * @see https://yandex.ru/support/marketplace/ru/assortment/auto/yml-file#age
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml

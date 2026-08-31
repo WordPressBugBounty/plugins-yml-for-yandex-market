@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.8.0 (31-08-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings-page
@@ -145,10 +145,25 @@ class Y4YM_Settings_Page {
 			'offer_data_tab' => sprintf( '<offer>...%s...</offer>',
 				__( 'elements between', 'yml-for-yandex-market' )
 			),
+			'api_tab' => sprintf( '%s',
+				__( 'Yandex Market API', 'yml-for-yandex-market' )
+			),
 			'filtration_tab' => sprintf( '%s',
 				__( 'Filtration', 'yml-for-yandex-market' )
 			)
 		];
+		$yml_rules = Y4YM_Options::settings_get(
+			'y4ym_yml_rules',
+			'yandex_market_assortment',
+			$this->get_current_feed_id(),
+			'y4ym'
+		);
+		if ( ! in_array( $yml_rules, [
+			'yandex_market_assortment', 'sales_terms', 'yandex_market_api',
+			'single_catalog', 'yandex_products', 'all_elements'
+		] ) ) {
+			unset( $tabs_arr['api_tab'] );
+		}
 		$tabs_arr = apply_filters(
 			'y4ym_f_tabs_arr',
 			$tabs_arr,
