@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      5.0.23
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -25,13 +25,14 @@
  *             methods:     get_product
  *                          get_feed_id
  *                          get_simple_tag
+ *                          get_simple_product_post_meta
  */
 trait Y4YM_T_Simple_Get_Certificate {
 
 	/**
 	 * Get `certificate` tag.
 	 * 
-	 * @see https://yandex.ru/support/merchants/ru/offers
+	 * @see https://yandex.ru/support/marketplace/ru/assortment/auto/yml-file#certificate
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml

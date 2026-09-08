@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -24,13 +24,15 @@
  *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
+ *                          get_simple_tag
+ *                          get_simple_product_post_meta
  */
 trait Y4YM_T_Simple_Get_Cargo_Types {
 
 	/**
 	 * Get `cargo-types` tag.
 	 * 
-	 * @see https://yandex.ru/support/marketplace/assortment/fields/index.html
+	 * @see https://yandex.ru/support/marketplace/ru/assortment/auto/yml-file#cz
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml

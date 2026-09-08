@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Unified options management for YML for Yandex Market.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes
@@ -145,7 +145,7 @@ class Y4YM_Options {
 		}
 
 		// Feed-scoped mode
-		$feed_id = (string) $feed_id; // ? replace to trim( (string) $feed_id );
+		$feed_id = trim( (string) $feed_id );
 		if ( $feed_id === '' ) {
 			return false; // Invalid feed ID
 		}
@@ -204,7 +204,7 @@ class Y4YM_Options {
 		}
 
 		// Feed-scoped mode
-		$feed_id = (string) $feed_id; // ? replace to trim( (string) $feed_id );
+		$feed_id = trim( (string) $feed_id );
 		if ( $feed_id === '' ) {
 			return false; // Invalid feed ID
 		}
@@ -293,7 +293,7 @@ class Y4YM_Options {
 		}
 
 		// Feed-scoped mode
-		$feed_id = (string) $feed_id; // ? replace to trim( (string) $feed_id );
+		$feed_id = trim( (string) $feed_id );
 		if ( $feed_id === '' ) {
 			return false; // Invalid feed ID
 		}
@@ -301,15 +301,24 @@ class Y4YM_Options {
 		$option_name_in_db = sprintf( '%s_settings_arr', $slug );
 		$settings_arr = self::get( $option_name_in_db, [] );
 		if ( isset( $settings_arr[ $feed_id ][ $option_name ] ) ) {
-			if (
-				'' === $settings_arr[ $feed_id ][ $option_name ]
-				|| null === $settings_arr[ $feed_id ][ $option_name ]
-				|| false === $settings_arr[ $feed_id ][ $option_name ]
-			) {
+			$value = $settings_arr[ $feed_id ][ $option_name ];
+
+			// Базовые «пустые» значения
+			if ( null === $value || false === $value || '' === $value ) {
 				return $default_value;
-			} else {
-				return $settings_arr[ $feed_id ][ $option_name ];
 			}
+
+			// Пустая строка после trim (пробелы, табы, переносы)
+			if ( is_string( $value ) && trim( $value ) === '' ) {
+				return $default_value;
+			}
+
+			// Пустой массив
+			if ( is_array( $value ) && empty( $value ) ) {
+				return $default_value;
+			}
+
+			return $value;
 		}
 		return $default_value;
 
@@ -338,7 +347,7 @@ class Y4YM_Options {
 		}
 
 		// Feed-scoped mode
-		$feed_id = (string) $feed_id; // ? replace to trim( (string) $feed_id );
+		$feed_id = trim( (string) $feed_id );
 		if ( $feed_id === '' ) {
 			return false; // Invalid feed ID
 		}

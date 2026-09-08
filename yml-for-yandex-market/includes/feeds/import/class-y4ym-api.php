@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.8.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/import
@@ -77,14 +77,17 @@ final class Y4YM_Api {
 	// ======================= API методы =======================
 
 	/**
-	 * Возвращает список магазинов (campaigns), к которым имеет доступ пользователь — владелец авторизационного токена.
+	 * Возвращает список магазинов (campaigns), к которым имеет доступ 
+	 * пользователь — владелец авторизационного токена.
 	 *
 	 * Выполняет GET-запрос к эндпоинту <code>/campaigns</code> API Яндекс.Маркета.
+	 * 
+	 * Поддерживает новую систему пагинации через pageToken и limit.
 	 *
-	 * @version         0.1.0
+	 * @version         5.8.1 (08-09-2026)
 	 * @since           0.1.0
 	 * @see             https://yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns
-	 * @see             Метод зависит от корректно установленных: $this->access_token, $this->campaign_id (опционально)
+	 * @see             https://yandex.ru/dev/market/partner-api/doc/ru/concepts/pagination
 	 * @use             Y4YM_Error_Log::record() — для логирования ошибок API
 	 * @use             $this->response_to_yandex() — для отправки запроса
 	 * @use             $this->get_headers_arr() — для формирования заголовков (Api-Key + Bearer token)
@@ -94,7 +97,7 @@ final class Y4YM_Api {
 	 *   body_answer?: object,
 	 *   errors?: array<array-key, object{code: string, message: string}>
 	 * }
-	 *
+	 * 
 	 * Где:
 	 * - `status` — `true`, если запрос завершился успешно (HTTP 200 и нет ошибок в теле ответа),
 	 *            — `false`, если произошла ошибка (HTTP ≠ 200, тело содержит `errors`, или cURL-ошибка).
@@ -180,16 +183,6 @@ final class Y4YM_Api {
 	 * - Если тело ответа не JSON (например, HTML-страница 404), `body_answer` будет строкой или `null`.
 	 * - Для получения `campaign_id` рекомендуется использовать `body_answer->campaigns[0]->id`.
 	 * - Чтобы определить тип размещения (FBS, drop-off и т.д.) — проверяйте `campaign->placementType`.
-	 *
-	 * 🔒 Требования:
-	 * - Токен должен быть действителен и иметь права на просмотр кампаний (`oauth.yandex.ru/client/new` → scope: `market:write`).
-	 * - `$this->access_token` должен быть установлен через `__construct()` или напрямую.
-	 *
-	 * 📦 Зависимости:
-	 * - `Y4YM_Options` — не требуется (но может быть использован в `get_headers_arr()`).
-	 * - `Y4YM_Error_Log` — для записи ошибок.
-	 *
-	 * @throws void — метод не выбрасывает исключений (использует `wp_remote_request()`).
 	 */
 	public function get_campaigns() {
 
@@ -197,68 +190,116 @@ final class Y4YM_Api {
 			'status' => false
 		];
 
-		$params_arr = [];
+		$all_campaigns = [];
+		$page_token = null;
+		$has_more = true;
 
-		$answer_arr = $this->response_to_yandex(
-			'https://api.partner.market.yandex.ru/campaigns',
-			$params_arr,
-			$this->get_headers_arr(),
-			'GET',
-			[],
-			'http_build_query'
-		);
+		// Установим лимит по умолчанию 100, как требуется в новой API
+		$default_limit = 100;
 
-		if ( isset( $answer_arr['body_answer']->errors ) ) {
-			// в случае ошибки yandex возвращает:
-			// [body_request] => (NULL)
-			// [status] => (boolean)1
-			// [http_code] => (integer)403
-			// [body_answer] => (object)
-			// ---[errors] => (array)---
-			// ------[0] => (object)------
-			// ---------[code] => (string)FORBIDDEN
-			// ---------[message] => (string)Token is invalid
-			// ---[status] => (string)ERROR
+		// Цикл для сбора всех страниц, если Яндекс вернул nextPageToken
+		while ( $has_more ) {
 
-			Y4YM_Error_Log::record(
-				sprintf( 'FEED № %1$s; ERROR: %2$s %3$s. body_answer = %4$s! %5$s: %6$s; %7$s: %8$s',
-					$this->get_feed_id(),
-					'Ошибка получения списка магазинов',
-					$answer_arr['body_answer']->errors[0]->code,
-					$answer_arr['body_answer']->errors[0]->message,
-					__( 'File', 'yml-for-yandex-market' ),
-					'class-y4ym-api.php',
-					__( 'File', 'yml-for-yandex-market' ),
-					__LINE__
-				)
+			$params_arr = [];
+
+			// Добавляем pageToken в параметры запроса, если он есть
+			if ( ! empty( $page_token ) ) {
+				$params_arr['pageToken'] = $page_token;
+			}
+
+			// Всегда передаем limit, так как дефолта нет
+			$params_arr['limit'] = $default_limit;
+
+			$answer_arr = $this->response_to_yandex(
+				'https://api.partner.market.yandex.ru/campaigns',
+				$params_arr,
+				$this->get_headers_arr(),
+				'GET',
+				[],
+				'http_build_query'
 			);
-			$result['errors'] = $answer_arr['body_answer']->errors;
-			return $result;
+
+			if ( isset( $answer_arr['body_answer']->errors ) ) {
+				// Ошибка получения списка магазинов
+
+				// в случае ошибки yandex возвращает:
+				// [body_request] => (NULL)
+				// [status] => (boolean)1
+				// [http_code] => (integer)403
+				// [body_answer] => (object)
+				// ---[errors] => (array)---
+				// ------[0] => (object)------
+				// ---------[code] => (string)FORBIDDEN
+				// ---------[message] => (string)Token is invalid
+				// ---[status] => (string)ERROR
+				Y4YM_Error_Log::record(
+					sprintf( 'FEED № %1$s; ERROR: %2$s %3$s. body_answer = %4$s! Файл: %5$s; Строка: %6$s',
+						$this->get_feed_id(),
+						__( 'Error retrieving the list of store', 'yml-for-yandex-market' ),
+						$answer_arr['body_answer']->errors[0]->code ?? 'UNKNOWN',
+						$answer_arr['body_answer']->errors[0]->message ?? 'Unknown error',
+						'class-ip2y-api.php',
+						__LINE__
+					)
+				);
+				$result['errors'] = $answer_arr['body_answer']->errors;
+				return $result;
+			}
+			// в случае успеха yandex возвращает:
+			// [status] => (boolean)1
+			// [http_code] => (integer)200
+			// [body_answer] => (object)
+			// ---[campaigns] => (array)---
+			// ------[0] => (object)------
+			// ---------[domain] => (string)iCopyDoc
+			// ---------[id] => (integer)84006121
+			// ---------[clientId] => (integer)107702234
+			// ---------[business] => (object)---------
+			// ------------[id] => (integer)71124214
+			// ------------[name] => (string)iCopyDoc
+			// ---------[placementType] => (string)FBS
+			// ---------["apiAvailability"] => (string)AVAILABLE
+			// ---[pager] => (object)---
+			// ------[total] => (integer)1
+			// ------[from] => (integer)1
+			// ------[to] => (integer)1
+			// ------[currentPage] => (integer)1
+			// ------[pagesCount] => (integer)1
+			// ------[pageSize] => (integer)1
+			// ---[paging]=> object(stdClass)#3965 (0) 
+
+			$body = $answer_arr['body_answer'] ?? null;
+
+			if ( $body && isset( $body->campaigns ) && is_array( $body->campaigns ) ) {
+				$all_campaigns = array_merge( $all_campaigns, $body->campaigns );
+			}
+
+			// Проверяем наличие следующей страницы
+			if ( isset( $body->nextPageToken ) && ! empty( $body->nextPageToken ) ) {
+				$page_token = $body->nextPageToken;
+			} else {
+				$has_more = false;
+			}
+
+			// Защита от бесконечного цикла
+			if ( count( $all_campaigns ) > 10000 ) {
+				break;
+			}
 		}
-		// в случае успеха yandex возвращает:
-		// [status] => (boolean)1
-		// [http_code] => (integer)200
-		// [body_answer] => (object)
-		// ---[campaigns] => (array)---
-		// ------[0] => (object)------
-		// ---------[domain] => (string)iCopyDoc
-		// ---------[id] => (integer)84006121
-		// ---------[clientId] => (integer)107702234
-		// ---------[business] => (object)---------
-		// ------------[id] => (integer)71124214
-		// ------------[name] => (string)iCopyDoc
-		// ---------[placementType] => (string)FBS
-		// ---[pager] => (object)---
-		// ------[total] => (integer)1
-		// ------[from] => (integer)1
-		// ------[to] => (integer)1
-		// ------[currentPage] => (integer)1
-		// ------[pagesCount] => (integer)1
-		// ------[pageSize] => (integer)1
 
 		$result = [
 			'status' => true,
-			'body_answer' => $answer_arr['body_answer']
+			'body_answer' => (object) [
+				'campaigns' => $all_campaigns,
+				'pager' => (object) [
+					'total' => count( $all_campaigns ),
+					'from' => 1,
+					'to' => count( $all_campaigns ),
+					'currentPage' => 1,
+					'pagesCount' => 1,
+					'pageSize' => count( $all_campaigns )
+				]
+			]
 		];
 
 		return $result;
@@ -301,6 +342,8 @@ final class Y4YM_Api {
 		);
 
 		if ( isset( $answer_arr['body_answer']->errors ) ) {
+			// Ошибка установки цен на товары
+
 			// в случае ошибки yandex возвращает:
 			// [body_request] => (NULL)
 			// [status] => (boolean)1
@@ -315,7 +358,7 @@ final class Y4YM_Api {
 			Y4YM_Error_Log::record(
 				sprintf( 'FEED № %1$s; ERROR: %2$s %3$s. body_answer = %4$s! %5$s: %6$s; %7$s: %8$s',
 					$this->get_feed_id(),
-					'Ошибка установки цен на товар',
+					__( 'Error in setting product prices', 'yml-for-yandex-market' ),
 					$answer_arr['body_answer']->errors[0]->code,
 					$answer_arr['body_answer']->errors[0]->message,
 					__( 'File', 'yml-for-yandex-market' ),
@@ -377,6 +420,8 @@ final class Y4YM_Api {
 		);
 
 		if ( isset( $answer_arr['body_answer']->errors ) ) {
+			// Ошибка обновления остатков товара
+
 			// в случае ошибки yandex возвращает:
 			// [body_request] => (NULL)
 			// [status] => (boolean)1
@@ -391,7 +436,7 @@ final class Y4YM_Api {
 			Y4YM_Error_Log::record(
 				sprintf( 'FEED № %1$s; ERROR: %2$s %3$s. body_answer = %4$s! %5$s: %6$s; %7$s: %8$s',
 					$this->get_feed_id(),
-					'Ошибка обновления остатков товара',
+					__( 'Error updating product stocks', 'yml-for-yandex-market' ),
 					$answer_arr['body_answer']->errors[0]->code,
 					$answer_arr['body_answer']->errors[0]->message,
 					__( 'File', 'yml-for-yandex-market' ),
@@ -534,7 +579,6 @@ final class Y4YM_Api {
 
 		Y4YM_Error_Log::record( $headers_arr );
 		Y4YM_Error_Log::record( 'Body request size: ' . $size_request . ' bytes' );
-
 
 		$args = [
 			'body' => $answer_arr['body_request'],

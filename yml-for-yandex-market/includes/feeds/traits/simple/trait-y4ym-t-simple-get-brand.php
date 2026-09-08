@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      5.5.0
- * @version    5.5.0 (19-05-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -24,6 +24,7 @@
  *                          Y4YM_Options
  *             methods:     get_product
  *                          get_feed_id
+ *                          get_simple_tag
  */
 trait Y4YM_T_Simple_Get_Brand {
 

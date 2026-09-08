@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -60,7 +60,7 @@ class Y4YM_Generation_XML {
 	/**
 	 * Starts feed generation.
 	 * 
-	 * @param string|int $feed_id - Required
+	 * @param string|int $feed_id Feed ID.
 	 */
 	public function __construct( $feed_id ) {
 
@@ -122,7 +122,8 @@ class Y4YM_Generation_XML {
 				__LINE__
 			) );
 		} else {
-			$res_rename = $this->rename_feed_file();
+			$res_rename = $this->rename_feed_file( 'quick_generation' );
+			// ? может ли быть тут проблема с тем, что мы переименовываем и сразу пробуем архивировать в один заход
 			if ( true === $res_rename ) {
 				$this->archiving();
 				Y4YM_Options::settings_update(
@@ -561,7 +562,7 @@ class Y4YM_Generation_XML {
 					$this->stop( 'creating_temporary_feed_error' );
 					return;
 				}
-				$res_rename = $this->rename_feed_file();
+				$res_rename = $this->rename_feed_file( 'case_3' );
 				if ( true === $res_rename ) {
 					$this->set_status_sborki( 4 );
 				} else {
@@ -945,7 +946,7 @@ class Y4YM_Generation_XML {
 			$this->get_feed_id()
 		);
 		$file_content = file_get_contents( $ids_in_xml_path );
-		if ( false === $file_content || $file_content == '' ) {
+		if ( false === $file_content || '' === trim( $file_content ) ) {
 			Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s (path = %3$s); %4$s: %5$s; %6$s: %7$s',
 				$this->get_feed_id(),
 				__( 'The list of product IDs in the feed is empty or the temporary file has been deleted', 'yml-for-yandex-market' ),
@@ -965,38 +966,41 @@ class Y4YM_Generation_XML {
 
 			$product_id = (int) $key;
 			$filename = sprintf( '%s/%s.tmp', $name_dir, $product_id );
-			if ( file_exists( $filename ) && is_readable( $filename ) ) {
 
-				$offer_xml = @file_get_contents( $filename );
-				if ( false === $offer_xml ) {
-					Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s}; %4$s: %5$s; %6$s: %7$s',
-						$this->get_feed_id(),
-						__( 'Error reading the file', 'yml-for-yandex-market' ),
-						$filename,
-						__( 'File', 'yml-for-yandex-market' ),
-						'class-y4ym-generation-xml.php',
-						__( 'Line', 'yml-for-yandex-market' ),
-						__LINE__
-					) );
+			if ( ! file_exists( $filename ) || ! is_readable( $filename ) ) {
+				continue; // Пропускаем отсутствующие файлы без ошибок
+			}
+
+			$offer_xml = @file_get_contents( $filename );
+			if ( false === $offer_xml ) {
+				Y4YM_Error_Log::record( sprintf( 'FEED #%1$s; ERROR: %2$s {%3$s}; %4$s: %5$s; %6$s: %7$s',
+					$this->get_feed_id(),
+					__( 'Error reading the file', 'yml-for-yandex-market' ),
+					$filename,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				) );
+				continue;
+			}
+
+			if ( trim( $offer_xml ) === '' ) {
+				continue;
+			}
+
+			// это условие нужно потому, что заголовок фида хранится в tmp-файле
+			// с отрицательным значением и проверять его не надо
+			if ( $product_id > 0 ) {
+
+				if ( $this->check_xml_fragment( $offer_xml, $filename ) === 'not_valid' ) {
 					continue;
 				}
-
-				if ( trim( $offer_xml ) === '' ) {
-					continue;
-				}
-
-				if ( $product_id > 0 ) {
-
-					if ( $this->check_xml_fragment( $offer_xml, $filename ) === 'not_valid' ) {
-						continue;
-					}
-
-				}
-
-				$result_xml .= $offer_xml;
-				$products_count++;
 
 			}
+
+			$result_xml .= $offer_xml;
+			$products_count++;
 
 		}
 
@@ -1179,11 +1183,11 @@ class Y4YM_Generation_XML {
 				$collections_yml .= new Y4YM_Get_Open_Tag( 'collection', [ 'id' => $term->term_id ] );
 				if ( get_term_meta( $term->term_id, 'yfym_collection_url', true ) !== '' ) {
 					$yfym_collection_url = get_term_meta( $term->term_id, 'yfym_collection_url', true );
-					$collections_yml .= new Y4YM_Get_Paired_Tag( 'url', htmlspecialchars( $yfym_collection_url ) );
+					$collections_yml .= new Y4YM_Get_Paired_Tag( 'url', htmlspecialchars( $yfym_collection_url, ENT_QUOTES | ENT_XML1, 'UTF-8' ) );
 				}
 				if ( get_term_meta( $term->term_id, 'yfym_collection_picture', true ) !== '' ) {
 					$yfym_collection_picture = get_term_meta( $term->term_id, 'yfym_collection_picture', true );
-					$collections_yml .= new Y4YM_Get_Paired_Tag( 'picture', htmlspecialchars( $yfym_collection_picture ) );
+					$collections_yml .= new Y4YM_Get_Paired_Tag( 'picture', htmlspecialchars( $yfym_collection_picture, ENT_QUOTES | ENT_XML1, 'UTF-8' ) );
 				}
 				if ( get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true ) !== '' ) {
 					$collection_num_product_picture = (int) get_term_meta( $term->term_id, 'yfym_collection_num_product_picture', true );
@@ -1216,7 +1220,7 @@ class Y4YM_Generation_XML {
 							$thumb_url = wp_get_attachment_image_src( $thumb_id, 'full', true );
 							$collections_yml .= new Y4YM_Get_Paired_Tag(
 								'picture',
-								htmlspecialchars( $thumb_url[0] )
+								htmlspecialchars( $thumb_url[0], ENT_QUOTES | ENT_XML1, 'UTF-8' )
 							);
 						}
 						wp_reset_query();
@@ -1283,21 +1287,33 @@ class Y4YM_Generation_XML {
 	/**
 	 * Getting product IDs in an XML feed.
 	 * 
-	 * @param string $file_content
+	 * @param string $file_content Содержимое файла.
 	 * 
-	 * @return array
+	 * @return array Возвращает массив в котором ключи - это id товаров в БД WordPress, попавшие в фид.
 	 */
 	protected function get_ids_in_xml_arr( $file_content ) {
 
-		/**
-		 * $file_content - содержимое файла (Обязательный параметр)
-		 * Возвращает массив в котором ключи - это id товаров в БД WordPress, попавшие в фид
-		 */
+		if ( '' === trim( $file_content ) ) {
+			return [];
+		}
+
 		$res_arr = [];
 		$file_content_string_arr = explode( PHP_EOL, $file_content );
-		for ( $i = 0; $i < count( $file_content_string_arr ) - 1; $i++ ) {
-			$r_arr = explode( ';', $file_content_string_arr[ $i ] );
-			$res_arr[ $r_arr[0] ] = '';
+
+		// Проходим по всем строкам, включая последнюю (если она есть)
+		// Важно: explode может вернуть элементы с пустыми строками в конце
+		foreach ( $file_content_string_arr as $line ) {
+			$line = trim( $line );
+			if ( empty( $line ) ) {
+				continue; // Пропускаем пустые строки
+			}
+
+			$parts = explode( ';', $line );
+			$id = isset( $parts[0] ) ? trim( $parts[0] ) : '';
+
+			if ( ! empty( $id ) ) {
+				$res_arr[ (int) $id ] = ''; // Ключуем сразу как int
+			}
 		}
 		return $res_arr;
 
@@ -1399,9 +1415,43 @@ class Y4YM_Generation_XML {
 	/**
 	 * Перименовывает временный файл фида `/y4ym/feed{1}/{1}-feed-yml-0-tmp.xml` в основной.
 	 * 
+	 * @param string $callback `case_3` or `quick_generation`.
+	 * 
 	 * @return bool
 	 */
-	private function rename_feed_file() {
+	private function rename_feed_file( string $callback = 'case_3' ) {
+
+		Y4YM_Error_Log::record(
+			sprintf( 'FEED #%1$s; INFO: run Y4YM_Generation_XML->rename_feed_file(), callback = `%2$s`; %3$s: %4$s; %5$s: %6$s',
+				$this->get_feed_id(),
+				$callback,
+				__( 'File', 'yml-for-yandex-market' ),
+				'class-y4ym-generation-xml.php',
+				__( 'Line', 'yml-for-yandex-market' ),
+				__LINE__
+			)
+		);
+
+		// Блокировка от повторного переименования несколькими CRON-запусками.
+		$lock_key = 'y4ym_rename_lock_' . $this->get_feed_id();
+		if ( get_transient( $lock_key ) ) {
+			Y4YM_Error_Log::record(
+				sprintf(
+					'FEED #%1$s; INFO: %2$s (callback = `%3$s`); %4$s: %5$s; %6$s: %7$s',
+					$this->get_feed_id(),
+					__( 'Skip rename — lock is active, another task already processing', 'yml-for-yandex-market' ),
+					$callback,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
+			return true; // ? может лучше тут вернуть false
+		}
+
+		// Устанавливаем блокировку на 15 секунд — этого достаточно для переименования файла.
+		set_transient( $lock_key, '1', 15 );
 
 		if ( empty( $this->get_prefix_feed() ) ) {
 			$folder_index = '1';
@@ -1443,20 +1493,41 @@ class Y4YM_Generation_XML {
 		// Инициализация WP_Filesystem
 		if ( ! $this->init_filesystem() ) {
 			Y4YM_Error_Log::record(
-				sprintf( 'FEED #%1$s; ERROR: %2$s %3$s (WP_Filesystem initialization failed); %4$s: %5$s; %6$s: %7$s',
+				sprintf( 'FEED #%1$s; ERROR: %2$s %3$s (WP_Filesystem initialization failed), callback = `%4$s`; %5$s: %6$s; %7$s: %8$s',
 					$this->get_feed_id(),
 					__( "I can't initialize WP_Filesystem for renaming", "yml-for-yandex-market" ),
 					$feed_tmp_full_file_name,
+					$callback,
 					__( 'File', 'yml-for-yandex-market' ),
 					'class-y4ym-generation-xml.php',
 					__( 'Line', 'yml-for-yandex-market' ),
 					__LINE__
 				)
 			);
+			delete_transient( $lock_key );
 			return false;
 		}
 
 		global $wp_filesystem;
+
+		// Проверяем: если tmp-файла нет, то, возмоожно, другая CRON задача уже всё сделала. Выходим.
+		if ( ! $wp_filesystem->exists( $feed_tmp_full_file_name ) ) {
+			Y4YM_Error_Log::record(
+				sprintf(
+					'FEED #%1$s; INFO: %2$s (%3$s); callback = `%4$s`; %5$s: %6$s; %7$s: %8$s',
+					$this->get_feed_id(),
+					__( 'The temporary feed file no longer exists, skipping rename', 'yml-for-yandex-market' ),
+					__( 'the temporary file is likely already being processed by another task', 'yml-for-yandex-market' ),
+					$callback,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
+			delete_transient( $lock_key );
+			return true;
+		}
 
 		// Удаляем старый файл, если он существует
 		$feed_old_path = Y4YM_Options::settings_get(
@@ -1468,11 +1539,14 @@ class Y4YM_Generation_XML {
 		if ( ! empty( $feed_old_path ) && $wp_filesystem->exists( $feed_old_path ) ) {
 			// Удаляем старый файл фида $feed_old_path
 			if ( ! $wp_filesystem->delete( $feed_old_path ) ) {
+				$last_error = error_get_last();
 				Y4YM_Error_Log::record(
-					sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`; %4$s: %5$s; %6$s: %7$s',
+					sprintf( 'FEED #%1$s; ERROR: %2$s `%3$s`, last_error="%4$s", method = %5$s; %6$s: %7$s; %8$s: %9$s',
 						$this->get_feed_id(),
 						__( "Couldn't delete the old feed file", "yml-for-yandex-market" ),
 						$feed_old_path,
+						$last_error ? $last_error['message'] : 'no PHP error reported',
+						isset( $wp_filesystem->method ) ? $wp_filesystem->method : 'unknown',
 						__( 'File', 'yml-for-yandex-market' ),
 						'class-y4ym-generation-xml.php',
 						__( 'Line', 'yml-for-yandex-market' ),
@@ -1484,20 +1558,89 @@ class Y4YM_Generation_XML {
 
 		// Переименовываем файл
 		// $wp_filesystem->move( $from, $to ) — безопасная альтернатива rename()
-		if ( ! $wp_filesystem->move( $feed_tmp_full_file_name, $feed_new_path ) ) {
+		if ( ! $wp_filesystem->move( $feed_tmp_full_file_name, $feed_new_path, true ) ) {
+			$last_error = error_get_last();
 			Y4YM_Error_Log::record(
-				sprintf( 'FEED #%1$s; ERROR: %2$s %3$s %4$s %5$s; %6$s: %7$s; %8$s: %9$s',
+				sprintf(
+					'FEED #%1$s; ERROR: %2$s `%3$s` %4$s `%5$s`, last_error="%6$s", method = %7$s, callback = `%8$s`; %9$s: %10$s; %11$s: %12$s',
 					$this->get_feed_id(),
 					__( "I can't rename the feed file from", "yml-for-yandex-market" ),
 					$feed_tmp_full_file_name,
 					__( 'to', 'yml-for-yandex-market' ),
 					$feed_new_path,
+					$last_error ? $last_error['message'] : 'no PHP error reported',
+					isset( $wp_filesystem->method ) ? $wp_filesystem->method : 'unknown',
+					$callback,
 					__( 'File', 'yml-for-yandex-market' ),
 					'class-y4ym-generation-xml.php',
 					__( 'Line', 'yml-for-yandex-market' ),
 					__LINE__
 				)
 			);
+
+			// выведем в лог все разрешенные mime-типы
+			$allowed_mimes = get_allowed_mime_types();
+			$yml_present = isset( $allowed_mimes['yml'] ) ? 'YES (' . $allowed_mimes['yml'] . ')' : 'NO';
+			Y4YM_Error_Log::record(
+				sprintf(
+					'FEED #%1$s; MIME CHECK: yml=%2$s; all_mimes=%3$s; %4$s: %5$s; %6$s: %7$s',
+					$this->get_feed_id(),
+					$yml_present,
+					print_r( $allowed_mimes, true ),
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
+
+			// и список всех зарегистрированных колбэков на хуке, чтобы увидеть, кто и с каким приоритетом висит
+			global $wp_filter;
+			$mime_hooks_info = [];
+			if ( isset( $wp_filter['upload_mimes'] ) ) {
+				foreach ( $wp_filter['upload_mimes'] as $priority => $callbacks ) {
+					foreach ( $callbacks as $cb ) {
+						$call_back = $cb['callback']; // ! юзаем call_back, тк callback у нас есть в аргументах текущего метода
+
+						if ( is_array( $call_back ) ) {
+							// Метод класса: [ $object, 'method' ] или [ 'Class', 'method' ]
+							if ( is_object( $call_back[0] ) ) {
+								$name = get_class( $call_back[0] ) . '->' . $call_back[1];
+							} elseif ( is_string( $call_back[0] ) ) {
+								$name = $call_back[0] . '::' . $call_back[1];
+							} else {
+								$name = 'array callback (unknown)';
+							}
+						} elseif ( $call_back instanceof \Closure ) {
+							// Анонимная функция: попробуем получить имя файла и строку, если возможно
+							$ref = new \ReflectionFunction( $call_back );
+							$file = $ref->getFileName();
+							$line = $ref->getStartLine();
+							$name = sprintf( 'Closure (%s, line %d)', basename( $file ), $line );
+						} elseif ( is_string( $call_back ) || is_callable( $call_back ) ) {
+							// Обычная именованная функция
+							$name = (string) $call_back;
+						} else {
+							$name = 'unknown callback type';
+						}
+
+						$mime_hooks_info[] = "priority={$priority}: {$name}";
+					}
+				}
+			}
+			Y4YM_Error_Log::record(
+				sprintf(
+					'FEED #%1$s; UPLOAD_MIMES HOOKS: %2$s; %3$s: %4$s; %5$s: %6$s',
+					$this->get_feed_id(),
+					implode( '; ', $mime_hooks_info ),
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-generation-xml.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				)
+			);
+			// Удаляем блокировку при ошибке переименования.
+			delete_transient( $lock_key );
 			return false;
 		}
 
@@ -1518,17 +1661,21 @@ class Y4YM_Generation_XML {
 		);
 
 		Y4YM_Error_Log::record(
-			sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s); %5$s: %6$s; %7$s: %8$s',
+			sprintf( 'FEED #%1$s; SUCCESS: %2$s (path = %3$s; url = %4$s), callback = `%5$s`; %6$s: %6$s; %8$s: %9$s',
 				$this->get_feed_id(),
 				__( 'The temporary feed file has been successfully renamed to the main one', 'yml-for-yandex-market' ),
 				$feed_tmp_full_file_name,
 				$feed_new_url,
+				$callback,
 				__( 'File', 'yml-for-yandex-market' ),
 				'class-y4ym-generation-xml.php',
 				__( 'Line', 'yml-for-yandex-market' ),
 				__LINE__
 			)
 		);
+
+		// Удаляем блокировку после успешного переименования.
+		delete_transient( $lock_key );
 
 		return true;
 

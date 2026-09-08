@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-08-31 13:00+0300\n"
-"PO-Revision-Date: 2026-08-31 13:16+0300\n"
+"POT-Creation-Date: 2026-09-08 09:12+0300\n"
+"PO-Revision-Date: 2026-09-08 09:13+0300\n"
 "Last-Translator: \n"
 "Language-Team: Maxim Glazunov <djdiplomat477@gmail.com>\n"
 "Language: ru\n"
@@ -42,16 +42,12 @@ msgid "More features"
 msgstr "Больше функций"
 
 #: admin/class-y4ym-admin.php:473
-#, fuzzy
-#| msgid "The archiving was successful"
 msgid "API connection was successful"
-msgstr "Архивация прошла успешно"
+msgstr "Подключение к API прошло успешно"
 
 #: admin/class-y4ym-admin.php:481
-#, fuzzy
-#| msgid "Folder creation error"
 msgid "API connection error"
-msgstr "Ошибка создания папки"
+msgstr "Ошибка подключения к API"
 
 #: admin/class-y4ym-admin.php:542
 #: includes/wp-cli/class-y4ym-wp-cli-command.php:336
@@ -106,33 +102,38 @@ msgstr "во время создания нового фида"
 #: includes/cron/class-yfym-cron-manager.php:133
 #: includes/cron/class-yfym-cron-manager.php:176
 #: includes/feeds/class-y4ym-generation-xml.php:121
-#: includes/feeds/class-y4ym-generation-xml.php:165
-#: includes/feeds/class-y4ym-generation-xml.php:196
-#: includes/feeds/class-y4ym-generation-xml.php:228
-#: includes/feeds/class-y4ym-generation-xml.php:246
-#: includes/feeds/class-y4ym-generation-xml.php:270
-#: includes/feeds/class-y4ym-generation-xml.php:286
-#: includes/feeds/class-y4ym-generation-xml.php:309
-#: includes/feeds/class-y4ym-generation-xml.php:324
-#: includes/feeds/class-y4ym-generation-xml.php:365
-#: includes/feeds/class-y4ym-generation-xml.php:395
-#: includes/feeds/class-y4ym-generation-xml.php:407
-#: includes/feeds/class-y4ym-generation-xml.php:433
-#: includes/feeds/class-y4ym-generation-xml.php:512
-#: includes/feeds/class-y4ym-generation-xml.php:537
-#: includes/feeds/class-y4ym-generation-xml.php:562
-#: includes/feeds/class-y4ym-generation-xml.php:585
-#: includes/feeds/class-y4ym-generation-xml.php:959
+#: includes/feeds/class-y4ym-generation-xml.php:166
+#: includes/feeds/class-y4ym-generation-xml.php:197
+#: includes/feeds/class-y4ym-generation-xml.php:229
+#: includes/feeds/class-y4ym-generation-xml.php:247
+#: includes/feeds/class-y4ym-generation-xml.php:271
+#: includes/feeds/class-y4ym-generation-xml.php:287
+#: includes/feeds/class-y4ym-generation-xml.php:310
+#: includes/feeds/class-y4ym-generation-xml.php:325
+#: includes/feeds/class-y4ym-generation-xml.php:366
+#: includes/feeds/class-y4ym-generation-xml.php:392
+#: includes/feeds/class-y4ym-generation-xml.php:404
+#: includes/feeds/class-y4ym-generation-xml.php:430
+#: includes/feeds/class-y4ym-generation-xml.php:509
+#: includes/feeds/class-y4ym-generation-xml.php:534
+#: includes/feeds/class-y4ym-generation-xml.php:559
+#: includes/feeds/class-y4ym-generation-xml.php:582
+#: includes/feeds/class-y4ym-generation-xml.php:956
 #: includes/feeds/class-y4ym-generation-xml.php:982
 #: includes/feeds/class-y4ym-generation-xml.php:1057
 #: includes/feeds/class-y4ym-generation-xml.php:1071
 #: includes/feeds/class-y4ym-generation-xml.php:1102
-#: includes/feeds/class-y4ym-generation-xml.php:1456
-#: includes/feeds/class-y4ym-generation-xml.php:1482
-#: includes/feeds/class-y4ym-generation-xml.php:1501
-#: includes/feeds/class-y4ym-generation-xml.php:1532
-#: includes/feeds/class-y4ym-generation-xml.php:1589
-#: includes/feeds/class-y4ym-generation-xml.php:1613
+#: includes/feeds/class-y4ym-generation-xml.php:1430
+#: includes/feeds/class-y4ym-generation-xml.php:1446
+#: includes/feeds/class-y4ym-generation-xml.php:1503
+#: includes/feeds/class-y4ym-generation-xml.php:1524
+#: includes/feeds/class-y4ym-generation-xml.php:1552
+#: includes/feeds/class-y4ym-generation-xml.php:1576
+#: includes/feeds/class-y4ym-generation-xml.php:1592
+#: includes/feeds/class-y4ym-generation-xml.php:1638
+#: includes/feeds/class-y4ym-generation-xml.php:1672
+#: includes/feeds/class-y4ym-generation-xml.php:1732
+#: includes/feeds/class-y4ym-generation-xml.php:1756
 #: includes/feeds/class-y4ym-get-unit.php:124
 #: includes/feeds/class-y4ym-get-unit.php:142
 #: includes/feeds/class-y4ym-get-unit.php:212
@@ -155,32 +156,37 @@ msgstr "Строка"
 #: includes/cron/class-yfym-cron-manager.php:174
 #: includes/cron/class-yfym-cron-manager.php:204
 #: includes/feeds/class-y4ym-generation-xml.php:119
-#: includes/feeds/class-y4ym-generation-xml.php:163
-#: includes/feeds/class-y4ym-generation-xml.php:194
-#: includes/feeds/class-y4ym-generation-xml.php:226
-#: includes/feeds/class-y4ym-generation-xml.php:244
-#: includes/feeds/class-y4ym-generation-xml.php:268
-#: includes/feeds/class-y4ym-generation-xml.php:284
-#: includes/feeds/class-y4ym-generation-xml.php:307
-#: includes/feeds/class-y4ym-generation-xml.php:322
-#: includes/feeds/class-y4ym-generation-xml.php:363
-#: includes/feeds/class-y4ym-generation-xml.php:393
-#: includes/feeds/class-y4ym-generation-xml.php:405
-#: includes/feeds/class-y4ym-generation-xml.php:431
-#: includes/feeds/class-y4ym-generation-xml.php:510
-#: includes/feeds/class-y4ym-generation-xml.php:535
-#: includes/feeds/class-y4ym-generation-xml.php:560
-#: includes/feeds/class-y4ym-generation-xml.php:583
-#: includes/feeds/class-y4ym-generation-xml.php:957
+#: includes/feeds/class-y4ym-generation-xml.php:164
+#: includes/feeds/class-y4ym-generation-xml.php:195
+#: includes/feeds/class-y4ym-generation-xml.php:227
+#: includes/feeds/class-y4ym-generation-xml.php:245
+#: includes/feeds/class-y4ym-generation-xml.php:269
+#: includes/feeds/class-y4ym-generation-xml.php:285
+#: includes/feeds/class-y4ym-generation-xml.php:308
+#: includes/feeds/class-y4ym-generation-xml.php:323
+#: includes/feeds/class-y4ym-generation-xml.php:364
+#: includes/feeds/class-y4ym-generation-xml.php:390
+#: includes/feeds/class-y4ym-generation-xml.php:402
+#: includes/feeds/class-y4ym-generation-xml.php:428
+#: includes/feeds/class-y4ym-generation-xml.php:507
+#: includes/feeds/class-y4ym-generation-xml.php:532
+#: includes/feeds/class-y4ym-generation-xml.php:557
+#: includes/feeds/class-y4ym-generation-xml.php:580
+#: includes/feeds/class-y4ym-generation-xml.php:954
 #: includes/feeds/class-y4ym-generation-xml.php:980
 #: includes/feeds/class-y4ym-generation-xml.php:1069
 #: includes/feeds/class-y4ym-generation-xml.php:1100
-#: includes/feeds/class-y4ym-generation-xml.php:1454
-#: includes/feeds/class-y4ym-generation-xml.php:1480
-#: includes/feeds/class-y4ym-generation-xml.php:1499
-#: includes/feeds/class-y4ym-generation-xml.php:1530
-#: includes/feeds/class-y4ym-generation-xml.php:1587
-#: includes/feeds/class-y4ym-generation-xml.php:1611
+#: includes/feeds/class-y4ym-generation-xml.php:1428
+#: includes/feeds/class-y4ym-generation-xml.php:1444
+#: includes/feeds/class-y4ym-generation-xml.php:1501
+#: includes/feeds/class-y4ym-generation-xml.php:1522
+#: includes/feeds/class-y4ym-generation-xml.php:1550
+#: includes/feeds/class-y4ym-generation-xml.php:1574
+#: includes/feeds/class-y4ym-generation-xml.php:1590
+#: includes/feeds/class-y4ym-generation-xml.php:1636
+#: includes/feeds/class-y4ym-generation-xml.php:1670
+#: includes/feeds/class-y4ym-generation-xml.php:1730
+#: includes/feeds/class-y4ym-generation-xml.php:1754
 #: includes/feeds/class-y4ym-get-unit.php:122
 #: includes/feeds/class-y4ym-get-unit.php:140
 #: includes/feeds/class-y4ym-get-unit.php:210
@@ -189,16 +195,14 @@ msgstr "Строка"
 #: includes/feeds/class-yfym-feed-updater.php:65
 #: includes/feeds/class-yfym-feed-updater.php:110
 #: includes/feeds/class-yfym-feed-updater.php:174
-#: includes/feeds/import/class-y4ym-api.php:229
-#: includes/feeds/import/class-y4ym-api.php:231
-#: includes/feeds/import/class-y4ym-api.php:321
-#: includes/feeds/import/class-y4ym-api.php:323
-#: includes/feeds/import/class-y4ym-api.php:397
-#: includes/feeds/import/class-y4ym-api.php:399
-#: includes/feeds/import/class-y4ym-api.php:503
-#: includes/feeds/import/class-y4ym-api.php:505
-#: includes/feeds/import/class-y4ym-api.php:560
-#: includes/feeds/import/class-y4ym-api.php:562
+#: includes/feeds/import/class-y4ym-api.php:364
+#: includes/feeds/import/class-y4ym-api.php:366
+#: includes/feeds/import/class-y4ym-api.php:442
+#: includes/feeds/import/class-y4ym-api.php:444
+#: includes/feeds/import/class-y4ym-api.php:548
+#: includes/feeds/import/class-y4ym-api.php:550
+#: includes/feeds/import/class-y4ym-api.php:605
+#: includes/feeds/import/class-y4ym-api.php:607
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:200
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:218
 #: includes/updates/class-y4ym-plugin-upd.php:589
@@ -747,23 +751,23 @@ msgstr "Вы всегда можете отобразить их в шаблон
 msgid "Settings"
 msgstr "Настройки"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:98
+#: admin/partials/debug-page/class-y4ym-debug-page.php:99
 msgid "Everything is normal"
 msgstr "Всё в норме"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:151
+#: admin/partials/debug-page/class-y4ym-debug-page.php:152
 msgid "Debug settings"
 msgstr "Параметры отладки"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:154
+#: admin/partials/debug-page/class-y4ym-debug-page.php:155
 msgid "Request simulation"
 msgstr "Симуляция запроса"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:157
+#: admin/partials/debug-page/class-y4ym-debug-page.php:158
 msgid "Sandbox"
 msgstr "Песочница"
 
-#: admin/partials/debug-page/class-y4ym-debug-page.php:160
+#: admin/partials/debug-page/class-y4ym-debug-page.php:161
 msgid "Premium"
 msgstr "Премиум"
 
@@ -1123,10 +1127,8 @@ msgid "elements between"
 msgstr "элементы между"
 
 #: admin/partials/settings-page/class-y4ym-settigs-page.php:149
-#, fuzzy
-#| msgid "Yandex Market"
 msgid "Yandex Market API"
-msgstr "Яндекс Маркет"
+msgstr "Яндекс Маркет API"
 
 #: admin/partials/settings-page/class-y4ym-settigs-page.php:152
 msgid "Filtration"
@@ -1149,10 +1151,8 @@ msgid "Create feed"
 msgstr "Создать фид"
 
 #: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:24
-#, fuzzy
-#| msgid "For more information about creating a feed, see"
 msgid "Important information about integration with Yandex Market"
-msgstr "Дополнительные сведения о создании фида смотрите"
+msgstr "Важная информация об интеграции с Яндекс Маркетом"
 
 #: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:27
 msgid ""
@@ -1162,7 +1162,7 @@ msgid ""
 msgstr ""
 "С июля 2026 года Яндекс Маркет перестал поддерживать обновление цен и "
 "товарных остатков через YML-фиды. Если вы продолжите использовать этот "
-"метод, данные перестанут синхронизироваться."
+"метод, данные перестанут синхронизироваться"
 
 #: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:33
 msgid ""
@@ -1226,7 +1226,7 @@ msgstr "Введены данные для подключения к API"
 
 #: admin/partials/settings-page/views/html-admin-settings-feed-tab-api.php:83
 msgid "Now you can check its operation by clicking on this button"
-msgstr ""
+msgstr "Теперь вы можете проверить его работу, нажав на эту кнопку"
 
 #: function.php:91
 msgid "Categories"
@@ -1609,7 +1609,7 @@ msgid "More than 500 can only be installed on powerful servers"
 msgstr "Более 500 можно устанавливать только на мощных серверах"
 
 #: includes/core/default-data.php:545
-#: includes/feeds/class-y4ym-generation-xml.php:389
+#: includes/feeds/class-y4ym-generation-xml.php:386
 msgid "The maximum script execution time"
 msgstr "Максимальное время выполнения скрипта"
 
@@ -1626,7 +1626,7 @@ msgstr ""
 "параметр на"
 
 #: includes/core/default-data.php:556
-#: includes/feeds/class-y4ym-generation-xml.php:392
+#: includes/feeds/class-y4ym-generation-xml.php:389
 msgid "points"
 msgstr "пунктов"
 
@@ -2553,8 +2553,8 @@ msgid "The CRON task for creating a feed has started"
 msgstr "Запущена CRON задача для создания фида"
 
 #: includes/cron/class-yfym-cron-manager.php:120
-#: includes/feeds/class-y4ym-generation-xml.php:282
-#: includes/feeds/class-y4ym-generation-xml.php:320
+#: includes/feeds/class-y4ym-generation-xml.php:283
+#: includes/feeds/class-y4ym-generation-xml.php:321
 msgid "Failed to schedule a CRON task"
 msgstr "Не удалось запланировать CRON задачу"
 
@@ -2623,75 +2623,75 @@ msgstr "Отправить данные"
 msgid "An error occurred when writing the temporary feed file"
 msgstr "При записи временного файла фида произошла ошибка"
 
-#: includes/feeds/class-y4ym-generation-xml.php:162
+#: includes/feeds/class-y4ym-generation-xml.php:163
 msgid "Just in case, we disable the CRON task"
 msgstr "На всякий случай мы отключаем CRON задачу"
 
-#: includes/feeds/class-y4ym-generation-xml.php:192
+#: includes/feeds/class-y4ym-generation-xml.php:193
 msgid "We started creating a feed"
 msgstr "Мы начали создавать фид"
 
-#: includes/feeds/class-y4ym-generation-xml.php:223
-#: includes/feeds/class-y4ym-generation-xml.php:265
+#: includes/feeds/class-y4ym-generation-xml.php:224
+#: includes/feeds/class-y4ym-generation-xml.php:266
 msgid "An error occurred while creating an empty temporary feed file"
 msgstr "Произошла ошибка при создании пустого временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:225
-#: includes/feeds/class-y4ym-generation-xml.php:243
-#: includes/feeds/class-y4ym-generation-xml.php:267
-#: includes/feeds/class-y4ym-generation-xml.php:559
+#: includes/feeds/class-y4ym-generation-xml.php:226
+#: includes/feeds/class-y4ym-generation-xml.php:244
+#: includes/feeds/class-y4ym-generation-xml.php:268
+#: includes/feeds/class-y4ym-generation-xml.php:556
 msgid "The creation of the feed has been stopped"
 msgstr "Создание фида было остановлено"
 
-#: includes/feeds/class-y4ym-generation-xml.php:241
+#: includes/feeds/class-y4ym-generation-xml.php:242
 msgid "An error occurred while creating a temporary feed file"
 msgstr "Произошла ошибка при создании временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:283
-#: includes/feeds/class-y4ym-generation-xml.php:321
+#: includes/feeds/class-y4ym-generation-xml.php:284
+#: includes/feeds/class-y4ym-generation-xml.php:322
 msgid "on step"
 msgstr "на шаге"
 
-#: includes/feeds/class-y4ym-generation-xml.php:304
-#: includes/feeds/class-y4ym-generation-xml.php:532
+#: includes/feeds/class-y4ym-generation-xml.php:305
+#: includes/feeds/class-y4ym-generation-xml.php:529
 msgid "We continue to create the feed"
 msgstr "Мы продолжаем создание фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:352
+#: includes/feeds/class-y4ym-generation-xml.php:353
 msgid "Sending a request to the database"
 msgstr "Отправка запроса к базе данных"
 
-#: includes/feeds/class-y4ym-generation-xml.php:361
-#: includes/feeds/class-y4ym-generation-xml.php:382
+#: includes/feeds/class-y4ym-generation-xml.php:362
+#: includes/feeds/class-y4ym-generation-xml.php:379
 msgid "The query time to the database was"
 msgstr "Время запроса к базе данных составило"
 
-#: includes/feeds/class-y4ym-generation-xml.php:386
+#: includes/feeds/class-y4ym-generation-xml.php:383
 msgid "If you experience freezes when creating the feed, try increasing the"
 msgstr "Если при создании фида возникают зависания, попробуйте увеличить"
 
-#: includes/feeds/class-y4ym-generation-xml.php:390
+#: includes/feeds/class-y4ym-generation-xml.php:387
 msgid "parameter to"
 msgstr "параметр до"
 
-#: includes/feeds/class-y4ym-generation-xml.php:403
-#: includes/feeds/class-y4ym-generation-xml.php:509
+#: includes/feeds/class-y4ym-generation-xml.php:400
+#: includes/feeds/class-y4ym-generation-xml.php:506
 msgid "The number of records returned by the server"
 msgstr "Количество записей, возвращенных сервером"
 
-#: includes/feeds/class-y4ym-generation-xml.php:429
+#: includes/feeds/class-y4ym-generation-xml.php:426
 msgid "Getting started with the product"
 msgstr "Начало работы с товаром"
 
-#: includes/feeds/class-y4ym-generation-xml.php:558
+#: includes/feeds/class-y4ym-generation-xml.php:555
 msgid "In this step, an error occurred while creating a temporary feed file"
 msgstr "На этом шаге произошла ошибка при создании временного файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:581
+#: includes/feeds/class-y4ym-generation-xml.php:578
 msgid "Checking whether the feed needs to be archived"
 msgstr "Проверка необходимости архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:955
+#: includes/feeds/class-y4ym-generation-xml.php:952
 msgid ""
 "The list of product IDs in the feed is empty or the temporary file has been "
 "deleted"
@@ -2714,31 +2714,44 @@ msgstr "Колонка"
 msgid "Data loss when writing a feed file"
 msgstr "Потеря данных при записи файла фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1452
+#: includes/feeds/class-y4ym-generation-xml.php:1442
+msgid "Skip rename — lock is active, another task already processing"
+msgstr ""
+"Пропускаем переименование — активна блокировка, выполняется другая задача"
+
+#: includes/feeds/class-y4ym-generation-xml.php:1498
 msgid "I can't initialize WP_Filesystem for renaming"
 msgstr "Я не могу инициализировать WP_Filesystem для переименования"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1478
+#: includes/feeds/class-y4ym-generation-xml.php:1519
+msgid "The temporary feed file no longer exists, skipping rename"
+msgstr "Временный файл фида не существует, переименование пропущено"
+
+#: includes/feeds/class-y4ym-generation-xml.php:1520
+msgid "the temporary file is likely already being processed by another task"
+msgstr "вероятно, временный файл уже обрабатывается другой задачей"
+
+#: includes/feeds/class-y4ym-generation-xml.php:1546
 msgid "Couldn't delete the old feed file"
 msgstr "Я не могу удалить старый файл фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1495
+#: includes/feeds/class-y4ym-generation-xml.php:1567
 msgid "I can't rename the feed file from"
 msgstr "Я не могу переименовать файл фида из"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1497
+#: includes/feeds/class-y4ym-generation-xml.php:1569
 msgid "to"
 msgstr "в"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1527
+#: includes/feeds/class-y4ym-generation-xml.php:1666
 msgid "The temporary feed file has been successfully renamed to the main one"
 msgstr "Временный файл фида был успешно переименован в основной"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1586
+#: includes/feeds/class-y4ym-generation-xml.php:1729
 msgid "Starting archiving the feed"
 msgstr "Начинаю архивирования фида"
 
-#: includes/feeds/class-y4ym-generation-xml.php:1610
+#: includes/feeds/class-y4ym-generation-xml.php:1753
 msgid "The archiving was successful"
 msgstr "Архивация прошла успешно"
 
@@ -2794,6 +2807,18 @@ msgid ""
 msgstr ""
 "После изменения остатков товара задача по созданию фида была поставлена в "
 "очередь на выполнение"
+
+#: includes/feeds/import/class-y4ym-api.php:238
+msgid "Error retrieving the list of store"
+msgstr "Ошибка получения списка магазинов"
+
+#: includes/feeds/import/class-y4ym-api.php:361
+msgid "Error in setting product prices"
+msgstr "Ошибка при установке цен на товары"
+
+#: includes/feeds/import/class-y4ym-api.php:439
+msgid "Error updating product stocks"
+msgstr "Ошибка обновления остатков товара"
 
 #: includes/feeds/traits/common/trait-y4ym-t-common-get-catid.php:122
 msgid "The product has no categories"

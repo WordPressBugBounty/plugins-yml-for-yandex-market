@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Handles custom MIME type registrations for the plugin.
  *
  * @link       https://icopydoc.ru
  * @since      5.2.0
- * @version    5.2.0 (03-02-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/wordpress
@@ -19,6 +19,7 @@
  * It ensures that these file types can be safely uploaded through the media library
  * or other upload interfaces within WordPress.
  *
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/includes/wordpress
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -31,12 +32,12 @@ class Y4YM_Mime_Types {
 	 * This method must be called once during plugin bootstrap to enable support
 	 * for uploading `.xml`, `.csv`, and `.yml` files via the WordPress media library.
 	 *
-	 * @since    5.2.0
+	 * @since 5.2.0
 	 * 
-	 * @return   void
+	 * @return void
 	 */
 	public function init() {
-		add_filter( 'upload_mimes', [ $this, 'add_mime_types' ] );
+		add_filter( 'upload_mimes', [ $this, 'add_mime_types' ], 10000000 );
 	}
 
 	/**
@@ -44,11 +45,11 @@ class Y4YM_Mime_Types {
 	 * 
 	 * Function for `upload_mimes` action-hook.
 	 * 
-	 * @param    array    $mimes
+	 * @param array $mimes
 	 * 
-	 * @return   array
+	 * @return array
 	 */
-	public function add_mime_types( $mimes ) {
+	public function add_mime_types( array $mimes ) {
 
 		$mimes['csv'] = 'text/csv';
 		$mimes['xml'] = 'text/xml';

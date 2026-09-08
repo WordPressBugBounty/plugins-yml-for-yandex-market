@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -465,7 +465,8 @@ class Y4YM_Admin {
 
 		// проверка API
 		if ( isset( $_REQUEST['y4ym_check_action'] ) ) {
-			$obj = new Y4YM_Api();
+			$feed_id = isset( $_GET['feed_id'] ) ? (string) sanitize_text_field( $_GET['feed_id'] ) : '1';
+			$obj = new Y4YM_Api( [ 'feed_id' => $feed_id ] );
 			$result = $obj->get_campaigns();
 			if ( true === $result['status'] ) {
 				$class = 'success';

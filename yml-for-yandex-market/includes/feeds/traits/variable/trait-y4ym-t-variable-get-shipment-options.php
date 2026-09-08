@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
-/** 
+/**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.0.0 (25-03-2025)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
@@ -36,7 +36,6 @@ trait Y4YM_T_Variable_Get_Shipment_Options {
 	 * 
 	 * @param string $tag_name
 	 * @param string $result_xml
-	 * @param string $depricated
 	 * 
 	 * @return string Example: `<shipment-options>...</shipment-options>`.
 	 */
@@ -59,7 +58,7 @@ trait Y4YM_T_Variable_Get_Shipment_Options {
 		$result_xml = apply_filters(
 			'y4ym_f_variable_tag_shipment_options',
 			$result_xml,
-			[ 
+			[
 				'product' => $this->get_product(),
 				'offer' => $this->get_offer()
 			],

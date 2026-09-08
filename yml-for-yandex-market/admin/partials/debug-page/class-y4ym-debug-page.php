@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * The class return the Debug page of the plugin YML for Yandex Market.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -13,7 +13,8 @@
 
 /**
  * The class return the Debug page of the plugin YML for Yandex Market.
- *
+ * 
+ * @since      0.1.0
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page
  * @author     Maxim Glazunov <icopydoc@gmail.com>
@@ -77,13 +78,13 @@ class Y4YM_Debug_Page {
 		// симуляция запроса
 		if ( isset( $_REQUEST['y4ym_submit_action_simulation'] ) ) {
 			if ( ! empty( $_POST ) && check_admin_referer( 'y4ym_nonce_action', 'y4ym_nonce_field' ) ) {
-				$simulated_post_id = sanitize_text_field( $_POST['y4ym_simulated_post_id'] );
-				$simulated_feed_id = sanitize_text_field( $_POST['y4ym_feed_id'] );
-				$add_headers_footer = sanitize_text_field( $_POST['y4ym_add_headers_footer'] );
+				$simulated_post_id = isset( $_POST['y4ym_simulated_post_id'] ) ? sanitize_text_field( wp_unslash( $_POST['y4ym_simulated_post_id'] ) ) : '';
+				$simulated_feed_id = isset( $_POST['y4ym_feed_id'] ) ? sanitize_text_field( wp_unslash( $_POST['y4ym_feed_id'] ) ) : '';
+				$add_headers_footer = isset( $_POST['y4ym_add_headers_footer'] ) ? sanitize_text_field( wp_unslash( $_POST['y4ym_add_headers_footer'] ) ) : '';
 				$simulated_unit_obj = new Y4YM_Get_Unit( $simulated_post_id, $simulated_feed_id );
-				echo '<pre>';
-				var_dump( $simulated_unit_obj->get_result_api_products_stocks() );
-				echo '</pre>';
+				// echo '<pre>';
+				// var_dump( $simulated_unit_obj->get_result_api_products_stocks() );
+				// echo '</pre>';
 				$this->simulation_post_id = $simulated_post_id;
 				$this->simulation_feed_id = $simulated_feed_id;
 				if ( $add_headers_footer === 'enabled' ) {

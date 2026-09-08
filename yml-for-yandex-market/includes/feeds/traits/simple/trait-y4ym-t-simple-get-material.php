@@ -1,11 +1,11 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
 
 /**
  * Trait for simple products.
  *
  * @link       https://icopydoc.ru
  * @since      5.8.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/simple
@@ -49,6 +49,9 @@ trait Y4YM_T_Simple_Get_Material {
 			return $result_xml;
 		} else {
 			$tag_value = $this->get_simple_global_attribute_value( $material );
+			if ( is_string( $tag_value ) && mb_strlen( $tag_value, 'UTF-8' ) > 255 ) {
+				$tag_value = mb_substr( $tag_value, 0, 255, 'UTF-8' );
+			}
 			$result_xml = $this->get_simple_tag( $tag_name, $tag_value );
 		}
 		return $result_xml;

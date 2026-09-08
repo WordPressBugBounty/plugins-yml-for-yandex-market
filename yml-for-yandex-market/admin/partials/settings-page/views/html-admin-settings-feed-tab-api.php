@@ -3,7 +3,7 @@
 /**
  * The Instruction tab.
  * 
- * @version    5.8.0 (31-08-2026)
+ * @version    5.8.1 (08-09-2026)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/settings_page/views
  * 
@@ -35,7 +35,7 @@ $html_td = '';
 			),
 			'//icopydoc.ru/kak-peredavat-ostatki-i-tseny-v-yandeks-market-posle-iyulya-2026-goda-instruktsiya-po-nastrojke-api-v-plagine-y4ym',
 			'utm_source=yml-for-yandex-market&utm_medium=documentation&utm_campaign=basic-version&utm_content=settings-page&utm_term=api-tab',
-			__( 'Learn more about how it works', 'yml-for-yandex-market' )
+			esc_html__( 'Learn more about how it works', 'yml-for-yandex-market' )
 		); ?>.</p>
 		<p><?php esc_html_e(
 			'An alternative option is to use the Import Products to Yandex plugin: it allows you to integrate with the Market entirely via API, without working with feeds',

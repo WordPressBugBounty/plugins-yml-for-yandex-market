@@ -1,11 +1,11 @@
-<?php // TODO: устарел или нет
+<?php defined( 'WPINC' ) || exit; // TODO: устарел или нет
 
 /**
  * Trait for variable products.
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.4.0 (16-04-2026)
+ * @version    5.8.1 (08-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds/traits/variable
