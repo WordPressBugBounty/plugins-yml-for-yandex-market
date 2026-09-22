@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.9.0 (22-09-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -1423,6 +1423,30 @@ $data_arr = [
 		]
 	],
 	[
+		'opt_name' => 'y4ym_certificate',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'label' => __( 'Certificate', 'yml-for-yandex-market' ),
+			'desc' => sprintf( '%s<br/>
+				<strong>%s<strong>: %s <code>_yfym_certificate</code>.<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'certificate'
+		]
+	],
+	[
 		'opt_name' => 'y4ym_tn_ved_codes',
 		'def_val' => 'disabled',
 		'mark' => 'public',
@@ -1430,7 +1454,14 @@ $data_arr = [
 		'tab' => 'offer_data_tab',
 		'data' => [
 			'label' => 'Код ТН ВЭД',
-			'desc' => '',
+			'desc' => sprintf( '[tn-ved-codes] - %s<br/>
+				<strong>%s<strong>: %s<br/>
+				<code>_yfym_tn_ved_code</code> - ТН ВЭД<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
 			'woo_attr' => false,
 			'default_value' => false,
 			'key_value_arr' => [
@@ -1449,7 +1480,14 @@ $data_arr = [
 		'tab' => 'offer_data_tab',
 		'data' => [
 			'label' => 'Код ОКПД2',
-			'desc' => '',
+			'desc' => sprintf( '[okpd2] - %s<br/>
+				<strong>%s<strong>: %s<br/>
+				<code>_yfym_okpd2</code> - ОКПД2<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
 			'woo_attr' => false,
 			'default_value' => false,
 			'key_value_arr' => [
@@ -1457,6 +1495,110 @@ $data_arr = [
 				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
 			],
 			'tag_name' => 'okpd2'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_ctru_code',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'label' => 'Код КТРУ',
+			'desc' => sprintf( '[ctru_code] - %s<br/>
+				<strong>%s<strong>: %s<br/>
+				<code>_yfym_ctru_code</code> - КТРУ<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'ctru_code'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_compliance_document_type',
+		'def_val' => 'disabled',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => true,
+			'table_location' => 'th-td',
+			'label' => __( 'Compliance document', 'yml-for-yandex-market' ),
+			'desc' => sprintf( '%s<br/>
+				<strong>%s<strong>: %s<br/>
+				<code>_yfym_compliance_document_type</code> - %s.<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'Compliance document', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
+				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'compliance_document_type'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_compliance_document_type_default_value',
+		'def_val' => '4',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => false,
+			'table_location' => 'td-td',
+			'label' => sprintf( '%s (%s)',
+				__( 'Compliance document', 'yml-for-yandex-market' ),
+				__( 'Default value', 'yml-for-yandex-market' ),
+			),
+			'desc' => sprintf( '%s<br/>
+				<strong>%s</strong>: %s<br/>
+				<code>_yfym_compliance_document_type</code> - %s.<br/>%s',
+				__( 'The values are set on the product settings page', 'yml-for-yandex-market' ),
+				__( 'Information for developers', 'yml-for-yandex-market' ),
+				__( 'the plugin stores data in meta fields', 'yml-for-yandex-market' ),
+				__( 'Compliance document', 'yml-for-yandex-market' ),
+				__( 'This information may be useful, for example, when synchronizing with 1C', 'yml-for-yandex-market' )
+			),
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[ 'value' => '4', 'text' => __( 'The product is not subject to conformity assessment', 'yml-for-yandex-market' ) ],
+				[ 'value' => '1', 'text' => __( 'Declaration of compliance', 'yml-for-yandex-market' ) ],
+				[ 'value' => '2', 'text' => __( 'Certificate of compliance', 'yml-for-yandex-market' ) ],
+				[ 'value' => '3', 'text' => __( 'Certificate of state registration', 'yml-for-yandex-market' ) ]
+			],
+			'tag_name' => 'compliance_document_type'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_compliance_document_link_default_value',
+		'def_val' => '',
+		'mark' => 'public',
+		'type' => 'text',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => false,
+			'table_location' => 'th-td',
+			'label' => sprintf( '%s (%s)',
+				__( 'Compliance document link', 'yml-for-yandex-market' ),
+				__( 'Default value', 'yml-for-yandex-market' ),
+			),
+			'desc' => __( 'Default value', 'yml-for-yandex-market' ),
+			'placeholder' => __( 'Default value', 'yml-for-yandex-market' ),
+			'tag_name' => 'compliance_document_type'
 		]
 	],
 	[
@@ -2490,27 +2632,6 @@ $data_arr = [
 			],
 			'tag_name' => 'comment_validity_days',
 			'tag_name_for_desc' => 'comment-validity-days'
-		]
-	],
-	[
-		'opt_name' => 'y4ym_certificate',
-		'def_val' => 'disabled',
-		'mark' => 'public',
-		'type' => 'select',
-		'tab' => 'offer_data_tab',
-		'data' => [
-			'label' => __( 'Certificate', 'yml-for-yandex-market' ),
-			'desc' => __(
-				'The value of this option is set on the product edit page',
-				'yml-for-yandex-market'
-			),
-			'woo_attr' => true,
-			'default_value' => false,
-			'key_value_arr' => [
-				[ 'value' => 'disabled', 'text' => __( 'Disabled', 'yml-for-yandex-market' ) ],
-				[ 'value' => 'enabled', 'text' => __( 'Enabled', 'yml-for-yandex-market' ) ]
-			],
-			'tag_name' => 'certificate'
 		]
 	],
 	[

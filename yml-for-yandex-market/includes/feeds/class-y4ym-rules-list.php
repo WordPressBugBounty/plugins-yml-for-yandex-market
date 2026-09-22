@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.9.0 (22-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -47,7 +47,8 @@ class Y4YM_Rules_List {
 					'count', 'amount', 'barcode', 'weight', 'dimensions', 'expiry', 'age', 'video',
 					'downloadable', 'sales_notes', 'country_of_origin', 'manufacturer_warranty', 'warranty_days',
 					'vendor', 'vendorcode', 'store', 'pickup', 'delivery', 'categoryid', 'vat', 'delivery_options',
-					'pickup_options', 'condition', 'additional_expenses'
+					'pickup_options', 'condition', 'additional_expenses',
+					'certificate', 'tn_ved_codes', 'okpd2' // ? есть ли подержка 'certificate', 'tn_ved_codes', 'okpd2'
 				],
 				'sales_terms' => [
 					// яндекс маркет для управления размещением
@@ -76,8 +77,8 @@ class Y4YM_Rules_List {
 				'single_catalog' => [ 'currencyid',  // ! shop_sku устаре, 'price',
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'params', 'name', 'description',
 					'picture', 'url', 'count', 'barcode', 'weight', 'dimensions', 'expiry', 'period_of_validity_days',
-					'age', 'downloadable', 'country_of_origin', 'manufacturer', 'market_sku', 'tn_ved_codes',
-					/*'recommend_stock_data',*/ 'manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
+					'age', 'downloadable', 'country_of_origin', 'manufacturer', 'market_sku', 'ctru_code', 'tn_ved_codes',
+					'okpd2','manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
 					'vendorcode', 'store', 'pickup', 'delivery', 'categoryid', 'vat', 'delivery_options',
 					'pickup_options', 'condition', 'credit_template', 'supplier', 'min_quantity', 'step_quantity',
 					'additional_expenses'
@@ -106,7 +107,7 @@ class Y4YM_Rules_List {
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'disabled', 'archived', 'barcode', 'categoryid', 'condition', 'credit_template', 'delivery_options',
 					'delivery', 'pickup_options', 'description', 'dimensions', /* 'instock', */ 'keywords', 'manufacturer',
 					'market_sku', 'min_quantity', 'model', 'name', 'params', 'period_of_validity_days',
-					'picture', /*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'tn_ved_codes',
+					'picture', /*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'ctru_code', 'tn_ved_codes',
 					'url', 'cargo_types', 'vendor', 'vendorcode', 'weight'
 				],
 				'yandex_market_api' => [
@@ -144,9 +145,11 @@ class Y4YM_Rules_List {
 					'tn_ved_codes', 'okpd2', 'barcode'
 				],
 				'flowwow' => [  // https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit#heading=h.gjdgx
+					// https://seller-docs.flowwow.com/2.-upravlenie-tovarami/2.11-import-yml-1/trebovaniya-k-yml-i-xml-failam
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'minorder', 'picture', 'store', 'pickup',
 					'delivery', 'name', 'vendor', 'vendorcode', 'material', 'description', 'sales_notes', 'delivery_options',
-					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'param_composition', 'consists'
+					'pickup_options', 'qty', 'params', 'weight', 'dimensions', 'param_composition', 'consists',
+					'compliance_document_type' /* включает 'compliance_document_link' */
 				],
 				'youla' => [  // https://cloud.mail.ru/public/rRMD/V66Ywbmy6?weblink=rRMD/V66Ywbmy6
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'youlacategoryid', 'youlasubcategoryid',
@@ -159,13 +162,15 @@ class Y4YM_Rules_List {
 					'categoryid', 'okei', 'min_quantity', 'max_quantity', 'begindate', 'enddate',
 					'packagetype', 'region', 'params', 'price', 'oldprice', 'delivery_options', 'model', 'vendor',
 					'oksm', 'vendorcode', 'vat', 'delivery', 'manufacturer_warranty',
-					'barcode', 'expiry', 'weight', 'dimensions', 'age'
+					'barcode', 'expiry', 'weight', 'dimensions', 'age',
+					'certificate', 'tn_ved_codes', 'okpd2' // ? есть ли подержка 'certificate', 'tn_ved_codes', 'okpd2'
 				],
 				'tochka_bank' => [  // https://tochkamp.com/docs/v-kakom-formate-importirovat-dannye-v-yml/
 					'offer_tag', 'shop_sku', /* 'type',  'available', */ 'adult', 'url', 'price', 'oldprice',
 					'name', 'currencyid', 'categoryid', 'type_prefix', 'vendor', 'model', 'description', 'country_of_origin', 'barcode',
 					'weight', 'vendorcode', 'params', 'dimensions', 'count', 'quantity', /*'stock',*/ 'picture', 'downloadable',
-					'outlets'
+					'outlets',
+					'certificate', 'tn_ved_codes', 'okpd2' // ? есть ли подержка 'certificate', 'tn_ved_codes', 'okpd2'
 				],
 				'all_elements' => [
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'age',
@@ -177,7 +182,8 @@ class Y4YM_Rules_List {
 					'min_quantity', 'max_quantity', 'model', 'name', 'outlets', 'params',
 					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
 					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
-					'tn_ved_codes', 'url', 'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'material', 'video', 'weight', // 'price_rrp',
+					'ctru_code', 'tn_ved_codes', 'okpd2', 'compliance_document_type' /* включает 'compliance_document_link' */, 'url', 
+					'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'material', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'type_prefix', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'param_composition', 'consists',
 					'ste', 'isvisibletostatecustomers', 'isavailabletoindividuals', 'ppcategory',

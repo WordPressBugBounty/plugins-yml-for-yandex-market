@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.1 (08-09-2026)
+ * @version    5.8.1 (22-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -1133,6 +1133,20 @@ class Y4YM_Admin {
 					'desc_tip' => 'true',
 					'type' => 'text'
 				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_ctru_code',
+					'label' => sprintf(
+						'%s КТРУ <i>[ctru_code]</i>',
+						__( 'Code', 'yml-for-yandex-market' )
+					),
+					'description' => sprintf( '%s <code>|</code>. <a target="_blank" href="%s">%s</a>',
+						__( 'If you need to specify multiple values, separate them with a', 'yml-for-yandex-market' ),
+						'//yandex.ru/support/marketplace/ru/assortment/auto/yml-file#ctru-code',
+						__( 'Read more on Yandex', 'yml-for-yandex-market' )
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
 				woocommerce_wp_select( [
 					'id' => '_yfym_cargo_types',
 					'label' => sprintf(
@@ -1511,6 +1525,52 @@ class Y4YM_Admin {
 					] );
 				}
 				?>
+			</div>
+			<div class="options_group">
+				<h2>
+					<strong><?php esc_html_e( 'Individual product settings for', 'yml-for-yandex-market' ); ?> Flowwow</strong>
+				</h2>
+				<div class="y4ym_notice inline notice woocommerce-message">
+					<p>
+						<?php esc_html_e( 'Here you can set up individual settings for', 'yml-for-yandex-market' ); ?> Flowwow.
+						<a target="_blank"
+							href="//seller-docs.flowwow.com/2.-upravlenie-tovarami/2.11-import-yml-1/trebovaniya-k-yml-i-xml-failam">
+							<?php esc_html_e( 'Read more', 'yml-for-yandex-market' ); ?>
+						</a>.
+					</p>
+				</div>
+				<?php
+				woocommerce_wp_select( [
+					'id' => '_yfym_compliance_document_type',
+					'label' => sprintf(
+						'%s <i>[compliance_document_type]</i>',
+						__( 'Compliance document', 'yml-for-yandex-market' )
+					),
+					'options' => [
+						'default' => __( 'Default', 'yml-for-yandex-market' ),
+						'disabled' => __( 'Disabled', 'yml-for-yandex-market' ),
+						'1' => __( 'Declaration of compliance', 'yml-for-yandex-market' ),
+						'2' => __( 'Certificate of compliance', 'yml-for-yandex-market' ),
+						'3' => __( 'Certificate of state registration', 'yml-for-yandex-market' ),
+						'4' => __( 'The product is not subject to conformity assessment', 'yml-for-yandex-market' )
+					],
+					'description' => __( 'Optional element', 'yml-for-yandex-market' ) . ' <strong>compliance_document_type</strong>',
+					'desc_tip' => 'true'
+				] );
+				woocommerce_wp_text_input( [
+					'id' => '_yfym_compliance_document_link',
+					'label' => sprintf(
+						'%s (ID) <i>[compliance_document_link]</i>',
+						__( 'Compliance document link', 'yml-for-yandex-market' )
+					),
+					'description' => __(
+						'Link to the compliance document',
+						'yml-for-yandex-market'
+					),
+					'desc_tip' => 'true',
+					'type' => 'text'
+				] );
+				?>compliance_document_link
 			</div>
 			<div class="options_group">
 				<h2>
@@ -1909,6 +1969,7 @@ class Y4YM_Admin {
 			'_yfym_market_category_id',
 			'_yfym_market_sku',
 			'_yfym_tn_ved_code',
+			'_yfym_ctru_code',
 			'_yfym_cargo_types',
 			'_yfym_video_url',
 			'_yfym_individual_delivery',
@@ -1932,6 +1993,8 @@ class Y4YM_Admin {
 			'_yfym_quality',
 			'_yfym_warranty_days',
 			'_yfym_comment_warranty',
+			'_yfym_compliance_document_type',
+			'_yfym_compliance_document_link',
 			'_yfym_youlacategoryid',
 			'_yfym_youlasubcategoryid',
 			'_yfym_okpd2',

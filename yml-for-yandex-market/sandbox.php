@@ -3,7 +3,7 @@
  * Sandbox function.
  * 
  * @since 0.1.0
- * @version 5.0.26 (16-12-2025)
+ * @version 5.9.0 (22-09-2026)
  *
  * @return void
  */
@@ -11,7 +11,7 @@ function y4ym_run_sandbox() {
 
 	$x = false; // установите true, чтобы использовать песочницу
 	if ( true === $x ) {
-		printf( '%s:<br/>',
+		printf( '%s:<br/><pre style="border:2px solid red;padding:10px;">',
 			esc_html__( 'The sandbox is working. The result will appear below', 'yml-for-yandex-market' )
 		);
 		$time_start = microtime( true );
@@ -23,7 +23,7 @@ function y4ym_run_sandbox() {
 		/* дальше не редактируем */
 		$time_end = microtime( true );
 		$time = $time_end - $time_start;
-		printf( '<br/>%s<br/>%s %d %s',
+		printf( '</pre><br/>%s<br/>%s %d %s',
 			esc_html__( 'The sandbox is working correctly', 'yml-for-yandex-market' ),
 			esc_html__( 'The execution time of the test script was', 'yml-for-yandex-market' ),
 			esc_html( $time ),

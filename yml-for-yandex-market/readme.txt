@@ -4,7 +4,7 @@ Donate link: https://pay.cloudtips.ru/p/45d8ff3f
 Tags: yml, yandex, market, export, woocommerce
 Requires at least: 5.9
 Tested up to: 7.1
-Stable tag: 5.8.1
+Stable tag: 5.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,7 +30,7 @@ Creates a YML-feed to upload to Yandex Market and not only. In addition to Yande
 * OZON (partial support)
 * ВКонтакте (vk.com) (partial support)
 * EBay (partial support)
-* Flowwow (flowwow.com) (partial support)
+* Flowwow (flowwow.com)
 * Youla (youla.ru) (partial support)
 and not only...
 
@@ -79,6 +79,11 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 1. screenshot-1.png
 
 == Changelog ==
+
+= 5.9.0 =
+*Release Date 22-09-2026*
+
+* Added following tags: `ctru_code`, `compliance_document_type`, `compliance_document_link`.
 
 = 5.8.1 =
 *Release Date 08-09-2026*
@@ -311,8 +316,7 @@ After 1-7 minutes (depending on the number of products), the feed will be genera
 
 == Upgrade Notice ==
 
-= 5.8.1 =
-*Release Date 08-09-2026*
+= 5.9.0 =
+*Release Date 22-09-2026*
 
-* Fixed a security bug.
-* Code refactoring.
+* Added following tags: `ctru_code`, `compliance_document_type`, `compliance_document_link`.

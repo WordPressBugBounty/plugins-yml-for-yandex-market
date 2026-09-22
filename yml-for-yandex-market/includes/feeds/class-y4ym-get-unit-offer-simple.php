@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.9.0 (22-09-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -41,12 +41,14 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 	use Y4YM_T_Simple_Get_Certificate;
 	use Y4YM_T_Simple_Get_Cofinance_Price;
 	use Y4YM_T_Simple_Get_CollectionId;
+	use Y4YM_T_Simple_Get_Compliance_Document_Type;
 	use Y4YM_T_Simple_Get_Comment_Life_Days;
 	use Y4YM_T_Simple_Get_Comment_Validity_Days;
 	use Y4YM_T_Simple_Get_Comment_Warranty;
 	use Y4YM_T_Simple_Get_Param_Composition;
 	use Y4YM_T_Simple_Get_Condition;
 	use Y4YM_T_Simple_Get_Consists;
+	use Y4YM_T_Simple_Get_Ctru_Code;
 	use Y4YM_T_Simple_Get_Count;
 	use Y4YM_T_Simple_Get_Country_Of_Origin;
 	use Y4YM_T_Simple_Get_Credit_Template;
@@ -367,8 +369,7 @@ class Y4YM_Get_Unit_Offer_Simple extends Y4YM_Get_Unit_Offer {
 
 	/**
 	 * Flowwow.com
-	 * 
-	 * @see https://flowwow.com/blog/kak-zagruzit-tovary-na-flowwow-s-pomoshchyu-xml-ili-yml-faylov/
+	 * @see https://seller-docs.flowwow.com/2.-upravlenie-tovarami/2.11-import-yml-1/trebovaniya-k-yml-i-xml-failam
 	 *      https://docs.google.com/document/d/1sF7CN8yPIleQ6T-AFSfV8Kyn3sTbXcJM/edit
 	 * 
 	 * @param string $result_xml
