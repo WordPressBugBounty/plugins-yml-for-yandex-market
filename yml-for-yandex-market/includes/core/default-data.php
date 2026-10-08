@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.9.0 (22-09-2026)
+ * @version    5.10.0 (08-10-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -3341,7 +3341,7 @@ $data_arr = [
 			'multiple' => true,
 			'size' => '8',
 			'tag_name' => 'consists',
-			'tag_name_for_desc' => 'consist name="ATTR_NAME">ATTR_VAL</consist'
+			'tag_name_for_desc' => 'consist name="CONSIST_NAME">CONSIST_VAL</consist'
 		]
 	],
 	[
@@ -3427,6 +3427,65 @@ $data_arr = [
 				]
 			],
 			'tag_name' => 'params',
+			'tag_name_for_desc' => ''
+		]
+	],
+	[
+		'opt_name' => 'y4ym_property_arr',
+		'def_val' => '',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => true,
+			'table_location' => 'th-td',
+			'label' => __( 'Include these attributes in the values', 'yml-for-yandex-market' ),
+			'desc' => sprintf( '%s: %s.<br/>%s <a target="_blank" href="%s">%s</a>',
+				__( 'Hint', 'yml-for-yandex-market' ),
+				__(
+					'To select multiple values, hold down the (ctrl) button on Windows or (cmd) on a Mac. To deselect, press and hold (ctrl) or (cmd), click on the marked items',
+					'yml-for-yandex-market'
+				),
+				__( 'About this tag', 'yml-for-yandex-market' ),
+				'https://yandex.ru/support/direct/feeds/requirements-yml.html',
+				__( 'see the Yandex help', 'yml-for-yandex-market' )
+			),
+			'woo_attr' => true,
+			'default_value' => false,
+			'key_value_arr' => [],
+			'multiple' => true,
+			'size' => '8',
+			'tag_name' => 'property',
+			'tag_name_for_desc' => 'property name="PROPERY_NAME">PROPERY_VALUE</property>'
+		]
+	],
+	[
+		'opt_name' => 'y4ym_behavior_of_property',
+		'def_val' => 'default',
+		'mark' => 'public',
+		'type' => 'select',
+		'tab' => 'offer_data_tab',
+		'data' => [
+			'has_next' => false,
+			'table_location' => 'td-td',
+			'label' => __( 'If the attribute has multiple values', 'yml-for-yandex-market' ),
+			'desc' => '',
+			'woo_attr' => false,
+			'default_value' => false,
+			'key_value_arr' => [
+				[
+					'value' => 'default',
+					'text' => sprintf( '%s (%s)',
+						__( 'Default', 'yml-for-yandex-market' ),
+						__( 'No split', 'yml-for-yandex-market' )
+					)
+				],
+				[
+					'value' => 'split',
+					'text' => __( 'Split', 'yml-for-yandex-market' )
+				]
+			],
+			'tag_name' => 'property',
 			'tag_name_for_desc' => ''
 		]
 	],

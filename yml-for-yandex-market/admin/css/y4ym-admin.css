@@ -118,3 +118,82 @@
 input.pw {
     -webkit-text-security: disc;
 }
+
+/* === Общие стили бейджей === */
+.y4ym-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* === Статусы импорта === */
+
+/* Отключено — светлый серый */
+.y4ym-badge--disabled {
+    background-color: #E0E0E0;
+    color: #6C757D;
+}
+
+/* Активное расписание — зелёный */
+.y4ym-badge--active {
+    background-color: #BBF7D0;
+    color: #15803D;
+}
+
+/* Сборка идёт прямо сейчас — тёплый жёлтый */
+.y4ym-badge--building {
+    background-color: #FCD34D;
+    color: #905A00;
+    box-shadow: 0 1px 3px rgba(252, 211, 77, 0.3);
+}
+
+/* Ошибка — красный с пульсацией */
+.y4ym-badge--failed {
+    background-color: #FECACA;
+    color: #B91C1C;
+    animation: y4ym-pulse 2s ease-in-out infinite;
+}
+
+@keyframes y4ym-pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 4px rgba(185, 28, 28, 0);
+    }
+}
+
+/* === Тёмная тема === */
+@media (prefers-color-scheme: dark) {
+
+    /* Отключено — спокойный тёмно‑серый (не чёрный) */
+    .y4ym-badge--disabled {
+        /* background-color: #6B6B6B; */
+        /* color: #DCDCDC;*/
+        background-color: #E0E0E0;
+        color: #6C757D;
+    }
+
+    .y4ym-badge--active {
+        background-color: #16A34A;
+        color: #fff;
+    }
+
+    .y4ym-badge--building {
+        background-color: #EAB308;
+        color: #4F3704;
+        box-shadow: 0 1px 3px rgba(234, 179, 8, 0.4);
+    }
+
+    .y4ym-badge--failed {
+        background-color: #B91C1C;
+        color: #fff;
+        box-shadow: none;
+    }
+}

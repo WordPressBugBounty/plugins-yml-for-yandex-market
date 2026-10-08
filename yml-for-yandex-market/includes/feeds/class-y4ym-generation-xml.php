@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.1 (08-09-2026)
+ * @version    5.10.0 (08-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -1007,7 +1007,7 @@ class Y4YM_Generation_XML {
 		Y4YM_Options::settings_update(
 			'y4ym_count_products_in_feed',
 			$products_count,
-			'no',
+			'-1',
 			$this->get_feed_id(),
 			'y4ym'
 		);

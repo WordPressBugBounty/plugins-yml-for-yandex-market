@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.9.0 (22-09-2026)
+ * @version    5.10.0 (08-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -59,26 +59,26 @@ class Y4YM_Rules_List {
 				'yandex_direct' => [  // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'delivery', 'name', 'vendor',
 					'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty', 'country_of_origin',
-					'age', 'downloadable', 'params', 'collection_id', 'store', 'pickup',
+					'age', 'downloadable', 'params', 'property', 'collection_id', 'store', 'pickup',
 					'adult', 'market_category', 'custom_labels', 'custom_score'
 				],
 				'yandex_direct_free_from' => [  // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'type_prefix', 'vendor',
 					'model', 'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty', 'country_of_origin',
-					'age', 'downloadable', 'params', 'collection_id',
+					'age', 'downloadable', 'params', 'property', 'collection_id',
 					'adult', 'market_category', 'custom_labels', 'custom_score'
 				],
 				'yandex_direct_combined' => [  // https://yandex.ru/support/direct/ru/feeds/requirements-yml
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'url', 'categoryid', 'picture', 'store', 'pickup', 'delivery', 'type_prefix', 'name',
 					'vendor', 'model', 'vendorcode', 'description', 'video', 'sales_notes', 'manufacturer_warranty',
-					'country_of_origin', 'age', 'downloadable', 'params',
+					'country_of_origin', 'age', 'downloadable', 'params', 'property',
 					'collection_id', 'adult', 'market_category', 'custom_labels', 'custom_score'
 				],
 				'single_catalog' => [ 'currencyid',  // ! shop_sku устаре, 'price',
 					'offer_tag', 'currencyid', 'price', 'oldprice', 'cofinance_price', 'purchase_price', 'disabled', 'archived', 'params', 'name', 'description',
 					'picture', 'url', 'count', 'barcode', 'weight', 'dimensions', 'expiry', 'period_of_validity_days',
 					'age', 'downloadable', 'country_of_origin', 'manufacturer', 'market_sku', 'ctru_code', 'tn_ved_codes',
-					'okpd2','manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
+					'okpd2', 'manufacturer_warranty', 'warranty_days', 'vendor', 'shop_sku',
 					'vendorcode', 'store', 'pickup', 'delivery', 'categoryid', 'vat', 'delivery_options',
 					'pickup_options', 'condition', 'credit_template', 'supplier', 'min_quantity', 'step_quantity',
 					'additional_expenses'
@@ -179,10 +179,10 @@ class Y4YM_Rules_List {
 					'downloadable', 'expiry', /* 'instock', */ 'keywords',
 					'certificate', 'comment_validity_days', 'service_life_days', 'comment_life_days',
 					'manufacturer', 'manufacturer_warranty', 'warranty_days', 'comment_warranty', 'market_sku',
-					'min_quantity', 'max_quantity', 'model', 'name', 'outlets', 'params',
+					'min_quantity', 'max_quantity', 'model', 'name', 'outlets', 'params', 'property',
 					'period_of_validity_days', 'pickup_options', 'pickup', 'picture', // 'premium_price',
 					/*'recommend_stock_data',*/ 'sales_notes', 'shop_sku', 'step_quantity', 'store', 'supplier',
-					'ctru_code', 'tn_ved_codes', 'okpd2', 'compliance_document_type' /* включает 'compliance_document_link' */, 'url', 
+					'ctru_code', 'tn_ved_codes', 'okpd2', 'compliance_document_type' /* включает 'compliance_document_link' */ , 'url',
 					'vat', 'cargo_types', 'brand', 'vendor', 'vendorcode', 'material', 'video', 'weight', // 'price_rrp',
 					'additional_expenses', 'type_prefix', 'adult',
 					'market_category', 'market_category_id', 'custom_labels', 'custom_score', 'param_composition', 'consists',

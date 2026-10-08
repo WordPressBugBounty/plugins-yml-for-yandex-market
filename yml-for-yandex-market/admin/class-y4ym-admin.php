@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.1 (22-09-2026)
+ * @version    5.10.0 (08-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -964,7 +964,9 @@ class Y4YM_Admin {
 
 		if ( ! empty( $_GET ) && isset( $_GET['tab'] ) && $_GET['tab'] === 'tags_settings_tab' ) {
 			if ( $args_arr['opt_name'] === 'y4ym_params_arr'
-				|| $args_arr['opt_name'] === 'y4ym_consists_arr' ) {
+				|| $args_arr['opt_name'] === 'y4ym_consists_arr'
+				|| $args_arr['opt_name'] === 'y4ym_property_arr'
+			) {
 				$save_if_empty = 'empty_arr';
 			}
 		}

@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.1 (15-07-2026)
+ * @version    5.10.0 (08-10-2026)
  * @see        https://2web-master.ru/wp_list_table-%E2%80%93-poshagovoe-rukovodstvo.html 
  *             https://wp-kama.ru/function/wp_list_table
  *
@@ -77,18 +77,9 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 
 		$columns = [
 			'cb' => '<input type="checkbox" />',
-			'html_feed_url' => __(
-				'Feed URL',
-				'yml-for-yandex-market'
-			),
-			'html_feed_generation_status' => __(
-				'Automatic file creation',
-				'yml-for-yandex-market'
-			),
-			'html_feed_summary' => __(
-				'Summary',
-				'yml-for-yandex-market'
-			)
+			'col_feed_url' => __( 'Feed URL', 'yml-for-yandex-market' ),
+			'col_feed_generation_status' => __( 'Automatic file creation', 'yml-for-yandex-market' ),
+			'col_feed_summary' => __( 'Summary', 'yml-for-yandex-market' )
 		];
 		return $columns;
 
@@ -130,106 +121,11 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 						$feed_assignment = '';
 					}
 
-					if ( empty( $feed_url ) ) {
-						if ( empty( $feed_assignment ) ) {
-							$text_column_feed_url = __( 'Not created yet', 'yml-for-yandex-market' );
-						} else {
-							$text_column_feed_url = sprintf(
-								'%1$s<br/>(%2$s)',
-								__( 'Not created yet', 'yml-for-yandex-market' ),
-								$feed_assignment
-							);
-						}
-					} else {
-						if ( empty( $feed_assignment ) ) {
-							$text_column_feed_url = sprintf(
-								'<a target="_blank" href="%1$s">%1$s</a>',
-								urldecode( $feed_url )
-							);
-						} else {
-							$text_column_feed_url = sprintf(
-								'<a target="_blank" href="%1$s">%1$s</a><br/>(%2$s)',
-								urldecode( $feed_url ),
-								$feed_assignment
-							);
-						}
-					}
-
 					// --- Данные для колонки 2 ---
 					if ( isset( $settings_arr[ $feed_id_str ]['y4ym_run_cron'] ) ) {
-
 						$status_cron = $settings_arr[ $feed_id_str ]['y4ym_run_cron'];
-						switch ( $status_cron ) {
-							case 'disabled':
-								$text_status_cron = __( 'Disabled', 'yml-for-yandex-market' );
-								break;
-							case 'once':
-								$text_status_cron = sprintf( '%s (%s)',
-									__( 'Create a feed once', 'yml-for-yandex-market' ),
-									__( 'launch now', 'yml-for-yandex-market' )
-								);
-								break;
-							case 'hourly':
-								$text_status_cron = __( 'Hourly', 'yml-for-yandex-market' );
-								break;
-							case 'three_hours':
-								$text_status_cron = __( 'Every three hours', 'yml-for-yandex-market' );
-								break;
-							case 'six_hours':
-								$text_status_cron = __( 'Every six hours', 'yml-for-yandex-market' );
-								break;
-							case 'twicedaily':
-								$text_status_cron = __( 'Twice a day', 'yml-for-yandex-market' );
-								break;
-							case 'daily':
-								$text_status_cron = __( 'Daily', 'yml-for-yandex-market' );
-								break;
-							case 'every_two_days':
-								$text_status_cron = __( 'Every two days', 'yml-for-yandex-market' );
-								break;
-							case 'weekly':
-								$text_status_cron = __( 'Once a week', 'yml-for-yandex-market' );
-								break;
-							default:
-								$text_status_cron = __( "Don't start", "yml-for-yandex-market" );
-						}
-
-						$cron_info = wp_get_scheduled_event( 'y4ym_cron_sborki', [ $feed_id_str ] );
-						if ( false === $cron_info ) {
-							$cron_info = wp_get_scheduled_event( 'y4ym_cron_start_feed_creation', [ $feed_id_str ] );
-							if ( false === $cron_info ) {
-								$text_column_feed_generation_status = sprintf(
-									'%s<br/><small>%s</small>',
-									$text_status_cron,
-									__( 'There are no CRON scheduled feed builds', 'yml-for-yandex-market' )
-								);
-							} else {
-								$text_column_feed_generation_status = sprintf(
-									'%s<br/><small>%s:<br/>%s</small>',
-									$text_status_cron,
-									__( 'The next feed build is scheduled for', 'yml-for-yandex-market' ),
-									wp_date( 'Y-m-d H:i:s', $cron_info->timestamp )
-								);
-							}
-						} else {
-							$after_time = $cron_info->timestamp - current_time( 'timestamp', 1 );
-							if ( $after_time < 0 ) {
-								$after_time = 0;
-							}
-							$text_column_feed_generation_status = sprintf(
-								'%s<br/><small>%s...<br/>%s:<br/>%s (%s %s %s)</small>',
-								$text_status_cron,
-								__( 'The feed is being created', 'yml-for-yandex-market' ),
-								__( 'The next step is scheduled for', 'yml-for-yandex-market' ),
-								wp_date( 'Y-m-d H:i:s', $cron_info->timestamp ),
-								__( 'after', 'yml-for-yandex-market' ),
-								$after_time,
-								__( 'sec', 'yml-for-yandex-market' )
-							);
-						}
-
 					} else {
-						$text_column_feed_generation_status = '-';
+						$status_cron = 'disabled';
 					}
 
 					// --- Данные для колонки 3 ---
@@ -297,11 +193,13 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 					// }
 
 					$table_data_arr[ $i ] = [
-						'html_feed_url' => $text_column_feed_url,
-						'html_feed_generation_status' => $text_column_feed_generation_status,
-						'html_feed_summary' => $text_column_feed_summary,
+						// 'col_feed_url' => $text_column_feed_url,
+						// 'col_feed_generation_status' => $text_column_feed_generation_status,
+						'col_feed_summary' => $text_column_feed_summary,
 						'feed_id' => $feed_id_str,
-						'feed_url' => $feed_url
+						'feed_url' => $feed_url,
+						'feed_assignment' => $feed_assignment,
+						'status_cron' => $status_cron
 					];
 				}
 			}
@@ -350,7 +248,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * 
 	 * Наконец, метод назначает данные из примера на переменную представления данных класса — items.
 	 * Прежде чем отобразить каждый столбец, WordPress ищет методы типа column_{key_name}, например, 
-	 * function column_html_feed_url. Такой метод должен быть указан для каждого столбца. Но чтобы не создавать 
+	 * function column_col_feed_url. Такой метод должен быть указан для каждого столбца. Но чтобы не создавать 
 	 * эти методы для всех столбцов в отдельности, можно использовать column_default. Эта функция обработает все 
 	 * столбцы, для которых не определён специальный метод
 	 * 
@@ -362,9 +260,9 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	public function column_default( $item, $column_name ) {
 
 		switch ( $column_name ) {
-			case 'html_feed_url':
-			case 'html_feed_generation_status':
-			case 'html_feed_summary':
+			case 'col_feed_url':
+			case 'col_feed_generation_status':
+			case 'col_feed_summary':
 				return $item[ $column_name ];
 			default:
 				return print_r( $item, true ); // Мы отображаем целый массив во избежание проблем
@@ -397,7 +295,7 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	public function get_sortable_columns() {
 
 		$sortable_columns = [
-			// 'html_feed_url' => [ 'html_feed_url', false ]
+			// 'col_feed_url' => [ 'col_feed_url', false ]
 		];
 		return $sortable_columns;
 
@@ -407,22 +305,38 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 	 * Действия.
 	 * 
 	 * Эти действия появятся, если пользователь проведет курсор мыши над таблицей
-	 * column_{key_name} - в данном случае для колонки `html_feed_url` - function column_html_feed_url.
+	 * column_{key_name} - в данном случае для колонки `col_feed_url` - function column_col_feed_url.
 	 * 
 	 * @param array $item
 	 * 
 	 * @return string
 	 */
-	public function column_html_feed_url( $item ) {
+	public function column_col_feed_url( $item ) {
+
+		$feed_url = $item['feed_url'] ?? '';
+		$feed_assignment = $item['feed_assignment'] ?? '';
+
+		$feed_edit_link = sprintf(
+			'?page=%s&action=%s&feed_id=%s&current_display=%s',
+			esc_attr( $_REQUEST['page'] ),
+			'edit',
+			$item['feed_id'],
+			'settings_feed'
+		);
+
+		$title = sprintf( '<a class="row-title" href="%s">%s #%s %s<br/>(%s)</a>',
+			urldecode( $feed_edit_link ),
+			__( 'Feed', 'yml-for-yandex-market' ),
+			$item['feed_id'],
+			! empty( $feed_assignment ) ? ' - ' . $feed_assignment : '',
+			! empty( $feed_url ) ? urldecode( $feed_url ) : __( 'This feed has not been created yet', 'yml-for-yandex-market' ),
+		);
 
 		$actions = [
 			'id' => 'ID: ' . $item['feed_id'],
 			'edit' => sprintf(
-				'<a href="?page=%s&action=%s&feed_id=%s&current_display=%s">%s</a>',
-				esc_attr( $_REQUEST['page'] ),
-				'edit',
-				$item['feed_id'],
-				'settings_feed',
+				'<a href="%s">%s</a>',
+				$feed_edit_link,
 				esc_html__( 'Edit', 'yml-for-yandex-market' )
 			),
 			'duplicate' => sprintf(
@@ -445,7 +359,118 @@ class Y4YM_Feeds_List_Table extends WP_List_Table {
 			)
 		];
 
-		return sprintf( '%1$s %2$s', $item['html_feed_url'], $this->row_actions( $actions ) );
+		return sprintf( '%1$s %2$s', $title, $this->row_actions( $actions ) );
+
+	}
+
+	/**
+	 * Column: Feed generation status (with badges).
+	 *
+	 * @param array $item Item array (должен содержать feed_id и status_cron).
+	 * @return string
+	 */
+	public function column_col_feed_generation_status( $item ) {
+
+		$feed_id = $item['feed_id'] ?? '';
+		$feed_status = $item['status_cron'] ?? 'disabled';
+
+		return $this->build_status_column( $feed_status, $feed_id );
+
+	}
+
+	/**
+	 * Формирует HTML для колонки статуса генерации фида (бейджи + детали).
+	 *
+	 * @param string $feed_status Расписание: disabled|once|hourly|daily|...
+	 * @param string $feed_id ID фида (для проверки CRON).
+	 * @return string
+	 */
+	private function build_status_column( string $feed_status, string $feed_id ): string {
+
+		// 1. CRON полностью отключён — показываем отдельный статус
+		if ( $feed_status === 'disabled' ) {
+			$badge_html = sprintf(
+				'<span class="y4ym-badge y4ym-badge--disabled">%s</span>',
+				esc_html__( 'Disabled', 'yml-for-yandex-market' )
+			);
+			$detail_html = sprintf(
+				'<small style="color:#666; margin-top:4px; display:block">%s</small>',
+				esc_html__( 'There are no CRON scheduled feed builds', 'yml-for-yandex-market' )
+			);
+			return $badge_html . $detail_html;
+		}
+
+		// 2. Расписание задано — проверяем CRON
+		$cron_sborki = wp_get_scheduled_event( 'y4ym_cron_sborki', [ $feed_id ] );
+		$cron_start = wp_get_scheduled_event( 'y4ym_cron_start_feed_creation', [ $feed_id ] );
+
+		$schedule_labels = [
+			'once' => __( 'One-time', 'yml-for-yandex-market' ),
+			'hourly' => __( 'Hourly', 'yml-for-yandex-market' ),
+			'three_hours' => __( 'Every three hours', 'yml-for-yandex-market' ),
+			'six_hours' => __( 'Every six hours', 'yml-for-yandex-market' ),
+			'twicedaily' => __( 'Twice daily', 'yml-for-yandex-market' ),
+			'daily' => __( 'Daily', 'yml-for-yandex-market' ),
+			'every_two_days' => __( 'Every two days', 'yml-for-yandex-market' ),
+			'weekly' => __( 'Once a week', 'yml-for-yandex-market' )
+		];
+		$interval_label = $schedule_labels[ $feed_status ] ?? __( 'Custom', 'yml-for-yandex-market' );
+
+		// Сначала проверяем «идёт прямо сейчас»
+		if ( false !== $cron_sborki ) {
+			$badge_class = 'y4ym-badge--building';
+			$badge_label = sprintf(
+				'%s — %s — %s',
+				__( 'Feed scheduled', 'yml-for-yandex-market' ),
+				esc_html( $interval_label ),
+				__( 'Building feed now', 'yml-for-yandex-market' )
+			);
+
+			$after_time = max( 0, $cron_sborki->timestamp - current_time( 'timestamp', 1 ) );
+			$detail_html = sprintf(
+				'<div style="margin-top:4px; font-size:12px;"><strong style="color:#905A00">%s:</strong> %s (%s %d %s)</div>',
+				esc_html__( 'Next step', 'yml-for-yandex-market' ),
+				esc_html( wp_date( 'Y-m-d H:i:s', $cron_sborki->timestamp ) ),
+				esc_html__( 'in', 'yml-for-yandex-market' ),
+				$after_time,
+				esc_html__( 'sec', 'yml-for-yandex-market' )
+			);
+		} elseif ( false !== $cron_start ) {
+			// Запланировано, но ещё не началось
+			$badge_class = 'y4ym-badge--active';
+			$badge_label = sprintf(
+				'%s — %s',
+				__( 'Feed scheduled', 'yml-for-yandex-market' ),
+				esc_html( $interval_label )
+			);
+
+			$detail_html = sprintf(
+				'<small style="color:#555; margin-top:4px; display:block">%s:<br/>%s</small>',
+				esc_html__( 'The next feed build is scheduled for', 'yml-for-yandex-market' ),
+				esc_html( wp_date( 'Y-m-d H:i:s', $cron_start->timestamp ) )
+			);
+		} else {
+			// Расписание в настройках есть, но CRON‑событие не найдено
+			$badge_class = 'y4ym-badge--active';
+			$badge_label = sprintf(
+				'%s — %s',
+				__( 'Feed scheduled', 'yml-for-yandex-market' ),
+				esc_html( $interval_label )
+			);
+
+			$detail_html = sprintf(
+				'<small style="color:#555; margin-top:4px; display:block">%s</small>',
+				esc_html__( 'Schedule set, no pending task', 'yml-for-yandex-market' )
+			);
+		}
+
+		$badge_html = sprintf(
+			'<span class="y4ym-badge %s">%s</span>',
+			esc_attr( $badge_class ),
+			esc_html( $badge_label )
+		);
+
+		return $badge_html . $detail_html;
 
 	}
 

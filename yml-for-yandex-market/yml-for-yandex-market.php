@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.9.0
+ * Version:                 5.10.0
  * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         11.1.0
+ * WC tested up to:         11.2.0
  */
 
 // If this file is called directly, abort.
@@ -247,11 +247,11 @@ function y4ym_plugin_database_upd( $old_version ) {
 				$feed_id = (string) $feed_ids_arr[ $i ]; // $key
 
 				$arrs_old = [
-					'yfym_params_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
+					'yfym_params_arr', 'y4ym_property_arr', 'yfym_consists_arr', 'yfym_no_group_id_arr', 'yfym_add_in_name_arr', // basic
 					'yfymp_exclude_cat_arr' // pro
 				];
 				$arrs_new = [
-					'y4ym_params_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
+					'y4ym_params_arr', 'y4ym_property_arr', 'y4ym_consists_arr', 'y4ym_no_group_id_arr', 'y4ym_add_in_name_arr', // basic
 					'y4ymp_exclude_cat_arr' // pro
 				];
 				for ( $n = 0; $n < count( $arrs_old ); $n++ ) {
@@ -479,7 +479,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.9.0' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.10.0' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -570,7 +570,7 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.9.0', '<' ) ) {
+	if ( version_compare( $y4ym_v, '5.10.0', '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 
