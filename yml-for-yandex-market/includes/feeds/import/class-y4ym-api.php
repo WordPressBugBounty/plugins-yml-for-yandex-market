@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      5.8.0
- * @version    5.8.1 (08-09-2026)
+ * @version    5.12.0 (31-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/import
@@ -577,7 +577,6 @@ final class Y4YM_Api {
 			return $answer_arr;
 		}
 
-		Y4YM_Error_Log::record( $headers_arr );
 		Y4YM_Error_Log::record( 'Body request size: ' . $size_request . ' bytes' );
 
 		$args = [

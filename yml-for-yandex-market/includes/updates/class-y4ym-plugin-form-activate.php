@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.12.0 (31-10-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -132,6 +132,7 @@ final class Y4YM_Plugin_Form_Activate {
 		?>
 		<form action="<?php echo esc_url( sanitize_text_field( $_SERVER['REQUEST_URI'] ) ); ?>" method="post"
 			enctype="multipart/form-data">
+			<?php wp_nonce_field( 'y4ym_nonce_activate_action', 'y4ym_nonce_activate_field' ); ?>
 			<div class="y4ym-postbox postbox">
 				<h2 class="hndle">
 					<?php
@@ -230,47 +231,50 @@ final class Y4YM_Plugin_Form_Activate {
 	private function save_form() {
 
 		if ( isset( $_REQUEST[ $this->get_submit_name()] ) ) {
-			if ( is_multisite() ) {
-				if ( isset( $_POST[ $this->get_opt_name_order_id()] ) ) {
-					update_blog_option(
-						get_current_blog_id(),
-						$this->get_opt_name_order_id(),
-						sanitize_text_field( $_POST[ $this->get_opt_name_order_id()] )
-					);
+			if ( ! empty( $_POST )
+				&& current_user_can( 'manage_woocommerce' )
+				&& check_admin_referer( 'y4ym_nonce_activate_action', 'y4ym_nonce_activate_field' )
+			) {
+				if ( is_multisite() ) {
+					if ( isset( $_POST[ $this->get_opt_name_order_id()] ) ) {
+						update_blog_option(
+							get_current_blog_id(),
+							$this->get_opt_name_order_id(),
+							sanitize_text_field( $_POST[ $this->get_opt_name_order_id()] )
+						);
+					}
+					if ( isset( $_POST[ $this->get_opt_name_order_email()] ) ) {
+						update_blog_option(
+							get_current_blog_id(),
+							$this->get_opt_name_order_email(),
+							sanitize_text_field( $_POST[ $this->get_opt_name_order_email()] )
+						);
+					}
+				} else {
+					if ( isset( $_POST[ $this->get_opt_name_order_id()] ) ) {
+						update_option(
+							$this->get_opt_name_order_id(),
+							sanitize_text_field( $_POST[ $this->get_opt_name_order_id()] )
+						);
+					}
+					if ( isset( $_POST[ $this->get_opt_name_order_email()] ) ) {
+						update_option(
+							$this->get_opt_name_order_email(),
+							sanitize_text_field( $_POST[ $this->get_opt_name_order_email()] )
+						);
+					}
 				}
-				if ( isset( $_POST[ $this->get_opt_name_order_email()] ) ) {
-					update_blog_option(
-						get_current_blog_id(),
-						$this->get_opt_name_order_email(),
-						sanitize_text_field( $_POST[ $this->get_opt_name_order_email()] )
-					);
-				}
-			} else {
-				if ( isset( $_POST[ $this->get_opt_name_order_id()] ) ) {
-					update_option(
-						$this->get_opt_name_order_id(),
-						sanitize_text_field( $_POST[ $this->get_opt_name_order_id()] )
-					);
-				}
-				if ( isset( $_POST[ $this->get_opt_name_order_email()] ) ) {
-					update_option(
-						$this->get_opt_name_order_email(),
-						sanitize_text_field( $_POST[ $this->get_opt_name_order_email()] )
-					);
-				}
+
+				delete_transient( 'y4ym_upd_api_resp_' . $this->get_pref() );
+				do_action( 'y4ym_pi' );
+				$message = sprintf( '%1$s. %2$s.',
+					__( 'License data has been updated', 'yml-for-yandex-market' ),
+					__( 'Refresh this page', 'yml-for-yandex-market' )
+				);
+				$class = 'success';
+				new Y4YM_Set_Admin_Notices( $message, $class );
+
 			}
-			wp_clean_plugins_cache();
-			wp_clean_update_cache();
-			add_filter( 'pre_site_transient_update_plugins', '__return_null' );
-			wp_update_plugins();
-			remove_filter( 'pre_site_transient_update_plugins', '__return_null' );
-			$message = sprintf( '%1$s. %2$s.',
-				__( 'License data has been updated', 'yml-for-yandex-market' ),
-				__( 'Refresh this page', 'yml-for-yandex-market' )
-			);
-			$class = 'success';
-			new Y4YM_Set_Admin_Notices( $message, $class );
-			wp_update_plugins();
 		}
 
 	}

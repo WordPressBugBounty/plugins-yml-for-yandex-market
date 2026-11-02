@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.6.0 (29-06-2026)
+ * @version    5.12.0 (31-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
@@ -39,7 +39,22 @@ final class Y4YM_Error_Log {
 	protected static $logs_enabled = null;
 
 	/**
+	 * Flag: directories protected from direct HTTP access during this request.
+	 * 
+	 * @var array<string, true>
+	 */
+	protected static $protected_dirs = [];
+
+	/**
+	 * Cached log file name.
+	 * 
+	 * @var string|null
+	 */
+	protected static $log_file_name = null;
+
+	/**
 	 * The text to write to the log file.
+	 * 
 	 * @var mixed
 	 */
 	protected $text_to_log;
@@ -79,6 +94,91 @@ final class Y4YM_Error_Log {
 	}
 
 	/**
+	 * Returns the randomized log file name.
+	 *
+	 * The random suffix is generated once and stored in the DB option
+	 * (non-autoloaded). This makes the log URL unpredictable and prevents
+	 * unauthenticated access on servers where .htaccess is ignored (nginx).
+	 *
+	 * @version 5.12.0
+	 * 
+	 * @return string Example: `yml-for-yandex-market-k3x9f2pq8w1a.log`
+	 */
+	public static function get_log_file_name() {
+
+		if ( null !== self::$log_file_name ) {
+			return self::$log_file_name;
+		}
+
+		if ( is_multisite() ) {
+			$suffix = get_blog_option( get_current_blog_id(), 'y4ym_log_suffix', '' );
+		} else {
+			$suffix = get_option( 'y4ym_log_suffix', '' );
+		}
+
+		if ( '' === $suffix || ! is_string( $suffix ) || ! ctype_alnum( $suffix ) ) {
+			$suffix = wp_generate_password( 12, false ); // a-z, A-Z, 0-9
+			if ( is_multisite() ) {
+				update_blog_option( get_current_blog_id(), 'y4ym_log_suffix', $suffix );
+			} else {
+				update_option( 'y4ym_log_suffix', $suffix, false ); // false = без автозагрузки
+			}
+		}
+
+		self::$log_file_name = 'yml-for-yandex-market-' . $suffix . '.log';
+		return self::$log_file_name;
+
+	}
+
+	/**
+	 * Creates the log directory and protects it from direct HTTP access.
+	 *
+	 * Adds an .htaccess denying access to *.log files (Apache) and an
+	 * index.php preventing directory listing. Feed files (.xml) remain
+	 * publicly accessible - Yandex needs to download them.
+	 *
+	 * @version 5.12.0
+	 * 
+	 * @param string $dir_path Example: `/home/site.ru/public_html/wp-content/uploads/y4ym/`.
+	 * 
+	 * @return void
+	 */
+	public static function protect_log_dir( $dir_path ) {
+
+		if ( isset( self::$protected_dirs[ $dir_path ] ) ) {
+			return;
+		}
+
+		if ( ! wp_mkdir_p( $dir_path ) ) {
+			return;
+		}
+
+		$htaccess_path = trailingslashit( $dir_path ) . '.htaccess';
+		if ( ! file_exists( $htaccess_path ) ) {
+			@file_put_contents( $htaccess_path,
+				"# Y4YM: deny direct access to log files\n"
+				. "<FilesMatch \"\\.log\$\">\n"
+				. "\t<IfModule mod_authz_core.c>\n"
+				. "\t\tRequire all denied\n"
+				. "\t</IfModule>\n"
+				. "\t<IfModule !mod_authz_core.c>\n"
+				. "\t\tOrder deny,allow\n"
+				. "\t\tDeny from all\n"
+				. "\t</IfModule>\n"
+				. "</FilesMatch>\n"
+			);
+		}
+
+		$index_path = trailingslashit( $dir_path ) . 'index.php';
+		if ( ! file_exists( $index_path ) ) {
+			@file_put_contents( $index_path, "<?php // Silence is golden.\n" );
+		}
+
+		self::$protected_dirs[ $dir_path ] = true;
+
+	}
+
+	/**
 	 * Writes data to a log file.
 	 *
 	 * Performs the following checks and actions:
@@ -95,20 +195,14 @@ final class Y4YM_Error_Log {
 	 */
 	public static function record( $text_to_log, $log_dir_name = Y4YM_PLUGIN_UPLOADS_DIR_PATH ) {
 
-		if ( ! wp_mkdir_p( $log_dir_name ) ) {
-			error_log( sprintf( 'Y4YM: Y4YM_Error_Log: %1$s: %2$s. %3$s.',
-				'There is no folder',
-				$log_dir_name,
-				'Recording plugin logs is not possible' )
-			);
-			return;
-		}
-		// /home/site.ru/public_html/wp-content/uploads/y4ym/yml-for-yandex-market.log
-		$log_file_path = trailingslashit( $log_dir_name ) . 'yml-for-yandex-market.log';
-
 		if ( false === self::keeplogs_status() ) {
 			return;
 		}
+
+		self::protect_log_dir( $log_dir_name );
+
+		// /home/site.ru/public_html/wp-content/uploads/y4ym/yml-for-yandex-market-[SUFIX].log
+		$log_file_path = trailingslashit( $log_dir_name ) . self::get_log_file_name();
 
 		if ( is_array( $text_to_log ) || is_object( $text_to_log ) ) {
 			$r = self::get_array_as_string( $text_to_log );
@@ -156,8 +250,7 @@ final class Y4YM_Error_Log {
 
 		// Return cached result if already determined
 		if ( self::$logs_enabled !== null ) {
-			// HACK: отключил работу с кэшем тк не работает очистка кэша
-			// return self::$logs_enabled;
+			return self::$logs_enabled;
 		}
 
 		// Get the option value depending on network mode
@@ -168,13 +261,9 @@ final class Y4YM_Error_Log {
 		}
 
 		// Cache the boolean result
-		self::$logs_enabled = $v;
+		self::$logs_enabled = ( 'enabled' === $v );
 
-		if ( $v === 'enabled' ) {
-			return true;
-		} else {
-			return false;
-		}
+		return self::$logs_enabled;
 
 	}
 
@@ -211,13 +300,62 @@ final class Y4YM_Error_Log {
 						$res .= $new_line . $tab . "[$key] => (boolean)false";
 					}
 				} else {
-					$res .= $new_line . $tab . "[$key] => (" . gettype( $value ) . ")" . $value;
+					$value_str = $value;
+					// защита от записи секретов в общедоступный лог (CVE-фикс)
+					if ( preg_match( '/api[-_]?key|authorization|token|secret|password|bearer/i',
+						(string) $key ) ) {
+						$value_str = '***masked***';
+					}
+					$res .= $new_line . $tab . "[$key] => (" . gettype( $value ) . ")" . $value_str;
 				}
 			}
 		} else {
 			$res .= $new_line . $tab . $text;
 		}
 		return $res;
+
+	}
+
+	/**
+	 * Reads the last portion of the log file.
+	 *
+	 * WP_Filesystem API does not support partial reads (seek), so direct
+	 * file functions are used. The file lives in the uploads directory,
+	 * which is writable by the web server by design.
+	 *
+	 * @version 5.12.0
+	 * @param string $log_file_path Full path to the log file.
+	 * @param int    $tail_size     How many bytes to read from the end.
+	 * @return string|false File tail, empty string if the file is empty, false on failure.
+	 */
+	public static function read_tail( $log_file_path, $tail_size = 102400 ) {
+
+		$file_size = (int) filesize( $log_file_path );
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- WP_Filesystem does not support partial reads (SEEK_END); the file is in the writable uploads directory
+		$fh = fopen( $log_file_path, 'rb' );
+		if ( false === $fh ) {
+			return false;
+		}
+
+		if ( $file_size > $tail_size ) {
+			fseek( $fh, -$tail_size, SEEK_END );
+		}
+		$content = stream_get_contents( $fh );
+		fclose( $fh ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- see fopen note above
+
+		if ( false === $content || '' === $content ) {
+			return '';
+		}
+
+		if ( $file_size > $tail_size ) {
+			$first_eol = strpos( $content, "\n" );
+			if ( false !== $first_eol ) {
+				$content = substr( $content, $first_eol + 1 );
+			}
+		}
+
+		return $content;
 
 	}
 

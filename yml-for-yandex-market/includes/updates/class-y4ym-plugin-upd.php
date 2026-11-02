@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.12.0 (31-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -24,6 +24,11 @@
  */
 final class Y4YM_Plugin_Upd {
 
+	/**
+	 * Base API URL (v1).
+	 *
+	 * @var string
+	 */
 	public const API_URL = 'https://icopydoc.ru/api/v1';
 
 	/**
@@ -31,6 +36,33 @@ final class Y4YM_Plugin_Upd {
 	 *
 	 * @access   private
 	 * @var      array
+	 */
+
+	/**
+	 * How long a successful API response is cached, sec.
+	 * 
+	 * @var int
+	 */
+	public const RESPONSE_TTL = 2 * HOUR_IN_SECONDS;
+
+	/**
+	 * How long a failed API request is "cached", sec.
+	 * Prevents hammering the API when it is temporarily down.
+	 * 
+	 * @var int
+	 */
+	public const FAILURE_TTL = 5 * MINUTE_IN_SECONDS;
+
+	/**
+	 * Mapping of plugin prefixes to their promo/license renewal codes.
+	 *
+	 * Each entry maps a plugin prefix (e.g., `y4ymp`) to an array with:
+	 * - `name` – human-readable plugin name
+	 * - `code` – promo/renewal code used for licensing
+	 *
+	 * Used to determine the correct renewal code based on the plugin prefix.
+	 *
+	 * @var array<string, array{name: string, code: string}>
 	 */
 	private $list_plugin_names = [
 		'y4ymp' => [ 'name' => 'PRO', 'code' => 'renewlicense20yp' ],
@@ -40,56 +72,64 @@ final class Y4YM_Plugin_Upd {
 
 	/**
 	 * Префикс плагина.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $pref;
 
 	/**
 	 * Псевдоним плагина (например: oop-wp).
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $slug;
 
 	/**
 	 * Полный псевдоним плагина (папка плагина + имя главного файла, например: oop-wp/oop-wp.php).
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $plugin_slug;
 
 	/**
 	 * Номер версии плагина.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $premium_version;
 
 	/**
 	 * Лицензионный ключ плагина.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $license_key;
 
 	/**
 	 * Номер заказа.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $order_id;
 
 	/**
 	 * Почта заказа.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $order_email;
 
 	/**
 	 * URL сайта.
-	 * @var      string
+	 * 
+	 * @var string
 	 */
 	private $order_home_url;
 
 	/**
 	 * Plugin Updates.
 	 * 
-	 * @param    array    $args
+	 * @param array $args
 	 */
 	public function __construct( $args = [] ) {
 
@@ -136,14 +176,9 @@ final class Y4YM_Plugin_Upd {
 	private function init_hooks() {
 
 		// проверка наличия обновлений:
-		add_filter( 'pre_set_site_transient_update_plugins', [ $this, 'check_update' ], 10 );
-		// проверка информации о плагине:
-		add_filter( 'plugins_api', [ $this, 'plugin_api_check_info' ], 10, 3 );
-		// установка плагина:
-		add_filter( 'upgrader_package_options', [ $this, 'set_update_package' ] );
 		add_filter( 'plugin_action_links', [ $this, 'add_plugin_action_links' ], 10, 2 );
-		// add_action('admin_notices', [ $this, 'print_admin_notices' ], 10, 1);
 		$this->get_info();
+		add_action( 'y4ym_pi', [ $this, 'zz' ], 10, 1 );
 
 	}
 
@@ -204,6 +239,50 @@ final class Y4YM_Plugin_Upd {
 		);
 		array_unshift( $actions, $settings_link );
 		return $actions;
+
+	}
+
+	public function zz() {
+		
+		var_dump( 'zzz' );
+		$response = $this->response_to_api();
+		$response_code = wp_remote_retrieve_response_code( $response );
+		$response_message = wp_remote_retrieve_response_message( $response );
+
+		if ( ( $response_code == 200 ) && $response_message == 'OK' ) {
+			$resp = json_decode( $response['body'] );
+			$this->save_resp( $resp->status_code, $resp->status_date );
+
+			// Обновлений нет. Нет смысла что-то менять. Выходим.
+			if ( ! isset( $resp->upd ) ) {
+				return; // $resp->package; // 'https://s.ru/api/v1/pgo-plugin.zip';
+			}
+
+		} else {
+			if ( is_wp_error( $response ) ) {
+				if ( 'y4ym_api_throttled' === $response->get_error_code() ) {
+					return; // затвор активен — нормальное состояние, не логируем
+				}
+				Y4YM_Error_Log::record( sprintf( 'ERROR: %1$s (%2$s). %3$s: %4$s; %5$s: %6$s',
+					__( 'Error checking for updates', 'yml-for-yandex-market' ),
+					$response->get_error_message(),
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-plugin-upd.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				) );
+			} else {
+				Y4YM_Error_Log::record( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
+					$response_code,
+					__( 'Error checking for updates', 'yml-for-yandex-market' ),
+					$response_message,
+					__( 'File', 'yml-for-yandex-market' ),
+					'class-y4ym-plugin-upd.php',
+					__( 'Line', 'yml-for-yandex-market' ),
+					__LINE__
+				) );
+			}
+		}
 
 	}
 
@@ -382,7 +461,7 @@ final class Y4YM_Plugin_Upd {
 			'order_email' => $this->get_order_email(),
 			'order_home_url' => home_url( '/' )
 		];
-		Y4YM_Error_Log::record( $body_request );
+		// Y4YM_Error_Log::record( $body_request );
 		return $body_request;
 
 	}
@@ -461,24 +540,75 @@ final class Y4YM_Plugin_Upd {
 
 	/**
 	 * Get response to an API request.
-	 * 
+	 *
+	 * The request is sent no more than once per RESPONSE_TTL (12 hours).
+	 * A successful response is stored in a transient and reused until it expires.
+	 * A failed request sets a short-lived transient (FAILURE_TTL) so that a
+	 * temporarily unavailable API is not hammered on every update check.
+	 *
 	 * @return   WP_Error|array
 	 */
 	private function response_to_api() {
 
 		global $wp_version;
-		$response = false;
+
+		$transient_key = $this->get_cache_transient_key();
+
+		// Затвор: если ответ уже в кэше — ничего не отправляем.
+		$cached = get_transient( $transient_key );
+		if ( false !== $cached ) {
+			// короткий затвор после неудачи
+			if ( is_array( $cached ) && isset( $cached['y4ym_api_fail'] ) ) {
+				return new WP_Error( 'y4ym_api_throttled', 'Previous API request failed; throttled' );
+			}
+			return $cached; // успешный кэш
+		}
+
 		$request_arr = [
+			'timeout' => 5,
 			'user-agent' => 'WordPress/' . $wp_version . '; ' . get_bloginfo( 'url' ),
-			'body' => [ 'request' => $this->get_body_request() ] // request будет передан как $_POST['request']
+			'body' => [ 'request' => $this->get_body_request() ]
 		];
 		$api_url = apply_filters( 'y4ym_f_api_url', self::API_URL );
 		$response = wp_remote_post( esc_url_raw( $api_url ), $request_arr );
+
 		if ( is_wp_error( $response ) ) {
 			$response = $this->response_to_reserved_servers( $request_arr );
 		}
+
+		// Кэшируем только успешные ответы — на полную длительность.
+		if ( ! is_wp_error( $response )
+			&& wp_remote_retrieve_response_code( $response ) === 200 ) {
+			set_transient( $transient_key, $response, self::RESPONSE_TTL );
+		} else {
+			// НЕ храним false — иначе затвор не отличит его от отсутствия транзиента
+			set_transient( $transient_key, [ 'y4ym_api_fail' => time() ], self::FAILURE_TTL );
+		}
+
 		return $response;
 
+	}
+
+	/**
+	 * Returns the transient key used to throttle API requests.
+	 *
+	 * @return   string
+	 */
+	private function get_cache_transient_key() {
+		return 'y4ym_upd_api_resp_' . $this->get_pref();
+	}
+
+	/**
+	 * Forces the next update check to hit the API immediately,
+	 * bypassing the 12-hour throttle.
+	 *
+	 * Call it after the user changes license settings so that
+	 * the new data reaches the API right away.
+	 *
+	 * @return   void
+	 */
+	public function refresh_update_info() {
+		delete_transient( $this->get_cache_transient_key() );
 	}
 
 	/**
@@ -526,162 +656,6 @@ final class Y4YM_Plugin_Upd {
 	}
 
 	/**
-	 * Проверка наличия обновлений.
-	 * 
-	 * @param    object   $transient
-	 * 
-	 * @return   object
-	 */
-	public function check_update( $transient ) {
-
-		/**
-		 * Сначала проверяется наличие в массиве данных наличие поля "checked". Если оно есть, это значит, 
-		 * что WordPress запросил и обработал данные об обновлении и сейчас самое время вставить в параметр 
-		 * свои данные. Если нет, значит 12 часов ещё не прошло. Ничего не делаем.
-		 * 
-		 * ["no_update"]=> array(1) { 
-		 *	["pgo-plugin-demo-one/rex-product-feed.php"]=> 
-		 *		object(stdClass)#7367 (9) { 
-		 *			["id"]=> string(35) "w.org/plugins/pgo-plugin-demo-one" 
-		 *			["slug"]=> string(21) "pgo-plugin-demo-one" 
-		 *			["plugin"]=> string(42) "pgo-plugin-demo-one/rex-product-feed.php" 
-		 *			["new_version"]=> string(3) "3.4" 
-		 *			["url"]=> string(52) "https://wordpress.org/plugins/pgo-plugin-demo-one/" 
-		 *			["package"]=> string(68) "https://downloads.wordpress.org/plugin/pgo-plugin-demo-one.3.4.zip" 
-		 *			["icons"]=> array(1) { 
-		 *				["1x"]=> string(74) "https://ps.w.org/pgo-plugin-demo-one/assets/icon-128x128.jpg?rev=1737647" 
-		 *			} 
-		 *			["banners"]=> array(1) { 
-		 *				["1x"]=> string(76) "https://ps.w.org/pgo-plugin-demo-one/assets/banner-772x250.png?rev=1944151"
-		 *			} 
-		 *			["banners_rtl"]=> array(0) { } 
-		 *		} 
-		 * }
-		 */
-
-		/* На время тестов строку ниже нужно раскомментировать */
-		wp_clean_update_cache();
-
-		if ( empty( $transient->checked ) ) {
-			return $transient;
-		}
-
-		$response = $this->response_to_api();
-		$response_code = wp_remote_retrieve_response_code( $response );
-		$response_message = wp_remote_retrieve_response_message( $response );
-
-		if ( ( $response_code == 200 ) && $response_message == 'OK' ) {
-			$resp = json_decode( $response['body'] );
-			$this->save_resp( $resp->status_code, $resp->status_date );
-
-			// Обновлений нет. Нет смысла что-то менять. Выходим.
-			if ( ! isset( $resp->upd ) ) {
-				return $transient;
-			}
-			$plugin = $this->get_plugin_response_data( $resp );
-
-			$transient->response[ $this->plugin_slug ] = $plugin;
-		} else {
-			Y4YM_Error_Log::record( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
-				$response_code,
-				__( 'Error checking for updates', 'yml-for-yandex-market' ),
-				$response_message,
-				__( 'File', 'yml-for-yandex-market' ),
-				'class-y4ym-plugin-upd.php',
-				__( 'Line', 'yml-for-yandex-market' ),
-				__LINE__
-			) );
-		}
-		return $transient;
-
-	}
-
-	/**
-	 * Проверка информации о плагине (запрос информации об обновлениях).
-	 *
-	 * @param    false|object|array    $result
-	 * @param    string                $action
-	 * @param    object                $args
-	 * 
-	 * @return   false|object|array
-	 */
-	public function plugin_api_check_info( $result, $action, $args ) {
-
-		if ( isset( $args->slug ) && ( $args->slug === $this->slug ) ) {
-			$response = $this->response_to_api();
-			$response_code = wp_remote_retrieve_response_code( $response );
-			$response_message = wp_remote_retrieve_response_message( $response );
-
-			if ( ( $response_code == 200 ) && $response_message == 'OK' ) {
-				$resp = json_decode( $response['body'] );
-				$this->save_resp( $resp->status_code, $resp->status_date );
-				if ( ! isset( $resp->upd ) ) {
-					return $result;
-				}
-				$plugin = $this->get_plugin_response_data( $resp );
-				return $plugin;
-			} else {
-				Y4YM_Error_Log::record( sprintf( 'ERROR (#%1$s): %2$s. %3$s; %4$s: %5$s; %6$s: %7$s',
-					$response_code,
-					__( 'Error when requesting information about the plugin', 'yml-for-yandex-market' ),
-					$response_message,
-					__( 'File', 'yml-for-yandex-market' ),
-					'class-y4ym-plugin-upd.php',
-					__( 'Line', 'yml-for-yandex-market' ),
-					__LINE__
-				) );
-				return $result;
-			}
-		} else { // это просмотр инфы другого плагина
-			return $result;
-		}
-
-	}
-
-	/**
-	 * Обновление плагина. Фильтрует параметры пакета перед запуском обновления.
-	 * 
-	 * @param    array    $options
-	 * 
-	 * @return   array
-	 */
-	public function set_update_package( $options ) {
-
-		/**
-		 * $options = Array (
-		 *	[package] => name // сюда нужна ссылка до архива
-		 *	[destination] => /home/p12345/www/site.ru/wp-content/plugins
-		 *	[clear_destination] => 1
-		 *	[abort_if_destination_exists] => 1
-		 *	[clear_working] => 1
-		 *	[is_multi] => 1
-		 *	[hook_extra] => Array (
-		 * 		[plugin] => pgo-plugin-demo-one/pgo-plugin-demo-one.php
-		 * 	) 
-		 * )
-		 */
-		if ( isset( $options['hook_extra']['plugin'] ) ) {
-			if ( $options['hook_extra']['plugin'] === $this->plugin_slug ) {
-				$api_url = apply_filters( 'y4ym_f_api_url', self::API_URL );
-				$package_url = sprintf(
-					'%1$s/update/?order_id=%2$s&order_email=%3$s&order_home_url=%4$s&slug=%5$s&premium_version=%6$s&basic_version=%7$s',
-					$api_url,
-					$this->get_order_id(),
-					$this->get_order_email(),
-					home_url( '/' ),
-					$this->get_slug(),
-					$this->get_premium_version(),
-					Y4YM_PLUGIN_VERSION
-				);
-				$package_url = apply_filters( 'y4ym_f_package_url', $package_url, $options );
-				$options['package'] = $package_url;
-			}
-		}
-		return $options;
-
-	}
-
-	/**
 	 * Get plugin response data.
 	 * 
 	 * @param    mixed       $resp
@@ -711,7 +685,7 @@ final class Y4YM_Plugin_Upd {
 		$plugin->rating = (int) $resp->rating; // рейтинг в звёздах
 		$plugin->num_ratings = (int) $resp->num_ratings; // число голосов
 		$plugin->sections = json_decode( json_encode( $resp->sections ), true ); // массив иконки
-		$plugin->download_link = $resp->package; // 'https://icopydoc.ru/api/v1/pgo-plugin.zip';
+		$plugin->download_link = $resp->package; // 'https://s.ru/api/v1/pgo-plugin.zip';
 		return $plugin;
 
 	}

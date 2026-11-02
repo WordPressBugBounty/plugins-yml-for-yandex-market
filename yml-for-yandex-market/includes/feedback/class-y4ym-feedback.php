@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.7.0 (17-08-2026)
+ * @version    5.11.0 (29-10-2026)
  *
  * @package    iCopyDoc Plugins (ICPD)
  * @subpackage Y4YM/includes/feedback
@@ -209,16 +209,8 @@ final class Y4YM_Feedback {
 					esc_html( get_woo_version_number() )
 				);
 
-				$argsp = [
-					'post_type' => 'product',
-					'post_status' => 'publish',
-					'posts_per_page' => -1,
-					'fields' => 'ids',
-					'suppress_filters' => true // отключаем лишние фильтры для скорости
-				];
-				$products = new \WP_Query( $argsp );
-				$vsegotovarov = $products->found_posts;
-				unset( $products );
+				$counts = wp_count_posts( 'product' );
+				$vsegotovarov = $counts ? $counts->publish : 0;
 				$mail_content .= sprintf( 'Число товаров: %1$s</p>',
 					esc_html( $vsegotovarov )
 				);

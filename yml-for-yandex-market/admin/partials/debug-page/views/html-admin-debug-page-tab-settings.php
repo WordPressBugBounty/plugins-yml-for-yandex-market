@@ -1,15 +1,16 @@
-<?php
+<?php defined( 'WPINC' ) || exit;
+
 /**
- * Display the Settings tab.
+ * Display the Debug settings tab.
  * 
- * @version    5.0.0 (25-03-2025)
+ * @version    5.12.0 (31-10-2025)
  * @package    Y4YM
  * @subpackage Y4YM/admin/partials/debug_page/
  * 
  * @param $view_arr['keeplogs']
  * @param $view_arr['plugin_notifications']
  */
-defined( 'ABSPATH' ) || exit; ?>
+?>
 <div class="y4ym-postbox postbox">
 
 	<table class="form-table">
@@ -29,17 +30,33 @@ defined( 'ABSPATH' ) || exit; ?>
 			</tr>
 			<?php if ( $view_arr['keeplogs'] === 'enabled' ) : ?>
 				<tr>
-					<th class="y4ym_th" scope="row"><?php esc_html_e( 'Link to the log file', 'yml-for-yandex-market' ); ?>
+					<th class="y4ym_th" scope="row">
+						<?php esc_html_e( 'Plugin logs', 'yml-for-yandex-market' ); ?>
 					</th>
 					<td class="y4ym_td overalldesc">
 						<?php
-						printf( '<p><a href="%1$s%2$s">%1$s%2$s</a><br/><strong>%4$s:</strong> %3$s%2$s (<a href="%1$s%2$s" download>%5$s</a>).</p>',
-							esc_attr( Y4YM_PLUGIN_UPLOADS_DIR_URL ),
-							'/yml-for-yandex-market.log',
-							esc_html( Y4YM_PLUGIN_UPLOADS_DIR_PATH ),
-							esc_html__( 'Location on your server', 'yml-for-yandex-market' ),
-							esc_html__( 'Download', 'yml-for-yandex-market' )
-						);
+						$log_file_path = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/' . Y4YM_Error_Log::get_log_file_name();
+						if ( ! file_exists( $log_file_path ) ) {
+							printf( '<p><em>%s</em></p>',
+								esc_html__( 'The log file does not exist', 'yml-for-yandex-market' )
+							);
+						} else {
+							$log_content = Y4YM_Error_Log::read_tail( $log_file_path );
+							if ( '' === $log_content || false === $log_content ) {
+								printf( '<p><em>%s</em>.</p>',
+									esc_html__( 'The log file is empty', 'yml-for-yandex-market' )
+								);
+							} else {
+								printf( '<textarea readonly style="width: 100%%; height: 300px;" id="y4ym_log_content">%s</textarea>',
+									esc_textarea( $log_content )
+								);
+								printf( '<p><em>%s: %s</em></p>',
+									esc_html__( 'Location on your server', 'yml-for-yandex-market' ),
+									esc_html( $log_file_path )
+								);
+							}
+						}
+
 						?>
 					</td>
 				</tr>

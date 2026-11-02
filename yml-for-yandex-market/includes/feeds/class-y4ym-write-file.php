@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.11.0 (29-10-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -13,7 +13,7 @@
 
 /**
  * Writes files (`tmp`, `xml` and etc).
- * 
+ *
  * Usage example: `new Y4YM_Write_File( $result_xml, '-1.tmp', '2' );`
  *
  * @since      0.1.0
@@ -44,15 +44,15 @@ final class Y4YM_Write_File {
 
 	/**
 	 * Writes files (`tmp`, `xml` and etc).
-	 * 
+	 *
 	 * @param string $xml_string The data to be written to the file.
 	 * @param string $file_name Full file name. Example: `12345.tmp`.
 	 * @param string $feed_id Feed ID.
 	 * @param string $action Maybe: `create`, `append`.
-	 * @param string $tmp_dir_name The location of the file on the server. 
+	 * @param string $tmp_dir_name The location of the file on the server.
 	 *                             Example: `/home/site.ru/public_html/wp-content/uploads/y4ym/feed1/12345.tmp`.
 	 * @param string $trim Maybe: `yes`, `no_trim`.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function __construct( $xml_string, $file_name, $feed_id, $action = 'create', $tmp_dir_name = Y4YM_PLUGIN_UPLOADS_DIR_PATH, $trim = 'yes' ) {
@@ -84,10 +84,10 @@ final class Y4YM_Write_File {
 
 	/**
 	 * Save tmp file.
-	 * 
+	 *
 	 * @param string $xml_string
 	 * @param string $trim Maybe: `yes`, `no_trim`.
-	 * 
+	 *
 	 * @return void
 	 */
 	protected function create_file( $xml_string, $trim ) {
@@ -99,6 +99,7 @@ final class Y4YM_Write_File {
 				$xml_string = trim( $xml_string );
 			}
 		}
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- A raw file handle is required for flock(LOCK_EX) below; WP_Filesystem has no descriptor-based API, so an OS-level atomic lock is impossible through it. Feed files are large and written concurrently by cron processes, so locking is mandatory.
 		$fp = fopen( $this->get_file_path(), "wb" );
 		if ( false === $fp ) {
 			// Получаем конкретную причину ошибки открытия файла
@@ -129,12 +130,14 @@ final class Y4YM_Write_File {
 			);
 			error_log( $msg_for_log, 0 );
 			Y4YM_Error_Log::record( $msg_for_log );
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing the handle opened by fopen() above to release the OS lock; no WP_Filesystem equivalent exists.
 			fclose( $fp );
 			$this->result = false;
 			return;
 		}
 
 		// Записываем данные в файл
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- Writing through the handle locked by flock(LOCK_EX) above preserves the atomic lock-and-write pattern; see the fopen() rationale.
 		$written = fwrite( $fp, $xml_string );
 
 		// Проверка на ошибку записи (fwrite возвращает false при ошибке)
@@ -149,6 +152,7 @@ final class Y4YM_Write_File {
 			);
 			error_log( $msg_for_log, 0 );
 			flock( $fp, LOCK_UN ); // Освобождаем блокировку
+			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing the handle opened by fopen() above to release the OS lock; no WP_Filesystem equivalent exists.
 			fclose( $fp );
 			$this->result = false;
 			return;
@@ -158,6 +162,7 @@ final class Y4YM_Write_File {
 		flock( $fp, LOCK_UN );
 
 		// Закрываем файл
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing the handle opened by fopen() above to release the OS lock; no WP_Filesystem equivalent exists.
 		fclose( $fp );
 
 		$this->result = true;
@@ -166,14 +171,14 @@ final class Y4YM_Write_File {
 
 	/**
 	 * Append to tmp file.
-	 * 
+	 *
 	 * @param string $xml_string
-	 * 
+	 *
 	 * @return void
 	 */
 	protected function append_to_file( $xml_string ) {
 
-		$fa = file_put_contents(
+		$fa = file_put_contents( // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Append to large feed files requires native streaming: WP_Filesystem has no append method, and reading the whole file into memory risks hitting memory_limit.
 			$this->get_file_path(), $xml_string, FILE_APPEND | LOCK_EX
 		);
 
@@ -202,7 +207,7 @@ final class Y4YM_Write_File {
 	/**
 	 * Returns the path to the tmp file.
 	 * Example: `/home/site.ru/public_html/wp-content/uploads/y4ym/feed1/12345.tmp`.
-	 * 
+	 *
 	 * @return string|false
 	 */
 	protected function get_file_path() {
@@ -211,7 +216,7 @@ final class Y4YM_Write_File {
 
 	/**
 	 * Returns the result of writing to a file.
-	 * 
+	 *
 	 * @return bool
 	 */
 	public function get_result() {

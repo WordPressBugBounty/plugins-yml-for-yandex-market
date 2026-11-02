@@ -17,7 +17,7 @@
  * Requires Plugins:        woocommerce
  * Plugin URI:              https://wordpress.org/plugins/yml-for-yandex-market/
  * Description:             Creates a YML-feed to upload to Yandex Market and not only
- * Version:                 5.10.0
+ * Version:                 5.12.0
  * Requires at least:       5.9
  * Requires PHP:            7.4.0
  * Author:                  Maxim Glazunov
@@ -28,7 +28,7 @@
  * Domain Path:             /languages
  * Tags:                    yml, yandex, market, export, woocommerce
  * WC requires at least:    3.0.0
- * WC tested up to:         11.2.0
+ * WC tested up to:         11.2.1
  */
 
 // If this file is called directly, abort.
@@ -306,6 +306,16 @@ function y4ym_plugin_database_upd( $old_version ) {
 		}
 	}
 
+	// v5.12.0: переносим лог в файл со случайным именем и защищаем папку
+	if ( version_compare( $old_version, '5.12.0', '<' ) ) {
+		Y4YM_Error_Log::protect_log_dir( Y4YM_PLUGIN_UPLOADS_DIR_PATH );
+
+		$old_log_file = trailingslashit( Y4YM_PLUGIN_UPLOADS_DIR_PATH ) . 'yml-for-yandex-market.log';
+		if ( file_exists( $old_log_file ) ) {
+			@unlink( $old_log_file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_unlink -- removing a legacy debug log; WP_Filesystem is not worth a require for this
+		}
+	}
+
 	// настройки обновлены, меняем номер версии в БД
 	if ( is_multisite() ) {
 		update_blog_option( get_current_blog_id(), 'y4ym_version', Y4YM_PLUGIN_VERSION );
@@ -479,7 +489,7 @@ if ( false === $not_run ) {
 	 * Start at version 0.1.0 and use SemVer - https://semver.org
 	 * Rename this for your plugin and update it as you release new versions.
 	 */
-	define( 'Y4YM_PLUGIN_VERSION', '5.10.0' );
+	define( 'Y4YM_PLUGIN_VERSION', '5.12.0' );
 
 	$upload_dir = wp_get_upload_dir();
 	// http://site.ru/wp-content/uploads
@@ -570,7 +580,7 @@ if ( false === $not_run ) {
 	} else {
 		$y4ym_v = get_option( 'y4ym_version', '0.1.0' );
 	}
-	if ( version_compare( $y4ym_v, '5.10.0', '<' ) ) {
+	if ( version_compare( $y4ym_v, Y4YM_PLUGIN_VERSION, '<' ) ) {
 		y4ym_plugin_database_upd( $y4ym_v );
 	}
 

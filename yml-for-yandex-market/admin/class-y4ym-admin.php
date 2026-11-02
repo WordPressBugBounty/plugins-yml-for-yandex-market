@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.10.0 (08-10-2026)
+ * @version    5.12.0 (31-10-2025)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -243,8 +243,8 @@ class Y4YM_Admin {
 
 		new Y4YM_Feedback( [
 			'plugin_version' => Y4YM_PLUGIN_VERSION,
-			'logs_url' => Y4YM_PLUGIN_UPLOADS_DIR_URL . '/yml-for-yandex-market.log',
-			'logs_path' => Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/yml-for-yandex-market.log'
+			'logs_url' => Y4YM_PLUGIN_UPLOADS_DIR_URL . '/' . Y4YM_Error_Log::get_log_file_name(),
+			'logs_path' => Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/' . Y4YM_Error_Log::get_log_file_name()
 		] );
 		new ICPD_Promo( 'y4ym' );
 
@@ -465,27 +465,32 @@ class Y4YM_Admin {
 
 		// проверка API
 		if ( isset( $_REQUEST['y4ym_check_action'] ) ) {
-			$feed_id = isset( $_GET['feed_id'] ) ? (string) sanitize_text_field( $_GET['feed_id'] ) : '1';
-			$obj = new Y4YM_Api( [ 'feed_id' => $feed_id ] );
-			$result = $obj->get_campaigns();
-			if ( true === $result['status'] ) {
-				$class = 'success';
-				$message = sprintf( '<strong style="font-weight: 700;">%1$s!</strong>',
-					__( 'API connection was successful', 'yml-for-yandex-market' )
-				);
-			} else {
-				$class = 'error';
-				$message = sprintf(
-					'<strong style="%1$s">%2$s!</strong><br/>
+			if ( ! empty( $_POST ) && check_admin_referer( 'y4ym_nonce_action', 'y4ym_nonce_field' ) ) {
+				if ( ! current_user_can( 'manage_woocommerce' ) ) {
+					return;
+				}
+				$feed_id = isset( $_GET['feed_id'] ) ? (string) sanitize_text_field( $_GET['feed_id'] ) : '1';
+				$obj = new Y4YM_Api( [ 'feed_id' => $feed_id ] );
+				$result = $obj->get_campaigns();
+				if ( true === $result['status'] ) {
+					$class = 'success';
+					$message = sprintf( '<strong style="font-weight: 700;">%1$s!</strong>',
+						__( 'API connection was successful', 'yml-for-yandex-market' )
+					);
+				} else {
+					$class = 'error';
+					$message = sprintf(
+						'<strong style="%1$s">%2$s!</strong><br/>
 					<strong style="%1$s">error_code:</strong> %3$s. <strong style="%1$s">error_msg:</strong> %4$s',
-					'font-weight: 700;',
-					__( 'API connection error', 'yml-for-yandex-market' ),
-					esc_html( $result['errors'][0]->code ),
-					esc_html( $result['errors'][0]->message )
-				);
-				Y4YM_Error_Log::record( $result );
+						'font-weight: 700;',
+						__( 'API connection error', 'yml-for-yandex-market' ),
+						esc_html( $result['errors'][0]->code ),
+						esc_html( $result['errors'][0]->message )
+					);
+					Y4YM_Error_Log::record( $result );
+				}
+				new Y4YM_Set_Admin_Notices( $message, $class );
 			}
-			new Y4YM_Set_Admin_Notices( $message, $class );
 		}
 
 		// сохранение опций на странице отладки
@@ -931,7 +936,7 @@ class Y4YM_Admin {
 	 */
 	private function clear_logs() {
 
-		$logs_file_name = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/yml-for-yandex-market.log';
+		$logs_file_name = Y4YM_PLUGIN_UPLOADS_DIR_PATH . '/' . Y4YM_Error_Log::get_log_file_name();
 		if ( file_exists( $logs_file_name ) ) {
 			$res = wp_delete_file( $logs_file_name );
 		} else {
