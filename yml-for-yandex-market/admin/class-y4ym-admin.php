@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.12.0 (31-10-2025)
+ * @version    5.13.0 (17-11-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/admin
@@ -859,7 +859,7 @@ class Y4YM_Admin {
 			$new_data_arr['y4ym_feed_path'] = '';
 			$new_data_arr['y4ym_date_sborki_start'] = '-'; // 'Y-m-d H:i
 			$new_data_arr['y4ym_date_sborki_end'] = '-'; // 'Y-m-d H:i
-			$new_data_arr['y4ym_date_save_set'] = 0000000001; // 0000000001 - timestamp format
+			$new_data_arr['y4ym_date_save_set'] = '1'; // '1' = never updated - timestamp format
 			$new_data_arr['y4ym_count_products_in_feed'] = '-1';
 
 			$settings_arr[ $new_feed_id_str ] = $new_data_arr;

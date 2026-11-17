@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.12.0 (31-10-2025)
+ * @version    5.13.0 (17-11-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/updates
@@ -266,7 +266,7 @@ final class Y4YM_Plugin_Form_Activate {
 				}
 
 				delete_transient( 'y4ym_upd_api_resp_' . $this->get_pref() );
-				do_action( 'y4ym_pi' );
+				do_action( 'y4ym_a_after_activation_form_saved' );
 				$message = sprintf( '%1$s. %2$s.',
 					__( 'License data has been updated', 'yml-for-yandex-market' ),
 					__( 'Refresh this page', 'yml-for-yandex-market' )

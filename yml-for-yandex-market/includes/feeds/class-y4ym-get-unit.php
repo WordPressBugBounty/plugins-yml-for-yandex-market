@@ -5,7 +5,7 @@
  *
  * @link       https://icopydoc.ru
  * @since      0.1.0
- * @version    5.8.0 (31-08-2026)
+ * @version    5.13.0 (17-11-2026)
  *
  * @package    Y4YM
  * @subpackage Y4YM/includes/feeds
@@ -63,8 +63,8 @@ class Y4YM_Get_Unit {
 	 * 
 	 * @param string|int $post_id
 	 * @param string|int $feed_id
-	 * @param string|int $date_successful_feed_update timestamp format. Example: `000000001`.
-	 * @param string|int $date_save_set timestamp format. Example: `000000001`.
+	 * @param string|int $date_successful_feed_update timestamp format. Example: `1794426267`.
+	 * @param string|int $date_save_set timestamp format. Example: `1794426267`.
 	 */
 	public function __construct( $post_id, $feed_id, $date_successful_feed_update = 0, $date_save_set = 0 ) {
 

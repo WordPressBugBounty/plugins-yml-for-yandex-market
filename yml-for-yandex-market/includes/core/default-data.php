@@ -13,7 +13,7 @@
  * timestamps), while public ones are displayed in the settings form.
  *
  * @since      0.1.0
- * @version    5.10.0 (08-10-2026)
+ * @version    5.13.0 (17-11-2026)
  * @package    Y4YM
  * @subpackage Y4YM/includes/core
  * 
@@ -120,14 +120,14 @@ $data_arr = [
 	],
 	[  // дата последнего успешного обновления фида
 		'opt_name' => 'y4ym_date_successful_feed_update',
-		'def_val' => 0000000001, // 0000000001 - timestamp format
+		'def_val' => '1', // '1' = never updated - timestamp format
 		'mark' => 'private',
 		'type' => 'auto',
 		'tab' => 'none'
 	],
 	[  // дата сохранения настроек плагина
 		'opt_name' => 'y4ym_date_save_set',
-		'def_val' => 0000000001, // 0000000001 - timestamp format
+		'def_val' => '1', // '1' = never updated - timestamp format
 		'mark' => 'private',
 		'type' => 'auto',
 		'tab' => 'none'
